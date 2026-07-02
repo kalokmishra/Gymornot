@@ -1,0 +1,33 @@
+name: Welcome First-timers
+
+on:
+  issues:
+    types: [opened]
+  pull_request:
+    types: [opened]
+
+jobs:
+  welcome:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check for first-time contributor and comment
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const event = context.eventName;
+            const isPR = event === 'pull_request';
+            const payloadObj = isPR ? context.payload.pull_request : context.payload.issue;
+            const assoc = payloadObj.author_association || '';
+            const firstTimer = ['FIRST_TIME_CONTRIBUTOR', 'FIRST_TIMER'];
+            if (firstTimer.includes(assoc)) {
+              const body = `Thanks for your contribution! Welcome 👋\n\nPlease check the community resources: https://github.com/${context.repo.owner}/${context.repo.repo}/tree/main and our [CONTRIBUTING](https://github.com/${context.repo.owner}/${context.repo.repo}/blob/main/CONTRIBUTING.md) guide.\n\nQuick checklist:\n- [ ] I ran the app locally (`npm run dev`)\n- [ ] I followed the PR template\n\nA maintainer will review this soon.`;
+              const issue_number = isPR ? context.payload.pull_request.number : context.payload.issue.number;
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number,
+                body,
+              });
+            } else {
+              core.info(`Contributor association: ${assoc} — no welcome comment posted.`);
+            }
