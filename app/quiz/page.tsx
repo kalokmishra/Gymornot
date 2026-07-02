@@ -165,29 +165,29 @@ export default function QuizPage() {
   return (
     <main className="min-h-screen bg-[radial-gradient(circle_at_top_left,_rgba(16,185,129,0.16),transparent_28%),radial-gradient(circle_at_bottom_right,_rgba(139,92,246,0.16),transparent_24%),#0b0f19] text-ink">
       <div className="mx-auto flex min-h-screen max-w-6xl flex-col px-6 py-8 sm:px-10 lg:px-12">
-        <div className="mb-6 flex items-center justify-between rounded-3xl border border-white/10 bg-surface px-6 py-4 text-sm text-ink-dim shadow-[0_20px_70px_-50px_rgba(0,0,0,0.8)] sm:px-10">
-          <div className="font-display text-lg font-bold text-ink">GymOrNot<span className="text-gym-green">.</span>com</div>
+        <div className="mb-6 flex items-center justify-between rounded-[1.5rem] border border-white/10 bg-surface/80 px-6 py-4 text-sm text-ink-dim shadow-[0_20px_70px_-50px_rgba(0,0,0,0.8)] sm:px-10">
+          <div className="text-lg font-semibold text-ink">GymOrNot<span className="text-gym-green">.</span>com</div>
           <div className="flex flex-wrap gap-3">
-            <Link href="/" className="rounded-full border border-white/10 bg-[#0d1527] px-4 py-2 text-sm font-semibold text-ink transition hover:border-gym-green/40 hover:bg-white/5">
+            <Link href="/" className="cta-secondary px-4 py-2 text-sm">
               Home
             </Link>
-            <Link href="/dashboard" className="rounded-full bg-gym-green px-4 py-2 text-sm font-semibold text-void transition hover:bg-gym-green/90">
+            <Link href="/dashboard" className="cta-primary px-4 py-2 text-sm">
               Dashboard
             </Link>
           </div>
         </div>
 
         <div className="mx-auto w-full max-w-4xl">
-          <div className="mb-4 flex items-center justify-between gap-4 rounded-full border border-white/10 bg-surface px-4 py-3 text-sm text-ink-dim shadow-[inset_0_0_0_1px_rgba(255,255,255,0.02)]">
-            <div className="font-mono uppercase tracking-[0.3em] text-gym-green/80">
+          <div className="mb-4 flex items-center justify-between gap-4 rounded-full border border-white/10 bg-surface/80 px-4 py-3 text-sm text-ink-dim shadow-[inset_0_0_0_1px_rgba(255,255,255,0.02)]">
+            <div className="eyebrow text-[0.65rem]">
               {phase === "quiz" ? `Question ${stepIndex + 1} of ${QUESTIONS.length}` : phase === "loading" ? "Loading result" : "Final verdict"}
             </div>
-            <div className="font-mono text-xs uppercase tracking-[0.35em] text-ink-dim">
+            <div className="text-xs uppercase tracking-[0.35em] text-ink-dim">
               {phase === "quiz" ? `${progressPct}% complete` : "Nearly there"}
             </div>
           </div>
 
-          <div className="overflow-hidden rounded-[2rem] border border-white/10 bg-surface p-6 shadow-[0_40px_120px_-80px_rgba(0,0,0,0.85)] sm:p-8">
+          <div className="panel-card overflow-hidden rounded-[2rem] p-6 sm:p-8">
             <div className="mb-8 h-2 rounded-full bg-white/5">
               <div className="h-full rounded-full bg-gradient-to-r from-gym-green to-anti-purple transition-all duration-500" style={{ width: phase === "quiz" ? `${progressPct}%` : "100%" }} />
             </div>
@@ -195,9 +195,7 @@ export default function QuizPage() {
             {phase === "quiz" && (
               <div className="grid gap-6">
                 <div>
-                  <p className="font-mono text-xs uppercase tracking-[0.32em] text-gym-green/70">
-                    {QUESTIONS[stepIndex].eyebrow}
-                  </p>
+                  <p className="eyebrow">{QUESTIONS[stepIndex].eyebrow}</p>
                   <h2 className="mt-3 text-3xl font-semibold leading-tight text-ink sm:text-4xl">
                     {QUESTIONS[stepIndex].prompt}
                   </h2>
@@ -209,7 +207,7 @@ export default function QuizPage() {
                       key={option.label}
                       type="button"
                       onClick={() => handleAnswer(option.score)}
-                      className="group rounded-3xl border border-white/10 bg-[#111827] px-5 py-5 text-left transition duration-200 hover:-translate-y-0.5 hover:border-gym-green/40 hover:bg-[#172130] focus:outline-none focus:ring-2 focus:ring-gym-green/40"
+                      className="group rounded-[1.35rem] border border-white/10 bg-[#111827]/90 px-5 py-5 text-left transition duration-200 hover:-translate-y-0.5 hover:border-gym-green/40 hover:bg-[#172130] focus:outline-none focus:ring-2 focus:ring-gym-green/40"
                     >
                       <span className="font-medium text-ink">{option.label}</span>
                       <span className="mt-4 inline-flex items-center gap-2 text-sm font-mono text-ink-dim opacity-80 group-hover:text-gym-green">
@@ -228,16 +226,14 @@ export default function QuizPage() {
                   <div className="h-7 w-7 animate-spin rounded-full border-2 border-white/10 border-t-gym-green" />
                 </div>
                 <p className="text-base font-medium text-ink">Crunching the numbers...</p>
-                <p className="font-mono text-sm text-ink-dim">{LOADING_LINES[loadingLine]}</p>
+                <p className="eyebrow text-[0.65rem]">{LOADING_LINES[loadingLine]}</p>
               </div>
             )}
 
             {phase === "result" && (
               <div className="grid gap-8">
-                <div className="grid gap-3 rounded-[1.75rem] bg-[#111827]/80 p-8 text-white shadow-[0_30px_80px_-30px_rgba(16,185,129,0.35)]">
-                  <span className="font-mono text-xs uppercase tracking-[0.32em] text-gym-green/80">
-                    Diagnosis complete
-                  </span>
+                <div className="grid gap-3 rounded-[1.75rem] bg-[#111827]/80 p-8 shadow-[0_30px_80px_-30px_rgba(16,185,129,0.35)]">
+                  <span className="eyebrow">Diagnosis complete</span>
                   <h2 className={`text-4xl font-semibold ${
                     archetype.color === "green"
                       ? "text-gym-green"
@@ -256,7 +252,7 @@ export default function QuizPage() {
                 {!unlocked ? (
                   <form onSubmit={handleEmailSubmit} className="grid gap-4 rounded-[1.75rem] border border-white/10 bg-[#0f1726]/80 p-6 sm:p-8">
                     <div>
-                      <label htmlFor="email" className="font-mono text-xs uppercase tracking-[0.28em] text-ink-dim">
+                      <label htmlFor="email" className="eyebrow text-[0.65rem]">
                         Unlock your official verdict
                       </label>
                       <p className="mt-2 text-sm text-ink-dim">
@@ -274,7 +270,7 @@ export default function QuizPage() {
                       />
                       <button
                         type="submit"
-                        className="inline-flex items-center justify-center whitespace-nowrap rounded-2xl bg-gradient-to-r from-gym-green to-anti-purple px-6 py-4 text-sm font-semibold text-void transition hover:brightness-110"
+                        className="cta-primary whitespace-nowrap px-6 py-4"
                       >
                         Reveal verdict
                       </button>

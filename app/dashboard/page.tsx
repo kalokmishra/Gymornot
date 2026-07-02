@@ -80,22 +80,22 @@ export default function DashboardPage() {
   return (
     <main className="min-h-screen bg-[radial-gradient(circle_at_top_left,_rgba(16,185,129,0.16),transparent_28%),radial-gradient(circle_at_bottom_right,_rgba(139,92,246,0.16),transparent_24%),#0b0f19] text-ink">
       <div className="mx-auto flex min-h-screen max-w-6xl flex-col px-6 py-8 sm:px-10 lg:px-12">
-        <div className="mb-6 flex items-center justify-between rounded-3xl border border-white/10 bg-surface px-6 py-4 text-sm text-ink-dim shadow-[0_20px_70px_-50px_rgba(0,0,0,0.8)] sm:px-10">
-          <div className="font-display text-lg font-bold text-ink">GymOrNot<span className="text-gym-green">.</span>com</div>
+        <div className="mb-6 flex items-center justify-between rounded-[1.5rem] border border-white/10 bg-surface/80 px-6 py-4 text-sm text-ink-dim shadow-[0_20px_70px_-50px_rgba(0,0,0,0.8)] sm:px-10">
+          <div className="text-lg font-semibold text-ink">GymOrNot<span className="text-gym-green">.</span>com</div>
           <div className="flex flex-wrap gap-3">
-            <Link href="/" className="rounded-full border border-white/10 bg-[#0d1527] px-4 py-2 text-sm font-semibold text-ink transition hover:border-gym-green/40 hover:bg-white/5">
+            <Link href="/" className="cta-secondary px-4 py-2 text-sm">
               Home
             </Link>
-            <Link href="/quiz" className="rounded-full bg-gym-green px-4 py-2 text-sm font-semibold text-void transition hover:bg-gym-green/90">
+            <Link href="/quiz" className="cta-primary px-4 py-2 text-sm">
               Take quiz
             </Link>
           </div>
         </div>
 
         <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr]">
-          <div className="rounded-[2rem] border border-white/10 bg-surface p-8 shadow-[0_30px_90px_-50px_rgba(0,0,0,0.75)]">
-            <div className="rounded-[1.75rem] bg-[#111827]/80 p-8">
-              <p className="font-mono text-xs uppercase tracking-[0.28em] text-gym-green/80">The 1% Club</p>
+          <div className="panel-card rounded-[2rem] p-8">
+            <div className="soft-card rounded-[1.75rem] p-8">
+              <p className="eyebrow">The 1% Club</p>
               <h1 className="mt-5 text-4xl font-semibold tracking-tight text-ink sm:text-5xl">
                 Track the habit, not the membership.
               </h1>
@@ -151,7 +151,7 @@ export default function DashboardPage() {
                       type="button"
                       onClick={handleCheckin}
                       disabled={checkedInToday}
-                      className="rounded-2xl bg-gradient-to-r from-gym-green to-anti-purple px-6 py-3 text-sm font-semibold text-void transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50"
+                      className="cta-primary px-6 py-3 text-sm disabled:cursor-not-allowed disabled:opacity-50"
                     >
                       {checkedInToday ? "Checked in today" : "Log today"}
                     </button>
@@ -174,9 +174,9 @@ export default function DashboardPage() {
             )}
           </div>
 
-          <aside className="rounded-[2rem] border border-white/10 bg-surface p-8">
-            <div className="rounded-[1.75rem] bg-[#111827]/80 p-6">
-              <p className="font-mono text-xs uppercase tracking-[0.28em] text-gym-green/80">Dashboard notes</p>
+          <aside className="panel-card rounded-[2rem] p-8">
+            <div className="soft-card rounded-[1.75rem] p-6">
+              <p className="eyebrow">Dashboard notes</p>
               <ul className="mt-5 space-y-4 text-sm leading-7 text-ink-dim">
                 <li>Streaks are stored locally in your browser.</li>
                 <li>Checking in today refreshes your momentum score.</li>
