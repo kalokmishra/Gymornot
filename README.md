@@ -16,6 +16,9 @@ Open [http://localhost:3000](http://localhost:3000).
 
 Live demo: https://gymornot-five.vercel.app
 
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Vercel](https://img.shields.io/badge/deploy-vercel-black)
+
 ## Pages
 
 | Route | Purpose |
@@ -43,3 +46,5 @@ Live demo: https://gymornot-five.vercel.app
 Thanks for your interest in contributing! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on how to report issues, propose changes, and submit pull requests.
 
 If you're new, a great first step is: fork the repo, run the app locally, and open a small PR with an improvement to the README or a UI tweak.
+
+Quick links: [Community page](/community) · [Contributing](CONTRIBUTING.md) · [Code of Conduct](CODE_OF_CONDUCT.md)
