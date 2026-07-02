@@ -14,6 +14,8 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
+Live demo: https://gymornot-five.vercel.app
+
 ## Pages
 
 | Route | Purpose |
@@ -35,3 +37,9 @@ Open [http://localhost:3000](http://localhost:3000).
 - Colors and type are defined as design tokens in `tailwind.config.ts`
   (`gym-green`, `anti-purple`, `void`, `surface`, `alert`, `ink`) so the
   palette stays consistent across pages.
+
+## Contributing
+
+Thanks for your interest in contributing! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on how to report issues, propose changes, and submit pull requests.
+
+If you're new, a great first step is: fork the repo, run the app locally, and open a small PR with an improvement to the README or a UI tweak.
