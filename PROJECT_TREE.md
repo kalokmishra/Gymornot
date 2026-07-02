@@ -31,10 +31,11 @@ A one-page summary of the repository structure and key files.
 - `app/community/page.tsx` — community/contributor page
 - `app/dashboard/page.tsx` — dashboard and streak tracker
 - `app/quiz/page.tsx` — quiz flow and result experience
+- `app/api/quiz-data/route.ts` — serverless route for AI quiz generation
 
 ## Static Data + Theme
 - `staticData.ts` — static content models and hardcoded app data
-- `tailwind.config.ts` — theme colors, fonts, and utility configuration
+- `tailwind.config.ts` — theme colors, fonts, and Tailwind config
 - `postcss.config.mjs` — PostCSS configuration
 - `next.config.mjs` — Next.js configuration
 - `tsconfig.json` — TypeScript configuration
@@ -47,6 +48,7 @@ A one-page summary of the repository structure and key files.
 - `.github/pull_request_template.md`
 - `.github/ISSUE_TEMPLATE/`
 - `.github/workflows/ci.yml` — CI checks for lint/build/tests
+- `.github/workflows/vercel-deploy.yml` — automated Vercel deployment
 - `.github/workflows/welcome-first-timer.yml` — contributor welcome automation
 
 ## Generated / Dependency Directories

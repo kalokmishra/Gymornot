@@ -1,6 +1,6 @@
 # GymOrNot Intern Knowledge Base
 
-This document is a section-by-section reference for interns managing GymOrNot. It covers the app structure, local setup, common issues, workflows, and how to make safe fixes.
+This document is a section-by-section reference for interns managing GymOrNot. It covers the app structure, local setup, current features, workflows, and safe fix guidance.
 
 ---
 
@@ -9,16 +9,16 @@ This document is a section-by-section reference for interns managing GymOrNot. I
 GymOrNot is a small Next.js 14 App Router site built with TypeScript and Tailwind CSS.
 
 Key facts:
-- No backend server is used for app data.
-- No database; most app state is stored in browser `localStorage`.
-- Static content is stored in the repository under `staticData.ts`.
-- The app is primarily a marketing/diagnostic frontend with a quiz flow and dashboard.
+- The app is mostly frontend-focused, with a single serverless API route for quiz generation.
+- No database; app state is stored in browser `localStorage`.
+- Static content is stored in `staticData.ts`.
+- The quiz questions are generated via `app/api/quiz-data/route.ts` when configured, with a fallback defined in `lib/quiz.ts`.
 
 Main routes:
 - `/` - landing page
-- `/quiz` - 4-question risk diagnostic
-- `/dashboard` - daily streak tracker and status page
-- `/community` - contributor/community links
+- `/quiz` - AI-backed quiz experience
+- `/dashboard` - streak and habit dashboard
+- `/community` - contributor/community resources
 
 ---
 
@@ -46,7 +46,14 @@ npm run dev
 http://localhost:3000
 ```
 
-4. Run the build and lint checks before pushing changes:
+4. To test the AI-backed quiz route locally, add `.env.local`:
+
+```env
+GEN_AI_ENDPOINT=https://your-gen-ai-endpoint.example.com
+GEN_AI_API_KEY=your_api_key_here
+```
+
+5. Run build and lint checks before pushing changes:
 
 ```bash
 npm run build
@@ -59,135 +66,121 @@ npm run lint
 
 Top-level files and folders:
 
-- `app/` - main App Router pages and layout
+- `app/` - App Router pages, layout, and server routes
 - `app/page.tsx` - home page
 - `app/quiz/page.tsx` - quiz experience
-- `app/dashboard/page.tsx` - dashboard and streak tracker
+- `app/dashboard/page.tsx` - dashboard page
 - `app/community/page.tsx` - contributor/community page
-- `staticData.ts` - static structured data for gear and gym listings
-- `tailwind.config.ts` - theme tokens, colors, fonts, and custom utilities
-- `README.md` / `CONTRIBUTING.md` - docs for contributors and setup
-- `.github/workflows/ci.yml` - CI checks on PRs and pushes
-- `.github/workflows/welcome-first-timer.yml` - auto-comment for new contributors
+- `app/api/quiz-data/route.ts` - serverless route for quiz generation
+- `lib/quiz.ts` - fallback quiz templates and helper logic
+- `staticData.ts` - static app data and content
+- `tailwind.config.ts` - theme tokens, colors, fonts, and Tailwind config
+- `README.md` / `CONTRIBUTING.md` - contributor and setup documentation
+- `.github/workflows/ci.yml` - CI lint/build checks
+- `.github/workflows/vercel-deploy.yml` - automated Vercel deploy pipeline
+- `.vercel/` - Vercel metadata for the linked project
 
 Additional notes:
 - `app/layout.tsx` imports fonts and defines the base HTML layout.
-- The app uses custom Tailwind classes and brand colors defined in `tailwind.config.ts`.
+- The quiz route now has an API-backed option plus a static fallback.
 
 ---
 
 ## 4. What Each Page Does
 
 `/` (Home)
-- Landing experience with main marketing content.
-- Links to quiz and dashboard.
-- Highlights core product value and how the platform works.
+- Landing page with the main site entry and navigation.
+- Links to the quiz, dashboard, and community page.
 
 `/quiz`
-- Four-question risk diagnostic flow.
-- Local component state controls quiz steps and scoring.
-- The final result is gated behind an email field.
-- Stores score and email in `localStorage` after submission.
+- Quiz experience with dynamic question generation.
+- Uses `app/api/quiz-data/route.ts` to request AI-generated questions.
+- Falls back to `lib/quiz.ts` if the API call fails or is not configured.
+- Stores the result in `localStorage` on email submission.
 
 `/dashboard`
-- Shows the user streak tracker and habits dashboard.
-- Reads `localStorage` values: `gymornot_email`, `gymornot_risk_score`, `gymornot_streak`, and `gymornot_last_checkin`.
-- Allows daily check-in and streak updates.
-- If no quiz data exists, it prompts the user to take the quiz first.
+- Displays the user streak tracker and habit status.
+- Reads `localStorage` values like `gymornot_email`, `gymornot_risk_score`, `gymornot_streak`, and `gymornot_last_checkin`.
 
 `/community`
-- Static guidance page linking to `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, GitHub issue templates, and PRs.
+- Contributor and community resources.
+- Links to contributing docs, issue templates, and support guidance.
 
 ---
 
 ## 5. Static Data and Content
 
-`staticData.ts` contains the app’s data models and hardcoded content.
+`staticData.ts` contains the repository’s static data models and hardcoded content.
 
 Important sections:
-- `GEAR_ITEMS` - home training gear items and affiliate links.
-- `GYM_ITEMS` - gym contract examples and warning details.
+- `GEAR_ITEMS` - home training gear and affiliate-style content.
+- `GYM_ITEMS` - gym contract examples and cautionary details.
 
-If content needs updating or adding, do it here rather than in page markup. This keeps the UI and data separate.
+For content updates, change `staticData.ts` rather than individual page markup.
 
 ---
 
 ## 6. Common Intern Tasks
 
 ### Fixing layout or styling issues
-- Inspect the page in browser developer tools.
-- Change Tailwind classes in the affected component.
-- Check `tailwind.config.ts` for custom tokens if colors or fonts need adjustment.
+- Use browser dev tools to identify the component and Tailwind classes.
+- Update the page component under `app/`.
+- Check `tailwind.config.ts` for palette tokens and utilities.
 
 ### Updating quiz behavior
-- Review `app/quiz/page.tsx`.
-- Question data is inside `QUESTIONS`.
-- Score logic and result selection happen in the component.
-- QA: complete every answer path and verify the final screen appears.
+- Review `app/quiz/page.tsx` and `app/api/quiz-data/route.ts`.
+- Add or adjust fallback question content in `lib/quiz.ts`.
+- Verify both the AI path and fallback path work locally.
 
-### Fixing dashboard `localStorage` behavior
-- `app/dashboard/page.tsx` reads values from browser storage on mount.
-- Check if `useEffect` and state values are set correctly.
-- Keep `localStorage` keys consistent with quiz persistence.
+### Updating the dashboard
+- `app/dashboard/page.tsx` reads persistent state from `localStorage`.
+- Keep storage keys consistent with the quiz page.
+- Confirm streak state updates correctly after interactions.
 
-### Adding or editing routes
-- New pages should be added under `app/` as `page.tsx` files or nested route folders.
-- For a new route, use a folder name matching the route path.
-- Keep the route’s component simple and declarative.
+### Adding a new route or page
+- Add a new folder under `app/` with `page.tsx`.
+- Use the route folder name to match the path.
+- Keep new routes minimal and consistent with the existing style.
 
 ---
 
 ## 7. Issue Triage and Prioritization
 
 When an issue arises:
-
-1. Reproduce the problem locally using `npm run dev`.
-2. Identify whether it is:
-   - a UI bug
-   - a behavior/logic bug
-   - a content/data issue
-   - a build/lint failure
+1. Reproduce locally with `npm run dev`.
+2. Categorize it as UI, logic, data, or build/lint.
 3. Check the browser console for runtime errors.
-4. If it is data or content, inspect `staticData.ts`.
-5. If it is page-specific, inspect the relevant file under `app/`.
-
-For each fix:
-- Keep changes small and focused.
-- Add a short description of what was fixed and why.
-- Confirm the site still builds cleanly.
+4. Inspect the relevant page or static data source.
+5. Fix, test, and ensure the app still builds.
 
 ---
 
-## 8. Repo Workflow for Interns
+## 8. Workflow for Interns
 
 Branching:
-- Create branches like `fix/description` or `feature/description`.
-- Keep changes scoped and easy to review.
+- Use `feature/short-description` or `fix/short-description`.
+- Keep each branch focused on one change.
 
 Pull requests:
-- Open PRs against `main`.
-- Include motivation and testing steps in the PR description.
-- Reference related issue numbers if available.
+- Target `main`.
+- Include motivation and testing notes.
+- Reference issue numbers when relevant.
 
-Checks before merging:
+Pre-merge checks:
 - `npm ci`
 - `npm run build`
 - `npm run lint`
-- Confirm the app still runs locally
+- Confirm the site runs locally.
 
 ---
 
-## 9. CI and Quality Checks
+## 9. CI and Deployment
 
-The GitHub Actions pipeline in `.github/workflows/ci.yml` runs on pushes and PRs.
+The repo uses GitHub Actions for CI.
+- `.github/workflows/ci.yml` runs lint and build checks.
+- `.github/workflows/vercel-deploy.yml` deploys the app to Vercel on `main`.
 
-It performs:
-- `npm ci`
-- `npm run lint`
-- `npm run build --if-present`
-- `npm test --if-present`
-
-If CI fails, fix the reported issue before requesting review.
+If CI or deploy fails, fix the reported issue before requesting a review.
 
 ---
 
@@ -201,30 +194,14 @@ npm run lint
 npm test --if-present
 ```
 
-If you add tests, document how to run them in the PR and confirm they pass.
+If you add tests, include run instructions in the PR.
 
 ---
 
-## 11. Support and Escalation
+## 11. Support
 
-If interns are stuck:
-- Look at `README.md` and `CONTRIBUTING.md` first.
-- Check open issues and PRs for similar fixes.
-- Ask a maintainer or reviewer for guidance.
-- For security or production-critical problems, escalate immediately rather than guessing.
-
----
-
-## 12. Do’s and Don’ts
-
-Do:
-- Keep fixes small and well-tested.
-- Use the existing app style and naming patterns.
-- Document changes clearly in PRs.
-- Validate that the UI is still responsive.
-
-Don’t:
-- Add a backend or database unless explicitly requested.
-- Change `localStorage` keys without updating both quiz and dashboard behavior.
-- Ship broken or half-complete user flows.
-- Ignore lint or build issues.
+If you get stuck:
+- Read `README.md` and `CONTRIBUTING.md`.
+- Search open issues and PRs.
+- Ask a maintainer or reviewer for help.
+- For production-critical issues, escalate immediately.

@@ -57,18 +57,22 @@ Maintainers
 
 Thanks — we look forward to your contributions!
 
-CI & automated checks
+## CI & automated checks
 - GitHub Actions runs lint, build, and tests (if present) on pushes and pull requests via `.github/workflows/ci.yml`.
-- Please fix lint and build issues reported by CI before requesting review.
+- Fix lint and build issues reported by CI before requesting review.
 
-Welcome & community automation
+## Vercel deployment
+- Automatic Vercel deploys are configured in `.github/workflows/vercel-deploy.yml`.
+- This workflow requires the repository secrets `VERCEL_TOKEN`, `VERCEL_ORG_ID`, and `VERCEL_PROJECT_ID`.
+
+## Welcome & community automation
 - First-time contributors receive a friendly checklist comment posted by `.github/workflows/welcome-first-timer.yml` when they open a new issue or PR.
 
-Release process
+## Release process
 - We maintain a draft release for milestone updates (currently `v0.1.0`). To propose a release, open a PR describing the changes you want included.
 - Release assets (e.g., `GymOrNot_poster.pdf`) are attached to releases by maintainers via the GitHub Releases UI.
 
-Local build & test commands
+## Local build & test commands
 ```bash
 # install
 npm install
@@ -83,7 +87,5 @@ npm run build
 npm run lint
 
 # run tests (if added)
-npm test
+npm test --if-present
 ```
-
-If you want, we can add a CONTRIBUTING badge or a short CODEOWNER review matrix.
