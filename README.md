@@ -18,6 +18,7 @@ Live demo: https://gymornot-five.vercel.app
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Vercel](https://img.shields.io/badge/deploy-vercel-black)
+![CI](https://github.com/kalokmishra/Gymornot/actions/workflows/ci.yml/badge.svg)
 
 ## Pages
 
@@ -48,3 +49,15 @@ Thanks for your interest in contributing! Please see [CONTRIBUTING.md](CONTRIBUT
 If you're new, a great first step is: fork the repo, run the app locally, and open a small PR with an improvement to the README or a UI tweak.
 
 Quick links: [Community page](/community) · [Contributing](CONTRIBUTING.md) · [Code of Conduct](CODE_OF_CONDUCT.md)
+
+What's new
+- CI & checks: GitHub Actions now runs linting, builds, and tests (if present) on pushes and pull requests via `.github/workflows/ci.yml`.
+- Welcome workflow: first-time contributors receive a friendly checklist comment on new issues/PRs (`.github/workflows/welcome-first-timer.yml`).
+- Community page: an in-app `Community` page helps contributors find docs and open issues quickly (`/community`).
+- Draft release: a draft release `v0.1.0` is available. See the Releases tab for details.
+- Poster: a printable poster `GymOrNot_poster.pdf` is included in the repo for promotional use.
+
+Contributing quick start
+1. Read [CONTRIBUTING.md](CONTRIBUTING.md) for workflow and local setup.
+2. Visit the in-app [Community page](/community) for links to templates and issue creation.
+3. Open issues or PRs; CI will run automatically to validate lint/build steps.

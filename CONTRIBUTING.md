@@ -56,3 +56,34 @@ Maintainers
 - The project maintainer is listed in `.github/CODEOWNERS`. If you need help, open an issue or mention the maintainers on your PR.
 
 Thanks — we look forward to your contributions!
+
+CI & automated checks
+- GitHub Actions runs lint, build, and tests (if present) on pushes and pull requests via `.github/workflows/ci.yml`.
+- Please fix lint and build issues reported by CI before requesting review.
+
+Welcome & community automation
+- First-time contributors receive a friendly checklist comment posted by `.github/workflows/welcome-first-timer.yml` when they open a new issue or PR.
+
+Release process
+- We maintain a draft release for milestone updates (currently `v0.1.0`). To propose a release, open a PR describing the changes you want included.
+- Release assets (e.g., `GymOrNot_poster.pdf`) are attached to releases by maintainers via the GitHub Releases UI.
+
+Local build & test commands
+```bash
+# install
+npm install
+
+# dev server
+npm run dev
+
+# build locally
+npm run build
+
+# lint
+npm run lint
+
+# run tests (if added)
+npm test
+```
+
+If you want, we can add a CONTRIBUTING badge or a short CODEOWNER review matrix.
