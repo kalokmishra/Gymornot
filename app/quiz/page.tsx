@@ -3,65 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-
-interface QuizOption {
-  label: string;
-  score: number;
-}
-
-interface QuizQuestion {
-  id: string;
-  prompt: string;
-  eyebrow: string;
-  options: QuizOption[];
-}
-
-const QUESTIONS: QuizQuestion[] = [
-  {
-    id: "q1",
-    eyebrow: "Scenario 01",
-    prompt: "It's 6:45 PM. The gym closes at 9. Right now, you are:",
-    options: [
-      { label: "Already on the couch, and I know it", score: 3 },
-      { label: "Negotiating with myself about it", score: 2 },
-      { label: "Mid-set, phone in a locker", score: 0 },
-      { label: "Just got back and showered", score: 0 },
-    ],
-  },
-  {
-    id: "q2",
-    eyebrow: "Scenario 02",
-    prompt: "Your newest piece of workout clothing was purchased:",
-    options: [
-      { label: "This week. Tags are still on it", score: 3 },
-      { label: "This month, worn maybe twice", score: 2 },
-      { label: "Honestly? I could not tell you", score: 3 },
-      { label: "It's older than most of my friendships", score: 0 },
-    ],
-  },
-  {
-    id: "q3",
-    eyebrow: "Scenario 03",
-    prompt: "A friend texts: \"gym together, 7am tomorrow?\" You:",
-    options: [
-      { label: "Say yes immediately, cancel by 6:58am", score: 3 },
-      { label: "Say yes and actually set two alarms", score: 0 },
-      { label: "Panic-suggest a walk around the block instead", score: 1 },
-      { label: "Already have a standing slot nobody can move", score: 0 },
-    ],
-  },
-  {
-    id: "q4",
-    eyebrow: "Scenario 04",
-    prompt: "Be honest — what's currently sitting on your gym bag or mat?",
-    options: [
-      { label: "A visible layer of dust", score: 3 },
-      { label: "Unrelated laundry", score: 2 },
-      { label: "Nothing, it lives in a gym locker", score: 0 },
-      { label: "I don't own one yet — buying today", score: 2 },
-    ],
-  },
-];
+import { QuizQuestion, buildQuizQuestions } from "../../lib/quiz";
 
 type Archetype = {
   name: string;
@@ -70,7 +12,7 @@ type Archetype = {
 };
 
 function getArchetype(score: number, maxScore: number): Archetype {
-  const ratio = score / maxScore;
+  const ratio = maxScore > 0 ? score / maxScore : 0;
   if (ratio <= 0.25) {
     return {
       name: "The Actual Athlete",
@@ -79,6 +21,7 @@ function getArchetype(score: number, maxScore: number): Archetype {
       color: "green",
     };
   }
+
   if (ratio <= 0.65) {
     return {
       name: "The January Idealist",
@@ -87,6 +30,7 @@ function getArchetype(score: number, maxScore: number): Archetype {
       color: "alert",
     };
   }
+
   return {
     name: "The Corporate Donor",
     verdict:
@@ -105,6 +49,9 @@ const LOADING_LINES = [
 
 export default function QuizPage() {
   const router = useRouter();
+  const [questions, setQuestions] = useState<QuizQuestion[]>([]);
+  const [isLoadingQuestions, setIsLoadingQuestions] = useState(true);
+  const [fetchError, setFetchError] = useState<string | null>(null);
   const [phase, setPhase] = useState<"quiz" | "loading" | "result">("quiz");
   const [stepIndex, setStepIndex] = useState(0);
   const [totalScore, setTotalScore] = useState(0);
@@ -113,10 +60,46 @@ export default function QuizPage() {
   const [emailError, setEmailError] = useState("");
   const [unlocked, setUnlocked] = useState(false);
 
-  const maxScore = QUESTIONS.reduce(
-    (sum, q) => sum + Math.max(...q.options.map((o) => o.score)),
-    0
-  );
+  useEffect(() => {
+    async function loadQuestions() {
+      try {
+        const response = await fetch("/api/quiz-data", { cache: "no-store" });
+        if (!response.ok) {
+          throw new Error(`Failed to load quiz questions (${response.status}).`);
+        }
+
+        const json = await response.json();
+        if (!Array.isArray(json.questions) || json.questions.length === 0) {
+          throw new Error("Quiz data is invalid.");
+        }
+
+        setQuestions(json.questions);
+        if (typeof json.warning === "string") {
+          setFetchError(json.warning);
+        }
+      } catch (error) {
+        console.error("Quiz data fetch error:", error);
+        setFetchError(
+          error instanceof Error
+            ? error.message
+            : "Unable to load quiz questions. Using fallback."
+        );
+        setQuestions(buildQuizQuestions());
+      } finally {
+        setIsLoadingQuestions(false);
+      }
+    }
+
+    loadQuestions();
+  }, []);
+
+  const activeQuestion = questions.length > 0 ? questions[stepIndex] : null;
+  const maxScore = questions.length
+    ? questions.reduce((sum, q) => sum + Math.max(...q.options.map((o) => o.score)), 0)
+    : 0;
+  const progressPct = questions.length
+    ? Math.round(((stepIndex + 1) / questions.length) * 100)
+    : 0;
 
   useEffect(() => {
     if (phase !== "loading") return;
@@ -134,7 +117,7 @@ export default function QuizPage() {
 
   const handleAnswer = (score: number) => {
     setTotalScore((current) => current + score);
-    if (stepIndex + 1 < QUESTIONS.length) {
+    if (stepIndex + 1 < questions.length) {
       setStepIndex(stepIndex + 1);
     } else {
       setLoadingLine(0);
@@ -160,7 +143,6 @@ export default function QuizPage() {
   };
 
   const archetype = getArchetype(totalScore, maxScore);
-  const progressPct = Math.round(((stepIndex + 1) / QUESTIONS.length) * 100);
 
   return (
     <main className="min-h-screen bg-[radial-gradient(circle_at_top_left,_rgba(16,185,129,0.16),transparent_28%),radial-gradient(circle_at_bottom_right,_rgba(139,92,246,0.16),transparent_24%),#0b0f19] text-ink">
@@ -180,110 +162,148 @@ export default function QuizPage() {
         <div className="mx-auto w-full max-w-4xl">
           <div className="mb-4 flex items-center justify-between gap-4 rounded-full border border-white/10 bg-surface/80 px-4 py-3 text-sm text-ink-dim shadow-[inset_0_0_0_1px_rgba(255,255,255,0.02)]">
             <div className="eyebrow text-[0.65rem]">
-              {phase === "quiz" ? `Question ${stepIndex + 1} of ${QUESTIONS.length}` : phase === "loading" ? "Loading result" : "Final verdict"}
-            </div>
-            <div className="text-xs uppercase tracking-[0.35em] text-ink-dim">
-              {phase === "quiz" ? `${progressPct}% complete` : "Nearly there"}
+              {phase === "quiz"
+                ? `Question ${stepIndex + 1} of ${questions.length}`
+                : phase === "loading"
+                ? "Loading result"
+                : "Final verdict"}
+              {phase === "quiz" ? ` ${progressPct}% complete` : " Nearly there"}
             </div>
           </div>
 
           <div className="panel-card overflow-hidden rounded-[2rem] p-6 sm:p-8">
             <div className="mb-8 h-2 rounded-full bg-white/5">
-              <div className="h-full rounded-full bg-gradient-to-r from-gym-green to-anti-purple transition-all duration-500" style={{ width: phase === "quiz" ? `${progressPct}%` : "100%" }} />
+              <div
+                className="h-full rounded-full bg-gradient-to-r from-gym-green to-anti-purple transition-all duration-500"
+                style={{ width: phase === "quiz" ? `${progressPct}%` : "100%" }}
+              />
             </div>
 
-            {phase === "quiz" && (
-              <div className="grid gap-6">
-                <div>
-                  <p className="eyebrow">{QUESTIONS[stepIndex].eyebrow}</p>
-                  <h2 className="mt-3 text-3xl font-semibold leading-tight text-ink sm:text-4xl">
-                    {QUESTIONS[stepIndex].prompt}
-                  </h2>
-                </div>
-
-                <div className="grid gap-4 sm:grid-cols-2">
-                  {QUESTIONS[stepIndex].options.map((option) => (
-                    <button
-                      key={option.label}
-                      type="button"
-                      onClick={() => handleAnswer(option.score)}
-                      className="group rounded-[1.35rem] border border-white/10 bg-[#111827]/90 px-5 py-5 text-left transition duration-200 hover:-translate-y-0.5 hover:border-gym-green/40 hover:bg-[#172130] focus:outline-none focus:ring-2 focus:ring-gym-green/40"
-                    >
-                      <span className="font-medium text-ink">{option.label}</span>
-                      <span className="mt-4 inline-flex items-center gap-2 text-sm font-mono text-ink-dim opacity-80 group-hover:text-gym-green">
-                        Select
-                        <span aria-hidden>→</span>
-                      </span>
-                    </button>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {phase === "loading" && (
+            {isLoadingQuestions ? (
               <div className="grid gap-6 rounded-[1.75rem] border border-white/10 bg-[#0f1726]/80 px-8 py-12 text-center backdrop-blur-sm">
                 <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full border border-white/10 bg-[#131a2a]/80">
                   <div className="h-7 w-7 animate-spin rounded-full border-2 border-white/10 border-t-gym-green" />
                 </div>
-                <p className="text-base font-medium text-ink">Crunching the numbers...</p>
-                <p className="eyebrow text-[0.65rem]">{LOADING_LINES[loadingLine]}</p>
+                <p className="text-base font-medium text-ink">Loading quiz…</p>
+                <p className="eyebrow text-[0.65rem] text-ink-dim">
+                  Fetching fresh questions for your gym habits.
+                </p>
               </div>
-            )}
+            ) : !activeQuestion ? (
+              <div className="grid gap-4 rounded-[1.75rem] border border-white/10 bg-[#0f1726]/80 px-8 py-12 text-center">
+                <p className="text-base font-medium text-ink">Unable to load quiz questions.</p>
+                <p className="text-sm text-ink-dim">Please refresh the page or try again later.</p>
+              </div>
+            ) : (
+              <>
+                {fetchError ? (
+                  <div className="mb-6 rounded-[1.5rem] border border-alert/20 bg-[#3b0e0e]/90 p-4 text-sm text-alert">
+                    {fetchError}
+                  </div>
+                ) : null}
 
-            {phase === "result" && (
-              <div className="grid gap-8">
-                <div className="grid gap-3 rounded-[1.75rem] bg-[#111827]/80 p-8 shadow-[0_30px_80px_-30px_rgba(16,185,129,0.35)]">
-                  <span className="eyebrow">Diagnosis complete</span>
-                  <h2 className={`text-4xl font-semibold ${
-                    archetype.color === "green"
-                      ? "text-gym-green"
-                      : archetype.color === "purple"
-                      ? "text-anti-purple"
-                      : "text-alert"
-                  }`}
-                  >
-                    {archetype.name}
-                  </h2>
-                  <p className="max-w-2xl text-base leading-8 text-ink-dim">
-                    {archetype.verdict}
-                  </p>
-                </div>
-
-                {!unlocked ? (
-                  <form onSubmit={handleEmailSubmit} className="grid gap-4 rounded-[1.75rem] border border-white/10 bg-[#0f1726]/80 p-6 sm:p-8">
+                {phase === "quiz" && (
+                  <div className="grid gap-6">
                     <div>
-                      <label htmlFor="email" className="eyebrow text-[0.65rem]">
-                        Unlock your official verdict
-                      </label>
-                      <p className="mt-2 text-sm text-ink-dim">
-                        A polished result and the full breakdown will be ready once you confirm your email.
-                      </p>
+                      <p className="eyebrow">{activeQuestion.eyebrow}</p>
+                      <h2 className="mt-3 text-3xl font-semibold leading-tight text-ink sm:text-4xl">
+                        {activeQuestion.prompt}
+                      </h2>
                     </div>
-                    <div className="grid gap-3 sm:grid-cols-[1fr_auto]">
-                      <input
-                        id="email"
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        placeholder="you@example.com"
-                        className="w-full rounded-2xl border border-white/10 bg-[#0b1320] px-4 py-4 text-sm text-ink outline-none transition focus:border-gym-green focus:ring-2 focus:ring-gym-green/15"
-                      />
-                      <button
-                        type="submit"
-                        className="cta-primary whitespace-nowrap px-6 py-4"
-                      >
-                        Reveal verdict
-                      </button>
+
+                    <div className="grid gap-4 sm:grid-cols-2">
+                      {activeQuestion.options.map((option) => (
+                        <button
+                          key={option.label}
+                          type="button"
+                          onClick={() => handleAnswer(option.score)}
+                          className="group rounded-[1.35rem] border border-white/10 bg-[#111827]/90 px-5 py-5 text-left transition duration-200 hover:-translate-y-0.5 hover:border-gym-green/40 hover:bg-[#172130] focus:outline-none focus:ring-2 focus:ring-gym-green/40"
+                        >
+                          <span className="font-medium text-ink">{option.label}</span>
+                          <span className="mt-4 inline-flex items-center gap-2 text-sm font-mono text-ink-dim opacity-80 group-hover:text-gym-green">
+                            Select
+                            <span aria-hidden>→</span>
+                          </span>
+                        </button>
+                      ))}
                     </div>
-                    {emailError && <p className="text-sm text-alert">{emailError}</p>}
-                    <p className="text-xs text-ink-dim">No spam. Just one honest verdict and maybe a friendly nudge.</p>
-                  </form>
-                ) : (
-                  <div className="rounded-[1.75rem] bg-[#0f1726]/80 p-6 text-center">
-                    <p className="text-base text-gym-green">Verdict unlocked. Redirecting to your dashboard…</p>
                   </div>
                 )}
-              </div>
+
+                {phase === "loading" && (
+                  <div className="grid gap-6 rounded-[1.75rem] border border-white/10 bg-[#0f1726]/80 px-8 py-12 text-center backdrop-blur-sm">
+                    <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full border border-white/10 bg-[#131a2a]/80">
+                      <div className="h-7 w-7 animate-spin rounded-full border-2 border-white/10 border-t-gym-green" />
+                    </div>
+                    <p className="text-base font-medium text-ink">Crunching the numbers...</p>
+                    <p className="eyebrow text-[0.65rem]">{LOADING_LINES[loadingLine]}</p>
+                  </div>
+                )}
+
+                {phase === "result" && (
+                  <div className="grid gap-8">
+                    <div className="grid gap-3 rounded-[1.75rem] bg-[#111827]/80 p-8 shadow-[0_30px_80px_-30px_rgba(16,185,129,0.35)]">
+                      <span className="eyebrow">Diagnosis complete</span>
+                      <h2
+                        className={`text-4xl font-semibold ${
+                          archetype.color === "green"
+                            ? "text-gym-green"
+                            : archetype.color === "purple"
+                            ? "text-anti-purple"
+                            : "text-alert"
+                        }`}
+                      >
+                        {archetype.name}
+                      </h2>
+                      <p className="max-w-2xl text-base leading-8 text-ink-dim">
+                        {archetype.verdict}
+                      </p>
+                    </div>
+
+                    {!unlocked ? (
+                      <form
+                        onSubmit={handleEmailSubmit}
+                        className="grid gap-4 rounded-[1.75rem] border border-white/10 bg-[#0f1726]/80 p-6 sm:p-8"
+                      >
+                        <div>
+                          <label htmlFor="email" className="eyebrow text-[0.65rem]">
+                            Unlock your official verdict
+                          </label>
+                          <p className="mt-2 text-sm text-ink-dim">
+                            A polished result and the full breakdown will be ready once you confirm your email.
+                          </p>
+                        </div>
+                        <div className="grid gap-3 sm:grid-cols-[1fr_auto]">
+                          <input
+                            id="email"
+                            type="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            placeholder="you@example.com"
+                            className="w-full rounded-2xl border border-white/10 bg-[#0b1320] px-4 py-4 text-sm text-ink outline-none transition focus:border-gym-green focus:ring-2 focus:ring-gym-green/15"
+                          />
+                          <button
+                            type="submit"
+                            className="cta-primary whitespace-nowrap px-6 py-4"
+                          >
+                            Reveal verdict
+                          </button>
+                        </div>
+                        {emailError && <p className="text-sm text-alert">{emailError}</p>}
+                        <p className="text-xs text-ink-dim">
+                          No spam. Just one honest verdict and maybe a friendly nudge.
+                        </p>
+                      </form>
+                    ) : (
+                      <div className="rounded-[1.75rem] bg-[#0f1726]/80 p-6 text-center">
+                        <p className="text-base text-gym-green">
+                          Verdict unlocked. Redirecting to your dashboard…
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                )}
+              </>
             )}
           </div>
         </div>

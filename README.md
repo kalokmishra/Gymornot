@@ -16,6 +16,18 @@ Open [http://localhost:3000](http://localhost:3000).
 
 Live demo: https://gymornot-five.vercel.app
 
+### Vercel deployment
+
+This repo now includes an automated Vercel deployment workflow at `.github/workflows/vercel-deploy.yml`.
+
+To enable it, add these repository secrets in GitHub:
+
+- `VERCEL_TOKEN`
+- `VERCEL_ORG_ID`
+- `VERCEL_PROJECT_ID`
+
+Once secrets are configured, pushes to `main` will deploy the app automatically.
+
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Vercel](https://img.shields.io/badge/deploy-vercel-black)
 ![CI](https://github.com/kalokmishra/Gymornot/actions/workflows/ci.yml/badge.svg)
