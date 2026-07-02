@@ -1,40 +1,61 @@
 # GymOrNot.com
 
-A humorous diagnostic that tells you whether a gym membership is discipline or a donation. Built with Next.js 14 App Router, TypeScript, and Tailwind CSS.
+GymOrNot is a playful digital self-assessment built to help visitors decide whether a traditional gym membership is the right choice or whether they should focus on home-based discipline instead. It combines a marketing-friendly landing experience with a risk diagnostic quiz, an in-browser habit dashboard, and a modern deployment workflow.
+
+The app is built with:
+- Next.js 14 App Router
+- TypeScript
+- Tailwind CSS
+- A lightweight serverless quiz generation route
 
 ## Setup
+
+Recommended Node.js version: 18 or later.
+
+Install dependencies and start the local development server:
 
 ```bash
 npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Then open [http://localhost:3000](http://localhost:3000).
 
 Live demo: https://gymornot-five.vercel.app
 
-### Local environment variables
+## How the quiz works
 
-The quiz can use a server-side Generative AI route when configured. Create `.env.local` with:
+The `/quiz` page is designed to provide a short, opinionated diagnostic. It loads quiz questions from a server-side route and then lets users answer four questions before showing a result.
+
+The quiz generation flow is:
+1. Client-side code in `app/quiz/page.tsx` requests `/api/quiz-data`.
+2. `app/api/quiz-data/route.ts` attempts to fetch AI-generated quiz content from the configured `GEN_AI_ENDPOINT`.
+3. If the AI route is unavailable or not configured, the route returns a safe fallback quiz built from `lib/quiz.ts`.
+4. The user answers the questions, submits an email, and their result is saved to `localStorage`.
+
+This design keeps the quiz experience functional in all environments while supporting richer AI-backed questions when the deployment is configured.
+
+## Local environment variables
+
+To enable AI-backed quiz generation locally, create a `.env.local` file with:
 
 ```env
 GEN_AI_ENDPOINT=https://your-gen-ai-endpoint.example.com
 GEN_AI_API_KEY=your_api_key_here
 ```
 
-If these are not set, the quiz will fall back to the static question set in `lib/quiz.ts`.
+If these variables are not available, the application will continue to work using a built-in fallback question set inside `lib/quiz.ts`.
 
-### Vercel deployment
+## Vercel deployment
 
-This repository includes an automated Vercel deployment workflow at `.github/workflows/vercel-deploy.yml`.
+The repository includes an automated Vercel deployment workflow at `.github/workflows/vercel-deploy.yml`.
 
-Add these secrets in GitHub to enable deploys:
-
+Required GitHub secrets:
 - `VERCEL_TOKEN`
 - `VERCEL_ORG_ID`
 - `VERCEL_PROJECT_ID`
 
-Once configured, pushes to `main` deploy automatically.
+After configuring the secrets, pushes to `main` trigger a deployment to the connected Vercel project.
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Vercel](https://img.shields.io/badge/deploy-vercel-black)
@@ -44,31 +65,34 @@ Once configured, pushes to `main` deploy automatically.
 
 | Route | Purpose |
 | --- | --- |
-| `/` | Landing page and main marketing entrypoint |
-| `/quiz` | Quiz experience with AI-backed question generation and a final result screen |
-| `/dashboard` | Streak tracker and habit dashboard powered by browser `localStorage` |
-| `/community` | Contributor/community links and onboarding guidance |
+| `/` | Landing page with brand positioning, navigation, and calls to action |
+| `/quiz` | 4-question gym discipline diagnostic with AI-backed question generation and fallback support |
+| `/dashboard` | In-browser habit tracker showing streaks and progress based on stored quiz state |
+| `/community` | Contributor and community onboarding page with links to docs and issue guidance |
 
-## Notes
+## Architecture and notes
 
-- The app uses a small server-side API route at `app/api/quiz-data/route.ts` to generate quiz questions.
-- The fallback question set lives in `lib/quiz.ts` and is returned when the AI route fails or is not configured.
-- Most content is static and maintained in `staticData.ts`.
-- Browser `localStorage` is used for persistence of quiz email, risk score, streak state, and last check-in.
-- Tailwind theme tokens are defined in `tailwind.config.ts`.
+- `app/` contains the App Router pages, layout, and the serverless route used by the quiz.
+- `app/api/quiz-data/route.ts` is the server-side route responsible for quiz generation.
+- `lib/quiz.ts` holds the fallback quiz question builder and quiz model types.
+- `staticData.ts` contains static structured data for gym contracts, home gear, and content displayed in the app.
+- `localStorage` is used to persist the quiz email, risk score, streak, and last check-in.
+- Styling and theme tokens are managed in `tailwind.config.ts`.
+- No database is required for the current experience; the app is intentionally lightweight and client-first.
 
 ## Contributing
 
-Please see [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines.
+Please see [CONTRIBUTING.md](CONTRIBUTING.md) for detailed contribution guidelines.
 
 Quick links: [Community page](/community) · [Contributing](CONTRIBUTING.md) · [Code of Conduct](CODE_OF_CONDUCT.md)
 
-What's new
-- CI checks run on GitHub Actions via `.github/workflows/ci.yml`.
-- Vercel deployment is automated with `.github/workflows/vercel-deploy.yml`.
-- The quiz now supports a Gen AI-backed question generator with fallback.
+## What’s new
 
-Contributing quick start
+- CI checks run on GitHub Actions via `.github/workflows/ci.yml`.
+- Vercel deployment is automated through `.github/workflows/vercel-deploy.yml`.
+- The quiz now supports AI-backed question generation with a static fallback so the app stays reliable.
+
+## Contributing quick start
 1. Read [CONTRIBUTING.md](CONTRIBUTING.md) for workflow and local setup.
-2. Open the app locally with `npm run dev`.
-3. Submit PRs against `main`; CI will validate lint and build.
+2. Start the app locally with `npm run dev`.
+3. Submit PRs against `main`; CI will validate lint and build checks.
