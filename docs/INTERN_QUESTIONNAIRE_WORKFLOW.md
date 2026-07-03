@@ -100,3 +100,11 @@ If you hit problems, contact the repo maintainer (add contact info here) and inc
 
 ---
 This document is intended to keep the questionnaire workflow simple and auditable for interns updating quiz content.
+
+Related files
+-------------
+- `lib/questions.json` — canonical questions file written by imports.
+- `logs/upload-audit.jsonl` — append-only audit log of imports and uploads.
+- `scripts/import_from_google_sheet.mjs` — manual import helper script.
+- `scripts/sync_sheet.mjs` — scheduled/CI-friendly sync helper.
+- `scripts/sanity_check.mjs` — lightweight verification script used by maintainers.

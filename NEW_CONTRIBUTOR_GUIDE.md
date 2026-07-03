@@ -110,6 +110,19 @@ npm test --if-present
 - `INTERN_KB.md` for team-oriented guidance.
 - `app/api/quiz-data/route.ts` for quiz generation specifics.
 
+## Admin console & questionnaire workflow
+
+The project includes a small admin console and import workflow used to manage the questionnaire dataset:
+
+- Admin UI: visit `/admin` to preview CSV/Google Sheet imports and perform imports (GitHub sign-in or password fallback may be enabled).
+- Canonical question file: `lib/questions.json` — imports write this file server-side so the app serves a stable question dataset.
+- Audit log: imports are appended to `logs/upload-audit.jsonl` for an append-only trace of who imported what and when.
+- Scripts: see `scripts/import_from_google_sheet.mjs`, `scripts/sync_sheet.mjs`, and `scripts/sanity_check.mjs` for manual import, scheduled sync, and quick verification.
+
+Interns should always use the Admin UI **Preview** feature first, validate questions and IDs, then import. If you want the import recorded in Git history, create a branch and commit `lib/questions.json` as described in `docs/INTERN_QUESTIONNAIRE_WORKFLOW.md`.
+
+Admin environment variables (local or production): `GITHUB_ID`, `GITHUB_SECRET`, `NEXTAUTH_SECRET`, `ADMIN_USERS`, `SHEET_ID`, `SHEET_GID`.
+
 ## Summary
 
 As a new contributor, focus on small, meaningful improvements.
