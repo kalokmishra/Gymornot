@@ -35,6 +35,13 @@ The quiz generation flow is:
 
 This design keeps the quiz experience functional in all environments while supporting richer AI-backed questions when the deployment is configured.
 
+Admin console, imports and audit logs
+-----------------------------------
+- The repository includes a lightweight admin console at `/admin` that lets authorized maintainers preview and import question sets from CSV/Google Sheets.
+- Canonical question storage: `lib/questions.json` — imports write this file (server-side) so the app serves a stable dataset.
+- Uploads and imports are audited to `logs/upload-audit.jsonl` to keep a simple, append-only trace of who imported what and when.
+- Utility scripts live in `scripts/`: `import_from_google_sheet.mjs`, `sync_sheet.mjs`, and `sanity_check.mjs` for manual imports, periodic syncs, and quick verification respectively.
+
 ## Local environment variables
 
 To enable AI-backed quiz generation locally, create a `.env.local` file with:
@@ -45,6 +52,15 @@ GEN_AI_API_KEY=your_api_key_here
 ```
 
 If these variables are not available, the application will continue to work using a built-in fallback question set inside `lib/quiz.ts`.
+
+Admin & auth environment variables
+---------------------------------
+To enable the admin GitHub sign-in (NextAuth) and secure admin flows, set these environment variables in local or production environments:
+
+- `GITHUB_ID` and `GITHUB_SECRET` — GitHub OAuth app credentials used by NextAuth.
+- `NEXTAUTH_SECRET` — secret used by NextAuth for signing/encryption.
+- `ADMIN_USERS` — comma-separated list of admin user emails (e.g. `alice@example.com,bob@example.com`).
+- Optional for sheet sync: `SHEET_ID` and `SHEET_GID` (used by `scripts/sync_sheet.mjs`).
 
 ## Vercel deployment
 
