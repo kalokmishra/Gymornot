@@ -6,10 +6,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "import:sheet": "node scripts/import_from_google_sheet.mjs"
   },
   "dependencies": {
     "next": "14.2.5",
+    "next-auth": "^4.22.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },

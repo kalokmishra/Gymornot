@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
-import { buildQuizQuestions, QuizQuestion } from "../../../lib/quiz";
+import { buildQuizQuestions, QuizQuestion, shuffleArray } from "../../../lib/quiz";
+import { promises as fs } from "fs";
+import path from "path";
 
 const GEN_AI_ENDPOINT = process.env.GEN_AI_ENDPOINT;
 const GEN_AI_API_KEY = process.env.GEN_AI_API_KEY;
@@ -48,16 +50,87 @@ async function fetchGeneratedQuiz(): Promise<QuizQuestion[]> {
   }));
 }
 
+async function readQuestionsFile(): Promise<QuizQuestion[] | null> {
+  try {
+    const filePath = path.join(process.cwd(), "lib", "questions.json");
+    const contents = await fs.readFile(filePath, "utf8");
+    const parsed = JSON.parse(contents);
+    if (!Array.isArray(parsed)) return null;
+    // Basic validation
+    return parsed.map((q: any) => ({
+      id: String(q.id ?? ""),
+      eyebrow: String(q.eyebrow ?? ""),
+      prompt: String(q.prompt ?? ""),
+      options: Array.isArray(q.options)
+        ? q.options.map((opt: any) => ({ label: String(opt.label ?? ""), score: Number(opt.score ?? 0) }))
+        : [],
+    }));
+  } catch (err) {
+    return null;
+  }
+}
+
 export async function GET() {
   try {
-    const questions = await fetchGeneratedQuiz();
-    if (questions.length < 4) {
-      throw new Error("Gen AI returned too few questions.");
+    const fromFile = await readQuestionsFile();
+    if (fromFile && fromFile.length > 0) {
+      // Randomize question order and option order for each question
+      const randomized = shuffleArray(fromFile).map((q) => ({ ...q, options: shuffleArray(q.options) }));
+      return NextResponse.json({ questions: randomized });
     }
-    return NextResponse.json({ questions });
-  } catch (error) {
-    console.error("Gen AI quiz fetch error:", error);
+
+    // Try Gen AI first, then fallback
+    try {
+      const questions = await fetchGeneratedQuiz();
+      if (questions.length >= 1) {
+        return NextResponse.json({ questions });
+      }
+    } catch (err) {
+      console.error("Gen AI quiz fetch error:", err);
+    }
+
     const fallback = buildQuizQuestions();
     return NextResponse.json({ questions: fallback, warning: "Using fallback quiz questions." });
+  } catch (error) {
+    console.error("Quiz GET error:", error);
+    return NextResponse.json({ questions: [], error: String(error) }, { status: 500 });
+  }
+}
+
+type Answer = { id: string; optionIndex: number };
+
+export async function POST(request: Request) {
+  try {
+    const body = await request.json();
+    const answers: Answer[] = Array.isArray(body?.answers) ? body.answers : [];
+
+    // Load questions from file or fallback
+    const questions = (await readQuestionsFile()) ?? buildQuizQuestions();
+
+    const perQuestion: Array<{ id: string; selected?: string; selectedScore: number; maxScore: number }> = [];
+    let rawScore = 0;
+    let maxScore = 0;
+
+    for (const q of questions) {
+      const qMax = q.options.reduce((acc, o) => Math.max(acc, Number(o.score ?? 0)), 0);
+      maxScore += qMax;
+      const answer = answers.find((a) => a.id === q.id);
+      if (!answer) {
+        perQuestion.push({ id: q.id, selected: undefined, selectedScore: 0, maxScore: qMax });
+        continue;
+      }
+      const idx = Number(answer.optionIndex ?? -1);
+      const opt = q.options[idx];
+      const score = opt ? Number(opt.score ?? 0) : 0;
+      rawScore += score;
+      perQuestion.push({ id: q.id, selected: opt ? opt.label : undefined, selectedScore: score, maxScore: qMax });
+    }
+
+    const percentage = maxScore > 0 ? Math.round((rawScore / maxScore) * 100) : 0;
+
+    return NextResponse.json({ rawScore, maxScore, percentage, perQuestion });
+  } catch (err) {
+    console.error("Quiz scoring error:", err);
+    return NextResponse.json({ error: String(err) }, { status: 500 });
   }
 }

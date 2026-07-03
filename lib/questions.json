@@ -1,0 +1,46 @@
+[
+  {
+    "id": "q1",
+    "eyebrow": "Commitment",
+    "prompt": "How committed are you to visiting the gym at least 3 times a week?",
+    "options": [
+      { "label": "Extremely committed (I already have a plan)", "score": 100 },
+      { "label": "Somewhat committed (I try to go most weeks)", "score": 70 },
+      { "label": "Neutral (I go occasionally)", "score": 40 },
+      { "label": "Not committed (I rarely go)", "score": 10 }
+    ]
+  },
+  {
+    "id": "q2",
+    "eyebrow": "Availability",
+    "prompt": "How many days per week can you realistically dedicate to the gym?",
+    "options": [
+      { "label": "4+ days", "score": 100 },
+      { "label": "3 days", "score": 80 },
+      { "label": "1-2 days", "score": 40 },
+      { "label": "Less than 1 day", "score": 10 }
+    ]
+  },
+  {
+    "id": "q3",
+    "eyebrow": "Goals",
+    "prompt": "Which best describes your primary fitness goal?",
+    "options": [
+      { "label": "General health and consistency", "score": 80 },
+      { "label": "Weight loss / fat loss", "score": 70 },
+      { "label": "Performance / competition", "score": 90 },
+      { "label": "Exploration / not sure yet", "score": 50 }
+    ]
+  },
+  {
+    "id": "q4",
+    "eyebrow": "Barriers",
+    "prompt": "What is your biggest barrier to attending the gym regularly?",
+    "options": [
+      { "label": "Time / schedule", "score": 50 },
+      { "label": "Motivation", "score": 30 },
+      { "label": "Cost / access", "score": 40 },
+      { "label": "I have no barrier", "score": 100 }
+    ]
+  }
+]
