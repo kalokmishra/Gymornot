@@ -105,3 +105,31 @@ GymOrNot is designed to be easy to deploy and maintain:
 - Safe fallback behavior when the external quiz endpoint is unavailable
 
 Use this document whenever you need to onboard new deployers or troubleshoot release issues.
+
+Admin & NextAuth environment variables
+-------------------------------------
+The project supports an admin console (NextAuth GitHub login) and server-side import/sync scripts. To enable and configure these features in local, CI, or Vercel environments, set the following environment variables.
+
+Required for NextAuth (admin sign-in):
+
+- `GITHUB_ID` — GitHub OAuth app client ID.
+- `GITHUB_SECRET` — GitHub OAuth app client secret.
+- `NEXTAUTH_SECRET` — secret used by NextAuth for signing and encryption.
+- `ADMIN_USERS` — comma-separated list of admin email addresses allowed access (e.g. `alice@example.com,bob@example.com`).
+
+Optional / script-related:
+
+- `SHEET_ID` — Google Spreadsheet ID used by `scripts/sync_sheet.mjs` for automatic syncs.
+- `SHEET_GID` — Google Sheet tab id (defaults to `0`).
+- `VERCEL_TOKEN` — used for CLI deployments or CI-triggered deploys when the workflow needs to call Vercel directly.
+
+Where to set these variables
+
+- Local development: add them to `.env.local` (never commit this file).
+- Vercel dashboard: Project Settings → Environment Variables — add each key for the appropriate environment (Preview/Production).
+- GitHub Actions: add `VERCEL_TOKEN`, `VERCEL_ORG_ID`, and `VERCEL_PROJECT_ID` (already listed above) to the repository's Secrets; store `NEXTAUTH_SECRET` and any values required by CI as repository secrets as well.
+
+Notes
+
+- The admin console writes the canonical question file `lib/questions.json` during import operations; ensure your production runtime has appropriate file-writing permissions or perform imports via an authorized workflow that commits changes back to the repository.
+- Audit entries for imports are appended to `logs/upload-audit.jsonl` (this file should be persisted or exported if you need long-term retention beyond a single deployment instance).
