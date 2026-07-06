@@ -42,6 +42,7 @@ The quiz generation and evaluation flow is:
 | `/` | Landing page with brand positioning, navigation, and calls to action |
 | `/quiz` | 4-question gym discipline diagnostic with Archetype roasts, Gym Donation Index, email wall, and viral sharing |
 | `/dashboard` | In-browser habit tracker displaying user's archetype roast, active streak, capital saved, donation index, and persistent CTA |
+| `/dont-wanna-gym` | SEO-driven destination site for anti-gym alternatives, interactive zero-friction matrix, gear vetting, and email capture |
 | `/community` | Contributor and community onboarding page with links to docs and issue guidance |
 
 ## Architecture and notes

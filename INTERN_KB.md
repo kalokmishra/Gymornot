@@ -19,6 +19,7 @@ Main routes:
 - `/` - marketing-focused landing page and navigation hub
 - `/quiz` - four-question gym discipline diagnostic experience with roast archetypes
 - `/dashboard` - daily habit streak tracker showing roasts and saved capital
+- `/dont-wanna-gym` - anti-gym SEO cluster, interactive alternative matrix, and email capture
 - `/community` - contributor onboarding and community resource page
 
 ---
@@ -61,6 +62,9 @@ Top-level files and folders:
 - `app/quiz/page.tsx` - quiz flow, multi-axis answer state, financial waste projection, and email wall
 - `app/quiz/components/ShareCard.tsx` - reusable social share card component
 - `app/dashboard/page.tsx` - habit dashboard, donation index, and streak display
+- `app/dont-wanna-gym/page.tsx` - anti-gym SEO landing page with gear vetting
+- `app/dont-wanna-gym/components/AlternativeMatrix.tsx` - interactive anti-gym barrier and blueprint selector
+- `app/dont-wanna-gym/components/CalendarSignup.tsx` - bare-minimum calendar email capture component
 - `app/community/page.tsx` - community and contributor resource page
 - `app/api/quiz-data/route.ts` - serverless route with GET (fetch questions) and POST (scoring) endpoints
 - `lib/quiz.ts` - types, computeArchetype logic, and fallback templates
@@ -87,6 +91,12 @@ Top-level files and folders:
 - Displays the user’s streak, capital saved, and detailed archetype roast.
 - Shows the Gym Donation Index (projected 12-month membership waste).
 - Includes daily check-in button and a persistent share card.
+
+`/dont-wanna-gym`
+- SEO-focused anti-gym destination site.
+- Contains the Alternative Matrix to map user barriers to low-friction routines.
+- Promotes a "Buy Only Two Things" zero-fluff affiliate gear curation pulled from `staticData.ts`.
+- Captures emails for the "Bare Minimum Calendar" PDF download.
 
 `/community`
 - Lightweight onboarding page for new contributors.
