@@ -22,6 +22,9 @@ export default function HomePage() {
               <Link href="/dashboard" className="cta-secondary w-full sm:w-auto">
                 View dashboard
               </Link>
+              <Link href="/dont-wanna-gym" className="cta-secondary w-full sm:w-auto text-gym-green/90 border-gym-green/30 hover:border-gym-green/60">
+                I Don't Wanna Gym
+              </Link>
             </div>
             <div className="grid gap-3 sm:grid-cols-3">
               <div className="soft-card rounded-2xl p-4">

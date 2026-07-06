@@ -36,6 +36,9 @@ A one-page reference for the repository structure and the most important files.
 - `app/page.tsx` — landing/home page experience
 - `app/community/page.tsx` — contributor and community resources page
 - `app/dashboard/page.tsx` — habit dashboard and streak tracker page
+- `app/dont-wanna-gym/page.tsx` — landing page for anti-gym SEO content
+- `app/dont-wanna-gym/components/AlternativeMatrix.tsx` — interactive alternative matrix component
+- `app/dont-wanna-gym/components/CalendarSignup.tsx` — anti-gym bare minimum calendar signup component
 - `app/quiz/page.tsx` — quiz flow, question handling, results, and email gate
 - `app/quiz/components/ShareCard.tsx` — reusable social share and roast component
 - `app/api/quiz-data/route.ts` — serverless route for quiz GET/POST endpoints

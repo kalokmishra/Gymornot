@@ -96,7 +96,7 @@ export function computeArchetype(gymScore: number, homeScore: number, boutiqueSc
       roast: "You don't want a gym membership; you want the dopamine hit of buying a gym membership. You love the idea of neon lights and lifting heavy weights, but the reality of driving past a Taco Bell to go run on a motorized belt makes you sad.",
       shareHeadline: "I took the Gym or Not quiz and got 'The January Idealist.' Save your money, Planet Fitness isn't getting a dime of mine.",
       color: "alert",
-      cta: { label: "Don't buy a membership. Buy this $30 kettlebell instead.", href: "#kettlebell-placeholder", type: "affiliate" }
+      cta: { label: "Don't buy a membership. Explore anti-gym setups here.", href: "/dont-wanna-gym", type: "affiliate" }
     };
   }
   
@@ -107,7 +107,7 @@ export function computeArchetype(gymScore: number, homeScore: number, boutiqueSc
       roast: "You actually want to get fit, but you deeply despise other human beings, their sweat, and their terrible bluetooth speaker choices. You are disciplined enough to work out, but only if nobody is looking at you.",
       shareHeadline: "Diagnosed as a 'Closet Athlete.' I will be building muscle in my garage like a caveman, thank you very much.",
       color: "purple",
-      cta: { label: "Top 3 space-saving adjustable dumbbells for your garage cave.", href: "#dumbbells-placeholder", type: "affiliate" }
+      cta: { label: "Garage workouts only. Compare zero-fluff home gear setups.", href: "/dont-wanna-gym", type: "affiliate" }
     };
   }
 
