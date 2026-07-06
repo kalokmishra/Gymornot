@@ -136,6 +136,9 @@ export default function QuizPage() {
     setEmailError("");
     window.localStorage.setItem("gymornot_email", trimmed);
     window.localStorage.setItem("gymornot_risk_score", String(totalScore));
+    window.localStorage.setItem("gymornot_risk_max_score", String(maxScore));
+    const percentage = maxScore > 0 ? Math.round((totalScore / maxScore) * 100) : 0;
+    window.localStorage.setItem("gymornot_risk_percentage", String(percentage));
     setUnlocked(true);
     setTimeout(() => {
       router.push("/dashboard");

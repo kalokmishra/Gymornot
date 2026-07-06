@@ -108,6 +108,16 @@ Quick links: [Community page](/community) · [Contributing](CONTRIBUTING.md) · 
 - Vercel deployment is automated through `.github/workflows/vercel-deploy.yml`.
 - The quiz now supports AI-backed question generation with a static fallback so the app stays reliable.
 
+## Current status
+
+- Latest fixes on `main` are deployed and verified.
+- Admin auth imports, session typing, and quiz import routes were corrected.
+- Live deployment: `https://gymornot-five.vercel.app`
+
+## Handoff for the next assistant
+
+See [docs/ASSISTANT_HANDOFF.md](docs/ASSISTANT_HANDOFF.md) for a concise handoff, recent fix summary, and next actions.
+
 ## Contributing quick start
 1. Read [CONTRIBUTING.md](CONTRIBUTING.md) for workflow and local setup.
 2. Start the app locally with `npm run dev`.

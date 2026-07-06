@@ -9,15 +9,16 @@ type Archetype = {
   description: string;
 };
 
-function getArchetype(score: number): Archetype {
-  if (score <= 4) {
+function getArchetype(score: number, maxScore: number): Archetype {
+  const ratio = maxScore > 0 ? score / maxScore : 0;
+  if (ratio <= 0.25) {
     return {
       name: "The Actual Athlete",
       color: "green",
       description: "Your habits are aligned with action. Keep building the momentum.",
     };
   }
-  if (score <= 8) {
+  if (ratio <= 0.65) {
     return {
       name: "The January Idealist",
       color: "alert",
@@ -40,6 +41,7 @@ function formatDate(value: string | null) {
 export default function DashboardPage() {
   const [email, setEmail] = useState<string | null>(null);
   const [score, setScore] = useState<number | null>(null);
+  const [maxScore, setMaxScore] = useState<number | null>(null);
   const [streak, setStreak] = useState(0);
   const [lastCheckin, setLastCheckin] = useState<string | null>(null);
   const [hydrated, setHydrated] = useState(false);
@@ -51,16 +53,22 @@ export default function DashboardPage() {
     setHydrated(true);
     const storedEmail = window.localStorage.getItem("gymornot_email");
     const storedScore = window.localStorage.getItem("gymornot_risk_score");
+    const storedMaxScore = window.localStorage.getItem("gymornot_risk_max_score");
     const storedStreak = window.localStorage.getItem("gymornot_streak");
     const storedLast = window.localStorage.getItem("gymornot_last_checkin");
 
     setEmail(storedEmail);
     setScore(storedScore ? Number(storedScore) : null);
+    setMaxScore(storedMaxScore ? Number(storedMaxScore) : null);
     setStreak(storedStreak ? Number(storedStreak) : 0);
     setLastCheckin(storedLast || null);
   }, []);
 
-  const archetype = useMemo(() => (score !== null ? getArchetype(score) : null), [score]);
+  const displayMaxScore = maxScore && maxScore > 0 ? maxScore : 12;
+  const archetype = useMemo(
+    () => (score !== null ? getArchetype(score, displayMaxScore) : null),
+    [score, displayMaxScore]
+  );
   const checkedInToday = lastCheckin === today;
   const nextStreak = checkedInToday ? streak : lastCheckin === yesterday ? streak + 1 : 1;
   const capitalSaved = Math.max(0, nextStreak * 6 + 5);
@@ -122,7 +130,7 @@ export default function DashboardPage() {
                       </p>
                     </div>
                     <div className="rounded-3xl bg-white/5 px-4 py-3 text-sm text-ink-dim">
-                      {score} / 12
+                      {score} / {displayMaxScore}
                     </div>
                   </div>
                   <p className="text-sm leading-7 text-ink-dim">{archetype?.description}</p>
