@@ -220,12 +220,16 @@ export default function QuizPage() {
                           key={option.label}
                           type="button"
                           onClick={() => handleAnswer(option.score)}
-                          className="group rounded-[1.35rem] border border-white/10 bg-[#111827]/90 px-5 py-5 text-left transition duration-200 hover:-translate-y-0.5 hover:border-gym-green/40 hover:bg-[#172130] focus:outline-none focus:ring-2 focus:ring-gym-green/40"
+                          className="group flex flex-col justify-between rounded-[1.35rem] border border-white/10 bg-[#111827]/90 px-5 py-5 text-left transition duration-200 hover:-translate-y-0.5 hover:border-gym-green/50 hover:bg-[#172130] hover:shadow-[0_0_0_1px_rgba(16,185,129,0.25)] focus:outline-none focus:ring-2 focus:ring-gym-green/40"
                         >
-                          <span className="font-medium text-ink">{option.label}</span>
-                          <span className="mt-4 inline-flex items-center gap-2 text-sm font-mono text-ink-dim opacity-80 group-hover:text-gym-green">
-                            Select
-                            <span aria-hidden>→</span>
+                          <span className="block font-medium leading-snug text-ink">
+                            {option.label}
+                          </span>
+                          <span
+                            aria-hidden
+                            className="mt-4 block text-right text-sm font-mono text-gym-green opacity-0 transition-opacity duration-200 group-hover:opacity-100"
+                          >
+                            →
                           </span>
                         </button>
                       ))}
