@@ -1,46 +1,167 @@
 [
   {
-    "id": "q1",
+    "id": "q-couch",
+    "eyebrow": "Scenario 01",
+    "prompt": "It's 6:45 PM. The gym closes at 9. Right now, you are:",
+    "options": [
+      { "label": "Already on the couch, and I know it", "score": 0 },
+      { "label": "Negotiating with myself about it", "score": 1 },
+      { "label": "Mid-set, phone in a locker", "score": 3 },
+      { "label": "Just got back and showered", "score": 3 }
+    ]
+  },
+  {
+    "id": "q-clothing",
+    "eyebrow": "Scenario 02",
+    "prompt": "Your newest piece of workout clothing was purchased:",
+    "options": [
+      { "label": "This week. Tags are still on it", "score": 0 },
+      { "label": "This month, worn maybe twice", "score": 1 },
+      { "label": "Honestly? I could not tell you", "score": 0 },
+      { "label": "It's older than most of my friendships", "score": 3 }
+    ]
+  },
+  {
+    "id": "q-friend-text",
+    "eyebrow": "Scenario 03",
+    "prompt": "A friend texts: \"gym together, 7am tomorrow?\" You:",
+    "options": [
+      { "label": "Say yes immediately, cancel by 6:58am", "score": 0 },
+      { "label": "Say yes and actually set two alarms", "score": 3 },
+      { "label": "Panic-suggest a walk around the block instead", "score": 1 },
+      { "label": "Already have a standing slot nobody can move", "score": 3 }
+    ]
+  },
+  {
+    "id": "q-gym-bag",
+    "eyebrow": "Scenario 04",
+    "prompt": "Be honest — what's currently sitting on your gym bag or mat?",
+    "options": [
+      { "label": "A visible layer of dust", "score": 0 },
+      { "label": "Unrelated laundry", "score": 0 },
+      { "label": "Nothing, it lives in a gym locker", "score": 3 },
+      { "label": "I don't own one yet — buying today", "score": 1 }
+    ]
+  },
+  {
+    "id": "q-commitment",
     "eyebrow": "Commitment",
     "prompt": "How committed are you to visiting the gym at least 3 times a week?",
     "options": [
-      { "label": "Extremely committed (I already have a plan)", "score": 100 },
-      { "label": "Somewhat committed (I try to go most weeks)", "score": 70 },
-      { "label": "Neutral (I go occasionally)", "score": 40 },
-      { "label": "Not committed (I rarely go)", "score": 10 }
+      { "label": "Extremely committed — I already have a plan", "score": 3 },
+      { "label": "Somewhat committed — I try most weeks", "score": 2 },
+      { "label": "Neutral — I go occasionally", "score": 1 },
+      { "label": "Not committed — I rarely go", "score": 0 }
     ]
   },
   {
-    "id": "q2",
+    "id": "q-availability",
     "eyebrow": "Availability",
     "prompt": "How many days per week can you realistically dedicate to the gym?",
     "options": [
-      { "label": "4+ days", "score": 100 },
-      { "label": "3 days", "score": 80 },
-      { "label": "1-2 days", "score": 40 },
-      { "label": "Less than 1 day", "score": 10 }
+      { "label": "4+ days", "score": 3 },
+      { "label": "3 days", "score": 2 },
+      { "label": "1–2 days", "score": 1 },
+      { "label": "Less than 1 day", "score": 0 }
     ]
   },
   {
-    "id": "q3",
+    "id": "q-goals",
     "eyebrow": "Goals",
     "prompt": "Which best describes your primary fitness goal?",
     "options": [
-      { "label": "General health and consistency", "score": 80 },
-      { "label": "Weight loss / fat loss", "score": 70 },
-      { "label": "Performance / competition", "score": 90 },
-      { "label": "Exploration / not sure yet", "score": 50 }
+      { "label": "General health and consistency", "score": 2 },
+      { "label": "Weight loss / fat loss", "score": 2 },
+      { "label": "Performance / competition", "score": 3 },
+      { "label": "Exploration — not sure yet", "score": 1 }
     ]
   },
   {
-    "id": "q4",
+    "id": "q-barriers",
     "eyebrow": "Barriers",
     "prompt": "What is your biggest barrier to attending the gym regularly?",
     "options": [
-      { "label": "Time / schedule", "score": 50 },
-      { "label": "Motivation", "score": 30 },
-      { "label": "Cost / access", "score": 40 },
-      { "label": "I have no barrier", "score": 100 }
+      { "label": "Time / schedule", "score": 1 },
+      { "label": "Motivation", "score": 0 },
+      { "label": "Cost / access", "score": 1 },
+      { "label": "I have no real barrier", "score": 3 }
+    ]
+  },
+  {
+    "id": "q-alarm",
+    "eyebrow": "The Morning Test",
+    "prompt": "Your alarm goes off at 6am for a planned gym session. You:",
+    "options": [
+      { "label": "Get up immediately — the session is non-negotiable", "score": 3 },
+      { "label": "Snooze once then go", "score": 2 },
+      { "label": "Reset the alarm and go after work", "score": 1 },
+      { "label": "Reschedule to 'tomorrow' for the fourth time this week", "score": 0 }
+    ]
+  },
+  {
+    "id": "q-membership-history",
+    "eyebrow": "Track Record",
+    "prompt": "Your relationship with gym memberships in the past 3 years:",
+    "options": [
+      { "label": "Active member, consistent attendance", "score": 3 },
+      { "label": "Had one, used it for 2 months, let it lapse", "score": 1 },
+      { "label": "Signed up twice, neither time worked out", "score": 0 },
+      { "label": "Never had one — this would be my first", "score": 2 }
+    ]
+  },
+  {
+    "id": "q-weather",
+    "eyebrow": "The Excuse Test",
+    "prompt": "It's raining hard outside. Your gym is a 10-minute drive. You:",
+    "options": [
+      { "label": "Go anyway — rain is irrelevant", "score": 3 },
+      { "label": "Do a home workout instead", "score": 2 },
+      { "label": "Call it a rest day", "score": 1 },
+      { "label": "Order food and watch something", "score": 0 }
+    ]
+  },
+  {
+    "id": "q-gym-anxiety",
+    "eyebrow": "The Floor Test",
+    "prompt": "You walk into a packed gym at peak hour. You:",
+    "options": [
+      { "label": "Find equipment, adapt, get the session done", "score": 3 },
+      { "label": "Wait for a quieter moment, then start", "score": 2 },
+      { "label": "Do a short workout and leave early", "score": 1 },
+      { "label": "Turn around and go home", "score": 0 }
+    ]
+  },
+  {
+    "id": "q-streak",
+    "eyebrow": "The Streak Question",
+    "prompt": "The longest consistent gym streak you have maintained is:",
+    "options": [
+      { "label": "6+ months without skipping more than a week", "score": 3 },
+      { "label": "2–3 months", "score": 2 },
+      { "label": "3–5 weeks", "score": 1 },
+      { "label": "About 11 days — it was January", "score": 0 }
+    ]
+  },
+  {
+    "id": "q-cancel",
+    "eyebrow": "The Cancellation Clause",
+    "prompt": "A gym offers a great price but requires 60 days written notice to cancel. You:",
+    "options": [
+      { "label": "Sign without hesitation — I'm not planning to quit", "score": 3 },
+      { "label": "Ask a few questions, then sign", "score": 2 },
+      { "label": "Look for a month-to-month option instead", "score": 1 },
+      { "label": "Walk out — commitment terrifies me", "score": 0 }
+    ]
+  },
+  {
+    "id": "q-social",
+    "eyebrow": "Social Fuel",
+    "prompt": "How much does having a gym partner affect whether you actually show up?",
+    "options": [
+      { "label": "Not at all — I go regardless", "score": 3 },
+      { "label": "It helps, but I go solo too", "score": 2 },
+      { "label": "I mostly go when I have someone to go with", "score": 1 },
+      { "label": "If there's no partner, there's no session", "score": 0 }
     ]
   }
 ]

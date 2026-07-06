@@ -70,20 +70,31 @@ async function readQuestionsFile(): Promise<QuizQuestion[] | null> {
   }
 }
 
+const QUESTIONS_PER_QUIZ = 4;
+
+function pickRandom<T>(arr: T[], n: number): T[] {
+  const shuffled = [...arr].sort(() => Math.random() - 0.5);
+  return shuffled.slice(0, Math.min(n, shuffled.length));
+}
+
 export async function GET() {
   try {
     const fromFile = await readQuestionsFile();
     if (fromFile && fromFile.length > 0) {
-      // Randomize question order and option order for each question
-      const randomized = shuffleArray(fromFile).map((q) => ({ ...q, options: shuffleArray(q.options) }));
-      return NextResponse.json({ questions: randomized });
+      // Pick N random questions from the pool, shuffle options for each
+      const picked = pickRandom(fromFile, QUESTIONS_PER_QUIZ).map((q, i) => ({
+        ...q,
+        id: `q${i + 1}`,                    // re-index so IDs are always q1–q4
+        options: shuffleArray(q.options),   // randomise option order too
+      }));
+      return NextResponse.json({ questions: picked });
     }
 
     // Try Gen AI first, then fallback
     try {
       const questions = await fetchGeneratedQuiz();
       if (questions.length >= 1) {
-        return NextResponse.json({ questions });
+        return NextResponse.json({ questions: pickRandom(questions, QUESTIONS_PER_QUIZ) });
       }
     } catch (err) {
       console.error("Gen AI quiz fetch error:", err);
