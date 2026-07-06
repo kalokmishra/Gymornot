@@ -4,83 +4,50 @@ This document explains how GymOrNot is structured, how data flows through the ap
 
 ## High-level architecture
 
-GymOrNot is a lightweight Next.js 14 App Router application built with TypeScript and Tailwind CSS. It is optimized for a frontend-first experience with a small serverless route for quiz generation.
+GymOrNot is a lightweight Next.js 14 App Router application built with TypeScript and Tailwind CSS. It is optimized for a frontend-first experience with a serverless route for quiz generation and scoring.
 
 Key architecture elements:
-- `app/` contains the page routes, the root layout, and the API route.
-- `app/api/quiz-data/route.ts` is the server-side endpoint used by the quiz page.
-- `lib/quiz.ts` provides quiz data types, fallback question generation, and helper logic.
-- `staticData.ts` stores structured static content that is rendered by the UI.
-- Browser `localStorage` persists quiz and dashboard state in the client.
+- `app/` contains the page routes, the root layout, and the API routes.
+- `app/api/quiz-data/route.ts` contains the server-side endpoints for fetching and scoring the quiz.
+- `lib/quiz.ts` provides quiz data types, fallback question templates, the 4-axis `computeArchetype` logic, and helpers.
+- Browser `localStorage` persists the user's email, scores across the 4 axes, streaks, and check-in date.
+
+---
 
 ## Page flow
 
-### `/`
-
-The landing page is the main marketing entry point. It introduces the product and links to the `quiz`, `dashboard`, and `community` pages.
+### `/` (Home)
+The landing page introduces the product, framing it as an honest fitness decision assistant, and links to the `quiz` and `dashboard` pages.
 
 ### `/quiz`
-
-The quiz page is the most dynamic part of the app:
-1. The page renders client-side and begins in a loading state.
-2. It requests `/api/quiz-data` to retrieve a question payload.
-3. The server route attempts to fetch generated quiz content from the configured AI endpoint.
-4. If the request fails or environment variables are missing, the route returns a static fallback defined in `lib/quiz.ts`.
-5. The quiz page shows four questions, tracks user answers, calculates a risk score, and then displays a result.
-6. On result submission, the page optionally stores the user email and quiz score in `localStorage`.
+The quiz page drives the diagnostic flow:
+1. Requests `/api/quiz-data` to retrieve a 4-question pool with 4-axis scoring options.
+2. The user answers the questions. Each answer maps to scores for `gymScore`, `homeScore`, `boutiqueScore`, and `couchScore`.
+3. Once the 4 questions are answered, a loading screen runs calculations.
+4. On the results screen:
+   - The user sees their dominant **Archetype** (January Idealist, Closet Athlete, Gym Crusader, Smoothie Socialite) and a ruthless **roast paragraph**.
+   - A **Gym Donation Index** panel shows their dropoff probability and projected 12-month wasted spend. This panel is blurred until the user submits their email.
+   - Once email submission is complete, the results unblur, saving user details to `localStorage` and revealing archetype-specific affiliate/lead-gen CTAs and the **ShareCard** to challenge friends.
 
 ### `/dashboard`
+The dashboard reads stored values from `localStorage` and displays:
+- The user's diagnosed archetype name and full roast text.
+- The **Donation Index** with their projected wasted capital.
+- Active check-in streak and total saved capital.
+- Persistent archetype-specific action plan CTA.
+- A daily check-in button to build consistency.
+- A persistent **ShareCard** to share their results.
 
-The dashboard reads persisted values from browser storage and displays:
-- the current user streak
-- the last check-in date
-- the calculated risk score
-- any available user email or result status
-
-This page is designed to work without a backend database by relying on local persistence.
-
-### `/community`
-
-The community page provides links to contributor docs, issue templates, and onboarding resources. It is primarily static content meant to help new collaborators understand the repo.
+---
 
 ## Server-side route
 
 ### `app/api/quiz-data/route.ts`
+- **GET**: Serves questions from `lib/questions.json` (or AI if configured) and shuffles options. Falls back to templates in `lib/quiz.ts` if needed.
+- **POST**: Validates answers, tallies scores across all 4 axes, and returns the dominant archetype, dropoff probability, and selected options.
 
-This route is a serverless endpoint that supports the quiz page. It is responsible for:
-- checking whether `GEN_AI_ENDPOINT` and `GEN_AI_API_KEY` are configured
-- requesting AI-generated quiz questions when possible
-- falling back to the built-in quiz content in `lib/quiz.ts` when necessary
-- returning a JSON payload with the quiz question metadata
-
-This approach allows the app to support richer question generation while maintaining graceful fallback behavior.
-
-## Data model and fallback logic
-
-### `lib/quiz.ts`
-
-This module defines:
-- `QuizQuestion` and `QuizOption` types
-- a question builder function for fallback content
-- a set of static fallback quiz templates
-
-The fallback logic exists so the app remains functional even if the AI integration is not available.
+---
 
 ## Styling and theming
 
-The app uses Tailwind CSS for styling. Custom theme values are defined in `tailwind.config.ts`, including colors, spacing, and typography. The pages use utility classes and consistent design tokens to maintain a coherent visual language.
-
-## Deployment and runtime
-
-GymOrNot is deployed on Vercel through the GitHub Actions workflow `.github/workflows/vercel-deploy.yml`. The app is hosted as a serverless Next.js deployment with support for the API route and static pages.
-
-## Summary
-
-GymOrNot is intentionally simple and robust:
-- a modern frontend experience using Next.js App Router
-- a serverless AI-backed quiz route with fallback behavior
-- static content in `staticData.ts`
-- client persistence via `localStorage`
-- automated deployment to Vercel
-
-The architecture supports both development and production use cases while keeping the codebase easy to understand and maintain.
+The app uses Tailwind CSS. Custom design tokens, colors (like `gym-green`, `anti-purple`, and Tailwind `amber-500` representing different archetypes), and fonts are managed in `tailwind.config.ts`.

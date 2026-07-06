@@ -2,35 +2,8 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-
-type Archetype = {
-  name: string;
-  color: "green" | "purple" | "alert";
-  description: string;
-};
-
-function getArchetype(score: number, maxScore: number): Archetype {
-  const ratio = maxScore > 0 ? score / maxScore : 0;
-  if (ratio <= 0.25) {
-    return {
-      name: "The Actual Athlete",
-      color: "green",
-      description: "Your habits are aligned with action. Keep building the momentum.",
-    };
-  }
-  if (ratio <= 0.65) {
-    return {
-      name: "The January Idealist",
-      color: "alert",
-      description: "You have good intent and need low friction habits to stay consistent.",
-    };
-  }
-  return {
-    name: "The Corporate Donor",
-    color: "purple",
-    description: "Your membership is buying you comfort more than actual workouts. Time to course correct.",
-  };
-}
+import { computeArchetype, ArchetypeResult } from "../../lib/quiz";
+import ShareCard from "../quiz/components/ShareCard";
 
 function formatDate(value: string | null) {
   if (!value) return "Never";
@@ -40,8 +13,12 @@ function formatDate(value: string | null) {
 
 export default function DashboardPage() {
   const [email, setEmail] = useState<string | null>(null);
-  const [score, setScore] = useState<number | null>(null);
-  const [maxScore, setMaxScore] = useState<number | null>(null);
+  
+  const [gymScore, setGymScore] = useState(0);
+  const [homeScore, setHomeScore] = useState(0);
+  const [boutiqueScore, setBoutiqueScore] = useState(0);
+  const [couchScore, setCouchScore] = useState(0);
+
   const [streak, setStreak] = useState(0);
   const [lastCheckin, setLastCheckin] = useState<string | null>(null);
   const [hydrated, setHydrated] = useState(false);
@@ -52,23 +29,33 @@ export default function DashboardPage() {
   useEffect(() => {
     setHydrated(true);
     const storedEmail = window.localStorage.getItem("gymornot_email");
-    const storedScore = window.localStorage.getItem("gymornot_risk_score");
-    const storedMaxScore = window.localStorage.getItem("gymornot_risk_max_score");
+    const storedGym = window.localStorage.getItem("gymornot_gymScore");
+    const storedHome = window.localStorage.getItem("gymornot_homeScore");
+    const storedBoutique = window.localStorage.getItem("gymornot_boutiqueScore");
+    const storedCouch = window.localStorage.getItem("gymornot_couchScore");
     const storedStreak = window.localStorage.getItem("gymornot_streak");
     const storedLast = window.localStorage.getItem("gymornot_last_checkin");
 
     setEmail(storedEmail);
-    setScore(storedScore ? Number(storedScore) : null);
-    setMaxScore(storedMaxScore ? Number(storedMaxScore) : null);
+    setGymScore(storedGym ? Number(storedGym) : 0);
+    setHomeScore(storedHome ? Number(storedHome) : 0);
+    setBoutiqueScore(storedBoutique ? Number(storedBoutique) : 0);
+    setCouchScore(storedCouch ? Number(storedCouch) : 0);
+    
     setStreak(storedStreak ? Number(storedStreak) : 0);
     setLastCheckin(storedLast || null);
   }, []);
 
-  const displayMaxScore = maxScore && maxScore > 0 ? maxScore : 12;
-  const archetype = useMemo(
-    () => (score !== null ? getArchetype(score, displayMaxScore) : null),
-    [score, displayMaxScore]
-  );
+  const totalScore = gymScore + homeScore + boutiqueScore + couchScore || 1;
+  const isUnlocked = hydrated && email && totalScore > 1;
+
+  const archetype = useMemo(() => {
+    if (!isUnlocked) return null;
+    return computeArchetype(gymScore, homeScore, boutiqueScore, couchScore);
+  }, [isUnlocked, gymScore, homeScore, boutiqueScore, couchScore]);
+
+  const dropoffProbability = Math.round((couchScore / totalScore) * 100);
+  
   const checkedInToday = lastCheckin === today;
   const nextStreak = checkedInToday ? streak : lastCheckin === yesterday ? streak + 1 : 1;
   const capitalSaved = Math.max(0, nextStreak * 6 + 5);
@@ -83,7 +70,13 @@ export default function DashboardPage() {
     setLastCheckin(date);
   };
 
-  const isUnlocked = hydrated && email && score !== null;
+  const textColorClass = archetype?.color === "green" 
+    ? "text-gym-green" 
+    : archetype?.color === "purple" 
+      ? "text-anti-purple" 
+      : archetype?.color === "amber"
+        ? "text-amber-500"
+        : "text-alert";
 
   return (
     <main className="min-h-screen bg-[radial-gradient(circle_at_top_left,_rgba(16,185,129,0.16),transparent_28%),radial-gradient(circle_at_bottom_right,_rgba(139,92,246,0.16),transparent_24%),#0b0f19] text-ink">
@@ -95,7 +88,7 @@ export default function DashboardPage() {
               Home
             </Link>
             <Link href="/quiz" className="cta-primary px-4 py-2 text-sm">
-              Take quiz
+              Retake quiz
             </Link>
           </div>
         </div>
@@ -112,28 +105,18 @@ export default function DashboardPage() {
               </p>
             </div>
 
-            {isUnlocked ? (
+            {isUnlocked && archetype ? (
               <div className="mt-8 grid gap-6">
-                <section className="grid gap-4 rounded-[1.75rem] border border-white/10 bg-[#0b1320] p-6">
-                  <div className="flex items-center justify-between gap-4">
+                <section className="grid gap-4 rounded-[1.75rem] border border-white/10 bg-[#0b1320] p-6 shadow-lg">
+                  <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
                     <div>
-                      <p className="text-xs uppercase tracking-[0.28em] text-ink-dim">Risk archetype</p>
-                      <p className={`mt-3 text-2xl font-semibold ${
-                        archetype?.color === "green"
-                          ? "text-gym-green"
-                          : archetype?.color === "purple"
-                          ? "text-anti-purple"
-                          : "text-alert"
-                      }`}
-                      >
-                        {archetype?.name}
+                      <p className="text-xs uppercase tracking-[0.28em] text-ink-dim">Your Diagnosis</p>
+                      <p className={`mt-3 text-2xl font-semibold ${textColorClass}`}>
+                        {archetype.name}
                       </p>
                     </div>
-                    <div className="rounded-3xl bg-white/5 px-4 py-3 text-sm text-ink-dim">
-                      {score} / {displayMaxScore}
-                    </div>
                   </div>
-                  <p className="text-sm leading-7 text-ink-dim">{archetype?.description}</p>
+                  <p className="text-sm leading-7 text-ink-dim">{archetype.roast}</p>
                 </section>
 
                 <section className="grid gap-4 sm:grid-cols-2">
@@ -142,11 +125,25 @@ export default function DashboardPage() {
                     <p className="mt-3 text-3xl font-semibold text-ink">{streak} day{streak === 1 ? "" : "s"}</p>
                     <p className="mt-3 text-sm text-ink-dim">Last check-in: {formatDate(lastCheckin)}</p>
                   </div>
-                  <div className="rounded-[1.75rem] border border-white/10 bg-[#111827]/80 p-6">
-                    <p className="text-xs uppercase tracking-[0.28em] text-ink-dim">Capital saved</p>
+                  <div className="rounded-[1.75rem] border border-white/10 bg-[#111827]/80 p-6 relative overflow-hidden">
+                    <p className="text-xs uppercase tracking-[0.28em] text-ink-dim">Donation Index</p>
                     <p className="mt-3 text-3xl font-semibold text-gym-green">${capitalSaved}</p>
-                    <p className="mt-3 text-sm text-ink-dim">Estimated money kept from wasted recurring fees.</p>
+                    <p className="mt-3 text-sm text-ink-dim">Money saved by actually building the habit instead of paying for ghost memberships.</p>
+                    {dropoffProbability > 50 && (
+                      <div className="absolute top-0 right-0 mt-6 mr-6 h-3 w-3 rounded-full bg-alert animate-ping" />
+                    )}
                   </div>
+                </section>
+
+                {/* Sticky CTA Panel */}
+                <section className="rounded-[1.75rem] border border-gym-green/30 bg-[#0f1726]/80 p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                   <div className="flex-1">
+                      <p className="text-sm font-semibold text-ink">Action Plan: {archetype.cta.label}</p>
+                      <p className="mt-1 text-sm text-ink-dim">Your tailored recommendation to beat the statistics.</p>
+                   </div>
+                   <a href={archetype.cta.href} className="cta-primary whitespace-nowrap px-6 py-3">
+                     Take Action
+                   </a>
                 </section>
 
                 <section className="rounded-[1.75rem] border border-white/10 bg-[#0f1726]/80 p-6">
@@ -182,7 +179,7 @@ export default function DashboardPage() {
             )}
           </div>
 
-          <aside className="panel-card rounded-[2rem] p-8">
+          <aside className="panel-card rounded-[2rem] p-8 flex flex-col gap-6">
             <div className="soft-card rounded-[1.75rem] p-6">
               <p className="eyebrow">Dashboard notes</p>
               <ul className="mt-5 space-y-4 text-sm leading-7 text-ink-dim">
@@ -191,10 +188,14 @@ export default function DashboardPage() {
                 <li>You can retake the quiz anytime to update your risk profile.</li>
               </ul>
             </div>
-            <div className="mt-6 rounded-[1.75rem] border border-white/10 bg-[#0d1527]/80 p-6 text-sm text-ink-dim">
+            <div className="rounded-[1.75rem] border border-white/10 bg-[#0d1527]/80 p-6 text-sm text-ink-dim">
               <p className="font-semibold text-ink">Tip</p>
               <p className="mt-2">Consistency matters more than intensity. A daily walk, stretching session, or quick bodyweight set counts here.</p>
             </div>
+            {/* Share Card shown if unlocked */}
+            {isUnlocked && archetype && (
+              <ShareCard archetypeId={archetype.id} headline={archetype.shareHeadline} />
+            )}
           </aside>
         </div>
       </div>

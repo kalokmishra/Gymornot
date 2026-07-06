@@ -3,66 +3,43 @@
 ## Current status
 
 - Branch: `main`
-- Latest commit: `6fe6e8c`
-- Build status: `npm run build` passes successfully.
-- Deployment: live on Vercel.
-  - Production URL: `https://gymornot-9os5z9r4n-gymornot.vercel.app`
-  - Aliased URL: `https://gymornot-five.vercel.app`
+- Build status: `npm run build` passes successfully with zero compilation or type check errors.
+- Deployment: Live on Vercel.
 
-## What was fixed
+## What was fixed / Refactored (Blueprint Alignment)
 
-1. Unified `authOptions` into a shared module at `app/api/auth/authOptions.ts`.
-2. Fixed import paths in admin API routes:
-   - `app/api/admin/import-sheet/route.ts`
-   - `app/api/admin/sync/route.ts`
-   - `app/api/admin/upload/route.ts`
-   - `app/api/admin/whoami/route.ts`
-3. Updated `app/api/auth/[...nextauth]/route.ts` to import the shared auth options module.
-4. Resolved TypeScript session typing issues in admin routes.
-5. Verified the build passes and the site deploys successfully.
+We have successfully refactored the GymOrNot quiz application to align with the viral blueprint specifications:
+
+1. **4-Axis Scoring Model**: Replaced the linear single-score calculation with a 4-axis model tracking:
+   - `gymScore` (Gym Crusader)
+   - `homeScore` (Closet Athlete)
+   - `boutiqueScore` (Smoothie Socialite)
+   - `couchScore` (January Idealist)
+2. **Roast Questions Copy**: Replaced all generic questions in `lib/questions.json` with 10 blueprint-aligned, painfully detailed roast questions.
+3. **Archetype Diagnosis Engine**: Implemented the `computeArchetype` evaluation helper in `lib/quiz.ts` returning customized roasts, share headlines, color states, and actions.
+4. **Gym Donation Index (Financial projection)**: Added the avoidant score dropoff probability and 12-month projected wasted spend calculation. This is blurred on the results page until the user submits their email, and persistently shown on the dashboard.
+5. **Archetype Affiliate CTAs**: Integrated specific action items (Kettlebell, adjustable dumbbells, ClassPass, Local Gyms) using placeholder redirect hashes.
+6. **Viral Share Card**: Built `ShareCard.tsx` enabling users to copy their diagnosis text or tweet their personalized headline. Public badges have been saved to `/public`.
 
 ## Key files to review
 
-- `app/api/auth/authOptions.ts`
-- `app/api/auth/[...nextauth]/route.ts`
-- `app/api/admin/import-sheet/route.ts`
-- `app/api/admin/sync/route.ts`
-- `app/api/admin/upload/route.ts`
-- `app/api/admin/whoami/route.ts`
-- `docs/INTERN_QUESTIONNAIRE_WORKFLOW.md`
-- `docs/busride-3-july.md`
-- `README.md`
+- `lib/questions.json` — updated roast questions
+- `lib/quiz.ts` — contains archetype scoring logic and types
+- `app/api/quiz-data/route.ts` — updated GET and POST route handlers
+- `app/quiz/page.tsx` — updated quiz results, financial panel, and email gate
+- `app/dashboard/page.tsx` — updated streak dashboard, donation index, and persistent CTA
+- `app/quiz/components/ShareCard.tsx` — reusable viral sharing component
+- `public/` — badge assets
 
 ## Next steps for the incoming assistant
 
-1. Pull the latest `main` branch:
+1. Run the app locally:
    ```bash
-   git checkout main
-   git pull origin main
+   npm run dev
    ```
-2. Install dependencies if needed:
-   ```bash
-   npm install
-   ```
-3. Verify the build locally:
-   ```bash
-   npm run build
-   ```
-4. Confirm the live site is reachable and the admin flow behaves as expected.
-5. Review the admin auth flow and determine whether the legacy cookie login fallback should be removed or hardened.
-6. Add tests for the admin import/sync flows and any new auth behavior.
-
-## Notes for the next assistant
-
-- The admin routes use `next-auth` plus a fallback session pattern. If you need to harden auth, start with `app/api/auth/authOptions.ts` and `middleware.ts`.
-- The quiz fallback is defined in `lib/quiz.ts`, while canonical questions are served from `lib/questions.json`.
-- Environment variables are documented in `README.md`.
-
-## Contact
-
-If the next assistant needs context, begin by reading:
-- `README.md`
-- `docs/INTERN_QUESTIONNAIRE_WORKFLOW.md`
-- `docs/busride-3-july.md`
-
-Then validate the currently deployed version and the admin routes.
+2. Take the quiz to verify that different archetypes are reachable:
+   - Choose all lazy answers -> *The January Idealist*
+   - Choose home-workout / anxious answers -> *The Closet Athlete*
+   - Choose all committed / lifting answers -> *The Gym Crusader*
+   - Choose status / luxury answers -> *The Smoothie Socialite*
+3. Replace the placeholder CTA links in `lib/quiz.ts` with real affiliate tracking links once ready.

@@ -1,167 +1,112 @@
 [
   {
-    "id": "q-couch",
-    "eyebrow": "Scenario 01",
-    "prompt": "It's 6:45 PM. The gym closes at 9. Right now, you are:",
+    "id": "q-track-record",
+    "eyebrow": "The Track Record",
+    "prompt": "Be honest with your maker. The last time you had a fitness-adjacent goal, what happened?",
     "options": [
-      { "label": "Already on the couch, and I know it", "score": 0 },
-      { "label": "Negotiating with myself about it", "score": 1 },
-      { "label": "Mid-set, phone in a locker", "score": 3 },
-      { "label": "Just got back and showered", "score": 3 }
+      { "label": "I went 4 times a week, tracking every macro like a scientist.", "gymScore": 2, "homeScore": 1, "boutiqueScore": 1, "couchScore": 0 },
+      { "label": "I bought a yoga mat, used it once as a stretching pad, and it is now gathering dust under my bed.", "gymScore": 0, "homeScore": 0, "boutiqueScore": 0, "couchScore": 3 },
+      { "label": "I paid for a membership for 8 months without going because I was too polite to cancel.", "gymScore": 0, "homeScore": 0, "boutiqueScore": 0, "couchScore": 3 },
+      { "label": "I run outside until my knees click, then stop for three months.", "gymScore": 0, "homeScore": 2, "boutiqueScore": 0, "couchScore": 1 }
     ]
   },
   {
-    "id": "q-clothing",
-    "eyebrow": "Scenario 02",
-    "prompt": "Your newest piece of workout clothing was purchased:",
+    "id": "q-commute",
+    "eyebrow": "The Commute Reality Check",
+    "prompt": "It is Tuesday at 6:45 PM. It is dark, slightly drizzling, and you just finished a brutal work meeting. The gym is a 12-minute drive away. What are you doing?",
     "options": [
-      { "label": "This week. Tags are still on it", "score": 0 },
-      { "label": "This month, worn maybe twice", "score": 1 },
-      { "label": "Honestly? I could not tell you", "score": 0 },
-      { "label": "It's older than most of my friendships", "score": 3 }
+      { "label": "Driving there. The iron calls to me.", "gymScore": 3, "homeScore": 0, "boutiqueScore": 0, "couchScore": 0 },
+      { "label": "Sitting in my car in the driveway for 25 minutes scrolling TikTok, eventually eating cereal.", "gymScore": 0, "homeScore": 0, "boutiqueScore": 0, "couchScore": 3 },
+      { "label": "I would go, but only if I have a pre-workout drink that makes my face itch so badly I have to lift things.", "gymScore": 2, "homeScore": 1, "boutiqueScore": 0, "couchScore": 0 },
+      { "label": "Opening a bottle of wine and doing three aggressive air squats to alleviate the guilt.", "gymScore": 0, "homeScore": 0, "boutiqueScore": 0, "couchScore": 3 }
     ]
   },
   {
-    "id": "q-friend-text",
-    "eyebrow": "Scenario 03",
-    "prompt": "A friend texts: \"gym together, 7am tomorrow?\" You:",
+    "id": "q-social-comfort",
+    "eyebrow": "The Social Comfort Level",
+    "prompt": "How do you feel about making accidental eye contact with a stranger who is grunting loudly while doing biceps curls directly in front of the mirror?",
     "options": [
-      { "label": "Say yes immediately, cancel by 6:58am", "score": 0 },
-      { "label": "Say yes and actually set two alarms", "score": 3 },
-      { "label": "Panic-suggest a walk around the block instead", "score": 1 },
-      { "label": "Already have a standing slot nobody can move", "score": 3 }
+      { "label": "Standard Tuesday behavior. I will nod respectfully.", "gymScore": 3, "homeScore": 0, "boutiqueScore": 0, "couchScore": 0 },
+      { "label": "I would rather swallow a live wasp than navigate the social anxiety of a crowded free-weight section.", "gymScore": 0, "homeScore": 3, "boutiqueScore": 0, "couchScore": 0 },
+      { "label": "I only care if the lighting is optimal for my post-workout pump selfie.", "gymScore": 1, "homeScore": 0, "boutiqueScore": 3, "couchScore": 0 },
+      { "label": "I prefer to sweat in the dark, isolated privacy of my own existential dread.", "gymScore": 0, "homeScore": 3, "boutiqueScore": 0, "couchScore": 1 }
     ]
   },
   {
-    "id": "q-gym-bag",
-    "eyebrow": "Scenario 04",
-    "prompt": "Be honest — what's currently sitting on your gym bag or mat?",
+    "id": "q-atmosphere",
+    "eyebrow": "The Atmosphere Preference",
+    "prompt": "What does your ideal workout environment smell like?",
     "options": [
-      { "label": "A visible layer of dust", "score": 0 },
-      { "label": "Unrelated laundry", "score": 0 },
-      { "label": "Nothing, it lives in a gym locker", "score": 3 },
-      { "label": "I don't own one yet — buying today", "score": 1 }
+      { "label": "Chalk, stale sweat, and iron.", "gymScore": 3, "homeScore": 0, "boutiqueScore": 0, "couchScore": 0 },
+      { "label": "Eucalyptus, expensive candles, and a $16 cold-pressed juice.", "gymScore": 0, "homeScore": 0, "boutiqueScore": 3, "couchScore": 0 },
+      { "label": "My own living room, specifically because nobody else is there.", "gymScore": 0, "homeScore": 3, "boutiqueScore": 0, "couchScore": 0 },
+      { "label": "I don't know, what does a Netflix binge smell like?", "gymScore": 0, "homeScore": 0, "boutiqueScore": 0, "couchScore": 3 }
     ]
   },
   {
-    "id": "q-commitment",
-    "eyebrow": "Commitment",
-    "prompt": "How committed are you to visiting the gym at least 3 times a week?",
+    "id": "q-penalty",
+    "eyebrow": "The Financial Penalty",
+    "prompt": "If you don't show up for a workout, what happens?",
     "options": [
-      { "label": "Extremely committed — I already have a plan", "score": 3 },
-      { "label": "Somewhat committed — I try most weeks", "score": 2 },
-      { "label": "Neutral — I go occasionally", "score": 1 },
-      { "label": "Not committed — I rarely go", "score": 0 }
+      { "label": "I feel a deep, internal shame that ruins my day.", "gymScore": 2, "homeScore": 2, "boutiqueScore": 0, "couchScore": 0 },
+      { "label": "I am financially penalized $35 by my boutique studio app.", "gymScore": 0, "homeScore": 0, "boutiqueScore": 3, "couchScore": 0 },
+      { "label": "Absolutely nothing. The corporate gym chain quietly thanks me for my donation.", "gymScore": 0, "homeScore": 0, "boutiqueScore": 0, "couchScore": 3 },
+      { "label": "I just re-schedule it to 'tomorrow' for the fourth time this week.", "gymScore": 0, "homeScore": 0, "boutiqueScore": 0, "couchScore": 3 }
     ]
   },
   {
-    "id": "q-availability",
-    "eyebrow": "Availability",
-    "prompt": "How many days per week can you realistically dedicate to the gym?",
+    "id": "q-equipment",
+    "eyebrow": "The Equipment Choice",
+    "prompt": "If you were forced to buy one piece of fitness equipment today, what are you getting?",
     "options": [
-      { "label": "4+ days", "score": 3 },
-      { "label": "3 days", "score": 2 },
-      { "label": "1–2 days", "score": 1 },
-      { "label": "Less than 1 day", "score": 0 }
+      { "label": "A sleek, pastel-colored kettlebell that matches my aesthetic.", "gymScore": 0, "homeScore": 1, "boutiqueScore": 3, "couchScore": 0 },
+      { "label": "A power rack. I'm building a sanctuary in my garage.", "gymScore": 0, "homeScore": 3, "boutiqueScore": 0, "couchScore": 0 },
+      { "label": "Liquid chalk and some lifting straps.", "gymScore": 3, "homeScore": 0, "boutiqueScore": 0, "couchScore": 0 },
+      { "label": "Does a massage gun count?", "gymScore": 0, "homeScore": 0, "boutiqueScore": 0, "couchScore": 3 }
     ]
   },
   {
-    "id": "q-goals",
-    "eyebrow": "Goals",
-    "prompt": "Which best describes your primary fitness goal?",
+    "id": "q-dress-code",
+    "eyebrow": "The Dress Code",
+    "prompt": "What is your typical workout attire?",
     "options": [
-      { "label": "General health and consistency", "score": 2 },
-      { "label": "Weight loss / fat loss", "score": 2 },
-      { "label": "Performance / competition", "score": 3 },
-      { "label": "Exploration — not sure yet", "score": 1 }
+      { "label": "Whatever is clean. Usually an old t-shirt from a 2014 fun run.", "gymScore": 2, "homeScore": 3, "boutiqueScore": 0, "couchScore": 0 },
+      { "label": "A matching $120 set that looks great under neon studio lighting.", "gymScore": 0, "homeScore": 0, "boutiqueScore": 3, "couchScore": 0 },
+      { "label": "Stringer tank top or oversized pump cover.", "gymScore": 3, "homeScore": 0, "boutiqueScore": 0, "couchScore": 0 },
+      { "label": "The same sweatpants I've been wearing since yesterday morning.", "gymScore": 0, "homeScore": 0, "boutiqueScore": 0, "couchScore": 3 }
     ]
   },
   {
-    "id": "q-barriers",
-    "eyebrow": "Barriers",
-    "prompt": "What is your biggest barrier to attending the gym regularly?",
+    "id": "q-music",
+    "eyebrow": "The Music",
+    "prompt": "What are you listening to while 'working out'?",
     "options": [
-      { "label": "Time / schedule", "score": 1 },
-      { "label": "Motivation", "score": 0 },
-      { "label": "Cost / access", "score": 1 },
-      { "label": "I have no real barrier", "score": 3 }
+      { "label": "Hardstyle, metal, or a podcast about optimizing my sleep protocol.", "gymScore": 3, "homeScore": 1, "boutiqueScore": 0, "couchScore": 0 },
+      { "label": "A perfectly curated deep-house playlist provided by the instructor.", "gymScore": 0, "homeScore": 0, "boutiqueScore": 3, "couchScore": 0 },
+      { "label": "True crime podcasts, but I'm actually just doing chores around the house.", "gymScore": 0, "homeScore": 1, "boutiqueScore": 0, "couchScore": 3 },
+      { "label": "Whatever top 40 pop is blasting from the gym's overhead speakers.", "gymScore": 1, "homeScore": 0, "boutiqueScore": 0, "couchScore": 0 }
     ]
   },
   {
-    "id": "q-alarm",
-    "eyebrow": "The Morning Test",
-    "prompt": "Your alarm goes off at 6am for a planned gym session. You:",
+    "id": "q-post-workout",
+    "eyebrow": "The Post-Workout Routine",
+    "prompt": "You just finished a session. What's next?",
     "options": [
-      { "label": "Get up immediately — the session is non-negotiable", "score": 3 },
-      { "label": "Snooze once then go", "score": 2 },
-      { "label": "Reset the alarm and go after work", "score": 1 },
-      { "label": "Reschedule to 'tomorrow' for the fourth time this week", "score": 0 }
+      { "label": "Chugging a chalky protein shake in my car.", "gymScore": 3, "homeScore": 0, "boutiqueScore": 0, "couchScore": 0 },
+      { "label": "Paying $16 for a smoothie containing ingredients I can't pronounce.", "gymScore": 0, "homeScore": 0, "boutiqueScore": 3, "couchScore": 0 },
+      { "label": "Lying on my living room floor contemplating my life choices.", "gymScore": 0, "homeScore": 3, "boutiqueScore": 0, "couchScore": 0 },
+      { "label": "Taking a long shower and convincing myself I deserve pizza.", "gymScore": 0, "homeScore": 1, "boutiqueScore": 1, "couchScore": 3 }
     ]
   },
   {
-    "id": "q-membership-history",
-    "eyebrow": "Track Record",
-    "prompt": "Your relationship with gym memberships in the past 3 years:",
+    "id": "q-excuse",
+    "eyebrow": "The Excuse",
+    "prompt": "It's raining. Your planned workout is ruined. Why?",
     "options": [
-      { "label": "Active member, consistent attendance", "score": 3 },
-      { "label": "Had one, used it for 2 months, let it lapse", "score": 1 },
-      { "label": "Signed up twice, neither time worked out", "score": 0 },
-      { "label": "Never had one — this would be my first", "score": 2 }
-    ]
-  },
-  {
-    "id": "q-weather",
-    "eyebrow": "The Excuse Test",
-    "prompt": "It's raining hard outside. Your gym is a 10-minute drive. You:",
-    "options": [
-      { "label": "Go anyway — rain is irrelevant", "score": 3 },
-      { "label": "Do a home workout instead", "score": 2 },
-      { "label": "Call it a rest day", "score": 1 },
-      { "label": "Order food and watch something", "score": 0 }
-    ]
-  },
-  {
-    "id": "q-gym-anxiety",
-    "eyebrow": "The Floor Test",
-    "prompt": "You walk into a packed gym at peak hour. You:",
-    "options": [
-      { "label": "Find equipment, adapt, get the session done", "score": 3 },
-      { "label": "Wait for a quieter moment, then start", "score": 2 },
-      { "label": "Do a short workout and leave early", "score": 1 },
-      { "label": "Turn around and go home", "score": 0 }
-    ]
-  },
-  {
-    "id": "q-streak",
-    "eyebrow": "The Streak Question",
-    "prompt": "The longest consistent gym streak you have maintained is:",
-    "options": [
-      { "label": "6+ months without skipping more than a week", "score": 3 },
-      { "label": "2–3 months", "score": 2 },
-      { "label": "3–5 weeks", "score": 1 },
-      { "label": "About 11 days — it was January", "score": 0 }
-    ]
-  },
-  {
-    "id": "q-cancel",
-    "eyebrow": "The Cancellation Clause",
-    "prompt": "A gym offers a great price but requires 60 days written notice to cancel. You:",
-    "options": [
-      { "label": "Sign without hesitation — I'm not planning to quit", "score": 3 },
-      { "label": "Ask a few questions, then sign", "score": 2 },
-      { "label": "Look for a month-to-month option instead", "score": 1 },
-      { "label": "Walk out — commitment terrifies me", "score": 0 }
-    ]
-  },
-  {
-    "id": "q-social",
-    "eyebrow": "Social Fuel",
-    "prompt": "How much does having a gym partner affect whether you actually show up?",
-    "options": [
-      { "label": "Not at all — I go regardless", "score": 3 },
-      { "label": "It helps, but I go solo too", "score": 2 },
-      { "label": "I mostly go when I have someone to go with", "score": 1 },
-      { "label": "If there's no partner, there's no session", "score": 0 }
+      { "label": "It's not. I'm already at the gym.", "gymScore": 3, "homeScore": 0, "boutiqueScore": 0, "couchScore": 0 },
+      { "label": "I can't be bothered to drive. I'll just do pushups in my bedroom.", "gymScore": 0, "homeScore": 3, "boutiqueScore": 0, "couchScore": 0 },
+      { "label": "My spin class got cancelled. Guess I'll get brunch instead.", "gymScore": 0, "homeScore": 0, "boutiqueScore": 3, "couchScore": 2 },
+      { "label": "Raining? That's prime blanket weather. Try again in spring.", "gymScore": 0, "homeScore": 0, "boutiqueScore": 0, "couchScore": 3 }
     ]
   }
 ]

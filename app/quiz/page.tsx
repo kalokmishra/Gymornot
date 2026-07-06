@@ -3,41 +3,8 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { QuizQuestion, buildQuizQuestions } from "../../lib/quiz";
-
-type Archetype = {
-  name: string;
-  verdict: string;
-  color: "green" | "purple" | "alert";
-};
-
-function getArchetype(score: number, maxScore: number): Archetype {
-  const ratio = maxScore > 0 ? score / maxScore : 0;
-  if (ratio <= 0.25) {
-    return {
-      name: "The Actual Athlete",
-      verdict:
-        "Statistically rare. Your habits already look like someone who shows up on a Tuesday for no reason. A membership will not go to waste on you.",
-      color: "green",
-    };
-  }
-
-  if (ratio <= 0.65) {
-    return {
-      name: "The January Idealist",
-      verdict:
-        "You have real intentions and a 6-to-8 week runway before they quietly evaporate. That's still enough time to build a habit — if the friction is near zero.",
-      color: "alert",
-    };
-  }
-
-  return {
-    name: "The Corporate Donor",
-    verdict:
-      "You are, financially speaking, a philanthropist for a gym chain you will visit twice. This is not an insult. It's a receipt.",
-    color: "purple",
-  };
-}
+import { QuizQuestion, buildQuizQuestions, computeArchetype } from "../../lib/quiz";
+import ShareCard from "./components/ShareCard";
 
 const LOADING_LINES = [
   "Analyzing proximity to couch vectors...",
@@ -54,13 +21,18 @@ export default function QuizPage() {
   const [fetchError, setFetchError] = useState<string | null>(null);
   const [phase, setPhase] = useState<"quiz" | "loading" | "result">("quiz");
   const [stepIndex, setStepIndex] = useState(0);
-  const [totalScore, setTotalScore] = useState(0);
+  
+  const [gymScore, setGymScore] = useState(0);
+  const [homeScore, setHomeScore] = useState(0);
+  const [boutiqueScore, setBoutiqueScore] = useState(0);
+  const [couchScore, setCouchScore] = useState(0);
+
   const [loadingLine, setLoadingLine] = useState(0);
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
   const [unlocked, setUnlocked] = useState(false);
+  const [isRedirecting, setIsRedirecting] = useState(false);
 
-  // Pre-populate email and skip gate if user has already submitted before
   useEffect(() => {
     const savedEmail = window.localStorage.getItem("gymornot_email");
     if (savedEmail) {
@@ -103,9 +75,6 @@ export default function QuizPage() {
   }, []);
 
   const activeQuestion = questions.length > 0 ? questions[stepIndex] : null;
-  const maxScore = questions.length
-    ? questions.reduce((sum, q) => sum + Math.max(...q.options.map((o) => o.score)), 0)
-    : 0;
   const progressPct = questions.length
     ? Math.round(((stepIndex + 1) / questions.length) * 100)
     : 0;
@@ -117,27 +86,27 @@ export default function QuizPage() {
     }, 550);
     const advanceTimer = setTimeout(() => {
       setPhase("result");
-      // Returning users: save updated score and redirect automatically
       if (unlocked && email) {
-        const currentMax = questions.reduce(
-          (sum, q) => sum + Math.max(...q.options.map((o) => o.score)),
-          0
-        );
-        window.localStorage.setItem("gymornot_risk_score", String(totalScore));
-        window.localStorage.setItem("gymornot_risk_max_score", String(currentMax));
-        const pct = currentMax > 0 ? Math.round((totalScore / currentMax) * 100) : 0;
-        window.localStorage.setItem("gymornot_risk_percentage", String(pct));
-        setTimeout(() => router.push("/dashboard"), 900);
+        window.localStorage.setItem("gymornot_gymScore", String(gymScore));
+        window.localStorage.setItem("gymornot_homeScore", String(homeScore));
+        window.localStorage.setItem("gymornot_boutiqueScore", String(boutiqueScore));
+        window.localStorage.setItem("gymornot_couchScore", String(couchScore));
+        setIsRedirecting(true);
+        setTimeout(() => router.push("/dashboard"), 1500);
       }
     }, 2900);
     return () => {
       clearInterval(lineTimer);
       clearTimeout(advanceTimer);
     };
-  }, [phase, unlocked, email, totalScore, questions, router]);
+  }, [phase, unlocked, email, gymScore, homeScore, boutiqueScore, couchScore, router]);
 
-  const handleAnswer = (score: number) => {
-    setTotalScore((current) => current + score);
+  const handleAnswer = (option: { gymScore: number; homeScore: number; boutiqueScore: number; couchScore: number }) => {
+    setGymScore((current) => current + option.gymScore);
+    setHomeScore((current) => current + option.homeScore);
+    setBoutiqueScore((current) => current + option.boutiqueScore);
+    setCouchScore((current) => current + option.couchScore);
+    
     if (stepIndex + 1 < questions.length) {
       setStepIndex(stepIndex + 1);
     } else {
@@ -156,17 +125,26 @@ export default function QuizPage() {
     }
     setEmailError("");
     window.localStorage.setItem("gymornot_email", trimmed);
-    window.localStorage.setItem("gymornot_risk_score", String(totalScore));
-    window.localStorage.setItem("gymornot_risk_max_score", String(maxScore));
-    const percentage = maxScore > 0 ? Math.round((totalScore / maxScore) * 100) : 0;
-    window.localStorage.setItem("gymornot_risk_percentage", String(percentage));
+    window.localStorage.setItem("gymornot_gymScore", String(gymScore));
+    window.localStorage.setItem("gymornot_homeScore", String(homeScore));
+    window.localStorage.setItem("gymornot_boutiqueScore", String(boutiqueScore));
+    window.localStorage.setItem("gymornot_couchScore", String(couchScore));
+    
     setUnlocked(true);
-    setTimeout(() => {
-      router.push("/dashboard");
-    }, 900);
   };
 
-  const archetype = getArchetype(totalScore, maxScore);
+  const archetype = computeArchetype(gymScore, homeScore, boutiqueScore, couchScore);
+  const totalScore = gymScore + homeScore + boutiqueScore + couchScore || 1;
+  const dropoffProbability = Math.round((couchScore / totalScore) * 100);
+  const projectedLoss = Math.round(dropoffProbability * 7.2); // Extrapolated from average membership waste
+
+  const textColorClass = archetype.color === "green" 
+    ? "text-gym-green" 
+    : archetype.color === "purple" 
+      ? "text-anti-purple" 
+      : archetype.color === "amber"
+        ? "text-amber-500"
+        : "text-alert";
 
   return (
     <main className="min-h-screen bg-[radial-gradient(circle_at_top_left,_rgba(16,185,129,0.16),transparent_28%),radial-gradient(circle_at_bottom_right,_rgba(139,92,246,0.16),transparent_24%),#0b0f19] text-ink">
@@ -177,9 +155,11 @@ export default function QuizPage() {
             <Link href="/" className="cta-secondary px-4 py-2 text-sm">
               Home
             </Link>
-            <Link href="/dashboard" className="cta-primary px-4 py-2 text-sm">
-              Dashboard
-            </Link>
+            {unlocked && (
+              <Link href="/dashboard" className="cta-primary px-4 py-2 text-sm">
+                Dashboard
+              </Link>
+            )}
           </div>
         </div>
 
@@ -209,9 +189,7 @@ export default function QuizPage() {
                   <div className="h-7 w-7 animate-spin rounded-full border-2 border-white/10 border-t-gym-green" />
                 </div>
                 <p className="text-base font-medium text-ink">Loading quiz…</p>
-                <p className="eyebrow text-[0.65rem] text-ink-dim">
-                  Fetching fresh questions for your gym habits.
-                </p>
+                <p className="eyebrow text-[0.65rem] text-ink-dim">Fetching fresh questions for your gym habits.</p>
               </div>
             ) : !activeQuestion ? (
               <div className="grid gap-4 rounded-[1.75rem] border border-white/10 bg-[#0f1726]/80 px-8 py-12 text-center">
@@ -220,11 +198,11 @@ export default function QuizPage() {
               </div>
             ) : (
               <>
-                {fetchError ? (
+                {fetchError && (
                   <div className="mb-6 rounded-[1.5rem] border border-alert/20 bg-[#3b0e0e]/90 p-4 text-sm text-alert">
                     {fetchError}
                   </div>
-                ) : null}
+                )}
 
                 {phase === "quiz" && (
                   <div className="grid gap-6">
@@ -236,20 +214,17 @@ export default function QuizPage() {
                     </div>
 
                     <div className="grid gap-4 sm:grid-cols-2">
-                      {activeQuestion.options.map((option) => (
+                      {activeQuestion.options.map((option, i) => (
                         <button
-                          key={option.label}
+                          key={i}
                           type="button"
-                          onClick={() => handleAnswer(option.score)}
+                          onClick={() => handleAnswer(option)}
                           className="group flex flex-col justify-between rounded-[1.35rem] border border-white/10 bg-[#111827]/90 px-5 py-5 text-left transition duration-200 hover:-translate-y-0.5 hover:border-gym-green/50 hover:bg-[#172130] hover:shadow-[0_0_0_1px_rgba(16,185,129,0.25)] focus:outline-none focus:ring-2 focus:ring-gym-green/40"
                         >
                           <span className="block font-medium leading-snug text-ink">
                             {option.label}
                           </span>
-                          <span
-                            aria-hidden
-                            className="mt-4 block text-right text-sm font-mono text-gym-green opacity-0 transition-opacity duration-200 group-hover:opacity-100"
-                          >
+                          <span aria-hidden className="mt-4 block text-right text-sm font-mono text-gym-green opacity-0 transition-opacity duration-200 group-hover:opacity-100">
                             →
                           </span>
                         </button>
@@ -270,36 +245,31 @@ export default function QuizPage() {
 
                 {phase === "result" && (
                   <div className="grid gap-8">
-                    <div className="grid gap-3 rounded-[1.75rem] bg-[#111827]/80 p-8 shadow-[0_30px_80px_-30px_rgba(16,185,129,0.35)]">
+                    <div className={`grid gap-3 rounded-[1.75rem] bg-[#111827]/80 p-8 shadow-[0_30px_80px_-30px_rgba(16,185,129,0.35)] relative overflow-hidden`}>
+                      {!unlocked && (
+                        <div className="absolute inset-0 bg-[#0b0f19]/80 backdrop-blur-md z-10 flex flex-col items-center justify-center p-6 text-center">
+                          <p className="text-xl font-semibold text-ink mb-2">Verdict Locked</p>
+                          <p className="text-sm text-ink-dim max-w-xs">Enter your email below to unlock your honest diagnosis, financial impact analysis, and tailored action plan.</p>
+                        </div>
+                      )}
                       <span className="eyebrow">Diagnosis complete</span>
-                      <h2
-                        className={`text-4xl font-semibold ${
-                          archetype.color === "green"
-                            ? "text-gym-green"
-                            : archetype.color === "purple"
-                            ? "text-anti-purple"
-                            : "text-alert"
-                        }`}
-                      >
+                      <h2 className={`text-4xl font-semibold ${textColorClass}`}>
                         {archetype.name}
                       </h2>
                       <p className="max-w-2xl text-base leading-8 text-ink-dim">
-                        {archetype.verdict}
+                        {archetype.roast}
                       </p>
                     </div>
 
                     {!unlocked ? (
                       <form
                         onSubmit={handleEmailSubmit}
-                        className="grid gap-4 rounded-[1.75rem] border border-white/10 bg-[#0f1726]/80 p-6 sm:p-8"
+                        className="grid gap-4 rounded-[1.75rem] border border-white/10 bg-[#0f1726]/80 p-6 sm:p-8 relative z-20"
                       >
                         <div>
                           <label htmlFor="email" className="eyebrow text-[0.65rem]">
                             Unlock your official verdict
                           </label>
-                          <p className="mt-2 text-sm text-ink-dim">
-                            A polished result and the full breakdown will be ready once you confirm your email.
-                          </p>
                         </div>
                         <div className="grid gap-3 sm:grid-cols-[1fr_auto]">
                           <input
@@ -310,10 +280,7 @@ export default function QuizPage() {
                             placeholder="you@example.com"
                             className="w-full rounded-2xl border border-white/10 bg-[#0b1320] px-4 py-4 text-sm text-ink outline-none transition focus:border-gym-green focus:ring-2 focus:ring-gym-green/15"
                           />
-                          <button
-                            type="submit"
-                            className="cta-primary whitespace-nowrap px-6 py-4"
-                          >
+                          <button type="submit" className="cta-primary whitespace-nowrap px-6 py-4">
                             Reveal verdict
                           </button>
                         </div>
@@ -323,11 +290,48 @@ export default function QuizPage() {
                         </p>
                       </form>
                     ) : (
-                      <div className="rounded-[1.75rem] bg-[#0f1726]/80 p-6 text-center">
-                        <p className="text-base text-gym-green">
-                          Verdict unlocked. Redirecting to your dashboard…
-                        </p>
-                      </div>
+                      <>
+                        <div className="grid gap-6 sm:grid-cols-2">
+                          {/* Financial Panel */}
+                          <div className="rounded-[1.75rem] border border-white/10 bg-[#0f1726]/80 p-6">
+                            <p className="eyebrow mb-2 text-alert">Financial Warning</p>
+                            <p className="text-3xl font-semibold text-ink mb-1">{dropoffProbability}%</p>
+                            <p className="text-sm text-ink-dim mb-4">Probability of quitting within 8 weeks</p>
+                            <div className="rounded-xl bg-[#111827]/80 p-4 border border-white/5">
+                              <p className="text-xs text-ink-dim mb-1">Projected wasted spend:</p>
+                              <p className="text-xl font-medium text-alert">${projectedLoss}</p>
+                            </div>
+                          </div>
+
+                          {/* Affiliate / CTA Panel */}
+                          <div className="rounded-[1.75rem] border border-gym-green/30 bg-[#0f1726]/80 p-6 flex flex-col justify-between">
+                            <div>
+                              <p className="eyebrow mb-2 text-gym-green">The Solution</p>
+                              <p className="text-sm text-ink mb-4">{archetype.cta.label}</p>
+                            </div>
+                            <a href={archetype.cta.href} className="cta-primary w-full text-center py-3">
+                              View Recommendation
+                            </a>
+                          </div>
+                        </div>
+
+                        {/* Viral Share Card */}
+                        <ShareCard archetypeId={archetype.id} headline={archetype.shareHeadline} />
+
+                        {isRedirecting ? (
+                          <div className="rounded-[1.75rem] bg-gym-green/10 p-6 text-center border border-gym-green/20">
+                            <p className="text-base text-gym-green animate-pulse">
+                              Redirecting to your full dashboard…
+                            </p>
+                          </div>
+                        ) : (
+                          <div className="text-center mt-4">
+                            <Link href="/dashboard" className="cta-secondary inline-block px-8 py-3">
+                              Continue to Full Dashboard
+                            </Link>
+                          </div>
+                        )}
+                      </>
                     )}
                   </div>
                 )}

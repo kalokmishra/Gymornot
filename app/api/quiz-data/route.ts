@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { buildQuizQuestions, QuizQuestion, shuffleArray } from "../../../lib/quiz";
+import { buildQuizQuestions, QuizQuestion, shuffleArray, computeArchetype } from "../../../lib/quiz";
 import { promises as fs } from "fs";
 import path from "path";
 
@@ -13,7 +13,7 @@ async function fetchGeneratedQuiz(): Promise<QuizQuestion[]> {
 
   const prompt = `Generate 4 quiz questions about gym membership habits.` +
     ` Return a JSON array of objects with keys: eyebrow, prompt, options.` +
-    ` Each options array should contain 4 items with label and score.` +
+    ` Each options array should contain 4 items with label, gymScore, homeScore, boutiqueScore, couchScore.` +
     ` Scores must be integers from 0 to 3.` +
     ` Do not return any additional fields or markdown.`;
 
@@ -44,7 +44,10 @@ async function fetchGeneratedQuiz(): Promise<QuizQuestion[]> {
     options: Array.isArray(item.options)
       ? item.options.map((option: any) => ({
           label: String(option.label ?? ""),
-          score: Number(option.score ?? 0),
+          gymScore: Number(option.gymScore ?? 0),
+          homeScore: Number(option.homeScore ?? 0),
+          boutiqueScore: Number(option.boutiqueScore ?? 0),
+          couchScore: Number(option.couchScore ?? 0),
         }))
       : [],
   }));
@@ -62,7 +65,13 @@ async function readQuestionsFile(): Promise<QuizQuestion[] | null> {
       eyebrow: String(q.eyebrow ?? ""),
       prompt: String(q.prompt ?? ""),
       options: Array.isArray(q.options)
-        ? q.options.map((opt: any) => ({ label: String(opt.label ?? ""), score: Number(opt.score ?? 0) }))
+        ? q.options.map((opt: any) => ({
+            label: String(opt.label ?? ""),
+            gymScore: Number(opt.gymScore ?? 0),
+            homeScore: Number(opt.homeScore ?? 0),
+            boutiqueScore: Number(opt.boutiqueScore ?? 0),
+            couchScore: Number(opt.couchScore ?? 0),
+          }))
         : [],
     }));
   } catch (err) {
@@ -118,28 +127,36 @@ export async function POST(request: Request) {
     // Load questions from file or fallback
     const questions = (await readQuestionsFile()) ?? buildQuizQuestions();
 
-    const perQuestion: Array<{ id: string; selected?: string; selectedScore: number; maxScore: number }> = [];
-    let rawScore = 0;
-    let maxScore = 0;
+    const perQuestion: Array<{ id: string; selected?: string }> = [];
+    let gymScore = 0;
+    let homeScore = 0;
+    let boutiqueScore = 0;
+    let couchScore = 0;
 
     for (const q of questions) {
-      const qMax = q.options.reduce((acc, o) => Math.max(acc, Number(o.score ?? 0)), 0);
-      maxScore += qMax;
       const answer = answers.find((a) => a.id === q.id);
       if (!answer) {
-        perQuestion.push({ id: q.id, selected: undefined, selectedScore: 0, maxScore: qMax });
+        perQuestion.push({ id: q.id, selected: undefined });
         continue;
       }
       const idx = Number(answer.optionIndex ?? -1);
       const opt = q.options[idx];
-      const score = opt ? Number(opt.score ?? 0) : 0;
-      rawScore += score;
-      perQuestion.push({ id: q.id, selected: opt ? opt.label : undefined, selectedScore: score, maxScore: qMax });
+      if (opt) {
+        gymScore += opt.gymScore;
+        homeScore += opt.homeScore;
+        boutiqueScore += opt.boutiqueScore;
+        couchScore += opt.couchScore;
+        perQuestion.push({ id: q.id, selected: opt.label });
+      } else {
+        perQuestion.push({ id: q.id, selected: undefined });
+      }
     }
 
-    const percentage = maxScore > 0 ? Math.round((rawScore / maxScore) * 100) : 0;
+    const archetype = computeArchetype(gymScore, homeScore, boutiqueScore, couchScore);
+    const totalScore = gymScore + homeScore + boutiqueScore + couchScore || 1;
+    const dropoffProbability = Math.round((couchScore / totalScore) * 100);
 
-    return NextResponse.json({ rawScore, maxScore, percentage, perQuestion });
+    return NextResponse.json({ gymScore, homeScore, boutiqueScore, couchScore, archetype, dropoffProbability, perQuestion });
   } catch (err) {
     console.error("Quiz scoring error:", err);
     return NextResponse.json({ error: String(err) }, { status: 500 });

@@ -20,9 +20,14 @@ A one-page reference for the repository structure and the most important files.
 - `package-lock.json` — locked package dependency tree
 - `package.json` — npm package metadata and scripts
 - `postcss.config.mjs` — PostCSS configuration for Tailwind
+- `public/` — directory containing public assets including archetype badges:
+  - `closet_athlete_badge.png`
+  - `gym_crusader_badge.png`
+  - `january_idealist_badge.png`
+  - `smoothie_socialite_badge.png`
 - `scripts/` — utility scripts
 - `staticData.ts` — static app content and structured data
-- `tailwind.config.ts` — Tailwind theme, colors, and utilities
+- `tailwind.config.ts` — theme colors, fonts, and Tailwind config
 - `tsconfig.json` — TypeScript compiler settings
 
 ## App Source (`app/`)
@@ -31,8 +36,9 @@ A one-page reference for the repository structure and the most important files.
 - `app/page.tsx` — landing/home page experience
 - `app/community/page.tsx` — contributor and community resources page
 - `app/dashboard/page.tsx` — habit dashboard and streak tracker page
-- `app/quiz/page.tsx` — quiz flow, question handling, and result display
-- `app/api/quiz-data/route.ts` — serverless route for AI-backed quiz generation
+- `app/quiz/page.tsx` — quiz flow, question handling, results, and email gate
+- `app/quiz/components/ShareCard.tsx` — reusable social share and roast component
+- `app/api/quiz-data/route.ts` — serverless route for quiz GET/POST endpoints
 
 ## Static Data + Theme
 - `staticData.ts` — static content models and hardcoded app data
@@ -42,18 +48,15 @@ A one-page reference for the repository structure and the most important files.
 - `tsconfig.json` — TypeScript configuration
 
 ## Libraries
-- `lib/quiz.ts` — quiz data types, fallback question builder, and helper logic
+- `lib/quiz.ts` — quiz data types, archetype evaluation engine, and fallback templates
+- `lib/questions.json` — canonical roast question database
 
 ## Scripts
 - `scripts/generate_poster.py` — poster generation script
 
 ## GitHub / CI
-- `.github/CODEOWNERS` — designated code owners for review
-- `.github/pull_request_template.md` — PR template for contributors
-- `.github/ISSUE_TEMPLATE/` — issue templates for bug reports and feature requests
 - `.github/workflows/ci.yml` — CI checks for lint/build/tests
 - `.github/workflows/vercel-deploy.yml` — automated Vercel deployment pipeline
-- `.github/workflows/welcome-first-timer.yml` — welcome automation for first-time contributors
 
 ## Generated / Dependency Directories
 - `node_modules/` — installed dependencies
@@ -62,6 +65,4 @@ A one-page reference for the repository structure and the most important files.
 
 ## Notes
 - The app is built using Next.js 14 App Router, TypeScript, and Tailwind CSS.
-- `app/api/quiz-data/route.ts` provides AI-backed quiz generation, while `lib/quiz.ts` provides fallback questions.
-- Browser `localStorage` is used for quiz state persistence and dashboard streak tracking.
-- `INTERN_KB.md` is the intern knowledge base for onboarding and maintenance.
+- Browser `localStorage` is used to persist the user's email, streak tracker, and 4-axis scores.
