@@ -42,7 +42,7 @@ The dashboard reads stored values from `localStorage` and displays:
 The anti-gym destination site serving organic SEO traffic and quiz funnel drop-offs:
 - Uses the `AlternativeMatrix` component to map the user's specific barrier ("no time", "gym anxiety", "hate sweating") to actionable, low-friction habits.
 - Recommends zero-fluff gear combinations referencing `staticData.ts` items.
-- Features the `CalendarSignup` component to capture emails and distribute the "Bare Minimum Calendar" printable.
+- Features the `CalendarSignup` component to capture emails and distribute the "Bare Minimum Calendar" printable PDF.
 
 ---
 
