@@ -61,11 +61,11 @@ export default function CalendarSignup() {
               We've saved your details. Click below to download your printable 30-day tracker.
             </p>
             <a
-              href="/downloads/Anti-Gym-Bare-Minimum-Calendar.md"
+              href="/downloads/Anti-Gym-Bare-Minimum-Calendar.pdf"
               download
               className="mt-4 inline-flex items-center gap-2 cta-primary px-6 py-2 text-xs"
             >
-              📥 Download Calendar (.md)
+              📥 Download Calendar (PDF)
             </a>
           </div>
         )}
