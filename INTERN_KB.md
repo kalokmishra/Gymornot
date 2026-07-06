@@ -110,7 +110,9 @@ The quiz uses a hybrid 4-axis model:
 - `/api/quiz-data` (GET) responds with questions from `lib/questions.json` or AI fallback.
 - `/api/quiz-data` (POST) tallies submitted answers and returns the archetype payload and dropoff probability.
 
-If you update quiz behavior or questions, make sure to support the 4-axis structure.
+The canonical question database (`lib/questions.json`) currently contains over 100 AI-generated and human-curated questions. If you need to review the weightings across all questions, refer to `gymornot_questions.csv` in the project root.
+
+If you update quiz behavior or questions, make sure to support the 4-axis structure and re-export the CSV.
 
 ---
 

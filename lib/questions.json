@@ -4,10 +4,34 @@
     "eyebrow": "The Track Record",
     "prompt": "Be honest with your maker. The last time you had a fitness-adjacent goal, what happened?",
     "options": [
-      { "label": "I went 4 times a week, tracking every macro like a scientist.", "gymScore": 2, "homeScore": 1, "boutiqueScore": 1, "couchScore": 0 },
-      { "label": "I bought a yoga mat, used it once as a stretching pad, and it is now gathering dust under my bed.", "gymScore": 0, "homeScore": 0, "boutiqueScore": 0, "couchScore": 3 },
-      { "label": "I paid for a membership for 8 months without going because I was too polite to cancel.", "gymScore": 0, "homeScore": 0, "boutiqueScore": 0, "couchScore": 3 },
-      { "label": "I run outside until my knees click, then stop for three months.", "gymScore": 0, "homeScore": 2, "boutiqueScore": 0, "couchScore": 1 }
+      {
+        "label": "I went 4 times a week, tracking every macro like a scientist.",
+        "gymScore": 2,
+        "homeScore": 1,
+        "boutiqueScore": 1,
+        "couchScore": 0
+      },
+      {
+        "label": "I bought a yoga mat, used it once as a stretching pad, and it is now gathering dust under my bed.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      },
+      {
+        "label": "I paid for a membership for 8 months without going because I was too polite to cancel.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      },
+      {
+        "label": "I run outside until my knees click, then stop for three months.",
+        "gymScore": 0,
+        "homeScore": 2,
+        "boutiqueScore": 0,
+        "couchScore": 1
+      }
     ]
   },
   {
@@ -15,10 +39,34 @@
     "eyebrow": "The Commute Reality Check",
     "prompt": "It is Tuesday at 6:45 PM. It is dark, slightly drizzling, and you just finished a brutal work meeting. The gym is a 12-minute drive away. What are you doing?",
     "options": [
-      { "label": "Driving there. The iron calls to me.", "gymScore": 3, "homeScore": 0, "boutiqueScore": 0, "couchScore": 0 },
-      { "label": "Sitting in my car in the driveway for 25 minutes scrolling TikTok, eventually eating cereal.", "gymScore": 0, "homeScore": 0, "boutiqueScore": 0, "couchScore": 3 },
-      { "label": "I would go, but only if I have a pre-workout drink that makes my face itch so badly I have to lift things.", "gymScore": 2, "homeScore": 1, "boutiqueScore": 0, "couchScore": 0 },
-      { "label": "Opening a bottle of wine and doing three aggressive air squats to alleviate the guilt.", "gymScore": 0, "homeScore": 0, "boutiqueScore": 0, "couchScore": 3 }
+      {
+        "label": "Driving there. The iron calls to me.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Sitting in my car in the driveway for 25 minutes scrolling TikTok, eventually eating cereal.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      },
+      {
+        "label": "I would go, but only if I have a pre-workout drink that makes my face itch so badly I have to lift things.",
+        "gymScore": 2,
+        "homeScore": 1,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Opening a bottle of wine and doing three aggressive air squats to alleviate the guilt.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
     ]
   },
   {
@@ -26,10 +74,34 @@
     "eyebrow": "The Social Comfort Level",
     "prompt": "How do you feel about making accidental eye contact with a stranger who is grunting loudly while doing biceps curls directly in front of the mirror?",
     "options": [
-      { "label": "Standard Tuesday behavior. I will nod respectfully.", "gymScore": 3, "homeScore": 0, "boutiqueScore": 0, "couchScore": 0 },
-      { "label": "I would rather swallow a live wasp than navigate the social anxiety of a crowded free-weight section.", "gymScore": 0, "homeScore": 3, "boutiqueScore": 0, "couchScore": 0 },
-      { "label": "I only care if the lighting is optimal for my post-workout pump selfie.", "gymScore": 1, "homeScore": 0, "boutiqueScore": 3, "couchScore": 0 },
-      { "label": "I prefer to sweat in the dark, isolated privacy of my own existential dread.", "gymScore": 0, "homeScore": 3, "boutiqueScore": 0, "couchScore": 1 }
+      {
+        "label": "Standard Tuesday behavior. I will nod respectfully.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "I would rather swallow a live wasp than navigate the social anxiety of a crowded free-weight section.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "I only care if the lighting is optimal for my post-workout pump selfie.",
+        "gymScore": 1,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "I prefer to sweat in the dark, isolated privacy of my own existential dread.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 1
+      }
     ]
   },
   {
@@ -37,10 +109,34 @@
     "eyebrow": "The Atmosphere Preference",
     "prompt": "What does your ideal workout environment smell like?",
     "options": [
-      { "label": "Chalk, stale sweat, and iron.", "gymScore": 3, "homeScore": 0, "boutiqueScore": 0, "couchScore": 0 },
-      { "label": "Eucalyptus, expensive candles, and a $16 cold-pressed juice.", "gymScore": 0, "homeScore": 0, "boutiqueScore": 3, "couchScore": 0 },
-      { "label": "My own living room, specifically because nobody else is there.", "gymScore": 0, "homeScore": 3, "boutiqueScore": 0, "couchScore": 0 },
-      { "label": "I don't know, what does a Netflix binge smell like?", "gymScore": 0, "homeScore": 0, "boutiqueScore": 0, "couchScore": 3 }
+      {
+        "label": "Chalk, stale sweat, and iron.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Eucalyptus, expensive candles, and a $16 cold-pressed juice.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "My own living room, specifically because nobody else is there.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "I don't know, what does a Netflix binge smell like?",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
     ]
   },
   {
@@ -48,10 +144,34 @@
     "eyebrow": "The Financial Penalty",
     "prompt": "If you don't show up for a workout, what happens?",
     "options": [
-      { "label": "I feel a deep, internal shame that ruins my day.", "gymScore": 2, "homeScore": 2, "boutiqueScore": 0, "couchScore": 0 },
-      { "label": "I am financially penalized $35 by my boutique studio app.", "gymScore": 0, "homeScore": 0, "boutiqueScore": 3, "couchScore": 0 },
-      { "label": "Absolutely nothing. The corporate gym chain quietly thanks me for my donation.", "gymScore": 0, "homeScore": 0, "boutiqueScore": 0, "couchScore": 3 },
-      { "label": "I just re-schedule it to 'tomorrow' for the fourth time this week.", "gymScore": 0, "homeScore": 0, "boutiqueScore": 0, "couchScore": 3 }
+      {
+        "label": "I feel a deep, internal shame that ruins my day.",
+        "gymScore": 2,
+        "homeScore": 2,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "I am financially penalized $35 by my boutique studio app.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "Absolutely nothing. The corporate gym chain quietly thanks me for my donation.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      },
+      {
+        "label": "I just re-schedule it to 'tomorrow' for the fourth time this week.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
     ]
   },
   {
@@ -59,10 +179,34 @@
     "eyebrow": "The Equipment Choice",
     "prompt": "If you were forced to buy one piece of fitness equipment today, what are you getting?",
     "options": [
-      { "label": "A sleek, pastel-colored kettlebell that matches my aesthetic.", "gymScore": 0, "homeScore": 1, "boutiqueScore": 3, "couchScore": 0 },
-      { "label": "A power rack. I'm building a sanctuary in my garage.", "gymScore": 0, "homeScore": 3, "boutiqueScore": 0, "couchScore": 0 },
-      { "label": "Liquid chalk and some lifting straps.", "gymScore": 3, "homeScore": 0, "boutiqueScore": 0, "couchScore": 0 },
-      { "label": "Does a massage gun count?", "gymScore": 0, "homeScore": 0, "boutiqueScore": 0, "couchScore": 3 }
+      {
+        "label": "A sleek, pastel-colored kettlebell that matches my aesthetic.",
+        "gymScore": 0,
+        "homeScore": 1,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "A power rack. I'm building a sanctuary in my garage.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Liquid chalk and some lifting straps.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Does a massage gun count?",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
     ]
   },
   {
@@ -70,10 +214,34 @@
     "eyebrow": "The Dress Code",
     "prompt": "What is your typical workout attire?",
     "options": [
-      { "label": "Whatever is clean. Usually an old t-shirt from a 2014 fun run.", "gymScore": 2, "homeScore": 3, "boutiqueScore": 0, "couchScore": 0 },
-      { "label": "A matching $120 set that looks great under neon studio lighting.", "gymScore": 0, "homeScore": 0, "boutiqueScore": 3, "couchScore": 0 },
-      { "label": "Stringer tank top or oversized pump cover.", "gymScore": 3, "homeScore": 0, "boutiqueScore": 0, "couchScore": 0 },
-      { "label": "The same sweatpants I've been wearing since yesterday morning.", "gymScore": 0, "homeScore": 0, "boutiqueScore": 0, "couchScore": 3 }
+      {
+        "label": "Whatever is clean. Usually an old t-shirt from a 2014 fun run.",
+        "gymScore": 2,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "A matching $120 set that looks great under neon studio lighting.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "Stringer tank top or oversized pump cover.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "The same sweatpants I've been wearing since yesterday morning.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
     ]
   },
   {
@@ -81,10 +249,34 @@
     "eyebrow": "The Music",
     "prompt": "What are you listening to while 'working out'?",
     "options": [
-      { "label": "Hardstyle, metal, or a podcast about optimizing my sleep protocol.", "gymScore": 3, "homeScore": 1, "boutiqueScore": 0, "couchScore": 0 },
-      { "label": "A perfectly curated deep-house playlist provided by the instructor.", "gymScore": 0, "homeScore": 0, "boutiqueScore": 3, "couchScore": 0 },
-      { "label": "True crime podcasts, but I'm actually just doing chores around the house.", "gymScore": 0, "homeScore": 1, "boutiqueScore": 0, "couchScore": 3 },
-      { "label": "Whatever top 40 pop is blasting from the gym's overhead speakers.", "gymScore": 1, "homeScore": 0, "boutiqueScore": 0, "couchScore": 0 }
+      {
+        "label": "Hardstyle, metal, or a podcast about optimizing my sleep protocol.",
+        "gymScore": 3,
+        "homeScore": 1,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "A perfectly curated deep-house playlist provided by the instructor.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "True crime podcasts, but I'm actually just doing chores around the house.",
+        "gymScore": 0,
+        "homeScore": 1,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      },
+      {
+        "label": "Whatever top 40 pop is blasting from the gym's overhead speakers.",
+        "gymScore": 1,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      }
     ]
   },
   {
@@ -92,10 +284,34 @@
     "eyebrow": "The Post-Workout Routine",
     "prompt": "You just finished a session. What's next?",
     "options": [
-      { "label": "Chugging a chalky protein shake in my car.", "gymScore": 3, "homeScore": 0, "boutiqueScore": 0, "couchScore": 0 },
-      { "label": "Paying $16 for a smoothie containing ingredients I can't pronounce.", "gymScore": 0, "homeScore": 0, "boutiqueScore": 3, "couchScore": 0 },
-      { "label": "Lying on my living room floor contemplating my life choices.", "gymScore": 0, "homeScore": 3, "boutiqueScore": 0, "couchScore": 0 },
-      { "label": "Taking a long shower and convincing myself I deserve pizza.", "gymScore": 0, "homeScore": 1, "boutiqueScore": 1, "couchScore": 3 }
+      {
+        "label": "Chugging a chalky protein shake in my car.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Paying $16 for a smoothie containing ingredients I can't pronounce.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "Lying on my living room floor contemplating my life choices.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Taking a long shower and convincing myself I deserve pizza.",
+        "gymScore": 0,
+        "homeScore": 1,
+        "boutiqueScore": 1,
+        "couchScore": 3
+      }
     ]
   },
   {
@@ -103,10 +319,3499 @@
     "eyebrow": "The Excuse",
     "prompt": "It's raining. Your planned workout is ruined. Why?",
     "options": [
-      { "label": "It's not. I'm already at the gym.", "gymScore": 3, "homeScore": 0, "boutiqueScore": 0, "couchScore": 0 },
-      { "label": "I can't be bothered to drive. I'll just do pushups in my bedroom.", "gymScore": 0, "homeScore": 3, "boutiqueScore": 0, "couchScore": 0 },
-      { "label": "My spin class got cancelled. Guess I'll get brunch instead.", "gymScore": 0, "homeScore": 0, "boutiqueScore": 3, "couchScore": 2 },
-      { "label": "Raining? That's prime blanket weather. Try again in spring.", "gymScore": 0, "homeScore": 0, "boutiqueScore": 0, "couchScore": 3 }
+      {
+        "label": "It's not. I'm already at the gym.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "I can't be bothered to drive. I'll just do pushups in my bedroom.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "My spin class got cancelled. Guess I'll get brunch instead.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 2
+      },
+      {
+        "label": "Raining? That's prime blanket weather. Try again in spring.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-locker-room-horror",
+    "eyebrow": "Locker Room Dynamics",
+    "prompt": "An elderly stranger is completely naked, drying their toes with a hair dryer directly in your line of sight. Your immediate reaction is to:",
+    "options": [
+      {
+        "label": "Ignore it. I came here to bleed under a barbell, not judge a senior citizen's post-shower routine.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Feel completely vindicated in my decision to exercise 4 feet from my own bed.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Silently vow to report this to management while adjusting my silk head wrap.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 2,
+        "couchScore": 1
+      },
+      {
+        "label": "Use this mental trauma as a valid excuse to skip working out for the next three business weeks.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-subscription-guilt",
+    "eyebrow": "Financial Bleeding",
+    "prompt": "You notice a $45 monthly charge for a fitness app you haven't opened since the Obama administration. What is your next move?",
+    "options": [
+      {
+        "label": "Keep paying it because 'next month is when I turn my life around' (spoiler: you won't).",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      },
+      {
+        "label": "Cancel it instantly and buy a second-hand kettlebell off Facebook Marketplace.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Upgrade to the premium tier because it comes with an aesthetic meal plan PDF you'll never look at.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 2,
+        "couchScore": 1
+      },
+      {
+        "label": "Transfer that capital directly into your commercial gym membership where you actually lift heavy things.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      }
+    ]
+  },
+  {
+    "id": "q-sweat-tolerance",
+    "eyebrow": "Bodily Secretions",
+    "prompt": "How do you feel about being completely drenched in sweat to the point where your clothes stick to your body?",
+    "options": [
+      {
+        "label": "It's the ultimate proof of dominance over my physical limitations. Wipe it on the shirt and keep going.",
+        "gymScore": 2,
+        "homeScore": 1,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "It is an unholy biohazard. If I cannot immediately step into a tiled shower with luxury botanical soaps, I will perish.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "Completely fine, as long as no other human being is within a 5-mile radius to witness my damp misery.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Absolutely disgusting. Sweat is a design flaw. I actively avoid any movement that raises my core temperature.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-influencer-encounter",
+    "eyebrow": "The Content Industrial Complex",
+    "prompt": "An influencer is filming a TikTok dance right in front of the weight rack you need. What do you do?",
+    "options": [
+      {
+        "label": "Walk directly through their frame to grab the 45-pound plates. My gains do not yield to social media algorithms.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Leave the room entirely and retreat to my basement bunker where the internet cannot hurt me.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Slightly adjust my high-waisted leggings and try to naturally blend into the background of their video.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 2,
+        "couchScore": 1
+      },
+      {
+        "label": "Watch them from the comfort of a machine I’m sitting on without actually exercising, using it as a distraction.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-weather-excuse",
+    "eyebrow": "Meteorological Motivation",
+    "prompt": "It's drizzling outside. Not a monsoon, just a light, depressing gray mist. How does this affect your workout plan?",
+    "options": [
+      {
+        "label": "The perfect atmospheric setting to put on a dark hoodie, blast heavy metal, and lift heavy metal.",
+        "gymScore": 2,
+        "homeScore": 1,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "I'm already in my living room, so the sky's emotional problems are completely irrelevant to me.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Cancel my $35 spin class because my hair will frizz on the walk from the valet to the front door.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 2,
+        "couchScore": 1
+      },
+      {
+        "label": "A clear sign from the universe that I should order Thai food and remain under a weighted blanket until spring.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-mirror-mentality",
+    "eyebrow": "Narcissism Check",
+    "prompt": "What is the primary function of a mirror during a workout?",
+    "options": [
+      {
+        "label": "To critically evaluate my form while subtly checking if my pump makes me look intimidating.",
+        "gymScore": 2,
+        "homeScore": 0,
+        "boutiqueScore": 1,
+        "couchScore": 0
+      },
+      {
+        "label": "To take a post-class selfie with a subtle filter that highlights my clavicle and my expensive water bottle.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "Mirrors are an abomination. I don't want to look at myself, and I certainly don't want anyone else looking at me.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "To practice my 'I'm thinking deeply about my life choices' face while trying to catch my breath after climbing one flight of stairs.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-instructor-interaction",
+    "eyebrow": "Authority Figures",
+    "prompt": "An enthusiastic instructor yells, 'Come on, push through the pain, you're doing this for YOU!' directly into a headset microphone. How do you respond?",
+    "options": [
+      {
+        "label": "I find their forced optimism deeply patronizing and would pay good money to never hear their voice again.",
+        "gymScore": 0,
+        "homeScore": 2,
+        "boutiqueScore": 0,
+        "couchScore": 1
+      },
+      {
+        "label": "I am fueled entirely by their validation. If they don't look at me and say 'Good job, Sarah!' my workout is a failure.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "I can't hear them over the sound of my own internal grunting and the noise-canceling headphones blaring deathcore.",
+        "gymScore": 2,
+        "homeScore": 1,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "I close the laptop screen or lie down on the floor, pretending I have suddenly developed a medical emergency.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-equipment-hogging",
+    "eyebrow": "Territorial Disputes",
+    "prompt": "Someone has been sitting on the only bench press rack for 15 minutes, doing exactly one set and scrolling through Instagram for the remaining 14. Your strategy:",
+    "options": [
+      {
+        "label": "Stand exactly three feet away from them, glaring with arms crossed, establishing raw territorial dominance.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "This is why I bought my own equipment. Society is fundamentally broken.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Kindly ask the front desk coordinator to intervene because confronting strangers ruins the studio's collective aura.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 2,
+        "couchScore": 1
+      },
+      {
+        "label": "Use their bad etiquette as a valid excuse to abandon my workout entirely and head straight to the snack bar.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-apparel-choices",
+    "eyebrow": "The Fitness Uniform",
+    "prompt": "When choosing what to wear for physical exertion, your primary criteria is:",
+    "options": [
+      {
+        "label": "Does it match the current color palette of my Instagram feed, and did it cost more than a week of groceries?",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "An oversized, frayed t-shirt from a 2012 high school charity drive and whatever sweatpants don't have structural holes.",
+        "gymScore": 1,
+        "homeScore": 2,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Brand new, high-end athletic wear that still has the tags on it because I'm manifesting a lifestyle I haven't started yet.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 1,
+        "couchScore": 2
+      },
+      {
+        "label": "Whatever is cleanest on top of the laundry basket. Nobody is seeing me anyway except my cat.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      }
+    ]
+  },
+  {
+    "id": "q-post-workout-fuel",
+    "eyebrow": "Nutritional Rewards",
+    "prompt": "The workout is over. What are you putting into your body to recover?",
+    "options": [
+      {
+        "label": "A lukewarm shaker bottle containing chalky whey protein powder mixed with tap water. Performance over pleasure.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "A $16 artisanal cold-pressed beverage featuring adaptogenic mushrooms, blue spirulina, and oat milk.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "Whatever leftovers are closest to expiration in my fridge, consumed standing up over the sink.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "A massive serving of complex carbohydrates and refined sugars because 'I earned it' by thinking about walking on a treadmill.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-the-commute-friction",
+    "eyebrow": "Logistical Despair",
+    "prompt": "The workout facility requires finding parking in a crowded downtown area during rush hour. Your psychological state is:",
+    "options": [
+      {
+        "label": "Unbothered. The road rage simply adds to my pre-workout adrenaline rush.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "This is a structural failure of modern urban planning. I will remain in my home where parking is guaranteed.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "I pay for the premium tier membership that includes complimentary valet parking, so it's a non-issue.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "I'm turning the car around immediately. Finding a spot is too stressful, and stress kills more people than lack of cardio.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-social-anxiety",
+    "eyebrow": "Human Proximity",
+    "prompt": "How do you feel about making eye contact with another human being while making an unattractive face during physical exertion?",
+    "options": [
+      {
+        "label": "Let them look. If they can't handle me at my absolute ugliest lifting heavy weights, they don't deserve me at my baseline.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "I would rather swallow a live wasp than have another person see my face while I struggle.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "The lighting is dimmed to a subtle neon glow precisely so no one can see individual suffering. It's a shared aesthetic vibe.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "I don't make unattractive faces because I never exert myself to the point of discomfort.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-the-motivation-myth",
+    "eyebrow": "Internal Drive",
+    "prompt": "Where does your motivation to exercise primarily originate?",
+    "options": [
+      {
+        "label": "A deep, dark, unresolved psychological need to prove my high school gym teacher wrong.",
+        "gymScore": 2,
+        "homeScore": 1,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "The fear of wasting the ridiculous amount of money I spent on a boutique subscription package this month.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "A structured, unemotional habit built into my daily routine like brushing my teeth. Motivation is for amateurs.",
+        "gymScore": 1,
+        "homeScore": 2,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "It doesn't. It exists briefly for about 10 minutes after watching an inspiring documentary, then completely vanishes.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-music-selection",
+    "eyebrow": "Auditory Stimulation",
+    "prompt": "What is the soundtrack to your physical suffering?",
+    "options": [
+      {
+        "label": "Curated, high-tempo electronic dance music blasted through a million-dollar club-grade sound system.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "Aggressive, unhinged heavy metal or gangster rap that makes me want to fight a wall.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "True crime podcasts where people get brutally murdered in the woods. It keeps me focused.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "The sweet sound of a television comedy playing in the background while I check my phone every 45 seconds.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-the-cleaning-ritual",
+    "eyebrow": "Hygiene Expectations",
+    "prompt": "You finish using a piece of equipment and notice a slight sheen of your own sweat on it. What is your process?",
+    "options": [
+      {
+        "label": "Thoroughly sanitize it with the provided disinfectant spray, ensuring the next person doesn't contract my DNA.",
+        "gymScore": 2,
+        "homeScore": 0,
+        "boutiqueScore": 1,
+        "couchScore": 0
+      },
+      {
+        "label": "I don't wipe down anything because it's my house, my sweat, and my kingdom of dirt.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "The dedicated studio staff or the next person will handle it; my premium fee includes maintenance.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 2,
+        "couchScore": 1
+      },
+      {
+        "label": "I walk away slowly, hoping no one saw me, and never return to that specific side of the room.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-the-resolution-trap",
+    "eyebrow": "Temporal Delusions",
+    "prompt": "It is January 2nd. The fitness space is absolutely packed with eager new faces. Your internal monologue says:",
+    "options": [
+      {
+        "label": "Look at these fragile tourists. They’ll all quit by February 15th anyway. Stay out of my squat rack.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Thank God I don't have to deal with this seasonal migration pattern in my spare bedroom.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Oh wow, everyone looks so cute in their new matching sets! The energy in this community is so vibrant right now!",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "I am one of these eager new faces, and I am already deeply regretting every financial and physical choice that led me here.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-equipment-complexity",
+    "eyebrow": "Mechanical Sophistication",
+    "prompt": "You encounter a complex fitness machine with multiple pulleys, levers, and an instruction diagram that looks like a NASA blueprint. You:",
+    "options": [
+      {
+        "label": "Figure it out by trial and error, loading up the weight stack until it makes a satisfying clanking noise.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Avoid it completely. If it can't be done with a heavy iron ball attached to a handle, it's unnecessary commercial fluff.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Wait for an instructor to precisely calibrate the settings for me so I don't compromise my alignment or break a nail.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "Stare at it blankly for 30 seconds, sit on it backwards by accident, get embarrassed, and go look at the water fountain.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-the-cancellation-test",
+    "eyebrow": "Contractual Commitment",
+    "prompt": "To cancel your membership, you must send a notarized letter via carrier pigeon to an office in North Dakota. Your response:",
+    "options": [
+      {
+        "label": "I will never cancel. This place is my temple, and my membership card will be buried with me.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "I don't sign contracts with corporate overlords. I pay cash for my iron or use gravity for free.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "I just use a boutique class pack that handles everything seamlessly through an app with zero friction.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "I will simply accept the recurring charge for the next five years because confronting administrative friction is terrifying.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-fitness-tracking",
+    "eyebrow": "Data Obsession",
+    "prompt": "Your smartwatch dies 2 minutes into your workout. What happens next?",
+    "options": [
+      {
+        "label": "The workout is officially void. The calories didn't count, the heart rate wasn't logged, and my day is ruined.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 2,
+        "couchScore": 1
+      },
+      {
+        "label": "Who cares? The heavy things are still heavy regardless of what a piece of wrist plastic thinks.",
+        "gymScore": 2,
+        "homeScore": 1,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Perfect. Now I can sit down and stop moving entirely since there's no digital record to hold me accountable.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      },
+      {
+        "label": "I keep moving according to my internal training log. I don't need a cloud server to validate my suffering.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      }
+    ]
+  },
+  {
+    "id": "q-the-scent-profile",
+    "eyebrow": "Olfactory Environment",
+    "prompt": "What does your ideal exercise environment smell like?",
+    "options": [
+      {
+        "label": "A delicate blend of premium lavender essential oils, expensive cleaning chemicals, and high-end air purifiers.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "Industrial rubber flooring, stale chalk, dried sweat, and a subtle undertone of raw, unadulterated effort.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Dust motes, laundry detergent from the adjacent washing machine, and complete social isolation.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Scented candles, freshly baked goods from the kitchen, and absolutely zero physical exertion.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-group-pressure",
+    "eyebrow": "Peer Mimicry",
+    "prompt": "Everyone in the room is performing a complex explosive movement that looks highly dangerous for your lower back. You:",
+    "options": [
+      {
+        "label": "Do it anyway because the peer pressure in this room is intoxicating and I want the instructor to like me.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "Modify it immediately to a basic heavy compound lift. I don't do circus tricks for clout.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "I am not in the room. I am alone in my house doing basic movements where no one can judge my safety metrics.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Slowly lay down on a mat, hold my hamstring, and make a pained face so people think I’m an injured athlete instead of lazy.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-the-weekend-ritual",
+    "eyebrow": "Saturday Morning Choices",
+    "prompt": "It's Saturday at 8:00 AM. Your alarm goes off. What is your reality?",
+    "options": [
+      {
+        "label": "I'm already at the studio door, waiting for the doors to open so I can secure my favorite Reformer machine.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "Crawling out of bed to lift heavy iron before the commercial gym gets overrun by teenagers filming their biceps.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Drinking coffee in my underwear while staring at the pull-up bar I installed in the doorway, mentally preparing to use it.",
+        "gymScore": 0,
+        "homeScore": 2,
+        "boutiqueScore": 0,
+        "couchScore": 1
+      },
+      {
+        "label": "Smashing the snooze button with the force of a thousand suns and waking up at noon with a headache.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-lighting-vibe",
+    "eyebrow": "Visual Ambience",
+    "prompt": "The lighting in your ideal workout facility should be described as:",
+    "options": [
+      {
+        "label": "Harsh, unyielding fluorescent bulbs that show every single flaw, vein, and drop of sweat with clinical accuracy.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "A dark, nightclub-adjacent aesthetic with neon accents that make everyone look 40% more attractive than they actually are.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "The natural, low-wattage lighting of my own home where I can control the blinds and hide from the public.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Completely off. The only light should be coming from a television screen while I lie horizontal.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-the-price-of-admission",
+    "eyebrow": "Financial Motivation",
+    "prompt": "How much financial skin do you need in the game to actually take your health seriously?",
+    "options": [
+      {
+        "label": "$10 a month. If it costs any more, it's a scam. The iron doesn't care about luxury branding.",
+        "gymScore": 2,
+        "homeScore": 1,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "At least $300 a month. If the price tag doesn't cause me slight financial panic, I simply will not show up.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "Zero. I bought my weights once, and I will use them until the day I die without paying rent to a facility.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "It doesn't matter how much I spend; I will consistently pay the premium and still find a reason to stay home.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 1,
+        "couchScore": 2
+      }
+    ]
+  },
+  {
+    "id": "q-socializing-intent",
+    "eyebrow": "Companionship Needs",
+    "prompt": "When you see an acquaintance at the fitness venue, your immediate internal reaction is:",
+    "options": [
+      {
+        "label": "Put on my oversized headphones, pull down my hat, and pretend to be illiterate and blind.",
+        "gymScore": 1,
+        "homeScore": 2,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Wave enthusiastically, plan to get a post-workout brunch together, and spend 10 minutes discussing our weekend plans.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "Give a brief, silent head nod of mutual athletic respect, then immediately return to my training set.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Hide behind a pillar, wait for them to leave, and text them later saying 'So bummed I missed you, I worked out so hard!'",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-soreness-reaction",
+    "eyebrow": "Delayed Onset Muscle Soreness",
+    "prompt": "You wake up the morning after a workout and your thighs feel like they are made of shattered glass. You think:",
+    "options": [
+      {
+        "label": "This is a magnificent sensation. The biological machinery is rebuilding. Time to train upper body.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "I need to book a professional sports massage and buy an expensive topical recovery cream immediately.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "Hobble over to my foam roller in the living room, curse quietly to myself, and stick to the routine.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "I have clearly done permanent structural damage to my anatomy. I am retired from physical activity indefinitely.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-cardio-philosophy",
+    "eyebrow": "Endurance Suffering",
+    "prompt": "What is your preferred method of elevated cardiovascular activity?",
+    "options": [
+      {
+        "label": "Staring at a blank wall on a commercial treadmill for 45 minutes while pondering the futility of human existence.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Sprint intervals down my own street or high-intensity jumping jacks in my kitchen where nobody can watch me bounce.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "An immersive, rhythm-based choreography experience where the lights flash and I forget I'm actually doing cardio.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "Walking slowly to the kitchen to see if the contents of the refrigerator have magically changed since I checked 10 minutes ago.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-the-fitness-app-clutter",
+    "eyebrow": "Digital Solutions",
+    "prompt": "Your phone's home screen has a dedicated folder filled with 7 different fitness tracking apps. How often do you use them?",
+    "options": [
+      {
+        "label": "Every single day to log my exact sets, reps, and micro-progression metrics.",
+        "gymScore": 1,
+        "homeScore": 2,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Only when I need to book a highly competitive reservation slot for a premium studio class.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "They exist purely as a digital monument to my good intentions. I open them once every quarter to feel guilty.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      },
+      {
+        "label": "I don't use apps. I write my numbers in a battered, sweat-stained paper notebook like a real lifter.",
+        "gymScore": 2,
+        "homeScore": 1,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      }
+    ]
+  },
+  {
+    "id": "q-hydration-accessories",
+    "eyebrow": "Vessel Aesthetics",
+    "prompt": "Choose your primary weapon for maintaining optimal cellular hydration:",
+    "options": [
+      {
+        "label": "A massive, unbranded 1-gallon plastic jug filled with tap water that looks like it belongs on a construction site.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "A highly trendy, insulated tumbler in a limited-edition pastel colorway that matches my outfit.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "A standard reusable bottle covered in stickers from independent outdoor brands, filled with filtered home water.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "An open can of diet soda or a sugary iced coffee that defeats the entire biological purpose of hydration.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-the-ideal-duration",
+    "eyebrow": "Temporal Investment",
+    "prompt": "What is the perfect amount of time to allocate to a single exercise session?",
+    "options": [
+      {
+        "label": "Exactly 45 minutes of hyper-efficient, high-octane group movement followed by a quick exit.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "A brutal 90-minute marathon of lifting, resting, staring blankly, and lifting again.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "A swift, convenient 25-minute circuit done during a lunch break before my coworkers realize I'm gone.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "About 12 minutes of light stretching followed by 50 minutes of lying on the mat scrolling through real estate apps.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-the-pre-workout-ritual",
+    "eyebrow": "Chemical Preparation",
+    "prompt": "Your psychological preparation routine before physical exertion consists of:",
+    "options": [
+      {
+        "label": "Consuming enough highly caffeinated pre-workout powder to make my skin itch and my heart beat like a techno song.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Drinking a double espresso in my own kitchen while quietly staring at the wall in absolute silence.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Applying a spritz of expensive body mist and selecting a premium hair tie to ensure complete aesthetic synergy.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "Spending 45 minutes looking for my running shoes, giving up, and deciding that today is a rest day.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-the-guest-experience",
+    "eyebrow": "Spatial Navigation",
+    "prompt": "You walk into a new fitness facility for the first time. Your dominant emotion is:",
+    "options": [
+      {
+        "label": "Excitement to survey the equipment landscape and evaluate the heavy-duty rack options.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Deep admiration for the interior design, the complimentary beauty products, and the retail selection in the lobby.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "Intense social dread. I don't belong here, everyone is watching me, and I want to escape back to my cave.",
+        "gymScore": 0,
+        "homeScore": 2,
+        "boutiqueScore": 0,
+        "couchScore": 1
+      },
+      {
+        "label": "Pure resentment that I was dragged here by a friend when I could be at home consuming media.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-the-injury-excuse",
+    "eyebrow": "Anatomical Fragility",
+    "prompt": "You experience a minor tweak in your left wrist. How does this impact your long-term fitness strategy?",
+    "options": [
+      {
+        "label": "Modify my programming to focus entirely on lower body exercises. The grind doesn't stop for a weak joint.",
+        "gymScore": 2,
+        "homeScore": 1,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Freeze my boutique membership immediately and notify my instructor that I will be absent for rehabilitation.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "Accept my fate as a housebound creature, focusing on core exercises that require zero upper body engagement.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "This is a medical catastrophe. I must remain completely immobile on the sofa for the next six months to ensure full recovery.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-accountability-dynamics",
+    "eyebrow": "Social Contracts",
+    "prompt": "Your workout partner texts you at 5:30 AM saying, 'Hey, sorry, can't make it today.' Your immediate action is to:",
+    "options": [
+      {
+        "label": "Go anyway. My dedication was never contingent on their fragile work ethic.",
+        "gymScore": 2,
+        "homeScore": 1,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Thank the fitness deities for this absolute gift, roll back over, and sleep for another two hours.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      },
+      {
+        "label": "Pivot to a solitary home session where I don't need human validation to execute my programming.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Feel intense panic because I don't know what to do without a group environment guiding my every move.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      }
+    ]
+  },
+  {
+    "id": "q-the-ideal-instructor",
+    "eyebrow": "Pedagogical Styles",
+    "prompt": "If you had to choose a professional to direct your physical movement, you would choose:",
+    "options": [
+      {
+        "label": "A former drill sergeant who communicates entirely in guttural shouts and demands absolute physical submission.",
+        "gymScore": 2,
+        "homeScore": 0,
+        "boutiqueScore": 1,
+        "couchScore": 0
+      },
+      {
+        "label": "A charismatic fitness influencer who tells me I'm a radiant warrior while adjusting my pelvis posture.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "No one. I am my own master, guided entirely by YouTube instructional videos played at 1.5x speed.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "A passive-aggressive therapist who tells me it's okay to give up and accept my physical mediocrity.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-the-locker-room-amenities",
+    "eyebrow": "Material Comforts",
+    "prompt": "Your opinion on the presence of complimentary dry shampoo, luxury body lotion, and premium hair straighteners is:",
+    "options": [
+      {
+        "label": "An absolute operational requirement. Without them, the facility is essentially a medieval dungeon.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "A complete waste of capital. Spend that money on better barbells and thicker rubber matting.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Irrelevant because I use my own bathroom facilities immediately after completing my session.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "I enjoy looking at them while avoiding the actual exercise portion of the facility visit.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 1,
+        "couchScore": 2
+      }
+    ]
+  },
+  {
+    "id": "q-the-gym-bro-culture",
+    "eyebrow": "Subcultural Tribalisim",
+    "prompt": "Two individuals are aggressively high-fiving and grunting after a heavy lift. Your psychological assessment is:",
+    "options": [
+      {
+        "label": "Beautiful. Pure communal camaraderie. I want to join their pack and share their chalk.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "An exhausting display of toxic performance. This is why I refuse to leave my house.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Deeply uncivilized. They would never survive the polite, synchronized etiquette of a premium Pilates studio.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "A fascinating anthropological display that I will judge harshly while eating a pastry in my car.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-the-travel-dilemma",
+    "eyebrow": "Geographic Disruption",
+    "prompt": "You are staying at a hotel for a three-day vacation. The hotel fitness center consists of two rusty dumbbells and a broken bicycle. You:",
+    "options": [
+      {
+        "label": "Find a local hardcore powerlifting gym within a 20-mile radius and pay the exorbitant day-rate fee.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Perform a high-intensity bodyweight routine on the hotel carpet, ignoring the questionable stains beneath my face.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Locate the nearest luxury studio branch to maintain my class streak and secure an aesthetic vacation selfie.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "Celebrate this structural limitation as a legitimate excuse to consume alcohol at the hotel bar starting at 11:00 AM.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-the-mirror-selfie-protocol",
+    "eyebrow": "Digital Validation",
+    "prompt": "When is it appropriate to document your physical state via a photographic digital asset?",
+    "options": [
+      {
+        "label": "Only when the lighting hits my musculature at a precise 45-degree angle, demonstrating functional hypertrophy.",
+        "gymScore": 2,
+        "homeScore": 0,
+        "boutiqueScore": 1,
+        "couchScore": 0
+      },
+      {
+        "label": "Before, during, and after every single class, complete with geo-tags and a mention of the premium studio brand.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "Never. The camera is an instrument of vanity and I am a ghost operating in silence.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Only when I want to post a throw-back picture from three years ago to pretend I still possess physical vitality.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-the-stretching-fallacy",
+    "eyebrow": "Flexibility Maintenance",
+    "prompt": "The workout is complete. It is time for the cool-down and stretching protocol. Your implementation looks like:",
+    "options": [
+      {
+        "label": "Walking directly to the exit. I don't have time to touch my toes; I have macro-nutrients to consume.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "An intensive, 15-minute meditative yoga flow in my living room with the lights dimmed and incense burning.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Enjoying a complimentary chilled eucalyptus towel placed over my face while lying in a state of luxury bliss.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "Sitting on the floor, stretching my lower back for 20 seconds, and immediately scrolling TikTok for the next half hour.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-the-equipment-investment",
+    "eyebrow": "Capital Allocation",
+    "prompt": "You inherit $2,000 that must be spent exclusively on your physical well-being. You allocate it to:",
+    "options": [
+      {
+        "label": "A commercial-grade squat rack and a premium barbell that will outlive my grandchildren.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "A multi-year membership at a hardcore warehouse gym that smells like iron and competitive drive.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "A premium package of 50 VIP passes to an exclusive boutique studio with private locker privileges.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "An incredibly comfortable ergonomic lounge chair designed to optimize my passive relaxation intervals.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-the-workout-playlist-crisis",
+    "eyebrow": "Audio Management",
+    "prompt": "You arrive at your exercise destination and realize you forgot your headphones. Your psychological resolution is:",
+    "options": [
+      {
+        "label": "Suffer through the awful corporate pop music playing over the facility speakers; the weights are still heavy.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Turn around and go home. Exercising without my precise internal audio narrative is a structural impossibility.",
+        "gymScore": 0,
+        "homeScore": 2,
+        "boutiqueScore": 0,
+        "couchScore": 1
+      },
+      {
+        "label": "Irrelevant. The studio instructor curates a custom live DJ set for every session, so I don't bring headphones anyway.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "Go home and spend the rest of the day carefully curating a new playlist that I will never actually exercise to.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-the-body-composition-goal",
+    "eyebrow": "Somatic Objectives",
+    "prompt": "What is the primary aesthetic or physical goal you are trying to achieve through this suffering?",
+    "options": [
+      {
+        "label": "To look like an intimidating brick house capable of moving a broken vehicle out of an intersection.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "To possess a lean, functional body that can survive a sudden zombie apocalypse without leaving my property.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "To look exceptionally sleek in high-end leisure apparel while walking through a premium grocery store.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "To accept my soft, pillowy form as a silent protest against the aggressive demands of the fitness industry.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-the-social-media-unfollow",
+    "eyebrow": "Digital Envy",
+    "prompt": "An acquaintance posts a photo of their shredded abdominal muscles on vacation. Your immediate internal reaction is to:",
+    "options": [
+      {
+        "label": "Mute their account immediately because their aggressive success highlights my complete lack of discipline.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 1,
+        "couchScore": 2
+      },
+      {
+        "label": "Analyze their vascularity to determine if their training protocol involves more compound lifting than mine.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Leave a supportive comment asking what premium studio method they're currently utilizing to achieve those results.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "Ignore it entirely while closing the app to order another plate of fried carbohydrates.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      }
+    ]
+  },
+  {
+    "id": "q-the-laundry-backlog",
+    "eyebrow": "Domestic Friction",
+    "prompt": "You realize you haven't done laundry and your only available fitness clothes are slightly damp and smell faintly of yesterday's effort. You:",
+    "options": [
+      {
+        "label": "Put them on anyway. The bacteria builds character and the gym environment is already filthy.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Cancel my scheduled studio class because showing up smelling less than pristine is a social felony.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "Work out naked or in my undergarments in the privacy of my own bedroom where laundry metrics don't apply.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Use this laundry crisis as an unassailable moral justification to abandon all physical movement for the week.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-the-cardio-boredom",
+    "eyebrow": "Monotony Tolerance",
+    "prompt": "You are 4 minutes into a steady-state cardio session and you feel like your brain is slowly leaking out of your ears from boredom. You:",
+    "options": [
+      {
+        "label": "Embrace the void. Suffering is the point. Focus entirely on the rhythmic thumping of my feet.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Step off the machine, log out of the interface, and accept that I am simply not a cardio person.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 1,
+        "couchScore": 2
+      },
+      {
+        "label": "Switch to an interactive digital landscape app that pretends I'm running through the Swiss Alps away from a bear.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "I don't experience this because the instructor keeps changing the intervals every 30 seconds while shouting inspirational quotes.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      }
+    ]
+  },
+  {
+    "id": "q-the-personal-trainer-pitch",
+    "eyebrow": "Sales Tactics",
+    "prompt": "A personal trainer with a clipboard and an aggressive smile approaches you to offer a 'complimentary metabolic assessment.' Your defensive mechanism is:",
+    "options": [
+      {
+        "label": "Look them dead in the eye and state my exact current deadlift metrics until they realize they have nothing to teach me.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Lie and tell them I am moving to another continent tomorrow to avoid any further sales conversations.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 1,
+        "couchScore": 2
+      },
+      {
+        "label": "Politely inform them that I already have an elite private coach who manages my wellness matrix.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "This encounter is exactly why I pay to stay behind a deadbolted door in my own residential property.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      }
+    ]
+  },
+  {
+    "id": "q-the-fitness-idealism",
+    "eyebrow": "Delusional Goalposts",
+    "prompt": "When you buy new fitness equipment or memberships, what are you actually purchasing?",
+    "options": [
+      {
+        "label": "Access to heavy-duty machinery capable of facilitating maximal mechanical tension.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "The privilege of being left completely alone to suffer in an environment designed for efficiency.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "A temporary hit of dopamine that allows me to pretend I'm an active person without doing any actual work.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      },
+      {
+        "label": "An entry ticket into an exclusive social community of high-status, attractive individuals.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      }
+    ]
+  },
+  {
+    "id": "q-the-diet-overhaul",
+    "eyebrow": "Nutritional Delusions",
+    "prompt": "You decide to 'clean up your diet.' Your approach can be best described as:",
+    "options": [
+      {
+        "label": "Buying $200 worth of organic green juices and artisanal salads that will rot in the crisper drawer while I eat pizza.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 1,
+        "couchScore": 2
+      },
+      {
+        "label": "Calculating my exact macronutrient targets down to the single gram and meal prepping unseasoned chicken breasts.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Subscribing to an expensive premium meal-delivery service that arrives in a insulated tote bag with ice packs.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "Eliminating a single random food item (like seed oils) while completely ignoring my massive caloric surplus.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      }
+    ]
+  },
+  {
+    "id": "q-the-ultimate-truth",
+    "eyebrow": "The Mirror of Truth",
+    "prompt": "Be brutally honest with yourself: If nobody knew you worked out, and it didn't change your physical appearance, would you still do it?",
+    "options": [
+      {
+        "label": "Yes. The physical challenge and the routine keep me sane. The iron is my meditation.",
+        "gymScore": 2,
+        "homeScore": 1,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Absolutely not. If I can't look good in clothing or post about it, I am staying on the couch forever.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 2,
+        "couchScore": 1
+      },
+      {
+        "label": "Yes, because I genuinely enjoy the process of optimizing my biological machinery in absolute privacy.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "I don't even do it now when people DO know and it DOES change appearances, so the question is entirely academic.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-commute-excuse",
+    "eyebrow": "The Commute Reality Check",
+    "prompt": "It is Tuesday at 6:45 PM. It is dark, slightly drizzling, and you just finished a brutal work meeting. The gym is a 12-minute drive away. What are you doing?",
+    "options": [
+      {
+        "label": "Driving there. The iron calls to me.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Sitting in my car in the driveway for 25 minutes scrolling TikTok, eventually eating cereal.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      },
+      {
+        "label": "I'd only go if it's a candlelit room where someone yells at me to cycle to a remix.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "Going straight into the garage in my pajamas to swing a kettlebell so I don't have to perceive society.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      }
+    ]
+  },
+  {
+    "id": "q-new-years-membership",
+    "eyebrow": "The January Confession",
+    "prompt": "Be honest: what does your gym membership history actually look like?",
+    "options": [
+      {
+        "label": "I've been going consistently for years. It's basically my third home.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "I signed up in January, went twice, and I'm still paying for it in July.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      },
+      {
+        "label": "I canceled my membership and bought dumbbells instead. Best decision of my life.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "I only do class packs at the studio with the good playlist and the eucalyptus towels.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      }
+    ]
+  },
+  {
+    "id": "q-mirror-selfie",
+    "eyebrow": "The Mirror Test",
+    "prompt": "How do you feel about taking a gym selfie mid-workout?",
+    "options": [
+      {
+        "label": "Sweaty, red-faced, mid-rep, no shame. That's the whole point.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "I only take one if the lighting, outfit, and smoothie are all coordinated.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "Absolutely not. No one is allowed to witness me exist while exercising.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "I take the selfie before I even work out, then never actually work out.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-injury-excuse",
+    "eyebrow": "The Excuse Generator",
+    "prompt": "You feel a tiny twinge in your knee. What happens next?",
+    "options": [
+      {
+        "label": "I keep lifting. Pain is just weakness leaving the body, probably.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "This is now my official reason for not exercising for the next 6 months.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      },
+      {
+        "label": "I switch to a gentle at-home mobility routine and actually listen to my body.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "I book a 'recovery' Pilates class because it sounds soft and expensive.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      }
+    ]
+  },
+  {
+    "id": "q-price-tag",
+    "eyebrow": "The Money Talk",
+    "prompt": "How much are you realistically willing to spend per month on 'getting fit'?",
+    "options": [
+      {
+        "label": "$25-40. Just give me a squat rack and leave me alone.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "$0 after the initial equipment purchase. I refuse to pay monthly for anything.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "$150-300. I need the ambiance, the instructor, and the branded water bottle.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "Whatever amount guarantees I feel guilty enough to maybe go once.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-crowded-gym",
+    "eyebrow": "The Crowd Tolerance Test",
+    "prompt": "It's 5:30 PM, peak hour, every squat rack is taken, and someone's doing curls in it. Your reaction?",
+    "options": [
+      {
+        "label": "I wait, I superset, I adapt. That's just gym life.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "This is exactly why I built a home gym. No waiting, no strangers, no curls in the rack.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "I'd rather pay for a class with assigned spots so this never happens to me.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "I take this as a sign from the universe to go home and skip it.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-playlist-preference",
+    "eyebrow": "The Soundtrack of Your Suffering",
+    "prompt": "What's actually playing while you 'work out'?",
+    "options": [
+      {
+        "label": "Aggressive rap or metal, loud enough to justify my grunting.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "A curated remix an instructor picked, synced perfectly to the choreography.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "A true crime podcast, alone, in silence otherwise.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Whatever's playing on the TV I'm watching instead of working out.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-locker-room",
+    "eyebrow": "The Locker Room Verdict",
+    "prompt": "How do you feel about communal locker rooms and showers?",
+    "options": [
+      {
+        "label": "Fine. It's a means to an end, I'm there to lift, not socialize.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Absolutely revolting. I will shower in my own home like a civilized person.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Only acceptable if it has nice tile, good products, and no fluorescent lighting.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "Irrelevant, since I've never actually made it past the parking lot.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-instructor-yelling",
+    "eyebrow": "The Motivation Method",
+    "prompt": "What actually gets you to push through the last rep?",
+    "options": [
+      {
+        "label": "My own internal rage and a heavy bar loaded with plates.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "A perky instructor screaming 'you got this queen' over a bass drop.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "Absolute silence and the knowledge that no one is watching me struggle.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Nothing, because I stopped at rep one and started a snack instead.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-post-workout-drink",
+    "eyebrow": "The Post-Workout Ritual",
+    "prompt": "What's your go-to post-workout refuel?",
+    "options": [
+      {
+        "label": "A shaker bottle of plain whey protein, chugged in the parking lot.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "A $14 smoothie with adaptogens, collagen, and a name like 'Glow Getter'.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "Water from my own fridge, in peace, while nobody watches me chug it.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "A celebratory donut because I 'earned it' by thinking about exercising.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-equipment-check",
+    "eyebrow": "The Home Setup Audit",
+    "prompt": "What does your current home 'gym' situation look like?",
+    "options": [
+      {
+        "label": "A full rack, barbell, plates, and a pull-up bar. It's basically a real gym.",
+        "gymScore": 1,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "One yoga mat still in its original packaging, under the couch.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      },
+      {
+        "label": "Nothing, because I need someone to hand me equipment and validation simultaneously.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "Nothing at home, I need a heavy rack and other people around to feel like I'm really lifting.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      }
+    ]
+  },
+  {
+    "id": "q-rest-day-truth",
+    "eyebrow": "The Rest Day Reality",
+    "prompt": "What does your 'rest day' actually look like?",
+    "options": [
+      {
+        "label": "Active recovery, foam rolling, maybe a light walk. I still respect the process.",
+        "gymScore": 2,
+        "homeScore": 1,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "A gentle stretch class with soft music and someone telling me I'm doing great.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "Every day is rest day. That's not a joke, that's my lifestyle.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      },
+      {
+        "label": "Lying on my garage floor after a workout, alone, refusing to move or speak to anyone.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      }
+    ]
+  },
+  {
+    "id": "q-wearable-obsession",
+    "eyebrow": "The Data Obsession",
+    "prompt": "How do you feel about fitness trackers and workout apps?",
+    "options": [
+      {
+        "label": "I track sets, reps, and weight religiously in a spreadsheet like a scientist.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "I have five fitness apps installed and zero workouts logged in any of them.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      },
+      {
+        "label": "I only care about the app if it lets me book a cute class and pick my bike.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "I use a private app at home so nobody can see my numbers or my form.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      }
+    ]
+  },
+  {
+    "id": "q-weather-check",
+    "eyebrow": "The Weather Report",
+    "prompt": "It's freezing and raining sideways outside. Does your workout plan change?",
+    "options": [
+      {
+        "label": "Nope, the gym has a roof and heating, I'll be fine.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Not at all, my garage doesn't care about weather and neither do I.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "This is the perfect excuse to skip everything and stay under a blanket.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      },
+      {
+        "label": "I'll still go if the studio has heated floors and hands me a towel at the door.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      }
+    ]
+  },
+  {
+    "id": "q-gym-buddy",
+    "eyebrow": "The Accountability Question",
+    "prompt": "Do you need a workout buddy to actually show up?",
+    "options": [
+      {
+        "label": "No, I lift alone. Other people just slow down my supersets.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "I need a whole class of strangers cheering so I feel like I'm at a party.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "I need a buddy so badly that when they cancel, I cancel too, forever.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      },
+      {
+        "label": "Absolutely not, I actively avoid workouts that require me to talk to anyone.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      }
+    ]
+  },
+  {
+    "id": "q-outfit-check",
+    "eyebrow": "The Fit Check",
+    "prompt": "What are you wearing to 'work out' today?",
+    "options": [
+      {
+        "label": "Old gray shorts, a stained tank top, and lifting shoes that have seen things.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "A perfectly color-coordinated set I bought specifically for this one class.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "Whatever pajamas I already have on. Nobody's grading my outfit in my garage.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Cute workout clothes I bought to feel motivated, that I will now wear to get coffee instead.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-deadlift-feelings",
+    "eyebrow": "The Deadlift Test",
+    "prompt": "How do you feel about deadlifts specifically?",
+    "options": [
+      {
+        "label": "It's the greatest lift ever created and I will die on this hill.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "I do them alone with a barbell in my garage, no chalk board audience needed.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Too scary, too heavy, too loud. I'd rather do a barre pulse to a pop song.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "I've seen a video of one once and that felt like enough exposure.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-influencer-culture",
+    "eyebrow": "The Influencer Effect",
+    "prompt": "How much does fitness influencer content actually change your behavior?",
+    "options": [
+      {
+        "label": "Not really, I have my program and I'm sticking to it regardless of trends.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "I buy the exact leggings and book the exact class they're always in.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "I watch, I save the video, I never do the workout, and I feel accomplished anyway.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      },
+      {
+        "label": "I copy their home workouts exactly, alone, with zero desire to be seen doing them.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      }
+    ]
+  },
+  {
+    "id": "q-cancel-culture",
+    "eyebrow": "The Cancellation Habit",
+    "prompt": "How often do you cancel workout plans at the last minute?",
+    "options": [
+      {
+        "label": "Rarely. If it's on my calendar, I'm going, full stop.",
+        "gymScore": 2,
+        "homeScore": 1,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Constantly, and I have an increasingly elaborate excuse ready every time.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      },
+      {
+        "label": "Only if there's no cute outfit or good class available that day.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "I can't cancel because it's just me, a kettlebell, and my own conscience.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      }
+    ]
+  },
+  {
+    "id": "q-chalk-and-grunts",
+    "eyebrow": "The Ambiance Preference",
+    "prompt": "What's your ideal workout ambiance?",
+    "options": [
+      {
+        "label": "Chalk dust in the air, weights slamming, someone grunting three racks over.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Dim lighting, candles, a diffuser, and a playlist that sounds like a spa.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "Total silence except my own breathing and the hum of my garage fridge.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "The ambiance of my living room, TV on, snacks within arm's reach.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-progressive-overload",
+    "eyebrow": "The Progress Question",
+    "prompt": "How do you actually track whether you're improving?",
+    "options": [
+      {
+        "label": "I track weight on the bar every single session. If it's not going up, I'm mad.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "I track how the class made me feel and whether the instructor remembered my name.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "I track my own reps and times privately, no need for anyone else to know.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "I track how many days it's been since I last thought about working out.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-treadmill-vs-outdoors",
+    "eyebrow": "The Cardio Question",
+    "prompt": "How do you feel about running?",
+    "options": [
+      {
+        "label": "On a gym treadmill, in the cardio section, next to everyone else's treadmill.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Only in a dark, sweaty spin class with lasers and a DJ.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "Alone on a trail or in my basement, absolutely nobody around to see my form.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "I've considered it, in theory, as a concept, once, briefly.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-contract-fear",
+    "eyebrow": "The Fine Print Fear",
+    "prompt": "How do you feel about signing a 12-month gym contract?",
+    "options": [
+      {
+        "label": "Sign me up, I know I'll actually use it every week.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "I'd rather buy equipment once and never deal with a contract again.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "I only want drop-in class packs, no commitment, just vibes.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "I'll sign it, feel amazing for one day, and never think about it again.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-preworkout-ritual",
+    "eyebrow": "The Pre-Workout Ritual",
+    "prompt": "What's your actual pre-workout routine?",
+    "options": [
+      {
+        "label": "A scoop of pre-workout, headphones in, don't talk to me.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Picking the perfect outfit and checking the class roster to see who's teaching.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "Locking the garage door so no one can witness my questionable form.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Scrolling my phone until the 'ideal window' to work out has definitely passed.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-spotting-trust",
+    "eyebrow": "The Trust Fall",
+    "prompt": "How do you feel about asking a stranger to spot you on a heavy lift?",
+    "options": [
+      {
+        "label": "No problem, gym etiquette exists for a reason, we help each other out.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Never, I'd rather fail alone in my garage than ask a stranger for help.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "I'd rather have an instructor gently adjust my form during a class.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "Irrelevant, since heavy lifting isn't really part of my current lifestyle.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-social-battery",
+    "eyebrow": "The Social Battery Check",
+    "prompt": "After a long work day, how much social interaction can you handle during a workout?",
+    "options": [
+      {
+        "label": "A moderate amount, gym small talk is fine, I just need my headphones as an escape hatch.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Zero. I need total isolation or I will not move a single muscle.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "I actually crave it, I want a whole room of people high-fiving me.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "None, because social interaction is exactly why I'm on the couch instead.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-first-workout-memory",
+    "eyebrow": "The Origin Story",
+    "prompt": "Think back to your first real workout experience. What happened?",
+    "options": [
+      {
+        "label": "I got hooked on lifting immediately and never really left the gym since.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "I loved a group class so much I signed up for a package on the spot.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "I hated everyone watching me and swore to only ever exercise alone from then on.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "I got so sore I decided this whole 'fitness' thing wasn't for me.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-goal-setting",
+    "eyebrow": "The Actual Goal",
+    "prompt": "What's your real, honest fitness goal right now?",
+    "options": [
+      {
+        "label": "Add more weight to the bar. Get stronger. Simple as that.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Feel calm, private, and in control without anyone else around.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Feel like I'm part of a cute community with good energy and better lighting.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "Feel like I'm 'about to start' something, indefinitely, without starting anything.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-classpass-scroll",
+    "eyebrow": "The App Scroll Test",
+    "prompt": "You open a fitness booking app. What happens next?",
+    "options": [
+      {
+        "label": "I book the class with the cutest branding and the best smoothie bar.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "I don't need an app, I know my program and my gym's hours by heart.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "I close it and scroll something else instead for the next two hours.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      },
+      {
+        "label": "I never open apps like this, I have my own routine at home, no booking required.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      }
+    ]
+  },
+  {
+    "id": "q-friend-invite",
+    "eyebrow": "The Invitation Test",
+    "prompt": "A friend invites you to a 6 AM boot camp class this weekend. Your response?",
+    "options": [
+      {
+        "label": "Sure, as long as it's real weights and not just jumping around to pop music.",
+        "gymScore": 2,
+        "homeScore": 0,
+        "boutiqueScore": 1,
+        "couchScore": 0
+      },
+      {
+        "label": "Absolutely, I'll bring my cutest set and tell everyone about it after.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "Hard pass, I don't do group activities before 9 AM or ever.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "'Maybe!' I say, already knowing I will sleep through my alarm on purpose.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-cost-per-visit",
+    "eyebrow": "The Cost-Per-Visit Math",
+    "prompt": "If you actually did the math, how much is each of your workouts costing you?",
+    "options": [
+      {
+        "label": "Very little, since I go 4-5 times a week and use every dollar of my membership.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Zero, since I already own everything and paid once, years ago.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Around $35 a class, but the smoothie and the vibe make it worth it.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "I genuinely don't want to know how much per visit I'm paying for zero visits.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-tv-workout-show",
+    "eyebrow": "The Screen Time Truth",
+    "prompt": "What's actually on your TV right now while you 'plan' to work out?",
+    "options": [
+      {
+        "label": "Nothing, I'm at the gym, not sitting on a couch near a TV.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "A workout video I follow along to, alone, in my living room.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "A cooking show, while I eat something that is definitely not a smoothie.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      },
+      {
+        "label": "An influencer's vlog of their studio workout that I will not personally replicate.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      }
+    ]
+  },
+  {
+    "id": "q-gym-smell",
+    "eyebrow": "The Smell Test",
+    "prompt": "How do you feel about the specific smell of a commercial gym: rubber mats, chalk, and industrial cleaner?",
+    "options": [
+      {
+        "label": "It smells like productivity. I love it, honestly.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Disgusting. My garage smells like nothing, which is exactly how I like it.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "I'd only tolerate it if it were replaced with eucalyptus and essential oils.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "No idea, I've never actually been inside long enough to smell anything.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-competition-drive",
+    "eyebrow": "The Competitive Streak",
+    "prompt": "Does seeing someone lift more than you at the gym bother you?",
+    "options": [
+      {
+        "label": "It fuels me. I'm adding weight to the bar next set, guaranteed.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "I only compete with the leaderboard on my own equipment, alone, at home.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "I only care if I got more 'high fives' from the instructor than the person next to me.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "I wouldn't know, I've never been in a room where lifting was happening.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-meal-prep-honesty",
+    "eyebrow": "The Meal Prep Confession",
+    "prompt": "How does your meal prep situation match your workout intensity?",
+    "options": [
+      {
+        "label": "Chicken, rice, broccoli, in bulk, every single week, like clockwork.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "I make my own smoothies and snacks at home, no need to buy them anywhere.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "I buy the $16 acai bowl instead of making anything myself, obviously.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "My meal prep is ordering delivery and calling it 'self-care'.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-time-of-day",
+    "eyebrow": "The Time Slot Test",
+    "prompt": "What time do you actually, realistically, work out?",
+    "options": [
+      {
+        "label": "5:30 AM, before the gym gets crowded, every single day.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Whenever, since my garage is open 24/7 and no one's judging my schedule.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Only for the specific class time slot I already booked and paid for.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "'Tomorrow.' The time is always tomorrow.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-form-check-anxiety",
+    "eyebrow": "The Form Check Fear",
+    "prompt": "Someone offers to film your set to check your form. How do you feel?",
+    "options": [
+      {
+        "label": "Great, send it, I want the feedback so I can lift heavier and safer.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "No thank you, my form is a private matter between me and my garage walls.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Only if it's for a cute Instagram Reel with good lighting and a caption.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "There's nothing to film, since there's no actual movement happening.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-vacation-workout",
+    "eyebrow": "The Vacation Test",
+    "prompt": "You're on vacation for a week. What happens to your workout routine?",
+    "options": [
+      {
+        "label": "I find the closest hotel gym and squeeze in a session anyway.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "I do bodyweight circuits in my hotel room, alone, curtains closed.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "I book a fancy studio class local to wherever I'm traveling, obviously.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "What routine? I've been 'on vacation' from working out for a while now.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-supplement-shelf",
+    "eyebrow": "The Supplement Shelf",
+    "prompt": "What does your supplement shelf actually look like?",
+    "options": [
+      {
+        "label": "Whey, creatine, a shaker bottle with mystery residue. Functional and unglamorous.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Collagen powder, adaptogenic mushrooms, and something with rose quartz infused water.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "A basic protein tub I bought online, used at home, no fanfare required.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "An unopened multivitamin bottle from three years ago that I take as proof I 'tried'.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-group-class-vibe",
+    "eyebrow": "The Group Class Vibe Check",
+    "prompt": "How do you feel about a group fitness class in general?",
+    "options": [
+      {
+        "label": "Only if it's strength-focused and no one's asking me to 'find my inner light'.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Love it. I need the choreography, the community, and the playlist to feel alive.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "No thanks, group anything sounds like my personal nightmare.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "I'd love it in theory, but I've never actually attended one.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-workout-length",
+    "eyebrow": "The Time Investment",
+    "prompt": "How long is your ideal workout session?",
+    "options": [
+      {
+        "label": "60-90 minutes. I need warm-up sets, working sets, and a cooldown.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "45 minutes, exactly the length of the class I already paid for.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "20-30 minutes, efficient, private, and over before anyone notices I did anything.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Zero minutes, but I will think intensely about working out for a full hour.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-bad-day-response",
+    "eyebrow": "The Bad Day Response",
+    "prompt": "You had an awful day. What actually happens to your workout plan?",
+    "options": [
+      {
+        "label": "I go anyway. Lifting heavy things is how I process my emotions.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "I want a soft, guided class where someone tells me it's okay to feel this way.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "I retreat to my own space and move quietly, alone, no witnesses needed.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "I use it as the perfect justification to eat my feelings on the couch instead.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-gym-bag-status",
+    "eyebrow": "The Gym Bag Audit",
+    "prompt": "What's the current status of your gym bag?",
+    "options": [
+      {
+        "label": "Packed, by the door, ready to go, lifting belt included.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "I don't need one, my equipment lives permanently in my garage.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "A cute tote with a grip sock, towel, and my class schedule inside.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "Somewhere in my closet, unopened, tags still on from a purchase two years ago.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-heavy-vs-light",
+    "eyebrow": "The Weight Preference",
+    "prompt": "Given a choice, heavy weights and low reps, or light weights and lots of reps to music?",
+    "options": [
+      {
+        "label": "Heavy, low reps, obviously. Go big or don't bother showing up.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Light weights, high reps, to a great beat, with an instructor counting for me.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "Whatever I already own at home, alone, at my own pace.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Neither, since 'weights' aren't really part of my daily vocabulary.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-checkin-behavior",
+    "eyebrow": "The Check-In Habit",
+    "prompt": "Do you 'check in' on social media when you work out?",
+    "options": [
+      {
+        "label": "No, I'm too busy actually lifting to post about lifting.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Absolutely, tagged location, sweaty selfie, smoothie in hand, the whole aesthetic.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "Never, nobody needs to know what happens in my garage.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "I post an inspirational quote about fitness instead of actually doing any fitness.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-warmup-routine",
+    "eyebrow": "The Warm-Up Question",
+    "prompt": "What does your warm-up actually look like?",
+    "options": [
+      {
+        "label": "Light cardio, mobility drills, then a couple warm-up sets before the real work begins.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "A guided warm-up flow, led by an instructor, set to gentle music.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "A few stretches on my own living room floor, then straight into it.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Stretching my arm to reach the remote counts, right?",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-post-workout-soreness",
+    "eyebrow": "The Soreness Report",
+    "prompt": "The day after a hard workout, how sore are you and how do you handle it?",
+    "options": [
+      {
+        "label": "Extremely sore, and I wear it like a badge of honor at the office.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Sore in a cute, humble-braggy way I mention in the class group chat.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "Sore, but I deal with it quietly and alone with a foam roller.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "Not sore at all, since soreness requires actually doing the workout first.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-year-from-now",
+    "eyebrow": "The Long Game",
+    "prompt": "Realistically, where do you see your fitness routine one year from now?",
+    "options": [
+      {
+        "label": "Same gym, more weight on the bar, same grind, just stronger.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "A more elaborate home setup, still solo, still zero interest in gym crowds.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "A loyal member of my favorite studio, on a first-name basis with the instructors.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "Exactly where I am now, with a slightly more expensive unused membership.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
+    ]
+  },
+  {
+    "id": "q-final-honesty-check",
+    "eyebrow": "The Final Gut Check",
+    "prompt": "Last question. Deep breath. What's the real, unfiltered truth about your relationship with exercise?",
+    "options": [
+      {
+        "label": "I genuinely love the grind, the iron, and the routine. It's non-negotiable for me.",
+        "gymScore": 3,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "I only move my body when it feels aesthetic, social, and expensive enough to matter.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 3,
+        "couchScore": 0
+      },
+      {
+        "label": "I'll do the work, but only if absolutely no one else is around to witness it.",
+        "gymScore": 0,
+        "homeScore": 3,
+        "boutiqueScore": 0,
+        "couchScore": 0
+      },
+      {
+        "label": "I like the idea of fitness a lot more than I like actually doing it.",
+        "gymScore": 0,
+        "homeScore": 0,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      }
     ]
   }
 ]
