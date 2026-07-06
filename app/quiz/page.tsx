@@ -60,6 +60,15 @@ export default function QuizPage() {
   const [emailError, setEmailError] = useState("");
   const [unlocked, setUnlocked] = useState(false);
 
+  // Pre-populate email and skip gate if user has already submitted before
+  useEffect(() => {
+    const savedEmail = window.localStorage.getItem("gymornot_email");
+    if (savedEmail) {
+      setEmail(savedEmail);
+      setUnlocked(true);
+    }
+  }, []);
+
   useEffect(() => {
     async function loadQuestions() {
       try {
@@ -108,12 +117,24 @@ export default function QuizPage() {
     }, 550);
     const advanceTimer = setTimeout(() => {
       setPhase("result");
+      // Returning users: save updated score and redirect automatically
+      if (unlocked && email) {
+        const currentMax = questions.reduce(
+          (sum, q) => sum + Math.max(...q.options.map((o) => o.score)),
+          0
+        );
+        window.localStorage.setItem("gymornot_risk_score", String(totalScore));
+        window.localStorage.setItem("gymornot_risk_max_score", String(currentMax));
+        const pct = currentMax > 0 ? Math.round((totalScore / currentMax) * 100) : 0;
+        window.localStorage.setItem("gymornot_risk_percentage", String(pct));
+        setTimeout(() => router.push("/dashboard"), 900);
+      }
     }, 2900);
     return () => {
       clearInterval(lineTimer);
       clearTimeout(advanceTimer);
     };
-  }, [phase]);
+  }, [phase, unlocked, email, totalScore, questions, router]);
 
   const handleAnswer = (score: number) => {
     setTotalScore((current) => current + score);
