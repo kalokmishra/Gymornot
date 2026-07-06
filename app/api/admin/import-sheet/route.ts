@@ -1,8 +1,9 @@
 import { NextResponse } from "next/server";
 import fs from "fs/promises";
 import path from "path";
+import type { Session } from "next-auth";
 import { getServerSession } from "next-auth/next";
-import { authOptions } from "../auth/[...nextauth]/route";
+import { authOptions } from "../../auth/authOptions";
 
 async function csvParse(input: string) {
   const rows: string[][] = [];
@@ -109,7 +110,7 @@ export async function POST(request: Request) {
 
     // Audit
     try {
-      const session = await getServerSession(authOptions as any);
+      const session = (await getServerSession(authOptions as any)) as Session | null;
       const userEmail = session?.user?.email ?? null;
       const userName = session?.user?.name ?? null;
       const ip = request.headers.get("x-forwarded-for") || request.headers.get("x-real-ip") || "unknown";

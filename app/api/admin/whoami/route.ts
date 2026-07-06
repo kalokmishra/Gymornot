@@ -1,10 +1,11 @@
 import { NextResponse } from "next/server";
+import type { Session } from "next-auth";
 import { getServerSession } from "next-auth/next";
-import { authOptions } from "../auth/[...nextauth]/route";
+import { authOptions } from "../../auth/authOptions";
 
 export async function GET() {
   try {
-    const session = await getServerSession(authOptions as any);
+    const session = (await getServerSession(authOptions as any)) as Session | null;
     const adminUsers = (process.env.ADMIN_USERS || "").split(",").map((s) => s.trim()).filter(Boolean);
     const isAdmin = !!session && adminUsers.length > 0 && adminUsers.includes((session.user?.email || "").toLowerCase());
 
