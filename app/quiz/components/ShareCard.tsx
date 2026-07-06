@@ -15,7 +15,7 @@ export default function ShareCard({ archetypeId, headline }: { archetypeId: stri
     <div className="mt-8 rounded-[1.75rem] border border-white/10 bg-[#111827]/80 p-6 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.5)]">
       <h3 className="eyebrow mb-4">Roast a Friend</h3>
       <div className="flex flex-col sm:flex-row items-center gap-6">
-        <div className="w-24 h-24 shrink-0 rounded-2xl overflow-hidden border border-white/10">
+        <div className="w-[120px] h-[120px] shrink-0 rounded-2xl overflow-hidden border border-white/10">
           <img src={badgeUrl} alt="Archetype Badge" className="w-full h-full object-cover" />
         </div>
         <div className="flex-1">
