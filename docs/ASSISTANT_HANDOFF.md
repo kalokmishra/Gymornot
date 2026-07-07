@@ -18,7 +18,8 @@ A full presentation-layer overhaul across all user-facing pages. No business log
 |---|---|
 | `app/page.tsx` | Terminal counter bar, sharp CTA hierarchy, receipt-styled bento card, exit interview testimonials, cleaned header |
 | `app/quiz/page.tsx` | Blueprint grid bg, phase tracker + guilt meter, stacked answer rows with flash, terminal loading states, dashed receipt result layout |
-| `app/dashboard/page.tsx` | Full-bleed hero score, financial audit receipt, 28-day habit grid, escape hatch warning module |
+| `app/dashboard/page.tsx` | Full-bleed hero score, financial audit receipt, 28-day habit grid, escape hatch warning module linking to the new audit page |
+| `app/giving-free-money/page.tsx` | Stark brutalist audit report page roasting the user based on archetype and localStorage |
 | `app/dont-wanna-gym/page.tsx` | Sharp hero block, single contextual header link |
 | `app/dont-wanna-gym/components/AlternativeMatrix.tsx` | Flat barrier selectors, numbered blueprint ledger rows, mono gear table |
 | `app/dont-wanna-gym/components/ResignationGenerator.tsx` | Two-column flat layout, dashed letter document, flat CTAs |

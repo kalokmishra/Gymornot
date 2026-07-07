@@ -12,10 +12,11 @@ A complete visual overhaul of the presentation layer across all user-facing page
 
 **Features**
 - New brutalist/editorial design system: `rounded-none` everywhere, monospace data labels, receipt/ledger-style layouts, terminal loading states
-- Homepage (`/`): Terminal counter bar, asymmetric bento grid with receipt-styled `$44.50` card, exit interview testimonials, sharp CTA hierarchy
-- Quiz (`/quiz`): Blueprint grid background, phase tracker + cosmetic guilt meter, full-width stacked answer rows with selection flash, terminal evaluation log replacing spinner
-- Dashboard (`/dashboard`): Hero `$1,068` score in massive red type, dashed-border financial audit receipt, 28-day sharp-square habit grid, escape hatch warning module
+- Homepage (`/`): Reframed bento grid as credible industry data averages instead of fake user personalization, terminal counter bar, asymmetric bento layout with receipt-styled `$44.50` card, exit interview testimonials, sharp CTA hierarchy
+- Quiz (`/quiz`): Blueprint grid background, phase tracker + cosmetic guilt meter, full-width stacked answer rows with selection flash, terminal evaluation log replacing spinner, clear seen popup flags on mount to support retakes, extended redirect delay to let the fade animation complete
+- Dashboard (`/dashboard`): Hero `$1,068` score in massive red type, dashed-border financial audit receipt, 28-day sharp-square habit grid, escape hatch warning module linking to the new audit page
 - Escape page (`/dont-wanna-gym`): All three sub-components (AlternativeMatrix, ResignationGenerator, CalendarSignup) redesigned with flat borders, ledger rows, and receipt-style forms
+- Audit page (`/giving-free-money`): Added a new route rendering a certified brutalist audit, personalized roasts by archetype, and ledger breakdown for corporate gym sponsors
 - Community (`/community`): Completely rewritten with blueprint grid background, interlocking border tile grid, dashed-border PR checklist receipt
 - Header standardised across all pages: logo + single contextual `font-mono` text link only — no pill nav
 

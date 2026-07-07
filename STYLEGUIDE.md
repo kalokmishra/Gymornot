@@ -178,6 +178,11 @@ Flat, no blur:
 - `ResignationGenerator`: two-column flat layout; generated letter in `bg-zinc-900 border-dashed`.
 - `CalendarSignup`: fused input+button row (no gap), `border border-zinc-700`.
 
+### `/giving-free-money`
+- Blueprint grid background.
+- stark `max-w-2xl border-2 border-zinc-800 bg-void p-8 rounded-none` audit container.
+- High-visibility `bg-brand-red` block button for cancellation trigger.
+
 ### `/community`
 - Blueprint grid background.
 - Interlocking `border-l/r/t/b` link grid (no individual card borders).

@@ -44,6 +44,12 @@ The anti-gym destination site serving organic SEO traffic and quiz funnel drop-o
 - Recommends zero-fluff gear combinations referencing `staticData.ts` items.
 - Features the `CalendarSignup` component to capture emails and distribute the "Bare Minimum Calendar" printable PDF.
 
+### `/giving-free-money`
+The gym donation audit page that acts as a personalized certificate of gym subsidization. It is linked from the dashboard's fallback link:
+- Computes user's dominant archetype and displays a customized critique.
+- Features a faux ledger breaking down the annual wasted spend.
+- Directs the user to the cancellation generator.
+
 ---
 
 ## Server-side route
