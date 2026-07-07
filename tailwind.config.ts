@@ -9,10 +9,10 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        void: "#0B0F19",
-        surface: "#131A2A",
-        "surface-raised": "#1B2438",
-        hairline: "#2A3450",
+        void: "#0A0A0A",
+        surface: "#0D0D0D",
+        "surface-raised": "#111111",
+        hairline: "#222222",
         "gym-green": {
           DEFAULT: "#10B981",
           dim: "#0D9668",
@@ -24,8 +24,10 @@ const config: Config = {
           glow: "#A78BFA",
         },
         alert: "#F59E0B",
-        ink: "#E7E9EE",
-        "ink-dim": "#9AA3B8",
+        ink: "#F5F5F0",
+        "ink-dim": "#666666",
+        "brand-lime": "#D4FF00",
+        "brand-red": "#FF2D20",
       },
       fontFamily: {
         display: ["var(--font-display)", "sans-serif"],

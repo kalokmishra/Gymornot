@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-import { computeArchetype, ArchetypeResult } from "../../lib/quiz";
+import { computeArchetype } from "../../lib/quiz";
 import ShareCard from "../quiz/components/ShareCard";
 
 function formatDate(value: string | null) {
@@ -71,92 +71,108 @@ export default function DashboardPage() {
   };
 
   const textColorClass = archetype?.color === "green" 
-    ? "text-gym-green" 
+    ? "text-brand-lime" 
     : archetype?.color === "purple" 
-      ? "text-anti-purple" 
+      ? "text-anti-purple-glow" 
       : archetype?.color === "amber"
-        ? "text-amber-500"
-        : "text-alert";
+        ? "text-amber-400"
+        : "text-brand-red";
 
   return (
-    <main className="min-h-screen bg-[radial-gradient(circle_at_top_left,_rgba(16,185,129,0.16),transparent_28%),radial-gradient(circle_at_bottom_right,_rgba(139,92,246,0.16),transparent_24%),#0b0f19] text-ink">
-      <div className="mx-auto flex min-h-screen max-w-6xl flex-col px-6 py-8 sm:px-10 lg:px-12">
-        <div className="mb-6 flex items-center justify-between rounded-[1.5rem] border border-white/10 bg-surface/80 px-6 py-4 text-sm text-ink-dim shadow-[0_20px_70px_-50px_rgba(0,0,0,0.8)] sm:px-10">
-          <div className="text-lg font-semibold text-ink">GymOrNot<span className="text-gym-green">.</span>com</div>
-          <div className="flex flex-wrap gap-3">
-            <Link href="/" className="cta-secondary px-4 py-2 text-sm">
+    <main className="min-h-screen bg-void text-ink font-body selection:bg-brand-lime selection:text-void">
+      {/* HEADER */}
+      <header className="border-b border-hairline bg-void/80 backdrop-blur-md sticky top-0 z-50 px-6 py-4">
+        <div className="max-w-6xl mx-auto flex justify-between items-center">
+          <Link href="/" className="font-display font-black text-2xl text-brand-lime tracking-tight hover:opacity-80 transition-opacity">
+            GymOrNot<span className="text-brand-red">.</span>
+          </Link>
+          <nav className="flex gap-2">
+            <Link
+              href="/"
+              className="font-display font-bold text-xs tracking-wider uppercase border border-hairline hover:bg-surface-raised px-4 py-2 text-ink-dim hover:text-ink rounded-full transition-all"
+            >
               Home
             </Link>
-            <Link href="/quiz" className="cta-primary px-4 py-2 text-sm">
-              Retake quiz
+            <Link
+              href="/quiz"
+              className="font-display font-bold text-xs tracking-wider uppercase border border-hairline hover:bg-surface-raised px-4 py-2 text-ink-dim hover:text-ink rounded-full transition-all"
+            >
+              Quiz
             </Link>
-          </div>
+            <Link
+              href="/dont-wanna-gym"
+              className="font-display font-bold text-xs tracking-wider uppercase border border-hairline hover:bg-surface-raised px-4 py-2 text-ink-dim hover:text-ink rounded-full transition-all"
+            >
+              Escape
+            </Link>
+          </nav>
         </div>
+      </header>
 
+      <div className="mx-auto flex max-w-6xl flex-col px-6 py-12">
         <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr]">
-          <div className="panel-card rounded-[2rem] p-8">
-            <div className="soft-card rounded-[1.75rem] p-8">
-              <p className="eyebrow">The 1% Club</p>
-              <h1 className="mt-5 text-4xl font-semibold tracking-tight text-ink sm:text-5xl">
+          <div className="space-y-8">
+            <div className="border border-hairline bg-surface p-8 rounded-3xl">
+              <p className="font-display text-xs font-bold text-brand-lime tracking-widest uppercase">The 1% Club</p>
+              <h1 className="mt-4 font-display font-black text-3xl sm:text-5xl uppercase tracking-tight text-ink leading-none">
                 Track the habit, not the membership.
               </h1>
-              <p className="mt-4 max-w-2xl text-base leading-8 text-ink-dim">
+              <p className="mt-4 text-base leading-relaxed text-ink-dim">
                 Check in once per day and keep your streak going. This page turns your quiz verdict into an actionable habit dashboard.
               </p>
             </div>
 
             {isUnlocked && archetype ? (
-              <div className="mt-8 grid gap-6">
-                <section className="grid gap-4 rounded-[1.75rem] border border-white/10 bg-[#0b1320] p-6 shadow-lg">
-                  <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
-                    <div>
-                      <p className="text-xs uppercase tracking-[0.28em] text-ink-dim">Your Diagnosis</p>
-                      <p className={`mt-3 text-2xl font-semibold ${textColorClass}`}>
-                        {archetype.name}
-                      </p>
-                    </div>
+              <div className="grid gap-6">
+                <section className="grid gap-4 border border-hairline bg-surface-raised p-8 rounded-3xl">
+                  <div>
+                    <p className="font-display text-xs font-bold text-brand-red tracking-widest uppercase mb-1">Your Diagnosis</p>
+                    <p className={`text-2xl sm:text-3xl font-display font-black uppercase ${textColorClass}`}>
+                      {archetype.name}
+                    </p>
                   </div>
-                  <p className="text-sm leading-7 text-ink-dim">{archetype.roast}</p>
+                  <p className="text-sm leading-relaxed text-ink-dim">{archetype.roast}</p>
                 </section>
 
-                <section className="grid gap-4 sm:grid-cols-2">
-                  <div className="rounded-[1.75rem] border border-white/10 bg-[#111827]/80 p-6">
-                    <p className="text-xs uppercase tracking-[0.28em] text-ink-dim">Current streak</p>
-                    <p className="mt-3 text-3xl font-semibold text-ink">{streak} day{streak === 1 ? "" : "s"}</p>
-                    <p className="mt-3 text-sm text-ink-dim">Last check-in: {formatDate(lastCheckin)}</p>
+                <section className="grid gap-6 sm:grid-cols-2">
+                  <div className="border border-hairline bg-surface p-6 rounded-2xl">
+                    <p className="font-display text-xs font-bold text-ink-dim uppercase tracking-wider">Current streak</p>
+                    <p className="mt-3 font-display font-black text-4xl text-ink">{streak} day{streak === 1 ? "" : "s"}</p>
+                    <p className="mt-3 text-xs font-bold text-ink-dim uppercase">Last check-in: {formatDate(lastCheckin)}</p>
                   </div>
-                  <div className="rounded-[1.75rem] border border-white/10 bg-[#111827]/80 p-6 relative overflow-hidden">
-                    <p className="text-xs uppercase tracking-[0.28em] text-ink-dim">Donation Index</p>
-                    <p className="mt-3 text-3xl font-semibold text-gym-green">${capitalSaved}</p>
-                    <p className="mt-3 text-sm text-ink-dim">Money saved by actually building the habit instead of paying for ghost memberships.</p>
+                  <div className="border border-hairline bg-surface p-6 rounded-2xl relative overflow-hidden">
+                    <p className="font-display text-xs font-bold text-ink-dim uppercase tracking-wider">Donation Index</p>
+                    <p className="mt-3 font-display font-black text-4xl text-brand-lime">${capitalSaved}</p>
+                    <p className="mt-3 text-xs text-ink-dim leading-relaxed">Money saved by actually building the habit instead of paying for ghost memberships.</p>
                     {dropoffProbability > 50 && (
-                      <div className="absolute top-0 right-0 mt-6 mr-6 h-3 w-3 rounded-full bg-alert animate-ping" />
+                      <div className="absolute top-0 right-0 mt-6 mr-6 h-2 w-2 rounded-full bg-brand-red animate-pulse" />
                     )}
                   </div>
                 </section>
 
                 {/* Sticky CTA Panel */}
-                <section className="rounded-[1.75rem] border border-gym-green/30 bg-[#0f1726]/80 p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <section className="border border-brand-lime bg-brand-lime/5 p-6 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4">
                    <div className="flex-1">
-                      <p className="text-sm font-semibold text-ink">Action Plan: {archetype.cta.label}</p>
-                      <p className="mt-1 text-sm text-ink-dim">Your tailored recommendation to beat the statistics.</p>
+                      <p className="font-display text-sm font-black text-ink uppercase">Action Plan: {archetype.cta.label}</p>
+                      <p className="mt-1 text-xs font-bold text-ink-dim uppercase">Your tailored recommendation to beat the statistics.</p>
                    </div>
-                   <a href={archetype.cta.href} className="cta-primary whitespace-nowrap px-6 py-3">
+                   <a href={archetype.cta.href} className="font-display font-black text-xs uppercase bg-brand-lime text-void px-6 py-3 rounded-full hover:bg-ink transition-all whitespace-nowrap">
                      Take Action
                    </a>
                 </section>
 
-                <section className="rounded-[1.75rem] border border-white/10 bg-[#0f1726]/80 p-6">
+                {/* Daily Log */}
+                <section className="border border-hairline bg-surface-raised p-6 rounded-2xl">
                   <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                     <div>
-                      <p className="text-sm font-semibold text-ink">Daily check-in</p>
-                      <p className="mt-1 text-sm text-ink-dim">Tap the button after you do a workout, a walk, or any healthy movement today.</p>
+                      <p className="font-display text-sm font-black text-ink uppercase">Daily check-in</p>
+                      <p className="mt-1 text-xs text-ink-dim">Tap the button after you do a workout, a walk, or any healthy movement today.</p>
                     </div>
                     <button
                       type="button"
                       onClick={handleCheckin}
                       disabled={checkedInToday}
-                      className="cta-primary px-6 py-3 text-sm disabled:cursor-not-allowed disabled:opacity-50"
+                      className="font-display font-black text-xs uppercase bg-brand-lime text-void px-6 py-3 rounded-full disabled:opacity-30 disabled:hover:bg-brand-lime hover:bg-ink transition-all whitespace-nowrap"
                     >
                       {checkedInToday ? "Checked in today" : "Log today"}
                     </button>
@@ -164,14 +180,14 @@ export default function DashboardPage() {
                 </section>
               </div>
             ) : (
-              <div className="mt-8 rounded-[1.75rem] border border-white/10 bg-[#0f1726]/80 p-8 text-center">
-                <p className="text-xl font-semibold text-ink">You haven’t unlocked the dashboard yet.</p>
-                <p className="mt-3 text-sm text-ink-dim">
+              <div className="border border-hairline bg-surface p-8 rounded-3xl text-center">
+                <p className="font-display font-black text-xl text-ink uppercase">You haven’t unlocked the dashboard yet.</p>
+                <p className="mt-2 text-sm text-ink-dim">
                   Finish the quiz first to get your verdict and start tracking streaks.
                 </p>
                 <Link
                   href="/quiz"
-                  className="mt-6 inline-flex rounded-full bg-gym-green px-6 py-3 text-sm font-semibold text-void transition hover:bg-gym-green/90"
+                  className="mt-6 inline-block font-display font-black text-xs uppercase bg-brand-lime text-void px-6 py-3 rounded-full hover:bg-ink transition-all"
                 >
                   Take the quiz now
                 </Link>
@@ -179,19 +195,30 @@ export default function DashboardPage() {
             )}
           </div>
 
-          <aside className="panel-card rounded-[2rem] p-8 flex flex-col gap-6">
-            <div className="soft-card rounded-[1.75rem] p-6">
-              <p className="eyebrow">Dashboard notes</p>
-              <ul className="mt-5 space-y-4 text-sm leading-7 text-ink-dim">
-                <li>Streaks are stored locally in your browser.</li>
-                <li>Checking in today refreshes your momentum score.</li>
-                <li>You can retake the quiz anytime to update your risk profile.</li>
+          <aside className="flex flex-col gap-6">
+            <div className="border border-hairline bg-surface p-6 rounded-2xl">
+              <p className="font-display text-xs font-bold text-brand-red tracking-widest uppercase mb-4">Dashboard notes</p>
+              <ul className="space-y-4 text-xs font-bold text-ink-dim uppercase">
+                <li className="flex gap-2 items-start">
+                  <span className="text-brand-lime">•</span>
+                  <span>Streaks are stored locally in your browser.</span>
+                </li>
+                <li className="flex gap-2 items-start">
+                  <span className="text-brand-lime">•</span>
+                  <span>Checking in today refreshes your momentum score.</span>
+                </li>
+                <li className="flex gap-2 items-start">
+                  <span className="text-brand-lime">•</span>
+                  <span>You can retake the quiz anytime to update your risk profile.</span>
+                </li>
               </ul>
             </div>
-            <div className="rounded-[1.75rem] border border-white/10 bg-[#0d1527]/80 p-6 text-sm text-ink-dim">
-              <p className="font-semibold text-ink">Tip</p>
-              <p className="mt-2">Consistency matters more than intensity. A daily walk, stretching session, or quick bodyweight set counts here.</p>
+            
+            <div className="border border-hairline bg-surface p-6 rounded-2xl">
+              <p className="font-display text-xs font-bold text-brand-lime tracking-widest uppercase mb-2">Tip</p>
+              <p className="text-sm font-bold text-ink-dim uppercase">Consistency matters more than intensity. A daily walk, stretching session, or quick bodyweight set counts here.</p>
             </div>
+            
             {/* Share Card shown if unlocked */}
             {isUnlocked && archetype && (
               <ShareCard archetypeId={archetype.id} headline={archetype.shareHeadline} />

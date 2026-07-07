@@ -3,13 +3,13 @@
 @tailwind utilities;
 
 :root {
-  --void: #0b0f19;
-  --surface: #111827;
-  --surface-raised: #131a2a;
-  --gym-green: #10b981;
-  --anti-purple: #8b5cf6;
-  --ink: #e7e9ee;
-  --ink-dim: #9aa3b8;
+  --void: #0A0A0A;
+  --surface: #0D0D0D;
+  --surface-raised: #111111;
+  --gym-green: #D4FF00;
+  --anti-purple: #8B5CF6;
+  --ink: #F5F5F0;
+  --ink-dim: #666666;
 }
 
 * {
@@ -21,9 +21,7 @@ html {
 }
 
 body {
-  background: radial-gradient(circle at top left, rgba(16, 185, 129, 0.12), transparent 28%),
-    radial-gradient(circle at bottom right, rgba(139, 92, 246, 0.14), transparent 24%),
-    #0b0f19;
+  background-color: var(--void);
   color: var(--ink);
   min-height: 100vh;
   font-synthesis: none;
@@ -32,8 +30,8 @@ body {
 }
 
 ::selection {
-  background-color: rgba(16, 185, 129, 0.9);
-  color: #0b0f19;
+  background-color: var(--gym-green);
+  color: var(--void);
 }
 
 .panel-card {

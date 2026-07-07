@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>I Don't Wanna Gym - Static Mockup</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Space Mono', monospace;
+      background-color: #f4f4f0; /* Off-white, paper-like */
+      color: #111;
+      background-image: radial-gradient(#d4d4d0 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
+    .brutalist-card {
+      background-color: #fff;
+      border: 4px solid #111;
+      box-shadow: 8px 8px 0px #111;
+      border-radius: 0;
+      transition: all 0.2s ease;
+    }
+    .brutalist-card:hover {
+      transform: translate(-4px, -4px);
+      box-shadow: 12px 12px 0px #111;
+    }
+    .brutalist-input {
+      background-color: #f9f9f9;
+      border: 3px solid #111;
+      border-radius: 0;
+    }
+    .brutalist-input:focus {
+      outline: none;
+      background-color: #fff;
+      box-shadow: inset 4px 4px 0px rgba(0,0,0,0.1);
+    }
+    .brutalist-btn {
+      background-color: #bbf7d0; /* Soft green */
+      border: 3px solid #111;
+      box-shadow: 4px 4px 0px #111;
+      text-transform: uppercase;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .brutalist-btn:active {
+      transform: translate(4px, 4px);
+      box-shadow: 0px 0px 0px #111;
+    }
+    .scribble {
+      text-decoration: line-through;
+      text-decoration-color: #ef4444;
+      text-decoration-thickness: 3px;
+    }
+  </style>
+</head>
+<body class="min-h-screen py-12 px-4 sm:px-8">
+  <div class="max-w-5xl mx-auto space-y-12">
+    
+    <!-- Header -->
+    <header class="text-center space-y-4">
+      <div class="inline-block brutalist-card px-4 py-2 bg-yellow-200 font-bold text-sm">
+        VOL. 1 / NO JUDGMENT
+      </div>
+      <h1 class="text-5xl sm:text-7xl font-black uppercase tracking-tighter">
+        The Anti-Gym <br/> <span class="bg-black text-white px-4 leading-relaxed">Manifesto.</span>
+      </h1>
+      <p class="text-lg max-w-2xl mx-auto font-bold pt-4">
+        You are officially unsubscribed from <span class="scribble">gym guilt</span> corporate fitness.
+      </p>
+    </header>
+
+    <!-- Generator Section -->
+    <section class="grid lg:grid-cols-2 gap-8 items-start">
+      
+      <!-- Form Input -->
+      <div class="brutalist-card p-6 sm:p-8 space-y-6">
+        <h2 class="text-2xl font-bold uppercase border-b-4 border-black pb-4">
+          Resignation Letter Generator
+        </h2>
+        <p class="text-sm font-bold">Fill this out. Reclaim your time and money.</p>
+        
+        <div class="space-y-4">
+          <div>
+            <label class="block text-xs font-bold uppercase mb-1">Name of the Trap (Gym Name)</label>
+            <input type="text" placeholder="e.g. Mega Fitplex" class="brutalist-input w-full p-3 font-bold" />
+          </div>
+          
+          <div>
+            <label class="block text-xs font-bold uppercase mb-1">Monthly Donation (Fee)</label>
+            <input type="text" placeholder="e.g. $89" class="brutalist-input w-full p-3 font-bold" />
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold uppercase mb-1">Reason for Leaving</label>
+            <select class="brutalist-input w-full p-3 font-bold appearance-none">
+              <option>The music is too loud.</option>
+              <option>Someone grunted too close to my ear.</option>
+              <option>I'm tired of paying to stand in line to touch cold metal.</option>
+              <option>Existential dread from the locker room scent.</option>
+            </select>
+          </div>
+          
+          <button class="brutalist-btn w-full py-4 mt-4 text-lg">
+            Draft My Resignation &rarr;
+          </button>
+        </div>
+      </div>
+
+      <!-- Generated Letter Output -->
+      <div class="brutalist-card p-6 sm:p-8 bg-purple-200 transform lg:rotate-1">
+        <div class="flex justify-between items-center border-b-4 border-black pb-4 mb-6">
+          <h2 class="text-xl font-bold uppercase">Official Notice</h2>
+          <span class="text-xs font-bold bg-white px-2 py-1 border-2 border-black">DRAFT</span>
+        </div>
+        
+        <div class="font-mono text-sm leading-relaxed space-y-4 bg-white p-6 border-2 border-black border-dashed">
+          <p><strong>To:</strong> [Mega Fitplex] Management</p>
+          <p><strong>Subject:</strong> Immediate Membership Termination</p>
+          <p>To Whom It May Concern,</p>
+          <p>
+            Please accept this as formal notice that I am terminating my membership, effective immediately. 
+          </p>
+          <p>
+            For the past several months, I have been generously donating <strong>[$89]</strong> to your facility. However, it has come to my attention that <em>[I'm tired of paying to stand in line to touch cold metal]</em>. 
+          </p>
+          <p>
+            I will be replacing this membership with a 15-minute daily walk in my neighborhood, which is absolutely free and involves 100% less unsolicited fitness advice.
+          </p>
+          <p>Do not contact me with counter-offers.</p>
+          <p>Regards,<br/>A Free Human</p>
+        </div>
+
+        <div class="mt-6 flex gap-4">
+          <button class="brutalist-btn bg-white px-4 py-2 flex-1 text-sm">Copy Letter</button>
+          <button class="brutalist-btn bg-blue-300 px-4 py-2 flex-1 text-sm">Share on X</button>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+</body>
+</html>

@@ -1,17 +1,17 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, Inter, IBM_Plex_Mono } from "next/font/google";
+import { Manrope, DM_Sans, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 
-const spaceGrotesk = Space_Grotesk({
+const manrope = Manrope({
   subsets: ["latin"],
-  weight: ["500", "700"],
+  weight: ["400", "500", "700", "800"],
   variable: "--font-display",
   display: "swap",
 });
 
-const inter = Inter({
+const dmSans = DM_Sans({
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-body",
   display: "swap",
 });
@@ -35,8 +35,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable} ${plexMono.variable}`}>
-      <body className="font-body bg-void text-ink antialiased">{children}</body>
+    <html lang="en" className={`${manrope.variable} ${dmSans.variable} ${plexMono.variable}`}>
+      <body className="font-body bg-[#0A0A0A] text-[#F5F5F0] antialiased">{children}</body>
     </html>
   );
 }

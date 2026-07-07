@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { GEAR_ITEMS, GearItem } from "../../../staticData";
+import { GEAR_ITEMS } from "../../../staticData";
 
 interface AlternativeOption {
   id: string;
@@ -27,7 +27,7 @@ const MATRIX_OPTIONS: AlternativeOption[] = [
   },
   {
     id: "gym-anxiety",
-    barrier: "Gyms give me massive anxiety.",
+    barrier: "Gyms give me anxiety.",
     recommendation: "The Dark Room Routine",
     blueprint: [
       "Dim the lights in your bedroom or living room to eliminate self-consciousness.",
@@ -39,7 +39,7 @@ const MATRIX_OPTIONS: AlternativeOption[] = [
   },
   {
     id: "hate-sweating",
-    barrier: "I hate sweating and gasping for air.",
+    barrier: "I hate sweating and crowds.",
     recommendation: "Zone 2 NEAT Maxing",
     blueprint: [
       "Focus on low-intensity steady-state (LISS) movement.",
@@ -58,71 +58,74 @@ export default function AlternativeMatrix() {
   const recommendedGear = GEAR_ITEMS.filter((item) => currentOption.gearIds.includes(item.id));
 
   return (
-    <div className="bg-black border-4 border-white shadow-[8px_8px_0px_#fff] p-6 sm:p-8 font-mono">
-      <h2 className="text-2xl font-black uppercase text-white">
+    <div className="border border-hairline bg-surface p-6 sm:p-8 rounded-3xl">
+      <h2 className="font-display font-black text-2xl uppercase text-ink">
         The Alternative Matrix
       </h2>
-      <p className="mt-2 text-sm font-bold text-gray-300 border-b-4 border-white pb-4">
+      <p className="mt-2 text-sm font-bold text-ink-dim border-b border-hairline pb-4 uppercase">
         Select your absolute biggest barrier to entering a traditional gym, and let's find your zero-friction solution.
       </p>
 
       {/* Barrier Selectors */}
       <div className="mt-6 grid gap-4 sm:grid-cols-3">
-        {MATRIX_OPTIONS.map((opt) => (
-          <button
-            key={opt.id}
-            onClick={() => setSelectedId(opt.id)}
-            className={`w-full text-left border-4 p-4 transition-transform active:translate-y-1 active:translate-x-1 hover:-translate-y-1 hover:-translate-x-1 ${
-              selectedId === opt.id
-                ? "border-white bg-gym-green text-black shadow-[4px_4px_0px_#fff] hover:shadow-[6px_6px_0px_#fff]"
-                : "border-white bg-[#222] text-white shadow-[4px_4px_0px_#fff] hover:shadow-[6px_6px_0px_#fff]"
-            }`}
-          >
-            <p className={`text-xs uppercase font-bold border-2 border-white inline-block px-1 ${selectedId === opt.id ? 'bg-black text-white' : 'bg-white text-black'}`}>Barrier</p>
-            <p className="mt-2 font-bold text-sm sm:text-base">"{opt.barrier}"</p>
-          </button>
-        ))}
+        {MATRIX_OPTIONS.map((opt) => {
+          const isSelected = selectedId === opt.id;
+          return (
+            <button
+              key={opt.id}
+              onClick={() => setSelectedId(opt.id)}
+              className={`w-full text-left border p-4 transition-all rounded-2xl ${
+                isSelected
+                  ? "border-brand-lime bg-brand-lime text-void"
+                  : "border-hairline bg-surface-raised text-ink hover:border-ink-dim"
+              }`}
+            >
+              <p className={`text-[10px] uppercase font-bold border inline-block px-1 mb-2 rounded-md ${isSelected ? 'border-void/20 bg-void text-brand-lime' : 'border-hairline bg-void text-ink-dim'}`}>Barrier</p>
+              <p className="font-bold text-sm sm:text-base leading-snug">"{opt.barrier}"</p>
+            </button>
+          );
+        })}
       </div>
 
       {/* Recommendation Display */}
-      <div className="mt-8 grid gap-6 lg:grid-cols-[1.1fr_0.9fr] border-t-4 border-white pt-6">
+      <div className="mt-8 grid gap-6 lg:grid-cols-[1.1fr_0.9fr] border-t border-hairline pt-6">
         <div>
-          <div className="inline-flex items-center bg-yellow-400 border-2 border-white px-2 py-1 text-xs font-bold text-black uppercase">
+          <div className="inline-flex items-center bg-brand-red px-2 py-1 text-[10px] font-bold text-ink uppercase tracking-wider rounded-md">
             Recommended
           </div>
-          <h3 className="mt-3 text-2xl font-black uppercase text-white">{currentOption.recommendation}</h3>
+          <h3 className="mt-3 text-2xl sm:text-3xl font-display font-black uppercase text-ink leading-tight">{currentOption.recommendation}</h3>
           
-          <ul className="mt-5 space-y-4">
+          <ul className="mt-6 space-y-4">
             {currentOption.blueprint.map((step, idx) => (
               <li key={idx} className="flex items-start gap-3">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center bg-white text-black text-xs font-bold border-2 border-white rounded-full">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center bg-surface-raised border border-hairline text-ink-dim text-xs font-bold rounded-full">
                   {idx + 1}
                 </span>
-                <span className="text-sm font-bold leading-6 text-gray-300">{step}</span>
+                <span className="text-sm font-bold leading-relaxed text-ink-dim uppercase">{step}</span>
               </li>
             ))}
           </ul>
         </div>
 
         {/* Curation Display */}
-        <div className="border-4 border-white bg-[#111] p-6 flex flex-col justify-between shadow-[4px_4px_0px_#fff]">
+        <div className="border border-hairline bg-surface-raised p-6 flex flex-col justify-between rounded-2xl">
           <div>
-            <p className="text-xs font-black uppercase bg-white text-black inline-block px-2 py-1 mb-4">
+            <p className="text-[10px] font-bold uppercase tracking-widest text-brand-lime mb-4">
               Curated Setup
             </p>
             <div className="space-y-4">
               {recommendedGear.map((gear) => (
-                <div key={gear.id} className="border-4 border-white bg-[#222] p-4 flex gap-4 items-center shadow-[4px_4px_0px_#fff]">
+                <div key={gear.id} className="border border-hairline bg-surface p-4 flex gap-4 items-center rounded-xl">
                   <div className="flex-1">
-                    <h4 className="text-sm font-black uppercase text-white">{gear.title}</h4>
-                    <p className="mt-1 text-xs font-medium text-gray-300 line-clamp-2">{gear.description}</p>
-                    <p className="mt-2 text-xs font-bold bg-green-400 text-black inline-block px-1 border-2 border-white">Est: ${gear.priceEst}</p>
+                    <h4 className="text-sm font-display font-black uppercase text-ink">{gear.title}</h4>
+                    <p className="mt-1 text-xs text-ink-dim line-clamp-2">{gear.description}</p>
+                    <p className="mt-2 text-[10px] font-bold bg-brand-lime text-void inline-block px-1 border border-brand-lime uppercase rounded-md">Est: ${gear.priceEst}</p>
                   </div>
                   <a
                     href={gear.affiliateUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-anti-purple-glow border-4 border-white px-3 py-2 text-xs font-bold uppercase text-black whitespace-nowrap self-center hover:bg-anti-purple active:translate-y-1 active:translate-x-1 transition-transform"
+                    className="border border-brand-lime hover:bg-brand-lime/5 px-3 py-2 text-xs font-display font-black uppercase text-brand-lime whitespace-nowrap self-center rounded-full transition-all"
                   >
                     View
                   </a>
@@ -131,8 +134,8 @@ export default function AlternativeMatrix() {
             </div>
           </div>
 
-          <div className="mt-6 border-t-4 border-white border-dashed pt-4 text-center">
-            <p className="text-xs font-bold text-gray-400 italic">
+          <div className="mt-6 border-t border-hairline border-dashed pt-4 text-center">
+            <p className="text-xs font-bold text-ink-dim italic">
               90% of home fitness gear is plastic trash. We only recommend these items to cover 80% of movements.
             </p>
           </div>

@@ -23,19 +23,19 @@ export default function CalendarSignup() {
   };
 
   return (
-    <div className="bg-black border-4 border-white shadow-[8px_8px_0px_#fff] p-8 text-center relative font-mono transition-transform hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[12px_12px_0px_#fff]">
-      <div className="absolute top-0 right-0 w-16 h-16 bg-white text-black flex items-center justify-center font-black text-2xl pointer-events-none">
+    <div className="border border-hairline bg-surface p-8 text-center relative font-body rounded-3xl overflow-hidden">
+      <div className="absolute top-0 right-0 w-16 h-16 border-l border-b border-hairline bg-surface-raised text-brand-red flex items-center justify-center font-display font-black text-2xl pointer-events-none rounded-bl-3xl">
         !
       </div>
       
       <div className="mx-auto max-w-lg">
-        <span className="text-xs uppercase font-black bg-white text-black px-2 py-1 inline-block mb-4">
+        <span className="text-xs uppercase font-bold text-brand-lime tracking-widest inline-block mb-4 bg-brand-lime/10 px-3 py-1 rounded-full">
           Free Download
         </span>
-        <h2 className="text-3xl font-black uppercase text-white sm:text-4xl">
+        <h2 className="text-3xl font-display font-black uppercase text-ink sm:text-4xl">
           Get the "Bare Minimum" Calendar
         </h2>
-        <p className="mt-4 text-sm font-bold text-gray-300 border-b-4 border-white border-dashed pb-4">
+        <p className="mt-4 text-sm font-bold text-ink-dim border-b border-hairline border-dashed pb-6 uppercase">
           A zero-stress, printable 30-day sheet. Put it on your fridge. Cross off a day just for doing 5 minutes of moving. No memberships required.
         </p>
 
@@ -47,32 +47,32 @@ export default function CalendarSignup() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="YOUR_EMAIL@HERE.COM"
-              className="w-full max-w-xs border-4 border-white rounded-none bg-[#222] px-5 py-3 text-sm font-bold text-white placeholder:text-gray-500 focus:outline-none focus:bg-[#333] focus:shadow-[inset_4px_4px_0px_rgba(255,255,255,0.1)]"
+              className="w-full max-w-xs border border-hairline bg-void px-5 py-3 text-sm font-bold text-ink placeholder:text-ink-dim rounded-xl focus:outline-none focus:border-brand-lime"
             />
             <button
               type="submit"
-              className="bg-gym-green text-black border-4 border-white shadow-[4px_4px_0px_#fff] font-black uppercase whitespace-nowrap px-6 py-3 text-sm hover:bg-green-400 active:translate-y-1 active:translate-x-1 active:shadow-none transition-all"
+              className="bg-brand-lime text-void font-display font-black uppercase whitespace-nowrap px-6 py-3 text-sm rounded-full hover:bg-ink transition-all"
             >
               Get PDF &rarr;
             </button>
           </form>
         ) : (
-          <div className="mt-8 p-6 border-4 border-white bg-green-900">
-            <p className="text-lg font-black uppercase text-white">✓ Calendar Ready!</p>
-            <p className="mt-2 text-sm font-bold text-gray-200">
+          <div className="mt-8 p-6 border border-brand-lime bg-brand-lime/5 rounded-2xl">
+            <p className="text-lg font-display font-black uppercase text-brand-lime">✓ Calendar Ready!</p>
+            <p className="mt-2 text-sm font-bold text-ink-dim uppercase">
               Click below to download your printable tracker.
             </p>
             <a
               href="/downloads/Anti-Gym-Bare-Minimum-Calendar.pdf"
               download
-              className="mt-6 inline-flex items-center gap-2 bg-white text-black border-4 border-white shadow-[4px_4px_0px_#fff] font-black uppercase px-6 py-3 text-xs hover:bg-gray-200 active:translate-y-1 active:translate-x-1 active:shadow-none transition-all"
+              className="mt-6 inline-flex items-center gap-2 bg-brand-lime text-void font-display font-black uppercase px-6 py-3 text-xs rounded-full hover:bg-ink transition-all"
             >
               📥 Download PDF
             </a>
           </div>
         )}
 
-        <p className="mt-6 text-xs font-bold text-gray-400 italic">
+        <p className="mt-6 text-xs font-bold text-ink-dim italic">
           We hate spam as much as we hate 5 AM alarm clocks.
         </p>
       </div>

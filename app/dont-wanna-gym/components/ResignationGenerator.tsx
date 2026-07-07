@@ -36,43 +36,43 @@ A Free Human`;
   const shareText = encodeURIComponent(`I just fired my gym using the GymOrNot Resignation Generator because ${reason.toLowerCase()} Claim your freedom: https://gymornot.com/dont-wanna-gym`);
 
   return (
-    <section className="mt-12 grid lg:grid-cols-2 gap-8 items-start font-mono">
+    <section className="mt-12 grid lg:grid-cols-2 gap-8 items-start">
       {/* Form Input */}
-      <div className="bg-black border-4 border-white shadow-[8px_8px_0px_#fff] p-6 sm:p-8 space-y-6 transition-transform hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[12px_12px_0px_#fff]">
-        <h2 className="text-2xl font-bold uppercase border-b-4 border-white pb-4 text-white">
+      <div className="border border-hairline bg-surface p-6 sm:p-8 space-y-6 rounded-2xl">
+        <h2 className="font-display font-black text-2xl uppercase border-b border-hairline pb-4 text-ink">
           Resignation Letter Generator
         </h2>
-        <p className="text-sm font-bold text-gray-300">Fill this out. Reclaim your time and money.</p>
+        <p className="text-sm font-bold text-ink-dim uppercase">Fill this out. Reclaim your time and money.</p>
         
         <div className="space-y-4">
           <div>
-            <label className="block text-xs font-bold uppercase mb-1 text-gray-300">Name of the Trap (Gym Name)</label>
+            <label className="block text-xs font-bold uppercase mb-1 text-ink-dim">Name of the Trap (Gym Name)</label>
             <input 
               type="text" 
               value={gymName}
               onChange={(e) => setGymName(e.target.value)}
               placeholder="e.g. Mega Fitplex" 
-              className="bg-[#222] border-4 border-white rounded-none w-full p-3 font-bold text-white placeholder:text-gray-500 focus:outline-none focus:bg-[#333] focus:shadow-[inset_4px_4px_0px_rgba(255,255,255,0.1)]" 
+              className="bg-void border border-hairline w-full p-3 font-body font-bold text-ink rounded-xl focus:outline-none focus:border-brand-lime" 
             />
           </div>
           
           <div>
-            <label className="block text-xs font-bold uppercase mb-1 text-gray-300">Monthly Donation (Fee)</label>
+            <label className="block text-xs font-bold uppercase mb-1 text-ink-dim">Monthly Donation (Fee)</label>
             <input 
               type="text" 
               value={fee}
               onChange={(e) => setFee(e.target.value)}
               placeholder="e.g. $89" 
-              className="bg-[#222] border-4 border-white rounded-none w-full p-3 font-bold text-white placeholder:text-gray-500 focus:outline-none focus:bg-[#333] focus:shadow-[inset_4px_4px_0px_rgba(255,255,255,0.1)]" 
+              className="bg-void border border-hairline w-full p-3 font-body font-bold text-ink rounded-xl focus:outline-none focus:border-brand-lime" 
             />
           </div>
 
           <div>
-            <label className="block text-xs font-bold uppercase mb-1 text-gray-300">Reason for Leaving</label>
+            <label className="block text-xs font-bold uppercase mb-1 text-ink-dim">Reason for Leaving</label>
             <select 
               value={reason}
               onChange={(e) => setReason(e.target.value)}
-              className="bg-[#222] border-4 border-white rounded-none w-full p-3 font-bold text-white focus:outline-none focus:bg-[#333] focus:shadow-[inset_4px_4px_0px_rgba(255,255,255,0.1)]"
+              className="bg-void border border-hairline w-full p-3 font-body font-bold text-ink rounded-xl focus:outline-none focus:border-brand-lime"
             >
               <option>The music is too loud.</option>
               <option>Someone grunted too close to my ear.</option>
@@ -85,13 +85,13 @@ A Free Human`;
       </div>
 
       {/* Generated Letter Output */}
-      <div className="bg-anti-purple-dim border-4 border-white shadow-[8px_8px_0px_#fff] p-6 sm:p-8 transform lg:rotate-1">
-        <div className="flex justify-between items-center border-b-4 border-white pb-4 mb-6">
-          <h2 className="text-xl font-bold uppercase text-white">Official Notice</h2>
-          <span className="text-xs font-bold bg-white text-black px-2 py-1 border-2 border-white">DRAFT</span>
+      <div className="border border-hairline bg-surface p-6 sm:p-8 rounded-2xl">
+        <div className="flex justify-between items-center border-b border-hairline pb-4 mb-6">
+          <h2 className="font-display font-black text-xl uppercase text-ink">Official Notice</h2>
+          <span className="text-xs font-bold bg-[#f4f4f0] text-black px-2 py-1 rounded-md">DRAFT</span>
         </div>
         
-        <div className="font-mono text-sm leading-relaxed space-y-4 bg-[#f4f4f0] text-black p-6 border-4 border-black border-dashed">
+        <div className="font-mono text-sm leading-relaxed space-y-4 bg-[#f4f4f0] text-[#111111] p-6 border border-[#d4d4d0] border-dashed rounded-xl">
           <p><strong>To:</strong> {finalGymName} Management</p>
           <p><strong>Subject:</strong> Immediate Membership Termination</p>
           <p>To Whom It May Concern,</p>
@@ -111,7 +111,7 @@ A Free Human`;
         <div className="mt-6 flex flex-col sm:flex-row gap-4">
           <button 
             onClick={handleCopy}
-            className="bg-white border-4 border-black shadow-[4px_4px_0px_#111] px-4 py-3 flex-1 text-sm font-bold uppercase text-black hover:bg-gray-200 active:translate-y-1 active:translate-x-1 active:shadow-none transition-all"
+            className="bg-brand-lime text-void font-display font-black text-xs uppercase px-4 py-3 flex-1 hover:bg-ink hover:text-void rounded-full transition-all"
           >
             {copied ? "✓ Copied!" : "Copy Letter"}
           </button>
@@ -119,7 +119,7 @@ A Free Human`;
             href={`https://twitter.com/intent/tweet?text=${shareText}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-[#1DA1F2] border-4 border-black shadow-[4px_4px_0px_#111] px-4 py-3 flex-1 text-sm font-bold uppercase text-black text-center hover:bg-[#1a91da] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all"
+            className="border border-brand-lime hover:bg-brand-lime/5 px-4 py-3 flex-1 text-xs font-display font-black uppercase text-brand-lime text-center rounded-full transition-all"
           >
             Share on X
           </a>
