@@ -305,7 +305,7 @@ export default function DashboardPage() {
                   ESCAPE THE TRAP →
                 </Link>
                 <Link
-                  href="/dont-wanna-gym"
+                  href="/giving-free-money"
                   className="font-mono text-xs text-zinc-600 hover:text-zinc-400 underline underline-offset-4 transition-colors text-center"
                 >
                   No thanks, I prefer giving corporate gym chains free money.
