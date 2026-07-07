@@ -108,20 +108,16 @@ For any financial or data display, use:
 ```
 
 ### Header (all pages)
-Flat, no blur:
-```jsx
-<header className="border-b border-hairline bg-void sticky top-0 z-50 px-6 py-4">
-  <div className="max-w-6xl mx-auto flex justify-between items-center">
-    <Link href="/" className="font-display font-black text-2xl text-brand-lime tracking-tight">
-      GymOrNot<span className="text-brand-red">.</span>
-    </Link>
-    <Link href="..." className="font-mono text-xs text-zinc-400 hover:text-brand-lime transition-colors tracking-wider">
-      Contextual link →
-    </Link>
-  </div>
-</header>
-```
-- **No pill nav buttons on any page.** Each page shows a single contextual right-aligned mono text link only.
+Flat, using the global `<Header>` component:
+- **Logged Out**: `[ Context Link → ]  ·  [ Sign In ]`
+- **Logged In**: `[ Context Link → ]  ·  [ {email} (Sign Out) ]`
+- All controls styled in monospace: `font-mono text-xs text-zinc-400 hover:text-brand-lime transition-colors`.
+
+### Auth Modal
+A centered, brutalist popup modal for credentials (Email + 4-digit PIN) and Google Authentication:
+- Container: `border-2 border-zinc-800 bg-void p-6 rounded-none max-w-sm w-full`.
+- Tab headers: Stark toggle borders (`border-b-2 border-brand-lime`) separating Sign In and Sign Up.
+- Forgotten PIN recovery: Shows a bold red warnings box (`border border-brand-red/30 bg-brand-red/5`) roasting the user before triggering Google verification.
 
 ### CSS Structure
 - Global styles belong in `app/globals.css`.

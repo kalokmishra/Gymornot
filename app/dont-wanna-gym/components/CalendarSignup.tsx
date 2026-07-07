@@ -1,8 +1,10 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { useAuth } from "../../../components/AuthProvider";
 
 export default function CalendarSignup() {
+  const { user } = useAuth();
   const [email, setEmail] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -19,6 +21,8 @@ export default function CalendarSignup() {
     window.localStorage.setItem("gymornot_email", email);
     setIsSubmitted(true);
   };
+
+  const showDownloadDirectly = !!user?.email;
 
   return (
     <div className="border-2 border-zinc-800 bg-zinc-950 rounded-none relative overflow-hidden">
@@ -38,7 +42,23 @@ export default function CalendarSignup() {
           A zero-stress, printable 30-day sheet. Put it on your fridge. Cross off a day just for doing 5 minutes of moving. No memberships required.
         </p>
 
-        {!isSubmitted ? (
+        {showDownloadDirectly ? (
+          <div className="border border-dashed border-brand-lime/30 bg-brand-lime/5 p-6 rounded-none">
+            <p className="font-mono text-sm text-brand-lime font-bold uppercase tracking-widest mb-2">
+              LOGGED IN: {user.email} // ACCESS GRANTED
+            </p>
+            <p className="font-mono text-xs text-zinc-500 mb-6">
+              Click below to download your printable tracker.
+            </p>
+            <a
+              href="/downloads/Anti-Gym-Bare-Minimum-Calendar.pdf"
+              download
+              className="inline-block font-display font-black text-xs uppercase bg-brand-lime text-void px-6 py-3 hover:bg-white transition-colors rounded-none"
+            >
+              📥 DOWNLOAD PDF
+            </a>
+          </div>
+        ) : !isSubmitted ? (
           <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-0 border border-zinc-700 overflow-hidden">
             <input
               type="email"

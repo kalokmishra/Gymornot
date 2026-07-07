@@ -3,14 +3,23 @@
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { computeArchetype } from "../../lib/quiz";
+import Header from "../../components/Header";
+import { useAuth } from "../../components/AuthProvider";
 
 export default function GivingFreeMoneyPage() {
+  const { user } = useAuth();
   const [email, setEmail] = useState<string | null>(null);
   const [gymScore, setGymScore] = useState(0);
   const [homeScore, setHomeScore] = useState(0);
   const [boutiqueScore, setBoutiqueScore] = useState(0);
   const [couchScore, setCouchScore] = useState(0);
   const [hydrated, setHydrated] = useState(false);
+
+  useEffect(() => {
+    if (user?.email) {
+      setEmail(user.email);
+    }
+  }, [user]);
 
   useEffect(() => {
     setHydrated(true);
@@ -20,12 +29,14 @@ export default function GivingFreeMoneyPage() {
     const storedBoutique = window.localStorage.getItem("gymornot_boutiqueScore");
     const storedCouch = window.localStorage.getItem("gymornot_couchScore");
 
-    setEmail(storedEmail);
+    if (storedEmail && !user?.email) {
+      setEmail(storedEmail);
+    }
     setGymScore(storedGym ? Number(storedGym) : 0);
     setHomeScore(storedHome ? Number(storedHome) : 0);
     setBoutiqueScore(storedBoutique ? Number(storedBoutique) : 0);
     setCouchScore(storedCouch ? Number(storedCouch) : 0);
-  }, []);
+  }, [user]);
 
   const totalScore = gymScore + homeScore + boutiqueScore + couchScore || 1;
   const hasVerdict = hydrated && totalScore > 1;
@@ -65,16 +76,7 @@ export default function GivingFreeMoneyPage() {
       }}
     >
       {/* HEADER */}
-      <header className="border-b border-hairline bg-void sticky top-0 z-50 px-6 py-4">
-        <div className="max-w-6xl mx-auto flex justify-between items-center">
-          <Link href="/" className="font-display font-black text-2xl text-brand-lime tracking-tight hover:opacity-80 transition-opacity">
-            GymOrNot<span className="text-brand-red">.</span>
-          </Link>
-          <Link href="/quiz" className="font-mono text-xs text-zinc-400 hover:text-brand-lime transition-colors tracking-wider">
-            Retake Quiz →
-          </Link>
-        </div>
-      </header>
+      <Header contextLink="/quiz" contextLabel="Retake Quiz →" />
 
       <div className="mx-auto max-w-2xl px-6 py-12">
         <div className="border-2 border-zinc-800 bg-void rounded-none p-6 sm:p-10 space-y-8">

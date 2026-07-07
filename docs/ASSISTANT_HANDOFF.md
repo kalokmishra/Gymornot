@@ -8,6 +8,32 @@
 
 ---
 
+## What Was Done — v0.4.0 User Authentication & Account-Based Experience
+
+Implemented a hybrid authentication system supporting Google OAuth and client-side Email + 4-digit PIN credentials. If authenticated, the app automatically bypasses all email collection gates.
+
+### Files Added & Changed
+
+| File | Change |
+|---|---|
+| `components/AuthProvider.tsx` | [NEW] Manages combined NextAuth Google session state and client-side credentials registry |
+| `components/AuthModal.tsx` | [NEW] Stark popup modal for signing in, signing up, forgotten PIN alerts, and Google verification triggers |
+| `components/Header.tsx` | [NEW] Reusable header component rendering dynamic auth actions and page context links side-by-side |
+| `app/api/auth/authOptions.ts` | Replaced legacy GithubProvider configuration with GoogleProvider |
+| `app/layout.tsx` | Wrapped root layout children in the global `AuthProvider` |
+| `app/page.tsx` | Replaced inline header with global `<Header>` |
+| `app/quiz/page.tsx` | Replaced header; synchronized `useAuth` hook states to automatically unblur result and run redirection |
+| `app/dashboard/page.tsx` | Replaced header; synchronized auth context state to load active session emails |
+| `app/dont-wanna-gym/page.tsx` | Replaced header; passed hasVerdict state |
+| `app/dont-wanna-gym/components/CalendarSignup.tsx` | Integrated `useAuth` to bypass email capture form and show PDF download directly for logged-in users |
+| `app/giving-free-money/page.tsx` | Replaced header; integrated `useAuth` user context |
+| `app/community/page.tsx` | Replaced header |
+| `STYLEGUIDE.md` | Updated with header auth layout styles and AuthModal rules |
+| `ARCHITECTURE.md` | Documented custom auth context, Google provider, and PIN recovery architecture |
+| `RELEASES.md` | Added v0.4.0 release notes |
+
+---
+
 ## What Was Done — v0.3.0 Brutalist/Editorial Redesign
 
 A full presentation-layer overhaul across all user-facing pages. No business logic, API routes, quiz scoring, or text copy was changed.

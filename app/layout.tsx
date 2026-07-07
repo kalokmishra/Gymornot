@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Manrope, DM_Sans, IBM_Plex_Mono } from "next/font/google";
+import AuthProvider from "../components/AuthProvider";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -36,7 +37,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${manrope.variable} ${dmSans.variable} ${plexMono.variable}`}>
-      <body className="font-body bg-[#0A0A0A] text-[#F5F5F0] antialiased">{children}</body>
+      <body className="font-body bg-[#0A0A0A] text-[#F5F5F0] antialiased">
+        <AuthProvider>{children}</AuthProvider>
+      </body>
     </html>
   );
 }

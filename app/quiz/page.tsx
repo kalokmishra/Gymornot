@@ -5,6 +5,8 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { QuizQuestion, buildQuizQuestions, computeArchetype } from "../../lib/quiz";
 import ShareCard from "./components/ShareCard";
+import Header from "../../components/Header";
+import { useAuth } from "../../components/AuthProvider";
 
 const LOADING_LINES = [
   "CALCULATING TOTAL GYM DONATION...",
@@ -19,6 +21,7 @@ const GUILT_PER_STEP = 267;
 
 export default function QuizPage() {
   const router = useRouter();
+  const { user } = useAuth();
   const [questions, setQuestions] = useState<QuizQuestion[]>([]);
   const [isLoadingQuestions, setIsLoadingQuestions] = useState(true);
   const [fetchError, setFetchError] = useState<string | null>(null);
@@ -39,13 +42,21 @@ export default function QuizPage() {
   // Brief flash state for answer selection
   const [selectedOptionIndex, setSelectedOptionIndex] = useState<number | null>(null);
 
+  // Sync auth state
+  useEffect(() => {
+    if (user?.email) {
+      setEmail(user.email);
+      setUnlocked(true);
+    }
+  }, [user]);
+
   useEffect(() => {
     const savedEmail = window.localStorage.getItem("gymornot_email");
-    if (savedEmail) {
+    if (savedEmail && !user?.email) {
       setEmail(savedEmail);
       setUnlocked(true);
     }
-  }, []);
+  }, [user]);
 
   useEffect(() => {
     async function loadQuestions() {
@@ -170,16 +181,7 @@ export default function QuizPage() {
       }}
     >
       {/* HEADER */}
-      <header className="border-b border-hairline bg-void sticky top-0 z-50 px-6 py-4">
-        <div className="max-w-6xl mx-auto flex justify-between items-center">
-          <Link href="/" className="font-display font-black text-2xl text-brand-lime tracking-tight hover:opacity-80 transition-opacity">
-            GymOrNot<span className="text-brand-red">.</span>
-          </Link>
-          <Link href="/" className="font-mono text-xs text-zinc-400 hover:text-brand-lime transition-colors tracking-wider">
-            Exit Diagnostic →
-          </Link>
-        </div>
-      </header>
+      <Header contextLink="/" contextLabel="Exit Diagnostic →" />
 
       <div className="mx-auto max-w-3xl px-6 py-12">
 

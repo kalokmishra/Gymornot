@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import Header from "../../components/Header";
 
 export default function CommunityPage() {
   return (
@@ -11,16 +14,7 @@ export default function CommunityPage() {
       }}
     >
       {/* HEADER */}
-      <header className="border-b border-hairline bg-void sticky top-0 z-50 px-6 py-4">
-        <div className="max-w-6xl mx-auto flex justify-between items-center">
-          <Link href="/" className="font-display font-black text-2xl text-brand-lime tracking-tight hover:opacity-80 transition-opacity">
-            GymOrNot<span className="text-brand-red">.</span>
-          </Link>
-          <Link href="/quiz" className="font-mono text-xs text-zinc-400 hover:text-brand-lime transition-colors tracking-wider">
-            Take the Quiz →
-          </Link>
-        </div>
-      </header>
+      <Header contextLink="/quiz" contextLabel="Take the Quiz →" />
 
       <div className="mx-auto max-w-4xl px-6 py-12 space-y-0">
 

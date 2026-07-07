@@ -5,6 +5,7 @@ import Link from "next/link";
 import ResignationGenerator from "./components/ResignationGenerator";
 import AlternativeMatrix from "./components/AlternativeMatrix";
 import CalendarSignup from "./components/CalendarSignup";
+import Header from "../../components/Header";
 
 export default function AntiGymPage() {
   const [hasVerdict, setHasVerdict] = useState(false);
@@ -20,22 +21,10 @@ export default function AntiGymPage() {
   return (
     <main className="min-h-screen bg-void text-ink font-body selection:bg-brand-lime selection:text-void">
       {/* HEADER */}
-      <header className="border-b border-hairline bg-void sticky top-0 z-50 px-6 py-4">
-        <div className="max-w-6xl mx-auto flex justify-between items-center">
-          <Link href="/" className="font-display font-black text-2xl text-brand-lime tracking-tight hover:opacity-80 transition-opacity">
-            GymOrNot<span className="text-brand-red">.</span>
-          </Link>
-          {hasVerdict ? (
-            <Link href="/dashboard" className="font-mono text-xs text-zinc-400 hover:text-brand-lime transition-colors tracking-wider">
-              ← Back to Audit
-            </Link>
-          ) : (
-            <Link href="/quiz" className="font-mono text-xs text-zinc-400 hover:text-brand-lime transition-colors tracking-wider">
-              Take the Quiz →
-            </Link>
-          )}
-        </div>
-      </header>
+      <Header
+        contextLink={hasVerdict ? "/dashboard" : "/quiz"}
+        contextLabel={hasVerdict ? "← Back to Audit" : "Take the Quiz →"}
+      />
 
       <div className="mx-auto max-w-6xl px-6 py-12 space-y-12">
         {/* INTRO HERO */}

@@ -2,9 +2,24 @@
 
 This document explains the release process for GymOrNot, including versioning, release notes, and release asset handling.
 
----
-
 ## Release History
+
+### v0.4.0 — User Authentication & Account-Based Experience (2026-07-07)
+
+Introduced a hybrid authentication system (Google OAuth & local Email+PIN logins) to allow personalized accounts and automatic email gate bypasses.
+
+**Features**
+- **Authentication system**: Integrated NextAuth Google Provider (replacing legacy GitHub configuration) alongside a client-side Email + 4-digit PIN credentials registry.
+- **Global Header**: Styled side-by-side context links and subtle auth actions dynamically across all pages (`/`, `/quiz`, `/dashboard`, `/dont-wanna-gym`, `/giving-free-money`, `/community`).
+- **AuthModal popup**: Added a centered brutalist modal for sign in, sign up, and Google verification triggers directly on-page.
+- **PIN Recovery flow**: Built a secure, Google-verified PIN reset flow, routing matches back to local credential editing.
+- **Bypassed email collection**: Bypasses the quiz results email wall and the calendar PDF download inputs automatically for logged-in users.
+
+**Documentation**
+- `STYLEGUIDE.md` updated with Header auth layout specs and AuthModal styling rules.
+- `ARCHITECTURE.md` updated with custom Auth context provider, Google OAuth, and PIN reset recovery flow architecture.
+
+---
 
 ### v0.3.0 — Brutalist/Editorial Full-Site Redesign (2026-07-07)
 

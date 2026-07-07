@@ -52,6 +52,18 @@ The gym donation audit page that acts as a personalized certificate of gym subsi
 
 ---
 
+## Authentication
+
+GymOrNot uses a hybrid authentication system managed via `components/AuthProvider.tsx`:
+- **Serverless OAuth (Google)**: Handled via `next-auth` to securely sign users in using their Google Accounts. Authenticated session emails are automatically synchronized with the frontend client state.
+- **Local Credentials (Email + PIN)**: A client-first authentication flow. Registered users are stored locally in the browser's `localStorage` under `gymornot_local_accounts` (a JSON map of `{ email: pin }`). Active local sessions are persisted under `gymornot_current_user` and `gymornot_email`.
+- **Google-Verified PIN Reset**: If a user forgets their local 4-digit PIN:
+  1. The app saves the forgotten email under `gymornot_reset_pin_target` and initiates a Google OAuth sign-in.
+  2. If the Google session returns a matching email, ownership is verified, opening the `AuthModal` in reset mode to update their local PIN.
+- **Gate Bypassing**: When an active user session is found (either via Google or Local PIN), the app automatically bypasses all email collection gates (quiz results unlock, printable calendar downloads, etc.).
+
+---
+
 ## Server-side route
 
 ### `app/api/quiz-data/route.ts`

@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Header from "../components/Header";
 
 const WASTE_STATS = [
   { label: "avg wasted per year", value: "$1,068" },
@@ -48,19 +49,7 @@ export default function HomePage() {
     <main className="min-h-screen bg-void text-ink font-body selection:bg-brand-lime selection:text-void">
 
       {/* HEADER */}
-      <header className="border-b border-hairline bg-void sticky top-0 z-50 px-6 py-4">
-        <div className="max-w-6xl mx-auto flex justify-between items-center">
-          <Link href="/" className="font-display font-black text-2xl text-brand-lime tracking-tight hover:opacity-80 transition-opacity">
-            GymOrNot<span className="text-brand-red">.</span>
-          </Link>
-          <Link
-            href="/quiz"
-            className="font-mono text-xs text-zinc-400 hover:text-brand-lime transition-colors tracking-wider"
-          >
-            Take the Quiz →
-          </Link>
-        </div>
-      </header>
+      <Header contextLink="/quiz" contextLabel="Take the Quiz →" />
 
       {/* TERMINAL COUNTER BAR */}
       <div className="border-b border-zinc-800 bg-void px-6 py-2">

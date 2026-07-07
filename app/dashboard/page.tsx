@@ -4,6 +4,8 @@ import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { computeArchetype } from "../../lib/quiz";
 import ShareCard from "../quiz/components/ShareCard";
+import Header from "../../components/Header";
+import { useAuth } from "../../components/AuthProvider";
 
 function formatDate(value: string | null) {
   if (!value) return "Never";
@@ -12,6 +14,7 @@ function formatDate(value: string | null) {
 }
 
 export default function DashboardPage() {
+  const { user } = useAuth();
   const [email, setEmail] = useState<string | null>(null);
 
   const [gymScore, setGymScore] = useState(0);
@@ -27,6 +30,12 @@ export default function DashboardPage() {
   const yesterday = useMemo(() => new Date(Date.now() - 86400000).toISOString().slice(0, 10), []);
 
   useEffect(() => {
+    if (user?.email) {
+      setEmail(user.email);
+    }
+  }, [user]);
+
+  useEffect(() => {
     setHydrated(true);
     const storedEmail = window.localStorage.getItem("gymornot_email");
     const storedGym = window.localStorage.getItem("gymornot_gymScore");
@@ -34,17 +43,20 @@ export default function DashboardPage() {
     const storedBoutique = window.localStorage.getItem("gymornot_boutiqueScore");
     const storedCouch = window.localStorage.getItem("gymornot_couchScore");
     const storedStreak = window.localStorage.getItem("gymornot_streak");
-    const storedLast = window.localStorage.getItem("gymornot_last_checkin");
+    const storedLastCheckin = window.localStorage.getItem("gymornot_last_checkin");
 
-    setEmail(storedEmail);
+    if (storedEmail && !user?.email) {
+      setEmail(storedEmail);
+    }
+
     setGymScore(storedGym ? Number(storedGym) : 0);
     setHomeScore(storedHome ? Number(storedHome) : 0);
     setBoutiqueScore(storedBoutique ? Number(storedBoutique) : 0);
     setCouchScore(storedCouch ? Number(storedCouch) : 0);
 
     setStreak(storedStreak ? Number(storedStreak) : 0);
-    setLastCheckin(storedLast || null);
-  }, []);
+    setLastCheckin(storedLastCheckin || null);
+  }, [user]);
 
   const totalScore = gymScore + homeScore + boutiqueScore + couchScore || 1;
   const isUnlocked = hydrated && email && totalScore > 1;
@@ -90,16 +102,7 @@ export default function DashboardPage() {
     <main className="min-h-screen bg-void text-ink font-body selection:bg-brand-lime selection:text-void">
 
       {/* HEADER */}
-      <header className="border-b border-hairline bg-void sticky top-0 z-50 px-6 py-4">
-        <div className="max-w-6xl mx-auto flex justify-between items-center">
-          <Link href="/" className="font-display font-black text-2xl text-brand-lime tracking-tight hover:opacity-80 transition-opacity">
-            GymOrNot<span className="text-brand-red">.</span>
-          </Link>
-          <Link href="/quiz" className="font-mono text-xs text-zinc-400 hover:text-brand-lime transition-colors tracking-wider">
-            Retake Quiz →
-          </Link>
-        </div>
-      </header>
+      <Header contextLink="/quiz" contextLabel="Retake Quiz →" />
 
       {/* HERO SCORE — Full bleed */}
       <div className="bg-zinc-950 border-b border-zinc-800 px-6 py-14 md:py-20">
