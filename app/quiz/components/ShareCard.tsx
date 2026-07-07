@@ -56,31 +56,39 @@ export default function ShareCard({ archetypeId, headline }: { archetypeId: stri
                 : "animate-[popupZoomIn_0.5s_cubic-bezier(0.34,1.56,0.64,1)_forwards]"
             }`}
           >
-            <div className="w-[240px] h-[240px] border-2 border-brand-lime bg-surface-raised mx-auto overflow-hidden rounded-3xl shadow-[0_0_50px_rgba(212,255,0,0.2)]">
+            <div className="w-[240px] h-[240px] border-4 border-brand-lime bg-surface-raised mx-auto overflow-hidden rounded-none shadow-[0_0_50px_rgba(212,255,0,0.15)]">
               <img src={badgeUrl} alt="Archetype Badge" className="w-full h-full object-cover" />
             </div>
             <div>
-              <span className="font-display text-xs font-bold text-brand-red tracking-widest uppercase">Diagnosis Unlocked</span>
+              <span className="font-mono text-[10px] text-brand-red tracking-widest uppercase">Diagnosis Unlocked</span>
               <h2 className="font-display font-black text-3xl text-brand-lime uppercase tracking-tight mt-1 leading-none">{headline}</h2>
             </div>
           </div>
         </div>
       )}
 
-      <div className="mt-8 border border-hairline bg-surface p-8 rounded-2xl">
-        <h3 className="font-display text-xs font-bold text-brand-red tracking-widest uppercase mb-4">Roast a Friend</h3>
+      <div className="border border-zinc-800 bg-void p-6 sm:p-8 rounded-none">
+        <h3 className="font-mono text-[10px] text-brand-red tracking-widest uppercase mb-4">Roast a Friend</h3>
         <div className="flex flex-col sm:flex-row items-center gap-6">
-          <div className="w-[150px] h-[150px] shrink-0 border border-hairline bg-surface-raised overflow-hidden rounded-2xl">
+          <div className="w-[150px] h-[150px] shrink-0 border border-zinc-800 bg-zinc-950 overflow-hidden rounded-none">
             <img src={badgeUrl} alt="Archetype Badge" className="w-full h-full object-cover" />
           </div>
           <div className="flex-1">
-            <p className="text-sm text-ink-dim mb-4">Share your diagnosis and challenge your friends to face their own fitness reality.</p>
+            <p className="font-mono text-xs text-zinc-500 mb-4 leading-relaxed">Share your diagnosis and challenge your friends to face their own fitness reality.</p>
             <div className="flex flex-wrap gap-3">
-              <a href={`https://twitter.com/intent/tweet?text=${shareText}`} target="_blank" rel="noreferrer" className="border border-[#1DA1F2] hover:bg-[#1DA1F2]/5 px-4 py-2 font-display text-xs font-bold uppercase tracking-wider text-[#1DA1F2] text-center rounded-full transition-all">
-                Share on X
+              <a
+                href={`https://twitter.com/intent/tweet?text=${shareText}`}
+                target="_blank"
+                rel="noreferrer"
+                className="border border-[#1DA1F2] hover:bg-[#1DA1F2]/5 px-4 py-2.5 font-mono text-xs font-bold uppercase tracking-wider text-[#1DA1F2] text-center rounded-none transition-all"
+              >
+                Share on X →
               </a>
-              <a href={`sms:?&body=${shareText}`} className="border border-brand-lime hover:bg-brand-lime/5 px-4 py-2 font-display text-xs font-bold uppercase tracking-wider text-brand-lime text-center rounded-full transition-all">
-                Text a Friend
+              <a
+                href={`sms:?&body=${shareText}`}
+                className="border border-brand-lime hover:bg-brand-lime/5 px-4 py-2.5 font-mono text-xs font-bold uppercase tracking-wider text-brand-lime text-center rounded-none transition-all"
+              >
+                Text a Friend →
               </a>
             </div>
           </div>

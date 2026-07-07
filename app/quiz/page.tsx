@@ -80,6 +80,16 @@ export default function QuizPage() {
     loadQuestions();
   }, []);
 
+  // Clear popup seen flags on mount so retakes always show the unlock animation
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      sessionStorage.removeItem("gymornot_seen_popup_january-idealist");
+      sessionStorage.removeItem("gymornot_seen_popup_closet-athlete");
+      sessionStorage.removeItem("gymornot_seen_popup_gym-crusader");
+      sessionStorage.removeItem("gymornot_seen_popup_smoothie-socialite");
+    }
+  }, []);
+
   const activeQuestion = questions.length > 0 ? questions[stepIndex] : null;
 
   useEffect(() => {
@@ -95,7 +105,8 @@ export default function QuizPage() {
         window.localStorage.setItem("gymornot_boutiqueScore", String(boutiqueScore));
         window.localStorage.setItem("gymornot_couchScore", String(couchScore));
         setIsRedirecting(true);
-        setTimeout(() => router.push("/dashboard"), 1500);
+        // Delay redirect to allow the 2.3s popup fade animation to complete
+        setTimeout(() => router.push("/dashboard"), 2600);
       }
     }, 2900);
     return () => {
