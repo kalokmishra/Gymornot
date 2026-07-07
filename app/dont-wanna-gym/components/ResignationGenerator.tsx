@@ -36,43 +36,61 @@ A Free Human`;
   const shareText = encodeURIComponent(`I just fired my gym using the GymOrNot Resignation Generator because ${reason.toLowerCase()} Claim your freedom: https://gymornot.com/dont-wanna-gym`);
 
   return (
-    <section className="mt-12 grid lg:grid-cols-2 gap-8 items-start">
-      {/* Form Input */}
-      <div className="border border-hairline bg-surface p-6 sm:p-8 space-y-6 rounded-2xl">
-        <h2 className="font-display font-black text-2xl uppercase border-b border-hairline pb-4 text-ink">
+    <section className="border border-zinc-800 bg-void rounded-none">
+      {/* Section header */}
+      <div className="border-b border-zinc-800 px-6 sm:px-8 py-5">
+        <p className="font-mono text-[10px] text-brand-red uppercase tracking-widest mb-2">
+          RESIGNATION PROTOCOL
+        </p>
+        <h2 className="font-display font-black text-2xl uppercase text-ink">
           Resignation Letter Generator
         </h2>
-        <p className="text-sm font-bold text-ink-dim uppercase">Fill this out. Reclaim your time and money.</p>
-        
-        <div className="space-y-4">
-          <div>
-            <label className="block text-xs font-bold uppercase mb-1 text-ink-dim">Name of the Trap (Gym Name)</label>
-            <input 
-              type="text" 
-              value={gymName}
-              onChange={(e) => setGymName(e.target.value)}
-              placeholder="e.g. Mega Fitplex" 
-              className="bg-void border border-hairline w-full p-3 font-body font-bold text-ink rounded-xl focus:outline-none focus:border-brand-lime" 
-            />
-          </div>
-          
-          <div>
-            <label className="block text-xs font-bold uppercase mb-1 text-ink-dim">Monthly Donation (Fee)</label>
-            <input 
-              type="text" 
-              value={fee}
-              onChange={(e) => setFee(e.target.value)}
-              placeholder="e.g. $89" 
-              className="bg-void border border-hairline w-full p-3 font-body font-bold text-ink rounded-xl focus:outline-none focus:border-brand-lime" 
-            />
-          </div>
+        <p className="mt-2 font-mono text-xs text-zinc-500">
+          Fill this out. Reclaim your time and money.
+        </p>
+      </div>
 
-          <div>
-            <label className="block text-xs font-bold uppercase mb-1 text-ink-dim">Reason for Leaving</label>
-            <select 
+      <div className="grid lg:grid-cols-2">
+        {/* Form inputs */}
+        <div className="border-b lg:border-b-0 lg:border-r border-zinc-800 px-6 sm:px-8 py-8 space-y-0">
+          {[
+            {
+              label: "NAME OF THE TRAP (GYM NAME)",
+              type: "text",
+              value: gymName,
+              onChange: (v: string) => setGymName(v),
+              placeholder: "e.g. Mega Fitplex",
+            },
+            {
+              label: "MONTHLY DONATION (FEE)",
+              type: "text",
+              value: fee,
+              onChange: (v: string) => setFee(v),
+              placeholder: "e.g. $89",
+            },
+          ].map((field, i) => (
+            <div key={i} className="border-b border-zinc-800 py-5">
+              <label className="block font-mono text-[10px] text-zinc-600 uppercase tracking-widest mb-3">
+                {field.label}
+              </label>
+              <input
+                type={field.type}
+                value={field.value}
+                onChange={(e) => field.onChange(e.target.value)}
+                placeholder={field.placeholder}
+                className="bg-void border border-zinc-700 w-full px-4 py-3 font-mono text-sm text-ink focus:outline-none focus:border-zinc-400 rounded-none placeholder:text-zinc-700"
+              />
+            </div>
+          ))}
+
+          <div className="py-5">
+            <label className="block font-mono text-[10px] text-zinc-600 uppercase tracking-widest mb-3">
+              REASON FOR LEAVING
+            </label>
+            <select
               value={reason}
               onChange={(e) => setReason(e.target.value)}
-              className="bg-void border border-hairline w-full p-3 font-body font-bold text-ink rounded-xl focus:outline-none focus:border-brand-lime"
+              className="bg-void border border-zinc-700 w-full px-4 py-3 font-mono text-sm text-ink focus:outline-none focus:border-zinc-400 rounded-none"
             >
               <option>The music is too loud.</option>
               <option>Someone grunted too close to my ear.</option>
@@ -82,47 +100,46 @@ A Free Human`;
             </select>
           </div>
         </div>
-      </div>
 
-      {/* Generated Letter Output */}
-      <div className="border border-hairline bg-surface p-6 sm:p-8 rounded-2xl">
-        <div className="flex justify-between items-center border-b border-hairline pb-4 mb-6">
-          <h2 className="font-display font-black text-xl uppercase text-ink">Official Notice</h2>
-          <span className="text-xs font-bold bg-[#f4f4f0] text-black px-2 py-1 rounded-md">DRAFT</span>
-        </div>
-        
-        <div className="font-mono text-sm leading-relaxed space-y-4 bg-[#f4f4f0] text-[#111111] p-6 border border-[#d4d4d0] border-dashed rounded-xl">
-          <p><strong>To:</strong> {finalGymName} Management</p>
-          <p><strong>Subject:</strong> Immediate Membership Termination</p>
-          <p>To Whom It May Concern,</p>
-          <p>
-            Please accept this as formal notice that I am terminating my membership, effective immediately. 
-          </p>
-          <p>
-            For the past several months, I have been generously donating <strong>{finalFee}</strong> to your facility. However, it has come to my attention that <em>{reason.toLowerCase()}</em> 
-          </p>
-          <p>
-            I will be replacing this membership with a 15-minute daily walk in my neighborhood, which is absolutely free and involves 100% less unsolicited fitness advice.
-          </p>
-          <p>Do not contact me with counter-offers.</p>
-          <p>Regards,<br/>A Free Human</p>
-        </div>
+        {/* Generated letter */}
+        <div className="px-6 sm:px-8 py-8">
+          <div className="flex justify-between items-center border-b border-zinc-800 pb-4 mb-6">
+            <h2 className="font-mono text-xs text-zinc-500 uppercase tracking-widest">OFFICIAL NOTICE</h2>
+            <span className="font-mono text-[9px] bg-zinc-800 text-zinc-400 px-2 py-1 tracking-widest uppercase">DRAFT</span>
+          </div>
 
-        <div className="mt-6 flex flex-col sm:flex-row gap-4">
-          <button 
-            onClick={handleCopy}
-            className="bg-brand-lime text-void font-display font-black text-xs uppercase px-4 py-3 flex-1 hover:bg-ink hover:text-void rounded-full transition-all"
-          >
-            {copied ? "✓ Copied!" : "Copy Letter"}
-          </button>
-          <a 
-            href={`https://twitter.com/intent/tweet?text=${shareText}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="border border-brand-lime hover:bg-brand-lime/5 px-4 py-3 flex-1 text-xs font-display font-black uppercase text-brand-lime text-center rounded-full transition-all"
-          >
-            Share on X
-          </a>
+          {/* Letter paper */}
+          <div className="border border-dashed border-zinc-600 bg-zinc-900 font-mono text-sm leading-relaxed space-y-4 text-zinc-300 p-6">
+            <p><span className="text-zinc-600">To:</span> {finalGymName} Management</p>
+            <p><span className="text-zinc-600">Subject:</span> Immediate Membership Termination</p>
+            <p className="text-zinc-500">To Whom It May Concern,</p>
+            <p>Please accept this as formal notice that I am terminating my membership, effective immediately.</p>
+            <p>
+              For the past several months, I have been generously donating{" "}
+              <span className="text-brand-red font-bold">{finalFee}</span> to your facility. However, it has come to my attention that{" "}
+              <span className="text-zinc-400 italic">{reason.toLowerCase()}</span>
+            </p>
+            <p>I will be replacing this membership with a 15-minute daily walk in my neighborhood, which is absolutely free and involves 100% less unsolicited fitness advice.</p>
+            <p className="text-zinc-400">Do not contact me with counter-offers.</p>
+            <p className="text-zinc-500">Regards,<br />A Free Human</p>
+          </div>
+
+          <div className="mt-6 flex flex-col sm:flex-row gap-3">
+            <button
+              onClick={handleCopy}
+              className="bg-brand-lime text-void font-display font-black text-xs uppercase px-5 py-3 flex-1 hover:bg-white transition-colors rounded-none"
+            >
+              {copied ? "✓ COPIED" : "COPY LETTER"}
+            </button>
+            <a
+              href={`https://twitter.com/intent/tweet?text=${shareText}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border border-zinc-700 hover:border-zinc-400 px-5 py-3 flex-1 font-mono text-xs uppercase text-zinc-400 hover:text-ink text-center transition-colors rounded-none"
+            >
+              Share on X →
+            </a>
+          </div>
         </div>
       </div>
     </section>

@@ -22,7 +22,7 @@ const MATRIX_OPTIONS: AlternativeOption[] = [
       "Perform a 4-minute Tabata round (20s squat/pushups, 10s rest).",
       "Do this twice a day. Total commitment: 8 minutes. Zero schedule overhead."
     ],
-    gearIds: ["gear-002", "gear-009"], // Resistance Band, Kettlebell
+    gearIds: ["gear-002", "gear-009"],
     ctaLabel: "Get the Micro-Dose Toolkit"
   },
   {
@@ -34,7 +34,7 @@ const MATRIX_OPTIONS: AlternativeOption[] = [
       "Put on a cozy, low-stress playlist or mobility walkthrough.",
       "Focus purely on bodyweight calisthenics, stretching, and mobility on a premium mat."
     ],
-    gearIds: ["gear-005", "gear-008"], // Yoga Mat, Suspension Trainer
+    gearIds: ["gear-005", "gear-008"],
     ctaLabel: "Unlock the Anxiety-Free Routine"
   },
   {
@@ -46,7 +46,7 @@ const MATRIX_OPTIONS: AlternativeOption[] = [
       "Walk slowly on a walking pad during work calls, gaming, or podcast listening.",
       "No sweat, no change of clothes needed. Maximize Non-Exercise Activity Thermogenesis (NEAT)."
     ],
-    gearIds: ["gear-001", "gear-010"], // Walking Pad, Mini Stepper
+    gearIds: ["gear-001", "gear-010"],
     ctaLabel: "Unlock the LISS Blueprint"
   }
 ];
@@ -58,87 +58,96 @@ export default function AlternativeMatrix() {
   const recommendedGear = GEAR_ITEMS.filter((item) => currentOption.gearIds.includes(item.id));
 
   return (
-    <div className="border border-hairline bg-surface p-6 sm:p-8 rounded-3xl">
-      <h2 className="font-display font-black text-2xl uppercase text-ink">
-        The Alternative Matrix
-      </h2>
-      <p className="mt-2 text-sm font-bold text-ink-dim border-b border-hairline pb-4 uppercase">
-        Select your absolute biggest barrier to entering a traditional gym, and let's find your zero-friction solution.
-      </p>
+    <div className="border border-zinc-800 bg-void rounded-none">
+      {/* Section header */}
+      <div className="border-b border-zinc-800 px-6 sm:px-8 py-5">
+        <p className="font-mono text-[10px] text-brand-red uppercase tracking-widest mb-2">
+          ALTERNATIVE PROTOCOL MATRIX
+        </p>
+        <h2 className="font-display font-black text-2xl uppercase text-ink">
+          The Alternative Matrix
+        </h2>
+        <p className="mt-2 font-mono text-xs text-zinc-500">
+          Select your absolute biggest barrier to entering a traditional gym.
+        </p>
+      </div>
 
       {/* Barrier Selectors */}
-      <div className="mt-6 grid gap-4 sm:grid-cols-3">
-        {MATRIX_OPTIONS.map((opt) => {
+      <div className="border-b border-zinc-800 flex flex-col sm:flex-row">
+        {MATRIX_OPTIONS.map((opt, i) => {
           const isSelected = selectedId === opt.id;
           return (
             <button
               key={opt.id}
               onClick={() => setSelectedId(opt.id)}
-              className={`w-full text-left border p-4 transition-all rounded-2xl ${
+              className={`flex-1 text-left p-5 border-b sm:border-b-0 sm:border-r border-zinc-800 last:border-0 transition-all duration-150 rounded-none ${
                 isSelected
-                  ? "border-brand-lime bg-brand-lime text-void"
-                  : "border-hairline bg-surface-raised text-ink hover:border-ink-dim"
+                  ? "bg-brand-lime text-void"
+                  : "bg-void text-zinc-400 hover:bg-zinc-900 hover:text-zinc-50"
               }`}
             >
-              <p className={`text-[10px] uppercase font-bold border inline-block px-1 mb-2 rounded-md ${isSelected ? 'border-void/20 bg-void text-brand-lime' : 'border-hairline bg-void text-ink-dim'}`}>Barrier</p>
-              <p className="font-bold text-sm sm:text-base leading-snug">"{opt.barrier}"</p>
+              <p className={`font-mono text-[9px] uppercase tracking-widest mb-2 ${isSelected ? "text-void/60" : "text-zinc-600"}`}>
+                BARRIER {String(i + 1).padStart(2, "0")}
+              </p>
+              <p className={`font-mono text-sm leading-snug font-bold ${isSelected ? "text-void" : ""}`}>
+                "{opt.barrier}"
+              </p>
             </button>
           );
         })}
       </div>
 
-      {/* Recommendation Display */}
-      <div className="mt-8 grid gap-6 lg:grid-cols-[1.1fr_0.9fr] border-t border-hairline pt-6">
-        <div>
-          <div className="inline-flex items-center bg-brand-red px-2 py-1 text-[10px] font-bold text-ink uppercase tracking-wider rounded-md">
-            Recommended
+      {/* Recommendation */}
+      <div className="grid lg:grid-cols-[1.1fr_0.9fr]">
+        {/* Blueprint */}
+        <div className="border-b lg:border-b-0 lg:border-r border-zinc-800 px-6 sm:px-8 py-8">
+          <div className="inline-block bg-brand-red px-2 py-1 font-mono text-[9px] text-ink uppercase tracking-widest mb-4">
+            RECOMMENDED PROTOCOL
           </div>
-          <h3 className="mt-3 text-2xl sm:text-3xl font-display font-black uppercase text-ink leading-tight">{currentOption.recommendation}</h3>
-          
-          <ul className="mt-6 space-y-4">
+          <h3 className="text-2xl sm:text-3xl font-display font-black uppercase text-ink leading-tight mb-6">
+            {currentOption.recommendation}
+          </h3>
+          <div className="space-y-0 border-t border-zinc-800">
             {currentOption.blueprint.map((step, idx) => (
-              <li key={idx} className="flex items-start gap-3">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center bg-surface-raised border border-hairline text-ink-dim text-xs font-bold rounded-full">
-                  {idx + 1}
+              <div key={idx} className="flex items-start gap-4 py-4 border-b border-zinc-800">
+                <span className="font-mono text-[10px] text-zinc-600 tracking-widest shrink-0 mt-0.5">
+                  {String(idx + 1).padStart(2, "0")}
                 </span>
-                <span className="text-sm font-bold leading-relaxed text-ink-dim uppercase">{step}</span>
-              </li>
+                <span className="font-mono text-sm text-zinc-400 leading-relaxed">{step}</span>
+              </div>
             ))}
-          </ul>
+          </div>
         </div>
 
-        {/* Curation Display */}
-        <div className="border border-hairline bg-surface-raised p-6 flex flex-col justify-between rounded-2xl">
+        {/* Gear */}
+        <div className="px-6 sm:px-8 py-8 flex flex-col justify-between">
           <div>
-            <p className="text-[10px] font-bold uppercase tracking-widest text-brand-lime mb-4">
-              Curated Setup
+            <p className="font-mono text-[10px] text-brand-lime uppercase tracking-widest mb-6">
+              CURATED SETUP
             </p>
-            <div className="space-y-4">
+            <div className="space-y-0 border-t border-zinc-800">
               {recommendedGear.map((gear) => (
-                <div key={gear.id} className="border border-hairline bg-surface p-4 flex gap-4 items-center rounded-xl">
+                <div key={gear.id} className="border-b border-zinc-800 py-4 flex gap-4 items-start">
                   <div className="flex-1">
-                    <h4 className="text-sm font-display font-black uppercase text-ink">{gear.title}</h4>
-                    <p className="mt-1 text-xs text-ink-dim line-clamp-2">{gear.description}</p>
-                    <p className="mt-2 text-[10px] font-bold bg-brand-lime text-void inline-block px-1 border border-brand-lime uppercase rounded-md">Est: ${gear.priceEst}</p>
+                    <h4 className="font-mono text-xs font-bold uppercase text-ink">{gear.title}</h4>
+                    <p className="mt-1 font-mono text-[10px] text-zinc-600 leading-relaxed line-clamp-2">{gear.description}</p>
+                    <p className="mt-2 font-mono text-[10px] text-brand-lime">EST: ${gear.priceEst}</p>
                   </div>
                   <a
                     href={gear.affiliateUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="border border-brand-lime hover:bg-brand-lime/5 px-3 py-2 text-xs font-display font-black uppercase text-brand-lime whitespace-nowrap self-center rounded-full transition-all"
+                    className="font-mono text-xs text-brand-lime hover:text-ink underline-offset-4 hover:underline transition-colors whitespace-nowrap shrink-0 self-center"
                   >
-                    View
+                    View →
                   </a>
                 </div>
               ))}
             </div>
           </div>
-
-          <div className="mt-6 border-t border-hairline border-dashed pt-4 text-center">
-            <p className="text-xs font-bold text-ink-dim italic">
-              90% of home fitness gear is plastic trash. We only recommend these items to cover 80% of movements.
-            </p>
-          </div>
+          <p className="font-mono text-[10px] text-zinc-700 mt-6 leading-relaxed">
+            * 90% of home fitness gear is plastic trash. We only recommend these to cover 80% of movements.
+          </p>
         </div>
       </div>
     </div>

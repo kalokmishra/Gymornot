@@ -2,7 +2,30 @@
 
 This document explains the release process for GymOrNot, including versioning, release notes, and release asset handling.
 
-## Release strategy
+---
+
+## Release History
+
+### v0.3.0 — Brutalist/Editorial Full-Site Redesign (2026-07-07)
+
+A complete visual overhaul of the presentation layer across all user-facing pages. No business logic, API routes, or quiz scoring was changed.
+
+**Features**
+- New brutalist/editorial design system: `rounded-none` everywhere, monospace data labels, receipt/ledger-style layouts, terminal loading states
+- Homepage (`/`): Terminal counter bar, asymmetric bento grid with receipt-styled `$44.50` card, exit interview testimonials, sharp CTA hierarchy
+- Quiz (`/quiz`): Blueprint grid background, phase tracker + cosmetic guilt meter, full-width stacked answer rows with selection flash, terminal evaluation log replacing spinner
+- Dashboard (`/dashboard`): Hero `$1,068` score in massive red type, dashed-border financial audit receipt, 28-day sharp-square habit grid, escape hatch warning module
+- Escape page (`/dont-wanna-gym`): All three sub-components (AlternativeMatrix, ResignationGenerator, CalendarSignup) redesigned with flat borders, ledger rows, and receipt-style forms
+- Community (`/community`): Completely rewritten with blueprint grid background, interlocking border tile grid, dashed-border PR checklist receipt
+- Header standardised across all pages: logo + single contextual `font-mono` text link only — no pill nav
+
+**Documentation**
+- `STYLEGUIDE.md` completely rewritten to document the brutalist design system, token reference, per-page structure rules, and content tone
+- `ARCHITECTURE.md` updated with design token reference, design rules, and 28-day habit grid derivation notes
+
+---
+
+## Release Strategy
 
 GymOrNot uses a simple release process for milestone updates. The current repository maintains a draft release for the next major update.
 

@@ -56,4 +56,31 @@ The anti-gym destination site serving organic SEO traffic and quiz funnel drop-o
 
 ## Styling and theming
 
-The app uses Tailwind CSS. Custom design tokens, colors (like `gym-green`, `anti-purple`, and Tailwind `amber-500` representing different archetypes), and fonts are managed in `tailwind.config.ts`.
+The app uses Tailwind CSS with a **brutalist/editorial design system**. Custom design tokens, colors, and fonts are managed in `tailwind.config.ts` and `app/globals.css`.
+
+Key design tokens:
+- `bg-void` (`#0A0A0A`) — page background
+- `bg-zinc-950` / `bg-zinc-900` — elevated surface / receipt/document backgrounds
+- `text-brand-lime` (`#D4FF00`) — primary accent
+- `text-brand-red` (`#FF2D20`) — danger / financial damage
+- `border-hairline` (`#222222`) — standard borders
+- `font-mono` — all data labels, eyebrows, ledger rows
+- `font-display font-black` — all headings
+
+Design rules enforced across all pages:
+- `rounded-none` on all UI elements — no pill shapes
+- Single contextual `font-mono text-xs` right-aligned link in every page header (no pill nav)
+- Stacked full-width rows for interactive choices (quiz answers, barrier selectors)
+- `border-t border-b border-dashed border-zinc-700 bg-zinc-900` for receipt/ledger containers
+- Terminal-style loading states (no spinners)
+
+See `STYLEGUIDE.md` for full design conventions, token reference, and per-page structure guidelines.
+
+---
+
+## Dashboard — Habit Grid
+
+The dashboard derives a 28-day activity grid from the `streak` integer stored in `localStorage`. No additional state or API is required. Each of the 28 cells is classified as:
+- `active` — within the last `streak` days
+- `missed` — past days beyond the streak
+- Rendered as sharp `w-6 h-6 rounded-none` squares in `bg-brand-lime` (active) or `bg-zinc-800` (missed)
