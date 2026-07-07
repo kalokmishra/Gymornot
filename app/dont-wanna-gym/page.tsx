@@ -3,79 +3,84 @@
 import Link from "next/link";
 import AlternativeMatrix from "./components/AlternativeMatrix";
 import CalendarSignup from "./components/CalendarSignup";
+import ResignationGenerator from "./components/ResignationGenerator";
 
 export default function DontWannaGymPage() {
   return (
-    <main className="min-h-screen bg-[radial-gradient(circle_at_top_left,_rgba(16,185,129,0.16),transparent_28%),radial-gradient(circle_at_bottom_right,_rgba(139,92,246,0.16),transparent_24%),#0b0f19] text-ink">
-      <div className="mx-auto flex min-h-screen max-w-6xl flex-col px-6 py-8 sm:px-10 lg:px-12">
+    <main className="min-h-screen bg-[#f4f4f0] text-black font-mono" style={{ backgroundImage: "radial-gradient(#d4d4d0 1px, transparent 1px)", backgroundSize: "20px 20px" }}>
+      <div className="mx-auto flex min-h-screen max-w-6xl flex-col px-6 py-8 sm:px-10 lg:px-12 space-y-12">
         
         {/* Navigation Header */}
-        <div className="mb-8 flex items-center justify-between rounded-[1.5rem] border border-white/10 bg-surface/80 px-6 py-4 text-sm text-ink-dim shadow-[0_20px_70px_-50px_rgba(0,0,0,0.8)] sm:px-10">
-          <div className="text-lg font-semibold text-ink">GymOrNot<span className="text-gym-green">.</span>com</div>
+        <div className="flex items-center justify-between border-4 border-black bg-white px-6 py-4 shadow-[8px_8px_0px_#111] sm:px-10">
+          <div className="text-xl font-black uppercase tracking-tighter">GymOrNot<span className="bg-gym-green px-1">.</span>com</div>
           <div className="flex flex-wrap gap-3">
-            <Link href="/" className="cta-secondary px-4 py-2 text-sm">
+            <Link href="/" className="border-4 border-black bg-gray-100 px-4 py-2 text-sm font-bold uppercase shadow-[4px_4px_0px_#111] hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[6px_6px_0px_#111] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all">
               Home
             </Link>
-            <Link href="/quiz" className="cta-primary px-4 py-2 text-sm">
+            <Link href="/quiz" className="border-4 border-black bg-anti-purple-glow px-4 py-2 text-sm font-bold uppercase shadow-[4px_4px_0px_#111] hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[6px_6px_0px_#111] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all">
               Take the Quiz
             </Link>
           </div>
         </div>
 
         {/* Hero Section */}
-        <header className="panel-card rounded-[2rem] p-8 sm:p-12 text-center border border-white/10 bg-[#0d1527]/80">
-          <div className="inline-flex items-center rounded-full border border-gym-green/20 bg-gym-green/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-gym-green">
-            Welcome to the No-Judgment Zone
+        <header className="text-center space-y-6 pt-8 pb-4">
+          <div className="inline-block border-4 border-black px-4 py-2 bg-yellow-300 font-black text-sm uppercase shadow-[4px_4px_0px_#111] transform -rotate-2">
+            VOL. 1 / NO JUDGMENT
           </div>
-          <h1 className="mt-6 text-4xl font-bold tracking-tight text-ink sm:text-5xl lg:text-6xl max-w-4xl mx-auto leading-tight">
-            I Don't Wanna Gym.
+          <h1 className="text-5xl sm:text-7xl font-black uppercase tracking-tighter leading-tight mt-6">
+            The Anti-Gym <br className="hidden sm:block" />
+            <span className="bg-black text-white px-4 py-1 inline-block mt-2">Manifesto.</span>
           </h1>
-          <p className="mt-4 max-w-2xl mx-auto text-base sm:text-lg leading-8 text-ink-dim">
-            Good. Gyms are loud, crowded, expensive corporate traps designed to make you feel guilty for not visiting. You don't need them to build a healthy life.
+          <p className="mt-6 text-lg sm:text-xl font-bold max-w-2xl mx-auto">
+            You are officially unsubscribed from <span className="line-through decoration-red-500 decoration-4">gym guilt</span> corporate fitness.
           </p>
         </header>
 
+        {/* Resignation Generator (New Viral Hook) */}
+        <ResignationGenerator />
+
         {/* Alternative Matrix */}
-        <section className="mt-8">
+        <section className="mt-12">
           <AlternativeMatrix />
         </section>
 
         {/* Pillar 2: Zero-Fluff Gear Curation */}
-        <section className="mt-8 grid gap-8 lg:grid-cols-2">
-          <article className="panel-card rounded-[2rem] p-8 border border-white/10 bg-[#0f1726]/60 flex flex-col justify-between">
+        <section className="mt-12 grid gap-8 lg:grid-cols-2">
+          <article className="bg-white border-4 border-black shadow-[8px_8px_0px_#111] p-8 flex flex-col justify-between transition-transform hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[12px_12px_0px_#111]">
             <div>
-              <span className="text-xs uppercase tracking-[0.25em] font-semibold text-gym-green">
+              <span className="text-xs uppercase font-black bg-black text-white px-2 py-1">
                 Pillar 2: Gear Philosophy
               </span>
-              <h2 className="mt-4 text-3xl font-semibold tracking-tight text-ink">
+              <h2 className="mt-6 text-3xl font-black uppercase text-black">
                 The "Buy Only Two Things" Rule
               </h2>
-              <p className="mt-4 text-sm leading-7 text-ink-dim">
+              <p className="mt-4 text-sm font-bold leading-7 text-black">
                 Traditional fitness media tries to sell you $2,000 stationary bikes, massive squat racks, and endless tubs of synthetic powder. 
               </p>
-              <p className="mt-3 text-sm leading-7 text-ink-dim">
+              <p className="mt-3 text-sm font-bold leading-7 text-black">
                 The truth? 90% of home gym gear is plastic landfill material. You can replicate 80% of gym movements and build a lifetime of fitness with only two premium, compact items:
               </p>
 
-              <ul className="mt-6 space-y-4 text-sm text-ink-dim">
-                <li className="flex gap-2">
-                  <span className="text-gym-green">✓</span>
-                  <strong>A Premium Fabric Resistance Band Set</strong> (for zero-impact, highly dynamic resistance training).
+              <ul className="mt-6 space-y-4 text-sm font-bold text-black border-4 border-black border-dashed p-4 bg-gray-50">
+                <li className="flex gap-3 items-start">
+                  <span className="bg-gym-green border-2 border-black px-2 inline-block">✓</span>
+                  <span><strong>A Premium Fabric Resistance Band Set</strong> (for zero-impact, highly dynamic resistance training).</span>
                 </li>
-                <li className="flex gap-2">
-                  <span className="text-gym-green">✓</span>
-                  <strong>An Under-Desk Walking Pad</strong> (to get your steps in without facing the weather or bad gym lighting).
+                <li className="flex gap-3 items-start">
+                  <span className="bg-gym-green border-2 border-black px-2 inline-block">✓</span>
+                  <span><strong>An Under-Desk Walking Pad</strong> (to get your steps in without facing the weather or bad lighting).</span>
                 </li>
               </ul>
             </div>
             
-            <div className="mt-8 border-t border-white/5 pt-6 flex justify-between items-center">
+            <div className="mt-8 border-t-4 border-black pt-6 flex justify-between items-end">
               <div>
-                <p className="text-xs text-ink-dim">Estimated Total Investment</p>
-                <p className="text-2xl font-bold text-gym-green">$221 total</p>
+                <p className="text-xs font-bold uppercase">Total Investment</p>
+                <p className="text-3xl font-black bg-yellow-300 inline-block px-2 border-2 border-black mt-1">$221</p>
               </div>
-              <p className="text-xs text-ink-dim/60 italic max-w-xs text-right">
-                Less than 3 months of standard gym membership fees.
+              <p className="text-xs font-bold max-w-[120px] text-right italic">
+                Less than 3 months of standard gym fees.
               </p>
             </div>
           </article>
@@ -85,20 +90,20 @@ export default function DontWannaGymPage() {
         </section>
 
         {/* SEO Copy Cluster / Informational Content */}
-        <section className="mt-8 panel-card rounded-[2rem] p-8 border border-white/10 bg-[#0f1726]/40">
-          <h2 className="text-2xl font-bold text-ink">Why Avoiding the Gym is Actually Smart</h2>
-          <div className="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3 text-sm leading-7 text-ink-dim">
-            <div className="p-5 rounded-2xl bg-white/5 border border-white/5">
-              <h3 className="font-semibold text-ink">Zero Commute Overhead</h3>
-              <p className="mt-2">The biggest friction to working out isn't the workout—it's pack-driving-changing-parking. Home fitness starts instantly.</p>
+        <section className="mt-12 bg-white border-4 border-black shadow-[8px_8px_0px_#111] p-8 mb-12">
+          <h2 className="text-3xl font-black uppercase text-black">Why Avoiding the Gym is Actually Smart</h2>
+          <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <div className="p-6 border-4 border-black bg-gray-50 shadow-[4px_4px_0px_#111]">
+              <h3 className="font-black uppercase text-lg border-b-2 border-black pb-2">Zero Commute Overhead</h3>
+              <p className="mt-4 text-sm font-bold">The biggest friction to working out isn't the workout—it's pack-driving-changing-parking. Home fitness starts instantly.</p>
             </div>
-            <div className="p-5 rounded-2xl bg-white/5 border border-white/5">
-              <h3 className="font-semibold text-ink">No Social Performance</h3>
-              <p className="mt-2">No grunting strangers, no waiting for equipment, and no awkward mirror eye-contact. Move at your own speed in privacy.</p>
+            <div className="p-6 border-4 border-black bg-gray-50 shadow-[4px_4px_0px_#111]">
+              <h3 className="font-black uppercase text-lg border-b-2 border-black pb-2">No Social Performance</h3>
+              <p className="mt-4 text-sm font-bold">No grunting strangers, no waiting for equipment, and no awkward mirror eye-contact. Move at your own speed in privacy.</p>
             </div>
-            <div className="p-5 rounded-2xl bg-white/5 border border-white/5">
-              <h3 className="font-semibold text-ink">Consistency over Equipment</h3>
-              <p className="mt-2">A daily 15-minute walk and simple bodyweight set beat a $150/month gym membership you only visit twice a year.</p>
+            <div className="p-6 border-4 border-black bg-gray-50 shadow-[4px_4px_0px_#111]">
+              <h3 className="font-black uppercase text-lg border-b-2 border-black pb-2">Consistency Over Equipment</h3>
+              <p className="mt-4 text-sm font-bold">A daily 15-minute walk and simple bodyweight set beat a $150/month gym membership you only visit twice a year.</p>
             </div>
           </div>
         </section>

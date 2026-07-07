@@ -58,81 +58,81 @@ export default function AlternativeMatrix() {
   const recommendedGear = GEAR_ITEMS.filter((item) => currentOption.gearIds.includes(item.id));
 
   return (
-    <div className="panel-card rounded-[2rem] p-6 sm:p-8 border border-white/10 bg-[#0f1726]/60 shadow-[0_20px_50px_-30px_rgba(0,0,0,0.5)]">
-      <h2 className="text-2xl font-bold tracking-tight text-ink">
-        The Anti-Gym Alternative Matrix
+    <div className="bg-white border-4 border-black shadow-[8px_8px_0px_#111] p-6 sm:p-8 font-mono">
+      <h2 className="text-2xl font-black uppercase text-black">
+        The Alternative Matrix
       </h2>
-      <p className="mt-2 text-sm text-ink-dim">
+      <p className="mt-2 text-sm font-bold text-black border-b-4 border-black pb-4">
         Select your absolute biggest barrier to entering a traditional gym, and let's find your zero-friction solution.
       </p>
 
       {/* Barrier Selectors */}
-      <div className="mt-6 grid gap-3 sm:grid-cols-3">
+      <div className="mt-6 grid gap-4 sm:grid-cols-3">
         {MATRIX_OPTIONS.map((opt) => (
           <button
             key={opt.id}
             onClick={() => setSelectedId(opt.id)}
-            className={`w-full text-left rounded-2xl border p-4 transition-all duration-300 ${
+            className={`w-full text-left border-4 p-4 transition-transform active:translate-y-1 active:translate-x-1 hover:-translate-y-1 hover:-translate-x-1 ${
               selectedId === opt.id
-                ? "border-gym-green bg-gym-green/10 text-ink shadow-[0_0_15px_rgba(16,185,129,0.15)]"
-                : "border-white/5 bg-white/5 text-ink-dim hover:border-white/20 hover:bg-white/10"
+                ? "border-black bg-gym-green text-black shadow-[4px_4px_0px_#111] hover:shadow-[6px_6px_0px_#111]"
+                : "border-black bg-gray-50 text-black shadow-[4px_4px_0px_#111] hover:shadow-[6px_6px_0px_#111]"
             }`}
           >
-            <p className="text-xs uppercase tracking-[0.2em] font-semibold opacity-70">The Barrier</p>
-            <p className="mt-2 font-medium text-sm sm:text-base">"{opt.barrier}"</p>
+            <p className="text-xs uppercase font-bold bg-white border-2 border-black inline-block px-1">Barrier</p>
+            <p className="mt-2 font-bold text-sm sm:text-base">"{opt.barrier}"</p>
           </button>
         ))}
       </div>
 
       {/* Recommendation Display */}
-      <div className="mt-8 grid gap-6 lg:grid-cols-[1.1fr_0.9fr] border-t border-white/5 pt-6">
+      <div className="mt-8 grid gap-6 lg:grid-cols-[1.1fr_0.9fr] border-t-4 border-black pt-6">
         <div>
-          <div className="inline-flex items-center rounded-full bg-gym-green/10 border border-gym-green/20 px-3 py-1 text-xs font-semibold text-gym-green uppercase tracking-wider">
-            Alternative Recommended
+          <div className="inline-flex items-center bg-yellow-300 border-2 border-black px-2 py-1 text-xs font-bold text-black uppercase">
+            Recommended
           </div>
-          <h3 className="mt-3 text-2xl font-semibold text-ink">{currentOption.recommendation}</h3>
+          <h3 className="mt-3 text-2xl font-black uppercase text-black">{currentOption.recommendation}</h3>
           
           <ul className="mt-5 space-y-4">
             {currentOption.blueprint.map((step, idx) => (
               <li key={idx} className="flex items-start gap-3">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-white/5 border border-white/10 text-xs font-semibold text-gym-green">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center bg-black text-white text-xs font-bold border-2 border-black rounded-full">
                   {idx + 1}
                 </span>
-                <span className="text-sm leading-6 text-ink-dim">{step}</span>
+                <span className="text-sm font-bold leading-6 text-black">{step}</span>
               </li>
             ))}
           </ul>
         </div>
 
         {/* Curation Display */}
-        <div className="rounded-2xl border border-white/5 bg-[#111827]/50 p-6 flex flex-col justify-between">
+        <div className="border-4 border-black bg-gray-100 p-6 flex flex-col justify-between shadow-[4px_4px_0px_#111]">
           <div>
-            <p className="text-xs uppercase tracking-[0.2em] font-semibold text-ink-dim">
-              Curated Setup (Buy Only What You Need)
+            <p className="text-xs font-black uppercase bg-black text-white inline-block px-2 py-1 mb-4">
+              Curated Setup
             </p>
-            <div className="mt-4 space-y-4">
+            <div className="space-y-4">
               {recommendedGear.map((gear) => (
-                <div key={gear.id} className="rounded-xl border border-white/5 bg-white/5 p-4 flex gap-4 items-center">
+                <div key={gear.id} className="border-4 border-black bg-white p-4 flex gap-4 items-center shadow-[4px_4px_0px_#111]">
                   <div className="flex-1">
-                    <h4 className="text-sm font-semibold text-ink">{gear.title}</h4>
-                    <p className="mt-1 text-xs text-ink-dim line-clamp-2">{gear.description}</p>
-                    <p className="mt-2 text-xs font-semibold text-gym-green">Est: ${gear.priceEst}</p>
+                    <h4 className="text-sm font-black uppercase text-black">{gear.title}</h4>
+                    <p className="mt-1 text-xs font-medium text-black line-clamp-2">{gear.description}</p>
+                    <p className="mt-2 text-xs font-bold bg-green-300 inline-block px-1 border-2 border-black">Est: ${gear.priceEst}</p>
                   </div>
                   <a
                     href={gear.affiliateUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="cta-secondary text-xs px-3 py-2 whitespace-nowrap self-center"
+                    className="bg-anti-purple-glow border-4 border-black px-3 py-2 text-xs font-bold uppercase text-black whitespace-nowrap self-center hover:bg-anti-purple active:translate-y-1 active:translate-x-1 transition-transform"
                   >
-                    View Gear
+                    View
                   </a>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="mt-6 border-t border-white/5 pt-4 text-center">
-            <p className="text-[0.7rem] text-ink-dim/60 italic">
+          <div className="mt-6 border-t-4 border-black border-dashed pt-4 text-center">
+            <p className="text-xs font-bold text-black italic">
               90% of home fitness gear is plastic trash. We only recommend these items to cover 80% of movements.
             </p>
           </div>

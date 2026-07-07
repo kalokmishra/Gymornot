@@ -23,55 +23,57 @@ export default function CalendarSignup() {
   };
 
   return (
-    <div className="panel-card rounded-[2rem] p-8 border border-white/10 bg-[#0b1320] shadow-xl text-center relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-24 h-24 bg-gym-green/5 rounded-bl-full pointer-events-none" />
+    <div className="bg-white border-4 border-black shadow-[8px_8px_0px_#111] p-8 text-center relative font-mono transition-transform hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[12px_12px_0px_#111]">
+      <div className="absolute top-0 right-0 w-16 h-16 bg-black text-white flex items-center justify-center font-black text-2xl pointer-events-none">
+        !
+      </div>
       
       <div className="mx-auto max-w-lg">
-        <span className="text-xs uppercase tracking-[0.25em] font-semibold text-gym-green">
-          Email Retention Hook
+        <span className="text-xs uppercase font-black bg-black text-white px-2 py-1 inline-block mb-4">
+          Free Download
         </span>
-        <h2 className="mt-4 text-3xl font-bold tracking-tight text-ink sm:text-4xl">
+        <h2 className="text-3xl font-black uppercase text-black sm:text-4xl">
           Get the "Bare Minimum" Calendar
         </h2>
-        <p className="mt-3 text-sm text-ink-dim leading-6">
-          A zero-stress, printable 30-day sheet. Put it on your fridge. Cross off a day just for doing 5 minutes of moving, walking, or breathing aggressively. No memberships required.
+        <p className="mt-4 text-sm font-bold text-black border-b-4 border-black border-dashed pb-4">
+          A zero-stress, printable 30-day sheet. Put it on your fridge. Cross off a day just for doing 5 minutes of moving. No memberships required.
         </p>
 
         {!isSubmitted ? (
-          <form onSubmit={handleSubmit} className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
+          <form onSubmit={handleSubmit} className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
             <input
               type="email"
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter your email to download"
-              className="w-full max-w-xs rounded-full border border-white/10 bg-white/5 px-5 py-3 text-sm text-ink placeholder-ink-dim outline-none transition focus:border-gym-green/50 focus:bg-white/10"
+              placeholder="YOUR_EMAIL@HERE.COM"
+              className="w-full max-w-xs border-4 border-black rounded-none bg-gray-100 px-5 py-3 text-sm font-bold text-black placeholder:text-gray-400 focus:outline-none focus:bg-white focus:shadow-[inset_4px_4px_0px_rgba(0,0,0,0.1)]"
             />
             <button
               type="submit"
-              className="cta-primary whitespace-nowrap px-6 py-3 text-sm"
+              className="bg-gym-green border-4 border-black shadow-[4px_4px_0px_#111] font-black uppercase whitespace-nowrap px-6 py-3 text-sm hover:bg-green-400 active:translate-y-1 active:translate-x-1 active:shadow-none transition-all"
             >
-              Get My Calendar PDF
+              Get PDF &rarr;
             </button>
           </form>
         ) : (
-          <div className="mt-8 p-6 rounded-2xl border border-gym-green/20 bg-gym-green/5 animate-fade-in">
-            <p className="text-sm font-semibold text-gym-green">✓ Your calendar is ready!</p>
-            <p className="mt-1 text-xs text-ink-dim">
-              We've saved your details. Click below to download your printable 30-day tracker.
+          <div className="mt-8 p-6 border-4 border-black bg-green-200">
+            <p className="text-lg font-black uppercase text-black">✓ Calendar Ready!</p>
+            <p className="mt-2 text-sm font-bold text-black">
+              Click below to download your printable tracker.
             </p>
             <a
               href="/downloads/Anti-Gym-Bare-Minimum-Calendar.pdf"
               download
-              className="mt-4 inline-flex items-center gap-2 cta-primary px-6 py-2 text-xs"
+              className="mt-6 inline-flex items-center gap-2 bg-white border-4 border-black shadow-[4px_4px_0px_#111] font-black uppercase px-6 py-3 text-xs hover:bg-gray-100 active:translate-y-1 active:translate-x-1 active:shadow-none transition-all"
             >
-              📥 Download Calendar (PDF)
+              📥 Download PDF
             </a>
           </div>
         )}
 
-        <p className="mt-4 text-[0.7rem] text-ink-dim/40">
-          We hate spam as much as we hate 5 AM alarm clocks. Unsubscribe anytime.
+        <p className="mt-6 text-xs font-bold text-black italic">
+          We hate spam as much as we hate 5 AM alarm clocks.
         </p>
       </div>
     </div>
