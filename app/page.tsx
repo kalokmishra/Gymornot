@@ -14,17 +14,23 @@ const TESTIMONIALS = [
   {
     name: "Marcus, 34",
     quote: "Cancelled after 2 years. Bought resistance bands for $23. Never looked back. I'm in better shape now.",
-    saving: "Saved $1,068/yr",
+    saving: "$1,068/yr",
+    fileNum: "001",
+    date: "2024-03-12",
   },
   {
     name: "Priya, 28",
     quote: "My gym charged me for 3 months after I 'cancelled'. GymOrNot helped me write the letter. They stopped.",
-    saving: "Saved $267",
+    saving: "$267",
+    fileNum: "002",
+    date: "2024-05-08",
   },
   {
     name: "Derek, 41",
     quote: "I was paying $120/month for a gym I visited 4 times in a year. That's $30 per visit. For a treadmill.",
-    saving: "Saved $1,440/yr",
+    saving: "$1,440/yr",
+    fileNum: "003",
+    date: "2024-07-22",
   },
 ];
 
@@ -40,45 +46,35 @@ export default function HomePage() {
 
   return (
     <main className="min-h-screen bg-void text-ink font-body selection:bg-brand-lime selection:text-void">
+
       {/* HEADER */}
-      <header className="border-b border-hairline bg-void/80 backdrop-blur-md sticky top-0 z-50 px-6 py-4">
+      <header className="border-b border-hairline bg-void sticky top-0 z-50 px-6 py-4">
         <div className="max-w-6xl mx-auto flex justify-between items-center">
           <Link href="/" className="font-display font-black text-2xl text-brand-lime tracking-tight hover:opacity-80 transition-opacity">
             GymOrNot<span className="text-brand-red">.</span>
           </Link>
-          <nav className="flex gap-2">
-            <Link
-              href="/"
-              className="font-display font-bold text-xs tracking-wider uppercase bg-brand-lime text-void border border-brand-lime px-4 py-2 rounded-full transition-all"
-            >
-              Home
-            </Link>
-            <Link
-              href="/quiz"
-              className="font-display font-bold text-xs tracking-wider uppercase border border-hairline hover:bg-surface-raised px-4 py-2 text-ink-dim hover:text-ink rounded-full transition-all"
-            >
-              Quiz
-            </Link>
-            <Link
-              href="/dont-wanna-gym"
-              className="font-display font-bold text-xs tracking-wider uppercase border border-hairline hover:bg-surface-raised px-4 py-2 text-ink-dim hover:text-ink rounded-full transition-all"
-            >
-              Escape
-            </Link>
-          </nav>
+          <Link
+            href="/quiz"
+            className="font-mono text-xs text-zinc-400 hover:text-brand-lime transition-colors tracking-wider"
+          >
+            Take the Quiz →
+          </Link>
         </div>
       </header>
+
+      {/* TERMINAL COUNTER BAR */}
+      <div className="border-b border-zinc-800 bg-void px-6 py-2">
+        <div className="max-w-6xl mx-auto flex items-center gap-3">
+          <span className="w-1.5 h-1.5 rounded-full bg-brand-red animate-pulse shrink-0" />
+          <span className="font-mono text-xs text-zinc-500 tracking-widest uppercase">
+            SYS // {counter.toLocaleString()} MEMBERSHIPS CANCELLED THIS MONTH
+          </span>
+        </div>
+      </div>
 
       {/* HERO SECTION */}
       <section className="border-b border-hairline px-6 py-16 md:py-24">
         <div className="max-w-6xl mx-auto">
-          {/* Live Counter */}
-          <div className="inline-flex items-center gap-2 border border-brand-red/35 bg-brand-red/5 px-4 py-2 rounded-full mb-10">
-            <span className="w-2.5 h-2.5 rounded-full bg-brand-red animate-pulse" />
-            <span className="font-display text-xs font-bold text-brand-red tracking-widest uppercase">
-              LIVE — {counter.toLocaleString()} memberships cancelled this month
-            </span>
-          </div>
 
           {/* Headline */}
           <h1 className="font-display font-black text-5xl md:text-8xl tracking-tighter leading-[0.9] text-ink uppercase max-w-4xl">
@@ -91,19 +87,19 @@ export default function HomePage() {
             The average gym member wastes <strong className="text-ink">$1,068/year</strong> on fitness guilt. Find out your exact number — and what to do about it.
           </p>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-wrap gap-4 items-center">
+          {/* CTA Buttons — Clear hierarchy */}
+          <div className="flex flex-col items-start gap-4">
             <Link
               href="/quiz"
-              className="font-display font-black text-sm tracking-wider uppercase bg-brand-lime text-void px-8 py-5 rounded-full hover:bg-ink hover:text-void transition-all"
+              className="font-display font-black text-sm tracking-wider uppercase bg-brand-lime text-void px-8 py-4 rounded-none hover:bg-white hover:text-void transition-colors"
             >
               DIAGNOSE MY GYM HABIT →
             </Link>
             <Link
               href="/dont-wanna-gym"
-              className="font-display font-bold text-sm tracking-wider uppercase border border-hairline hover:border-ink px-8 py-5 rounded-full text-ink-dim hover:text-ink transition-all"
+              className="font-mono text-xs text-zinc-500 hover:text-ink underline-offset-4 hover:underline transition-colors"
             >
-              I Already Hate the Gym →
+              i already hate the gym →
             </Link>
           </div>
 
@@ -114,7 +110,7 @@ export default function HomePage() {
                 <div className="font-display font-black text-3xl md:text-4xl text-brand-lime tracking-tight leading-none">
                   {stat.value}
                 </div>
-                <div className="font-display text-[10px] md:text-xs font-bold text-ink-dim uppercase tracking-wider mt-3">
+                <div className="font-mono text-[10px] text-zinc-500 uppercase tracking-wider mt-3">
                   {stat.label}
                 </div>
               </div>
@@ -127,37 +123,49 @@ export default function HomePage() {
       <section className="border-b border-hairline px-6 py-16 md:py-24">
         <div className="max-w-6xl mx-auto">
           <div className="flex items-center gap-4 mb-12">
-            <span className="font-display text-xs font-bold text-brand-red tracking-widest uppercase">The Gym Trap</span>
+            <span className="font-mono text-xs text-brand-red tracking-widest uppercase">The Gym Trap</span>
             <div className="flex-1 h-[1px] bg-hairline" />
           </div>
 
-          <h2 className="font-display font-black text-4xl md:text-7xl tracking-tighter leading-[0.95] mb-12 uppercase max-w-2xl">
+          <h2 className="font-display font-black text-4xl md:text-7xl tracking-tighter leading-[0.95] mb-12 max-w-2xl">
             THE MATH DOESN'T LIE.<br />
-            <span className="text-ink-dim">YOU DO.</span>
+            <span className="text-ink-dim font-light">You do.</span>
           </h2>
 
-          {/* Bento Grid */}
+          {/* Asymmetric Bento Grid */}
           <div className="grid md:grid-cols-12 gap-4">
-            <div className="md:col-span-7 bg-surface border border-hairline rounded-3xl p-8 md:p-12 flex flex-col justify-between">
+
+            {/* Card 1 — Receipt card */}
+            <div className="md:col-span-7 bg-zinc-900 border border-dashed border-zinc-600 rounded-none p-10 flex flex-col justify-between">
+              {/* Receipt header */}
+              <div className="font-mono text-[10px] text-zinc-500 tracking-widest uppercase border-b border-dashed border-zinc-700 pb-3 mb-6">
+                TRANSACTION RECEIPT // GYM MEMBERSHIP
+              </div>
               <div>
                 <div className="font-display font-black text-6xl md:text-8xl text-brand-lime tracking-tight leading-none mb-1">
                   $44.50
                 </div>
-                <div className="font-display text-xs font-bold text-ink-dim uppercase tracking-widest mb-6">
+                <div className="font-mono text-xs text-zinc-500 uppercase tracking-widest mb-6">
                   per visit
                 </div>
               </div>
               <p className="font-body text-base text-ink-dim leading-relaxed max-w-sm">
                 You paid $89 last month. You went twice. That's $44.50 per visit. A taxi is cheaper. A therapist is more honest.
               </p>
+              {/* Receipt footer */}
+              <div className="font-mono text-[10px] text-zinc-600 border-t border-dashed border-zinc-700 pt-3 mt-6 tracking-widest uppercase">
+                - - - - - - - - - - - - - - - - - - - - -<br />
+                TOTAL WASTED THIS MONTH: $89.00
+              </div>
             </div>
 
-            <div className="md:col-span-5 bg-brand-lime rounded-3xl p-8 md:p-12 flex flex-col justify-between text-void">
+            {/* Card 2 — 3 weeks (compact) */}
+            <div className="md:col-span-5 bg-brand-lime rounded-none p-6 flex flex-col justify-between text-void">
               <div>
                 <div className="font-display font-black text-4xl md:text-6xl tracking-tight leading-none mb-1">
                   3 weeks
                 </div>
-                <div className="font-display text-xs font-bold text-void/60 uppercase tracking-widest mb-6">
+                <div className="font-mono text-xs text-void/60 uppercase tracking-widest mb-6">
                   in your car
                 </div>
               </div>
@@ -166,12 +174,13 @@ export default function HomePage() {
               </p>
             </div>
 
-            <div className="md:col-span-5 bg-brand-red rounded-3xl p-8 md:p-12 flex flex-col justify-between text-ink">
+            {/* Card 3 — 24/7 (more padding) */}
+            <div className="md:col-span-5 bg-brand-red rounded-none p-10 flex flex-col justify-between text-ink">
               <div>
                 <div className="font-display font-black text-4xl md:text-6xl tracking-tight leading-none mb-1">
                   24/7
                 </div>
-                <div className="font-display text-xs font-bold text-ink/60 uppercase tracking-widest mb-6">
+                <div className="font-mono text-xs text-ink/60 uppercase tracking-widest mb-6">
                   open. you are not.
                 </div>
               </div>
@@ -180,12 +189,16 @@ export default function HomePage() {
               </p>
             </div>
 
-            <div className="md:col-span-7 bg-surface border border-hairline rounded-3xl p-8 md:p-12 flex flex-col justify-between">
+            {/* Card 4 — January (mid padding) */}
+            <div className="md:col-span-7 bg-surface border border-hairline rounded-none p-8 flex flex-col justify-between">
+              <div className="font-mono text-[10px] text-zinc-600 tracking-widest uppercase mb-4">
+                RENEWAL DATE: JAN 01
+              </div>
               <div>
                 <div className="font-display font-black text-6xl md:text-8xl text-ink tracking-tight leading-none mb-1">
                   January
                 </div>
-                <div className="font-display text-xs font-bold text-ink-dim uppercase tracking-widest mb-6">
+                <div className="font-mono text-xs text-zinc-500 uppercase tracking-widest mb-6">
                   you renewed
                 </div>
               </div>
@@ -197,31 +210,50 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* TESTIMONIALS */}
+      {/* TESTIMONIALS — Exit Interview Files */}
       <section className="border-b border-hairline px-6 py-16 md:py-24">
         <div className="max-w-6xl mx-auto">
           <div className="flex items-center gap-4 mb-12">
-            <span className="font-display text-xs font-bold text-brand-lime tracking-widest uppercase">Escapees</span>
+            <span className="font-mono text-xs text-brand-lime tracking-widest uppercase">Escapees</span>
             <div className="flex-1 h-[1px] bg-hairline" />
           </div>
 
-          <h2 className="font-display font-black text-3xl md:text-5xl tracking-tighter mb-12 uppercase">
+          <h2 className="font-display font-black text-3xl md:text-5xl tracking-tighter mb-12">
             PEOPLE WHO GOT OUT.
           </h2>
 
-          <div className="grid md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {TESTIMONIALS.map((t, i) => (
-              <div key={i} className="border border-hairline p-8 bg-surface/50 rounded-2xl flex flex-col justify-between">
-                <div>
-                  <div className="font-display text-xs font-black text-brand-lime tracking-widest uppercase mb-6">
-                    {t.saving}
+              <div key={i} className="border border-zinc-800 bg-void rounded-none flex flex-col">
+                {/* File header strip */}
+                <div className="border-b border-zinc-800 px-6 py-4 space-y-1">
+                  <div className="font-mono text-[10px] text-zinc-600 tracking-widest uppercase">
+                    EXIT INTERVIEW // FILE #{t.fileNum}
                   </div>
-                  <p className="font-body text-base text-ink/90 italic leading-relaxed mb-6">
+                  <div className="font-mono text-[10px] text-zinc-600 tracking-widest uppercase">
+                    DATE FILED: {t.date}
+                  </div>
+                  <div className="font-mono text-[10px] tracking-widest uppercase">
+                    <span className="text-zinc-600">AMOUNT RECOVERED: </span>
+                    <span className="text-brand-lime">{t.saving}</span>
+                  </div>
+                  <div className="font-mono text-[10px] text-zinc-600 tracking-widest uppercase">
+                    STATUS: <span className="bg-brand-lime text-void px-1">CANCELLED</span>
+                  </div>
+                </div>
+
+                {/* Quote body */}
+                <div className="px-6 py-6 flex-1">
+                  <p className="font-mono text-sm text-zinc-300 leading-relaxed">
                     "{t.quote}"
                   </p>
                 </div>
-                <div className="font-display text-xs font-bold text-ink-dim">
-                  — {t.name}
+
+                {/* Subject footer */}
+                <div className="border-t border-zinc-800 px-6 py-4">
+                  <span className="font-mono text-[10px] text-zinc-500 uppercase tracking-widest">
+                    SUBJECT: {t.name}
+                  </span>
                 </div>
               </div>
             ))}
@@ -242,7 +274,7 @@ export default function HomePage() {
           </p>
           <Link
             href="/quiz"
-            className="inline-block font-display font-black text-sm tracking-wider uppercase bg-brand-lime text-void px-10 py-6 rounded-full hover:bg-ink hover:text-void transition-all"
+            className="inline-block font-display font-black text-sm tracking-wider uppercase bg-brand-lime text-void px-10 py-6 rounded-none hover:bg-white hover:text-void transition-colors"
           >
             TAKE THE QUIZ →
           </Link>
@@ -255,14 +287,14 @@ export default function HomePage() {
           <Link href="/" className="font-display font-black text-xl text-brand-lime tracking-tight">
             GymOrNot
           </Link>
-          <span className="font-body text-xs text-ink-dim text-center">
+          <span className="font-mono text-xs text-zinc-600 text-center">
             Brutally honest since 2024. Not affiliated with any gym. Thank god.
           </span>
-          <div className="flex gap-4">
-            <Link href="/quiz" className="font-body text-xs text-ink-dim hover:text-ink">
+          <div className="flex gap-6">
+            <Link href="/quiz" className="font-mono text-xs text-zinc-500 hover:text-ink transition-colors">
               Quiz
             </Link>
-            <Link href="/dont-wanna-gym" className="font-body text-xs text-ink-dim hover:text-ink">
+            <Link href="/dont-wanna-gym" className="font-mono text-xs text-zinc-500 hover:text-ink transition-colors">
               Escape
             </Link>
           </div>

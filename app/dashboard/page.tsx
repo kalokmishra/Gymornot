@@ -13,7 +13,7 @@ function formatDate(value: string | null) {
 
 export default function DashboardPage() {
   const [email, setEmail] = useState<string | null>(null);
-  
+
   const [gymScore, setGymScore] = useState(0);
   const [homeScore, setHomeScore] = useState(0);
   const [boutiqueScore, setBoutiqueScore] = useState(0);
@@ -41,7 +41,7 @@ export default function DashboardPage() {
     setHomeScore(storedHome ? Number(storedHome) : 0);
     setBoutiqueScore(storedBoutique ? Number(storedBoutique) : 0);
     setCouchScore(storedCouch ? Number(storedCouch) : 0);
-    
+
     setStreak(storedStreak ? Number(storedStreak) : 0);
     setLastCheckin(storedLast || null);
   }, []);
@@ -55,7 +55,7 @@ export default function DashboardPage() {
   }, [isUnlocked, gymScore, homeScore, boutiqueScore, couchScore]);
 
   const dropoffProbability = Math.round((couchScore / totalScore) * 100);
-  
+
   const checkedInToday = lastCheckin === today;
   const nextStreak = checkedInToday ? streak : lastCheckin === yesterday ? streak + 1 : 1;
   const capitalSaved = Math.max(0, nextStreak * 6 + 5);
@@ -70,161 +70,258 @@ export default function DashboardPage() {
     setLastCheckin(date);
   };
 
-  const textColorClass = archetype?.color === "green" 
-    ? "text-brand-lime" 
-    : archetype?.color === "purple" 
-      ? "text-anti-purple-glow" 
-      : archetype?.color === "amber"
-        ? "text-amber-400"
-        : "text-brand-red";
+  // Build 28-day habit grid from streak
+  const habitGrid = useMemo(() => {
+    const cells: ("active" | "missed" | "empty")[] = [];
+    for (let i = 27; i >= 0; i--) {
+      const cellDate = new Date(Date.now() - i * 86400000).toISOString().slice(0, 10);
+      if (cellDate > today) {
+        cells.push("empty");
+      } else if (streak > 0 && i < streak) {
+        cells.push("active");
+      } else {
+        cells.push("missed");
+      }
+    }
+    return cells;
+  }, [streak, today]);
 
   return (
     <main className="min-h-screen bg-void text-ink font-body selection:bg-brand-lime selection:text-void">
+
       {/* HEADER */}
-      <header className="border-b border-hairline bg-void/80 backdrop-blur-md sticky top-0 z-50 px-6 py-4">
+      <header className="border-b border-hairline bg-void sticky top-0 z-50 px-6 py-4">
         <div className="max-w-6xl mx-auto flex justify-between items-center">
           <Link href="/" className="font-display font-black text-2xl text-brand-lime tracking-tight hover:opacity-80 transition-opacity">
             GymOrNot<span className="text-brand-red">.</span>
           </Link>
-          <nav className="flex gap-2">
-            <Link
-              href="/"
-              className="font-display font-bold text-xs tracking-wider uppercase border border-hairline hover:bg-surface-raised px-4 py-2 text-ink-dim hover:text-ink rounded-full transition-all"
-            >
-              Home
-            </Link>
-            <Link
-              href="/quiz"
-              className="font-display font-bold text-xs tracking-wider uppercase border border-hairline hover:bg-surface-raised px-4 py-2 text-ink-dim hover:text-ink rounded-full transition-all"
-            >
-              Quiz
-            </Link>
-            <Link
-              href="/dont-wanna-gym"
-              className="font-display font-bold text-xs tracking-wider uppercase border border-hairline hover:bg-surface-raised px-4 py-2 text-ink-dim hover:text-ink rounded-full transition-all"
-            >
-              Escape
-            </Link>
-          </nav>
+          <Link href="/quiz" className="font-mono text-xs text-zinc-400 hover:text-brand-lime transition-colors tracking-wider">
+            Retake Quiz →
+          </Link>
         </div>
       </header>
 
-      <div className="mx-auto flex max-w-6xl flex-col px-6 py-12">
-        <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr]">
-          <div className="space-y-8">
-            <div className="border border-hairline bg-surface p-8 rounded-3xl">
-              <p className="font-display text-xs font-bold text-brand-lime tracking-widest uppercase">The 1% Club</p>
-              <h1 className="mt-4 font-display font-black text-3xl sm:text-5xl uppercase tracking-tight text-ink leading-none">
-                Track the habit, not the membership.
-              </h1>
-              <p className="mt-4 text-base leading-relaxed text-ink-dim">
-                Check in once per day and keep your streak going. This page turns your quiz verdict into an actionable habit dashboard.
+      {/* HERO SCORE — Full bleed */}
+      <div className="bg-zinc-950 border-b border-zinc-800 px-6 py-14 md:py-20">
+        <div className="max-w-3xl mx-auto">
+          {isUnlocked && archetype ? (
+            <>
+              <p className="font-mono text-[10px] text-zinc-600 tracking-widest uppercase mb-3">
+                DIAGNOSIS CONFIRMED:
               </p>
+              <h1 className="font-display font-black text-4xl md:text-6xl text-ink uppercase leading-none mb-3">
+                {archetype.name}
+              </h1>
+              <p className="font-body text-base text-zinc-500 max-w-xl mb-10">
+                {archetype.roast}
+              </p>
+
+              <p className="font-mono text-[10px] text-zinc-600 tracking-widest uppercase mb-2">
+                ANNUAL FINANCIAL DAMAGE ASSESSMENT:
+              </p>
+              <div className="font-display font-black text-6xl md:text-8xl text-brand-red tracking-tighter leading-none">
+                $1,068
+              </div>
+              <p className="font-mono text-xs text-zinc-600 mt-3 tracking-widest">
+                [SUNK_COST_FALLACY_INDEX: {dropoffProbability}%]
+              </p>
+            </>
+          ) : (
+            <div className="border border-dashed border-zinc-700 p-10 text-center">
+              <p className="font-mono text-xs text-zinc-600 uppercase tracking-widest mb-4">
+                // ACCESS DENIED //
+              </p>
+              <h1 className="font-display font-black text-3xl text-ink mb-3">
+                You haven't been indicted yet.
+              </h1>
+              <p className="font-mono text-sm text-zinc-500 mb-8">
+                Complete the quiz to receive your financial guilt assessment.
+              </p>
+              <Link
+                href="/quiz"
+                className="inline-block font-display font-black text-xs uppercase bg-brand-lime text-void px-6 py-3 rounded-none hover:bg-white transition-colors"
+              >
+                Take the Quiz Now
+              </Link>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* MAIN DOCUMENT COLUMN */}
+      <div className="max-w-3xl mx-auto px-6 py-12 space-y-0">
+
+        {isUnlocked && archetype ? (
+          <>
+            {/* FINANCIAL AUDIT RECEIPT */}
+            <div className="border-t border-b border-dashed border-zinc-700 bg-zinc-900">
+              {/* Receipt header */}
+              <div className="border-b border-dashed border-zinc-700 px-6 py-3">
+                <p className="font-mono text-[10px] text-zinc-500 tracking-widest uppercase">
+                  OFFICIAL FINANCIAL AUDIT — GYMORNOT SYSTEMS // REF: {email?.split("@")[0]?.toUpperCase() ?? "MEMBER"}
+                </p>
+              </div>
+
+              {/* Line items */}
+              <div className="px-6 py-4 space-y-0 divide-y divide-zinc-800">
+                {[
+                  { label: "Membership Fee (Monthly)", value: "$89.00" },
+                  { label: "Actual Visits Last Month", value: "2" },
+                  { label: "Cost Per Actual Sweat", value: "$44.50" },
+                  { label: "Gym Greed Donation Tax", value: "100%" },
+                ].map((row, i) => (
+                  <div key={i} className="flex justify-between items-baseline py-2.5">
+                    <span className="font-mono text-sm text-zinc-400">{row.label}</span>
+                    <span className="font-mono text-sm text-ink font-bold tabular-nums">{row.value}</span>
+                  </div>
+                ))}
+
+                {/* Spacer */}
+                <div className="py-1" />
+
+                {[
+                  { label: "Current Escape Streak", value: `${streak} day${streak === 1 ? "" : "s"}` },
+                  { label: "Capital Recovered (Est.)", value: `$${capitalSaved}` },
+                  { label: "Last Honest Movement", value: formatDate(lastCheckin) },
+                  { label: "Dropoff Probability", value: `${dropoffProbability}%` },
+                ].map((row, i) => (
+                  <div key={i} className="flex justify-between items-baseline py-2.5">
+                    <span className="font-mono text-sm text-zinc-400">{row.label}</span>
+                    <span className={`font-mono text-sm font-bold tabular-nums ${i === 0 ? "text-brand-lime" : i === 3 && dropoffProbability > 50 ? "text-brand-red" : "text-ink"}`}>
+                      {row.value}
+                    </span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Receipt footer total */}
+              <div className="border-t border-dashed border-zinc-700 px-6 py-4">
+                <div className="flex justify-between items-baseline">
+                  <span className="font-mono text-sm text-zinc-400 font-bold uppercase tracking-wider">TOTAL ANNUAL DAMAGE</span>
+                  <span className="font-mono text-xl text-brand-red font-black tabular-nums">$1,068</span>
+                </div>
+              </div>
+
+              {/* Receipt footnotes */}
+              <div className="border-t border-dashed border-zinc-700 px-6 py-3 space-y-1">
+                <p className="font-mono text-[10px] text-zinc-600">* Streaks are stored locally in your browser.</p>
+                <p className="font-mono text-[10px] text-zinc-600">* Retake quiz anytime to update your risk profile.</p>
+              </div>
             </div>
 
-            {isUnlocked && archetype ? (
-              <div className="grid gap-6">
-                <section className="grid gap-4 border border-hairline bg-surface-raised p-8 rounded-3xl">
-                  <div>
-                    <p className="font-display text-xs font-bold text-brand-red tracking-widest uppercase mb-1">Your Diagnosis</p>
-                    <p className={`text-2xl sm:text-3xl font-display font-black uppercase ${textColorClass}`}>
-                      {archetype.name}
-                    </p>
-                  </div>
-                  <p className="text-sm leading-relaxed text-ink-dim">{archetype.roast}</p>
-                </section>
-
-                <section className="grid gap-6 sm:grid-cols-2">
-                  <div className="border border-hairline bg-surface p-6 rounded-2xl">
-                    <p className="font-display text-xs font-bold text-ink-dim uppercase tracking-wider">Current streak</p>
-                    <p className="mt-3 font-display font-black text-4xl text-ink">{streak} day{streak === 1 ? "" : "s"}</p>
-                    <p className="mt-3 text-xs font-bold text-ink-dim uppercase">Last check-in: {formatDate(lastCheckin)}</p>
-                  </div>
-                  <div className="border border-hairline bg-surface p-6 rounded-2xl relative overflow-hidden">
-                    <p className="font-display text-xs font-bold text-ink-dim uppercase tracking-wider">Donation Index</p>
-                    <p className="mt-3 font-display font-black text-4xl text-brand-lime">${capitalSaved}</p>
-                    <p className="mt-3 text-xs text-ink-dim leading-relaxed">Money saved by actually building the habit instead of paying for ghost memberships.</p>
-                    {dropoffProbability > 50 && (
-                      <div className="absolute top-0 right-0 mt-6 mr-6 h-2 w-2 rounded-full bg-brand-red animate-pulse" />
-                    )}
-                  </div>
-                </section>
-
-                {/* Sticky CTA Panel */}
-                <section className="border border-brand-lime bg-brand-lime/5 p-6 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4">
-                   <div className="flex-1">
-                      <p className="font-display text-sm font-black text-ink uppercase">Action Plan: {archetype.cta.label}</p>
-                      <p className="mt-1 text-xs font-bold text-ink-dim uppercase">Your tailored recommendation to beat the statistics.</p>
-                   </div>
-                   <a href={archetype.cta.href} className="font-display font-black text-xs uppercase bg-brand-lime text-void px-6 py-3 rounded-full hover:bg-ink transition-all whitespace-nowrap">
-                     Take Action
-                   </a>
-                </section>
-
-                {/* Daily Log */}
-                <section className="border border-hairline bg-surface-raised p-6 rounded-2xl">
-                  <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-                    <div>
-                      <p className="font-display text-sm font-black text-ink uppercase">Daily check-in</p>
-                      <p className="mt-1 text-xs text-ink-dim">Tap the button after you do a workout, a walk, or any healthy movement today.</p>
-                    </div>
-                    <button
-                      type="button"
-                      onClick={handleCheckin}
-                      disabled={checkedInToday}
-                      className="font-display font-black text-xs uppercase bg-brand-lime text-void px-6 py-3 rounded-full disabled:opacity-30 disabled:hover:bg-brand-lime hover:bg-ink transition-all whitespace-nowrap"
-                    >
-                      {checkedInToday ? "Checked in today" : "Log today"}
-                    </button>
-                  </div>
-                </section>
-              </div>
-            ) : (
-              <div className="border border-hairline bg-surface p-8 rounded-3xl text-center">
-                <p className="font-display font-black text-xl text-ink uppercase">You haven’t unlocked the dashboard yet.</p>
-                <p className="mt-2 text-sm text-ink-dim">
-                  Finish the quiz first to get your verdict and start tracking streaks.
+            {/* DAILY CHECK-IN TERMINAL ROW */}
+            <div className="border-b border-zinc-800 bg-zinc-950 px-6 py-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+              <div>
+                <p className="font-mono text-[10px] text-zinc-500 uppercase tracking-widest mb-1">
+                  DAILY MOVEMENT LOG:
                 </p>
+                <p className="font-mono text-xs text-zinc-600">
+                  Tap after any walk, workout, or movement. Keeps your streak alive.
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={handleCheckin}
+                disabled={checkedInToday}
+                className={`font-display font-black text-xs uppercase px-5 py-2.5 rounded-none transition-colors whitespace-nowrap shrink-0 ${
+                  checkedInToday
+                    ? "border border-zinc-700 text-zinc-500 font-mono cursor-not-allowed"
+                    : "bg-brand-lime text-void hover:bg-white"
+                }`}
+              >
+                {checkedInToday ? "LOGGED ✓" : "LOG TODAY"}
+              </button>
+            </div>
+
+            {/* RECOMMENDED PROTOCOL — Archetype CTA */}
+            <div className="border-b border-zinc-800 px-6 py-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+              <p className="font-mono text-[10px] text-zinc-500 uppercase tracking-widest">
+                RECOMMENDED PROTOCOL: <span className="text-zinc-400">{archetype.cta.label}</span>
+              </p>
+              <a
+                href={archetype.cta.href}
+                className="font-mono text-xs text-brand-lime hover:text-ink underline-offset-4 hover:underline transition-colors whitespace-nowrap shrink-0"
+              >
+                Take Action →
+              </a>
+            </div>
+
+            {/* CHRONIC INACTIVITY MONITOR — 28-day habit grid */}
+            <div className="border-b border-zinc-800 bg-void px-6 py-8">
+              <div className="border-b border-zinc-800 pb-3 mb-5">
+                <p className="font-mono text-[10px] text-zinc-600 uppercase tracking-widest">
+                  CHRONIC INACTIVITY MONITOR // LAST 28 DAYS
+                </p>
+              </div>
+              <div className="grid grid-cols-7 gap-1.5 w-max">
+                {habitGrid.map((cell, i) => (
+                  <div
+                    key={i}
+                    title={`Day ${i + 1}: ${cell}`}
+                    className={`w-6 h-6 rounded-none ${
+                      cell === "active"
+                        ? "bg-brand-lime"
+                        : cell === "missed"
+                        ? "bg-zinc-800"
+                        : "bg-zinc-950"
+                    }`}
+                  />
+                ))}
+              </div>
+              <div className="flex gap-5 mt-4">
+                <div className="flex items-center gap-2 font-mono text-[10px] text-zinc-600 uppercase">
+                  <span className="w-3 h-3 bg-brand-lime inline-block" /> Active
+                </div>
+                <div className="flex items-center gap-2 font-mono text-[10px] text-zinc-600 uppercase">
+                  <span className="w-3 h-3 bg-zinc-800 inline-block" /> Missed
+                </div>
+              </div>
+            </div>
+
+            {/* SHARE CARD */}
+            <div className="border-b border-zinc-800 px-6 py-8">
+              <p className="font-mono text-[10px] text-zinc-600 uppercase tracking-widest mb-6">
+                BROADCAST YOUR SENTENCE:
+              </p>
+              <ShareCard archetypeId={archetype.id} headline={archetype.shareHeadline} />
+            </div>
+
+            {/* ESCAPE HATCH ULTIMATUM */}
+            <div className="border-2 border-red-900 bg-red-950/20 px-6 py-8 md:p-10 mt-8">
+              <p className="font-mono text-[10px] text-red-700 uppercase tracking-widest mb-4">
+                // TERMINATION PROTOCOL AVAILABLE //
+              </p>
+              <h2 className="font-display font-black text-2xl md:text-4xl text-ink uppercase leading-tight mb-6">
+                Ready to Stop Donating to Corporate Gyms?
+              </h2>
+              <p className="font-mono text-sm text-zinc-500 mb-8 max-w-md">
+                Generate your official cancellation letter. Exit the trap permanently. No negotiation required.
+              </p>
+              <div className="flex flex-col items-center md:items-start gap-4">
                 <Link
-                  href="/quiz"
-                  className="mt-6 inline-block font-display font-black text-xs uppercase bg-brand-lime text-void px-6 py-3 rounded-full hover:bg-ink transition-all"
+                  href="/dont-wanna-gym"
+                  className="bg-brand-red hover:bg-red-700 text-white font-display font-black text-sm uppercase w-full md:w-auto px-8 py-4 rounded-none text-center transition-colors"
                 >
-                  Take the quiz now
+                  ESCAPE THE TRAP →
+                </Link>
+                <Link
+                  href="/dont-wanna-gym"
+                  className="font-mono text-xs text-zinc-600 hover:text-zinc-400 underline underline-offset-4 transition-colors text-center"
+                >
+                  No thanks, I prefer giving corporate gym chains free money.
                 </Link>
               </div>
-            )}
-          </div>
+            </div>
 
-          <aside className="flex flex-col gap-6">
-            <div className="border border-hairline bg-surface p-6 rounded-2xl">
-              <p className="font-display text-xs font-bold text-brand-red tracking-widest uppercase mb-4">Dashboard notes</p>
-              <ul className="space-y-4 text-xs font-bold text-ink-dim uppercase">
-                <li className="flex gap-2 items-start">
-                  <span className="text-brand-lime">•</span>
-                  <span>Streaks are stored locally in your browser.</span>
-                </li>
-                <li className="flex gap-2 items-start">
-                  <span className="text-brand-lime">•</span>
-                  <span>Checking in today refreshes your momentum score.</span>
-                </li>
-                <li className="flex gap-2 items-start">
-                  <span className="text-brand-lime">•</span>
-                  <span>You can retake the quiz anytime to update your risk profile.</span>
-                </li>
-              </ul>
-            </div>
-            
-            <div className="border border-hairline bg-surface p-6 rounded-2xl">
-              <p className="font-display text-xs font-bold text-brand-lime tracking-widest uppercase mb-2">Tip</p>
-              <p className="text-sm font-bold text-ink-dim uppercase">Consistency matters more than intensity. A daily walk, stretching session, or quick bodyweight set counts here.</p>
-            </div>
-            
-            {/* Share Card shown if unlocked */}
-            {isUnlocked && archetype && (
-              <ShareCard archetypeId={archetype.id} headline={archetype.shareHeadline} />
-            )}
-          </aside>
-        </div>
+          </>
+        ) : (
+          /* Locked state — already handled in the hero section above */
+          <div className="py-8 text-center">
+            <p className="font-mono text-xs text-zinc-600 uppercase tracking-widest">
+              Complete the quiz above to unlock your full audit.
+            </p>
+          </div>
+        )}
       </div>
     </main>
   );
