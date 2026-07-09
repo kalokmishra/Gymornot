@@ -2,14 +2,45 @@
 
 import React, { useState } from "react";
 
+const TEMPLATE_PRESETS = [
+  {
+    label: "— Select a Template Preset —",
+    value: "",
+    body: null,
+  },
+  {
+    label: "The Philosophical Departure",
+    value: "philosophical",
+    body: `I have realized that gravity is free, and my couch exerts a much stronger gravitational pull than your dumbbell rack. Physics, not personal failing, compels my departure.`,
+  },
+  {
+    label: "The Asset Liquidation",
+    value: "liquidation",
+    body: `I am redirecting my monthly membership fee away from your unused stair-masters and into streaming services. This will result in a much higher return on my physical comfort.`,
+  },
+  {
+    label: "The Legally Binding Sloth",
+    value: "sloth",
+    body: `I am legally adopting my bed and must remain within 10 feet of it at all times for custody reasons. My legal team has advised that a gym membership would constitute a breach of this arrangement.`,
+  },
+];
+
 export default function ResignationGenerator() {
   const [gymName, setGymName] = useState("");
   const [fee, setFee] = useState("");
   const [reason, setReason] = useState("The music is too loud.");
+  const [templateKey, setTemplateKey] = useState("");
   const [copied, setCopied] = useState(false);
 
   const finalGymName = gymName.trim() || "[Insert Gym Name]";
   const finalFee = fee.trim() || "[$XX]";
+
+  const selectedTemplate = TEMPLATE_PRESETS.find((t) => t.value === templateKey);
+  const letterBody = selectedTemplate?.body
+    ? selectedTemplate.body
+    : `it has come to my attention that ${reason.toLowerCase()}
+
+I will be replacing this membership with a 15-minute daily walk in my neighborhood, which is absolutely free and involves 100% less unsolicited fitness advice.`;
 
   const letterText = `To: ${finalGymName} Management
 Subject: Immediate Membership Termination
@@ -18,9 +49,7 @@ To Whom It May Concern,
 
 Please accept this as formal notice that I am terminating my membership, effective immediately.
 
-For the past several months, I have been generously donating ${finalFee} to your facility. However, it has come to my attention that ${reason.toLowerCase()}
-
-I will be replacing this membership with a 15-minute daily walk in my neighborhood, which is absolutely free and involves 100% less unsolicited fitness advice.
+For the past several months, I have been generously donating ${finalFee} to your facility. ${letterBody}
 
 Do not contact me with counter-offers.
 
@@ -33,7 +62,9 @@ A Free Human`;
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const shareText = encodeURIComponent(`I just fired my gym using the GymOrNot Resignation Generator because ${reason.toLowerCase()} Claim your freedom: https://gymornot.com/dont-wanna-gym`);
+  const shareText = encodeURIComponent(
+    `I just fired my gym using the GymOrNot Resignation Generator. ${selectedTemplate?.body ? `"${selectedTemplate.body.slice(0, 80)}..."` : `Because ${reason.toLowerCase()}`} Claim your freedom: https://gymornot.com/dont-wanna-gym`
+  );
 
   return (
     <section className="border border-zinc-800 bg-void rounded-none">
@@ -83,14 +114,38 @@ A Free Human`;
             </div>
           ))}
 
+          {/* Template Presets Dropdown */}
+          <div className="border-b border-zinc-800 py-5">
+            <label className="block font-mono text-[10px] text-zinc-600 uppercase tracking-widest mb-3">
+              TEMPLATE PRESET (PICK YOUR WEAPON)
+            </label>
+            <select
+              value={templateKey}
+              onChange={(e) => setTemplateKey(e.target.value)}
+              className="bg-void border border-zinc-700 w-full px-4 py-3 font-mono text-sm text-ink focus:outline-none focus:border-zinc-400 rounded-none"
+            >
+              {TEMPLATE_PRESETS.map((t) => (
+                <option key={t.value} value={t.value}>
+                  {t.label}
+                </option>
+              ))}
+            </select>
+            {templateKey && (
+              <p className="font-mono text-[10px] text-brand-lime mt-2 uppercase tracking-widest">
+                ✓ Template active — reason field below is overridden
+              </p>
+            )}
+          </div>
+
           <div className="py-5">
             <label className="block font-mono text-[10px] text-zinc-600 uppercase tracking-widest mb-3">
-              REASON FOR LEAVING
+              REASON FOR LEAVING {templateKey && <span className="text-zinc-700">(overridden by template)</span>}
             </label>
             <select
               value={reason}
-              onChange={(e) => setReason(e.target.value)}
-              className="bg-void border border-zinc-700 w-full px-4 py-3 font-mono text-sm text-ink focus:outline-none focus:border-zinc-400 rounded-none"
+              onChange={(e) => { setReason(e.target.value); setTemplateKey(""); }}
+              disabled={!!templateKey}
+              className="bg-void border border-zinc-700 w-full px-4 py-3 font-mono text-sm text-ink focus:outline-none focus:border-zinc-400 rounded-none disabled:opacity-40 disabled:cursor-not-allowed"
             >
               <option>The music is too loud.</option>
               <option>Someone grunted too close to my ear.</option>
@@ -116,10 +171,19 @@ A Free Human`;
             <p>Please accept this as formal notice that I am terminating my membership, effective immediately.</p>
             <p>
               For the past several months, I have been generously donating{" "}
-              <span className="text-brand-red font-bold">{finalFee}</span> to your facility. However, it has come to my attention that{" "}
-              <span className="text-zinc-400 italic">{reason.toLowerCase()}</span>
+              <span className="text-brand-red font-bold">{finalFee}</span> to your facility.{" "}
+              {selectedTemplate?.body ? (
+                <span className="text-zinc-300">{selectedTemplate.body}</span>
+              ) : (
+                <>
+                  However, it has come to my attention that{" "}
+                  <span className="text-zinc-400 italic">{reason.toLowerCase()}</span>
+                </>
+              )}
             </p>
-            <p>I will be replacing this membership with a 15-minute daily walk in my neighborhood, which is absolutely free and involves 100% less unsolicited fitness advice.</p>
+            {!selectedTemplate?.body && (
+              <p>I will be replacing this membership with a 15-minute daily walk in my neighborhood, which is absolutely free and involves 100% less unsolicited fitness advice.</p>
+            )}
             <p className="text-zinc-400">Do not contact me with counter-offers.</p>
             <p className="text-zinc-500">Regards,<br />A Free Human</p>
           </div>

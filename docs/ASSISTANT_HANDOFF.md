@@ -8,7 +8,34 @@
 
 ---
 
+## What Was Done — v0.5.0 Satirical Content Expansion & Email Capture Webhook
+
+Expanded the satirical humor depth across multiple pages, added preset resignation letter templates, injected a new branded diagnostic question, and introduced a serverless email capture webhook.
+
+### Files Added & Changed
+
+| File | Change |
+|---|---|
+| `app/quiz/page.tsx` | Replaced `LOADING_LINES` array with 5 specific passive-aggressive terminal roasts |
+| `app/giving-free-money/page.tsx` | Replaced 4 generic ledger rows with 4 new itemized satirical charges, each with a sub-note description line |
+| `app/dont-wanna-gym/components/ResignationGenerator.tsx` | Added `TEMPLATE_PRESETS` array + dropdown UI; template selection overrides letter body live, disables reason dropdown with visual indicator |
+| `lib/questions.json` | Added `q_humor_1` — gym card relationship question — with all 4 scoring axes on every option |
+| `app/actions/captureEmail.ts` | [NEW] `"use server"` action that POSTs `{ email, source, captured_at }` to `EMAIL_CAPTURE_WEBHOOK_URL`; no-ops silently if unset |
+| `app/quiz/page.tsx` | Wired `captureEmail` as non-blocking call in `handleEmailSubmit` |
+| `app/dont-wanna-gym/components/CalendarSignup.tsx` | Wired `captureEmail` as non-blocking call in `handleSubmit` |
+| `.env.example` | Added `EMAIL_CAPTURE_WEBHOOK_URL` with usage notes |
+| `RELEASES.md` | Added v0.5.0 release notes |
+
+### Key Design Notes
+- **Terminal logs**: Each line now has a `[LOG_LEVEL]` prefix and reads like a system finding specific to the user's fitness guilt. No animation timers were changed.
+- **Ledger sub-notes**: Each row has a second `text-zinc-600 text-[10px]` line explaining the charge in parenthetical detail — adds comedic depth without breaking the receipt layout.
+- **Preset vs reason**: When a template preset is active, `letterBody` is swapped wholesale into the rendered letter. The reason dropdown is `disabled` with `opacity-40` and shows `(overridden by template)`. Changing the reason dropdown clears the preset via `setTemplateKey("")`.
+- **captureEmail**: Fully non-blocking — called with `.catch(() => {})` so it never delays or errors the user flow. Safe to deploy with or without the env var.
+
+---
+
 ## What Was Done — v0.4.0 User Authentication & Account-Based Experience
+
 
 Implemented a hybrid authentication system supporting Google OAuth and client-side Email + 4-digit PIN credentials. If authenticated, the app automatically bypasses all email collection gates.
 

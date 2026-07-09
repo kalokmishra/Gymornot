@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { useAuth } from "../../../components/AuthProvider";
+import { captureEmail } from "../../actions/captureEmail";
 
 export default function CalendarSignup() {
   const { user } = useAuth();
@@ -15,9 +16,11 @@ export default function CalendarSignup() {
     }
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email || !email.includes("@")) return;
+    // Fire webhook via Server Action (non-blocking — never delays the user)
+    captureEmail(email.trim()).catch(() => {});
     window.localStorage.setItem("gymornot_email", email);
     setIsSubmitted(true);
   };

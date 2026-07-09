@@ -3813,5 +3813,40 @@
         "couchScore": 3
       }
     ]
+  },
+  {
+    "id": "q_humor_1",
+    "eyebrow": "THE SACRIFICE",
+    "prompt": "Select the option that matches your current relationship with your gym card:",
+    "options": [
+      {
+        "label": "It is currently acting as a structural shim to level out my kitchen table.",
+        "gymScore": 0,
+        "homeScore": 1,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      },
+      {
+        "label": "I keep it in my wallet to trick myself into thinking I have a social life.",
+        "gymScore": 1,
+        "homeScore": 0,
+        "boutiqueScore": 2,
+        "couchScore": 1
+      },
+      {
+        "label": "The gym staff recently threw me a surprise party because they forgot what I looked like.",
+        "gymScore": 0,
+        "homeScore": 1,
+        "boutiqueScore": 0,
+        "couchScore": 3
+      },
+      {
+        "label": "I go regularly, mostly to sit in the massage chairs and use their high-speed Wi-Fi.",
+        "gymScore": 2,
+        "homeScore": 0,
+        "boutiqueScore": 1,
+        "couchScore": 1
+      }
+    ]
   }
 ]

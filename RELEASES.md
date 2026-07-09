@@ -4,6 +4,20 @@ This document explains the release process for GymOrNot, including versioning, r
 
 ## Release History
 
+### v0.5.0 — Satirical Content Expansion & Email Capture Webhook (2026-07-09)
+
+Expanded satirical humor depth site-wide, added preset resignation templates, new diagnostic question, and a serverless email capture webhook action.
+
+**Features**
+- **Terminal loading roasts** (`app/quiz/page.tsx`): Replaced generic calculation log lines with 5 specific passive-aggressive roasts (last gym visit date, 0% treadmill activity, 98.4% resolution fossilization, protein powder division-by-zero error, executive bonus funding confirmation).
+- **Expanded faux ledger** (`app/giving-free-money/page.tsx`): Replaced the 4 generic expense rows with 4 new itemized satirical charges — The Locker Room Surcharge ($45.00), Water Fountain Idle Tax ($28.50), The Smoothie Socialite Premium ($65.00), and The Ghost Member Convenience Fee ($120.00). Each row includes a sub-note explanation.
+- **Resignation template presets** (`ResignationGenerator.tsx`): Added a "Template Preset" dropdown with 3 comedic letter templates — The Philosophical Departure, The Asset Liquidation, and The Legally Binding Sloth. Selecting a preset overrides the letter body in the preview pane live; switching back to the reason dropdown clears it.
+- **New diagnostic question** (`lib/questions.json`): Added `q_humor_1` — "THE SACRIFICE" — asking about the user's current relationship with their gym card. All 4 scoring axes populated on every option.
+- **`captureEmail` Server Action** (`app/actions/captureEmail.ts`): New `"use server"` action that POSTs captured emails as `{ email, source, captured_at }` JSON to `EMAIL_CAPTURE_WEBHOOK_URL`. Silently no-ops if the env var is unset. Wired non-blocking into `/quiz` email submit and `/dont-wanna-gym` calendar signup.
+- **`.env.example`**: Added `EMAIL_CAPTURE_WEBHOOK_URL` with usage documentation.
+
+---
+
 ### v0.4.0 — User Authentication & Account-Based Experience (2026-07-07)
 
 Introduced a hybrid authentication system (Google OAuth & local Email+PIN logins) to allow personalized accounts and automatic email gate bypasses.

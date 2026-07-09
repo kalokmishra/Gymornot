@@ -7,13 +7,14 @@ import { QuizQuestion, buildQuizQuestions, computeArchetype } from "../../lib/qu
 import ShareCard from "./components/ShareCard";
 import Header from "../../components/Header";
 import { useAuth } from "../../components/AuthProvider";
+import { captureEmail } from "../actions/captureEmail";
 
 const LOADING_LINES = [
-  "CALCULATING TOTAL GYM DONATION...",
-  "ANALYZING fitness_guilt.json...",
-  "COMPILING SUNK_COST_FALLACY_INDEX...",
-  "CROSS-REFERENCING COUCH_VECTOR_SCORES...",
-  "PREPARING FINANCIAL VERDICT...",
+  "[INFO] Locating active gym membership... Found 1 (Last active: January 3rd, 2025)",
+  "[DEBUG] Scanning for signs of life on the treadmill... 0% activity detected.",
+  "[WARN] Workout resolutions fossilization level: 98.4%.",
+  "[CALC] Multiplying protein powder purchases by actual sweat produced... Error: Division by zero.",
+  "[SUCCESS] Projected 12-month corporate gym executive bonus fully funded by your guilt.",
 ];
 
 // Cosmetic guilt meter — purely for tension, no effect on scoring
@@ -145,7 +146,7 @@ export default function QuizPage() {
     }, 150);
   };
 
-  const handleEmailSubmit = (e: React.FormEvent) => {
+  const handleEmailSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const trimmed = email.trim();
     const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmed);
@@ -154,6 +155,8 @@ export default function QuizPage() {
       return;
     }
     setEmailError("");
+    // Fire webhook via Server Action (non-blocking — never delays the user)
+    captureEmail(trimmed).catch(() => {});
     window.localStorage.setItem("gymornot_email", trimmed);
     window.localStorage.setItem("gymornot_gymScore", String(gymScore));
     window.localStorage.setItem("gymornot_homeScore", String(homeScore));

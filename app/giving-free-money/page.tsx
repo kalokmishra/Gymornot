@@ -122,14 +122,33 @@ export default function GivingFreeMoneyPage() {
             </div>
             <div className="px-6 py-4 space-y-0 divide-y divide-zinc-800">
               {[
-                { label: "Guilt Premium Tax", value: "100%" },
-                { label: "Treadmill Depreciation Subsidy", value: "$44.50" },
-                { label: "Unused Locker Space Rental", value: "$12.00" },
-                { label: "Corporate Executive Bonus Fund", value: "$32.50" },
+                {
+                  label: "The Locker Room Surcharge",
+                  value: "$45.00",
+                  note: "Privilege of smelling eucalyptus while avoiding the actual weight room",
+                },
+                {
+                  label: "Water Fountain Idle Tax",
+                  value: "$28.50",
+                  note: "Time spent pretending to refill bottle just to take a break",
+                },
+                {
+                  label: "The Smoothie Socialite Premium",
+                  value: "$65.00",
+                  note: "900-calorie liquid grass beverage to 'recover' from a 10-minute walk",
+                },
+                {
+                  label: "The Ghost Member Convenience Fee",
+                  value: "$120.00",
+                  note: "Direct tip to the gym franchise for staying home and not wearing out their equipment",
+                },
               ].map((row, i) => (
-                <div key={i} className="flex justify-between items-baseline py-2.5">
-                  <span className="font-mono text-sm text-zinc-400">{row.label}</span>
-                  <span className="font-mono text-sm text-ink font-bold tabular-nums">{row.value}</span>
+                <div key={i} className="flex justify-between items-baseline py-2.5 border-b border-zinc-800">
+                  <div>
+                    <span className="font-mono text-sm text-zinc-400 block">{row.label}</span>
+                    <span className="font-mono text-[10px] text-zinc-600 block max-w-xs">{row.note}</span>
+                  </div>
+                  <span className="font-mono text-sm text-ink font-bold tabular-nums shrink-0 ml-4">{row.value}</span>
                 </div>
               ))}
             </div>
