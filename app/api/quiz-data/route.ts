@@ -79,6 +79,36 @@ async function readQuestionsFile(): Promise<QuizQuestion[] | null> {
   }
 }
 
+async function readQuizBank(): Promise<QuizQuestion[] | null> {
+  try {
+    const filePath = path.join(process.cwd(), "gymornot_quiz_bank.json");
+    const contents = await fs.readFile(filePath, "utf8");
+    const parsed = JSON.parse(contents);
+    if (!Array.isArray(parsed) || parsed.length === 0) return null;
+
+    // Pick a random set
+    const randomSet = parsed[Math.floor(Math.random() * parsed.length)];
+    if (!randomSet || !Array.isArray(randomSet.questions)) return null;
+
+    return randomSet.questions.map((q: any) => ({
+      id: String(q.id ?? ""),
+      eyebrow: String(q.eyebrow ?? ""),
+      prompt: String(q.prompt ?? ""),
+      options: Array.isArray(q.options)
+        ? q.options.map((opt: any) => ({
+            label: String(opt.label ?? ""),
+            gymScore: Number(opt.gymScore ?? 0),
+            homeScore: Number(opt.homeScore ?? 0),
+            boutiqueScore: Number(opt.boutiqueScore ?? 0),
+            couchScore: Number(opt.couchScore ?? 0),
+          }))
+        : [],
+    }));
+  } catch (err) {
+    return null;
+  }
+}
+
 const QUESTIONS_PER_QUIZ = 4;
 
 function pickRandom<T>(arr: T[], n: number): T[] {
@@ -88,13 +118,24 @@ function pickRandom<T>(arr: T[], n: number): T[] {
 
 export async function GET() {
   try {
+    // Try to load a random theme set from gymornot_quiz_bank.json
+    const themedQuestions = await readQuizBank();
+    if (themedQuestions && themedQuestions.length > 0) {
+      const processed = themedQuestions.map((q, i) => ({
+        ...q,
+        id: `q${i + 1}`, // re-index to q1-q4
+        options: shuffleArray(q.options),
+      }));
+      return NextResponse.json({ questions: processed });
+    }
+
+    // Fallback to flat questions list (lib/questions.json)
     const fromFile = await readQuestionsFile();
     if (fromFile && fromFile.length > 0) {
-      // Pick N random questions from the pool, shuffle options for each
       const picked = pickRandom(fromFile, QUESTIONS_PER_QUIZ).map((q, i) => ({
         ...q,
-        id: `q${i + 1}`,                    // re-index so IDs are always q1–q4
-        options: shuffleArray(q.options),   // randomise option order too
+        id: `q${i + 1}`,
+        options: shuffleArray(q.options),
       }));
       return NextResponse.json({ questions: picked });
     }

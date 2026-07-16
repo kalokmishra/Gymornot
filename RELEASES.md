@@ -9,8 +9,9 @@ This document explains the release process for GymOrNot, including versioning, r
 Expanded the quiz question bank from a small pool to 200 unique questions grouped across 50 distinct satirical themes.
 
 **Features**
-- **Flattened Quiz Bank Integration** (`lib/questions.json`): Implemented a parser to flatten `gymornot_quiz_bank.json`'s thematic subsets into the standard flat array format.
-- **Dynamic Replayability**: The quiz API endpoint now dynamically picks 4 random questions from a pool of 200 questions on every attempt and shuffles their options, ensuring a unique diagnostic experience on subsequent retakes.
+- **Themed Set Selection** (`app/api/quiz-data/route.ts`): Updated the API endpoint to select one random theme (out of 50 sets) on every load and return its 4 questions in their proper progression (Stage 1 Intake Form, Stage 2 Baseline Audit, Stage 3 Exhibit A, Stage 4 Verdict Pending).
+- **Flattened Fallback** (`lib/questions.json`): Implemented a parser to flatten `gymornot_quiz_bank.json`'s thematic subsets into the standard flat array layout as a fallback.
+- **Option Shuffling**: The options for each of the 4 questions are dynamically shuffled before serving, ensuring a unique experience on subsequent attempts of the same theme.
 
 ---
 

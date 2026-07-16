@@ -8,18 +8,19 @@
 
 ## What Was Done — v0.5.2 Expanded 200-Question Multi-Theme Quiz Bank
 
-Integrated the new 200-question thematic quiz bank, enabling dynamic question selections and option shuffling.
+Integrated the new 200-question thematic quiz bank, enabling dynamic question selections, option shuffling, and themed progression.
 
 ### Files Added & Changed
 
 | File | Change |
 |---|---|
 | `gymornot_quiz_bank.json` | [NEW] Added original structured database containing 50 themes of 4 questions each (200 total) |
-| `lib/questions.json` | Generated flat question bank from the grouped database |
+| `lib/questions.json` | Generated flat question bank from the grouped database as a fallback |
+| `app/api/quiz-data/route.ts` | Updated GET to load a random theme set and return its 4 questions in order |
 | `scratch/flatten-quiz-bank.js` | [NEW] Script to parse and flatten the grouped quiz bank json |
 
 ### Key Design Notes
-- **Theme Gating / Dynamic Pools**: By flattening the 200 questions, the endpoint `api/quiz-data` picks a random sample of 4 questions on every page request, providing a highly replayable and diagnostic experience.
+- **Theme Gating / Cohesive Sets**: Rather than mixing random questions from different themes, the API selects a single random themed set on every request. This preserves the satirical narrative arc (Stage 1 Intake Form, Stage 2 Baseline Audit, Stage 3 Exhibit A, Stage 4 Verdict Pending).
 - **Type Compatibility**: The output options perfectly map to `{ label, gymScore, homeScore, boutiqueScore, couchScore }` preserving full compatibility with the existing 4-axis scoring algorithms.
 
 ---
