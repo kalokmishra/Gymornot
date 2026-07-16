@@ -4,6 +4,12 @@ This document explains the release process for GymOrNot, including versioning, r
 
 ## Release History
 
+### v0.5.1 — Companion Checklist & Exemption Pack Rollback (2026-07-16)
+
+Rolled back the experimental v0.6.0 features. Reverted the sequential 7-day checklist, curiosity-gap gating results, electronic signature canvas, and Stripe $2.99 scripts pack checkout; restored original v0.5.0 diagnostic quiz, outcomes, and preset templates.
+
+---
+
 ### v0.5.0 — Satirical Content Expansion & Email Capture Webhook (2026-07-09)
 
 Expanded satirical humor depth site-wide, added preset resignation templates, new diagnostic question, and a serverless email capture webhook action.

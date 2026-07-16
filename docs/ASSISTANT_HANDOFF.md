@@ -6,6 +6,10 @@
 - Build status: `npm run build` passes with zero compilation or type check errors.
 - Deployment: Live on Vercel at https://gymornot-five.vercel.app
 
+## What Was Done — v0.5.1 Companion Checklist & Exemption Pack Rollback
+
+Rolled back all experimental v0.6.0 features. Reverted the sequential 7-day checklist, curiosity-gap outcomes, drawing signature canvas, and checkout modal; restored original v0.5.0 quiz database, outcome screen, and preset letters.
+
 ---
 
 ## What Was Done — v0.5.0 Satirical Content Expansion & Email Capture Webhook
