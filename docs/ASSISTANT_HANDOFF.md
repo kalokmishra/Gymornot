@@ -6,9 +6,21 @@
 - Build status: `npm run build` passes with zero compilation or type check errors.
 - Deployment: Live on Vercel at https://gymornot-five.vercel.app
 
-## What Was Done — v0.5.1 Companion Checklist & Exemption Pack Rollback
+## What Was Done — v0.5.2 Expanded 200-Question Multi-Theme Quiz Bank
 
-Rolled back all experimental v0.6.0 features. Reverted the sequential 7-day checklist, curiosity-gap outcomes, drawing signature canvas, and checkout modal; restored original v0.5.0 quiz database, outcome screen, and preset letters.
+Integrated the new 200-question thematic quiz bank, enabling dynamic question selections and option shuffling.
+
+### Files Added & Changed
+
+| File | Change |
+|---|---|
+| `gymornot_quiz_bank.json` | [NEW] Added original structured database containing 50 themes of 4 questions each (200 total) |
+| `lib/questions.json` | Generated flat question bank from the grouped database |
+| `scratch/flatten-quiz-bank.js` | [NEW] Script to parse and flatten the grouped quiz bank json |
+
+### Key Design Notes
+- **Theme Gating / Dynamic Pools**: By flattening the 200 questions, the endpoint `api/quiz-data` picks a random sample of 4 questions on every page request, providing a highly replayable and diagnostic experience.
+- **Type Compatibility**: The output options perfectly map to `{ label, gymScore, homeScore, boutiqueScore, couchScore }` preserving full compatibility with the existing 4-axis scoring algorithms.
 
 ---
 

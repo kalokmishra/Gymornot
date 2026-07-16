@@ -4,9 +4,13 @@ This document explains the release process for GymOrNot, including versioning, r
 
 ## Release History
 
-### v0.5.1 — Companion Checklist & Exemption Pack Rollback (2026-07-16)
+### v0.5.2 — Expanded 200-Question Multi-Theme Quiz Bank (2026-07-16)
 
-Rolled back the experimental v0.6.0 features. Reverted the sequential 7-day checklist, curiosity-gap gating results, electronic signature canvas, and Stripe $2.99 scripts pack checkout; restored original v0.5.0 diagnostic quiz, outcomes, and preset templates.
+Expanded the quiz question bank from a small pool to 200 unique questions grouped across 50 distinct satirical themes.
+
+**Features**
+- **Flattened Quiz Bank Integration** (`lib/questions.json`): Implemented a parser to flatten `gymornot_quiz_bank.json`'s thematic subsets into the standard flat array format.
+- **Dynamic Replayability**: The quiz API endpoint now dynamically picks 4 random questions from a pool of 200 questions on every attempt and shuffles their options, ensuring a unique diagnostic experience on subsequent retakes.
 
 ---
 
