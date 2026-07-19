@@ -6,6 +6,30 @@
 - Build status: `npm run build` passes with zero compilation or type check errors.
 - Deployment: Live on Vercel at https://gymornot-five.vercel.app
 
+## What Was Done — v0.6.0 GymOrNot x NRC Kinetic Audit Redesign
+
+A comprehensive visual overhaul of the application, adopting a high-contrast, brutalist aesthetic inspired by the Nike Run Club app ("Kinetic Audit").
+
+### Files Added & Changed
+
+| File | Change |
+|---|---|
+| `tailwind.config.ts` | Added `volt`, `solar-red`, `dark-moss` colors. Configured `kinetic` animations/easings. |
+| `app/globals.css` | Implemented `.kinetic-tilt`, `.glass-surface`, `.option-card`, and progress bar CSS variables/utilities. |
+| `app/layout.tsx` | Swapped `Manrope` font for `Archivo_Narrow` (variable weight, italic supported). |
+| `components/Header.tsx` | Rebuilt as a fixed-top glassmorphic nav with a Volt logo and "ESCAPE NOW" CTA. |
+| `components/BottomNavbar.tsx` | [NEW] Created a docked 4-tab bottom navigation bar for mobile viewports. |
+| `app/page.tsx` | Overhauled with kinetic skew hero, brutalist bento grid, and dossier-style testimonials. |
+| `app/quiz/page.tsx` | Replaced progress bar with a Solar Red → Volt kinetic track, added diagnostic sequence labels, and implemented Volt ignite hover states on `.option-card`. |
+| `app/dashboard/page.tsx` | Refactored with true OLED black surfaces, Volt habit grid cells, and Solar Red financial metrics. Removed duplicated code blocks. |
+
+### Key Design Notes
+- **Color Identity**: The app is strictly monochromatic (OLED Black/Dark Moss) with striking Volt and Solar Red highlights.
+- **Kinetic Elements**: The `-skew-y-3` (`.kinetic-tilt`) transform is used to give static blocks forward momentum.
+- **Glassmorphism**: Sticky navigation relies on backdrop blur, ensuring content remains visible underneath while maintaining a premium feel.
+
+---
+
 ## What Was Done — v0.5.2 Expanded 200-Question Multi-Theme Quiz Bank
 
 Integrated the new 200-question thematic quiz bank, enabling dynamic question selections, option shuffling, and themed progression.

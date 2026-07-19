@@ -6,15 +6,16 @@ This document defines the UI, code, and content conventions used in GymOrNot. Fo
 
 ## Design Aesthetic
 
-GymOrNot uses a **brutalist/editorial** visual identity — stark, high-contrast, and raw. The design deliberately rejects generic SaaS softness in favour of an industrial, "financial audit" feel that mirrors the brand's satirical tone.
+GymOrNot uses a **high-contrast, brutalist/athletic** visual identity inspired by the Nike Run Club app ("Kinetic Audit" design). The design leverages severe geometry, sharp skew angles, and aggressive color blocking to mirror the brand's satirical tone.
 
 Key aesthetic principles:
 - **Sharp edges everywhere**: Use `rounded-none` by default. Never use `rounded-full` (pill shapes) for primary UI elements.
-- **Borders over backgrounds**: Prefer `border border-zinc-800` or `border-2 border-zinc-800` over filled card backgrounds.
-- **Monospace for data**: All labels, metadata, eyebrows, and ledger-style text use `font-mono`. Display headings use `font-display font-black`.
-- **Typography does the hierarchy**: Use drastic scale contrasts (`text-8xl` vs `text-xs`) and weight contrasts (`font-black` vs `font-light`) instead of `uppercase` blankets.
-- **`uppercase` is reserved** for: eyebrow labels, CTA button text, mono metadata lines. Do not apply it to long conversational copy.
-- **Blueprint grid background** on analytical/diagnostic pages (quiz, community): `bg-[linear-gradient(to_right,#27272a_1px,transparent_1px)...] bg-[size:4rem_4rem]`.
+- **OLED Black Surfaces**: Prefer true black (`#000000`) or very dark moss/zinc backgrounds.
+- **Kinetic Geometry**: Use `-skew-y-3` (`.kinetic-tilt`) for high-impact hero sections to give a sense of forward momentum. Ensure text inside is counter-skewed with `.kinetic-tilt-inner`.
+- **Glassmorphism**: Use `.glass-surface` (backdrop-blur + saturation) for fixed navigational elements like the Header.
+- **Typography does the hierarchy**: Use drastic scale contrasts (e.g., `clamp` functions up to `9rem`) and weight contrasts (`font-black` vs `font-normal`).
+- **`uppercase` is reserved** for: eyebrow labels, CTA button text, mono metadata lines, and massive display headlines.
+- **Tactility**: Use `.soft-depth` for buttons to give a pressed-in, physical feel when clicked or hovered.
 
 ---
 
@@ -46,17 +47,14 @@ Use the design tokens from `tailwind.config.ts` and `app/globals.css`:
 
 | Token | Usage |
 |---|---|
-| `bg-void` / `#0A0A0A` | Page background |
-| `bg-zinc-950` | Elevated dark surface (hero blocks, receipt panels) |
-| `bg-zinc-900` | Dashed border document/receipt backgrounds |
-| `border-hairline` / `border-zinc-800` | Standard borders |
-| `text-ink` | Primary text |
-| `text-zinc-400` / `text-zinc-500` | Secondary / mono label text |
-| `text-zinc-600` / `text-zinc-700` | Dimmed metadata, footnotes |
-| `text-brand-lime` | Primary accent (CTA, archetype names, streak values) |
-| `text-brand-red` | Danger / financial damage / critical labels |
+| `bg-void` / `#000000` | True OLED Black page background |
+| `bg-dark-moss` / `#121508` | Elevated dark surface (cards, receipt panels) |
+| `text-ink` | Primary text (pure white/off-white) |
+| `text-zinc-500` / `text-zinc-600` | Secondary / mono label text, metadata |
+| `text-volt` / `bg-volt` | Primary accent (CTA, archetype names, streak values, active states) |
+| `text-solar-red` / `bg-solar-red` | Danger / financial damage / critical actions |
 | `font-mono` | All data labels, eyebrows, ledger rows, terminal text |
-| `font-display font-black` | All headings |
+| `font-display` | All headings (Archivo Narrow) |
 
 ### Rounded Corners
 - **`rounded-none`** — all interactive elements, cards, inputs, buttons, containers.
