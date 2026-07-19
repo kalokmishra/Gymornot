@@ -6,6 +6,7 @@ import Link from "next/link";
 import { QuizQuestion, buildQuizQuestions, computeArchetype } from "../../lib/quiz";
 import ShareCard from "./components/ShareCard";
 import Header from "../../components/Header";
+import BottomNavbar from "../../components/BottomNavbar";
 import { useAuth } from "../../components/AuthProvider";
 import { captureEmail } from "../actions/captureEmail";
 
@@ -176,96 +177,129 @@ export default function QuizPage() {
 
   return (
     <main
-      className="min-h-screen bg-void text-ink font-body selection:bg-brand-lime selection:text-void"
+      className="min-h-screen bg-void text-ink font-body selection:bg-volt selection:text-void"
       style={{
         backgroundImage:
-          "linear-gradient(to right, #27272a 1px, transparent 1px), linear-gradient(to bottom, #27272a 1px, transparent 1px)",
+          "linear-gradient(to right, rgba(208,255,0,0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(208,255,0,0.03) 1px, transparent 1px)",
         backgroundSize: "4rem 4rem",
       }}
     >
       {/* HEADER */}
-      <Header contextLink="/" contextLabel="Exit Diagnostic →" />
+      <Header contextLink="/" contextLabel="Exit Audit →" />
 
-      <div className="mx-auto max-w-3xl px-6 py-12">
+      {/* Spacer for fixed header */}
+      <div className="h-[57px]" />
 
-        {/* PHASE INDICATOR + GUILT METER */}
+      <div className="mx-auto max-w-3xl px-5 py-10">
+
+        {/* ── KINETIC PROGRESS BAR ─────────────────────────────────────── */}
         {phase === "quiz" && questions.length > 0 && (
-          <div className="mb-6 space-y-2 border-b border-zinc-800 pb-5">
-            <div className="flex items-center justify-between">
-              <span className="font-mono text-[10px] text-zinc-600 uppercase tracking-widest">
-                DIAGNOSTIC SYSTEM // GYMORNOT AUDIT ENGINE
+          <div className="mb-8">
+            {/* Header row */}
+            <div className="flex items-center justify-between mb-3">
+              <span className="font-mono text-[9px] text-zinc-600 uppercase tracking-widest">
+                [DIAGNOSTIC_SEQUENCE_{String(stepIndex + 1).padStart(2, "0")}]
               </span>
-              <span className="font-mono text-sm text-zinc-400 font-bold">
-                PHASE: {String(stepIndex + 1).padStart(2, "0")} / {String(questions.length).padStart(2, "0")}
+              <span className="font-mono text-[9px] text-zinc-500 font-bold">
+                {stepIndex + 1} / {questions.length}
               </span>
             </div>
-            <div className="flex items-center gap-3">
-              <span className="font-mono text-[10px] text-zinc-600 uppercase tracking-widest">
-                ESTIMATED ANNUAL WASTE:
+
+            {/* Progress track */}
+            <div className="kinetic-progress-track">
+              <div
+                className="kinetic-progress-fill"
+                style={{ width: `${((stepIndex) / questions.length) * 100}%` }}
+              />
+            </div>
+
+            {/* Guilt meter */}
+            <div className="flex items-center gap-3 mt-3">
+              <span className="font-mono text-[9px] text-zinc-700 uppercase tracking-widest">
+                EST. ANNUAL WASTE:
               </span>
-              <span className="font-mono text-sm font-bold text-brand-red">
+              <span className="font-mono text-xs font-bold" style={{ color: "var(--solar-red)" }}>
                 ${guiltMeterValue.toLocaleString()}
               </span>
-              <span className="w-2 h-3 bg-brand-red animate-pulse inline-block" />
+              <span className="w-1.5 h-2.5 inline-block animate-pulse" style={{ background: "var(--solar-red)" }} />
             </div>
           </div>
         )}
 
-        {/* FETCH ERROR BANNER */}
+        {/* ── FETCH ERROR BANNER ───────────────────────────────────────── */}
         {fetchError && (
-          <div className="mb-6 border border-brand-red/30 bg-brand-red/5 p-4 font-mono text-xs font-bold uppercase tracking-wider text-brand-red rounded-none">
+          <div
+            className="mb-6 p-4 font-mono text-xs font-bold uppercase tracking-wider"
+            style={{ border: "1px solid rgba(255,77,0,0.3)", background: "rgba(255,77,0,0.05)", color: "var(--solar-red)" }}
+          >
             {fetchError}
           </div>
         )}
 
-        {/* INITIAL LOADING — Terminal boot */}
+        {/* ── INITIAL LOADING — Terminal boot ─────────────────────────── */}
         {isLoadingQuestions && (
-          <div className="border border-zinc-800 bg-zinc-950 p-8 rounded-none space-y-2">
-            <p className="font-mono text-[10px] text-zinc-600 uppercase tracking-widest mb-4">
-              // INITIALIZING AUDIT ENGINE //
+          <div
+            className="p-8 space-y-2"
+            style={{ border: "1px solid rgba(208,255,0,0.08)", background: "#050500" }}
+          >
+            <p className="font-mono text-[9px] text-zinc-700 uppercase tracking-widest mb-4">
+              // INITIALIZING KINETIC AUDIT ENGINE //
             </p>
-            <p className="font-mono text-xs text-zinc-500">&gt; INITIALIZING GYMORNOT AUDIT ENGINE...</p>
-            <p className="font-mono text-xs text-zinc-500">&gt; FETCHING DIAGNOSTIC QUESTIONS...</p>
-            <p className="font-mono text-xs text-zinc-300 animate-pulse">&gt; ESTABLISHING GUILT BASELINE... ▌</p>
+            <p className="font-mono text-xs text-zinc-600">&gt; LOADING GYMORNOT DIAGNOSTIC v2.0...</p>
+            <p className="font-mono text-xs text-zinc-600">&gt; FETCHING THEMATIC QUESTION SET...</p>
+            <p className="font-mono text-xs animate-pulse" style={{ color: "var(--volt)" }}>&gt; ESTABLISHING GUILT BASELINE... █</p>
           </div>
         )}
 
-        {/* NO QUESTIONS ERROR */}
+        {/* ── NO QUESTIONS ERROR ───────────────────────────────────────── */}
         {!isLoadingQuestions && !activeQuestion && phase === "quiz" && (
-          <div className="border border-zinc-800 bg-zinc-950 p-8 rounded-none text-center">
-            <p className="font-mono text-xs text-brand-red uppercase tracking-widest mb-2">// ERROR //</p>
-            <p className="font-mono text-sm text-zinc-400">Unable to load diagnostic questions. Please refresh.</p>
+          <div
+            className="p-8 text-center"
+            style={{ border: "1px solid rgba(255,77,0,0.2)", background: "#0a0000" }}
+          >
+            <p className="font-mono text-xs uppercase tracking-widest mb-2" style={{ color: "var(--solar-red)" }}>// ERROR //</p>
+            <p className="font-mono text-sm text-zinc-500">Unable to load diagnostic questions. Please refresh.</p>
           </div>
         )}
 
-        {/* QUIZ PHASE */}
+        {/* ── QUIZ PHASE ───────────────────────────────────────────────── */}
         {!isLoadingQuestions && activeQuestion && phase === "quiz" && (
-          <div className="border-2 border-zinc-800 bg-void rounded-none p-6 sm:p-10">
-            {/* Question */}
-            <div className="mb-8">
-              <p className="font-mono text-[10px] text-brand-red uppercase tracking-widest mb-3">
+          <div
+            className="animate-slide-up"
+            style={{ border: "1px solid rgba(208,255,0,0.1)", background: "#020200" }}
+          >
+            {/* Question header */}
+            <div
+              className="px-6 sm:px-8 pt-8 pb-6 border-b"
+              style={{ borderColor: "rgba(255,255,255,0.06)" }}
+            >
+              <p className="font-mono text-[9px] uppercase tracking-widest mb-3" style={{ color: "var(--solar-red)" }}>
                 {activeQuestion.eyebrow}
               </p>
-              <h2 className="font-display font-extrabold text-2xl md:text-3xl tracking-tight text-zinc-50 leading-snug">
+              <h2 className="font-display font-black text-2xl md:text-3xl tracking-tight text-white leading-snug uppercase">
                 {activeQuestion.prompt}
               </h2>
             </div>
 
-            {/* Answer choices — full-width stacked rows */}
-            <div className="flex flex-col border-t border-zinc-800">
+            {/* Answer options — ignite on hover/select */}
+            <div className="flex flex-col">
               {activeQuestion.options.map((option, i) => (
                 <button
                   key={i}
                   type="button"
                   onClick={() => handleAnswer(option, i)}
                   disabled={selectedOptionIndex !== null}
-                  className={`w-full p-4 border-b border-zinc-800 text-left transition-all duration-150 rounded-none
-                    ${selectedOptionIndex === i
-                      ? "bg-white text-void font-bold"
-                      : "bg-void text-zinc-400 font-mono text-sm hover:bg-zinc-900 hover:border-zinc-500 hover:translate-x-1 hover:text-zinc-50"
-                    }`}
+                  className={`option-card ${selectedOptionIndex === i ? "selected" : ""}`}
+                  style={{
+                    ...(selectedOptionIndex === i
+                      ? { background: "var(--volt)", color: "#000", borderBottomColor: "var(--volt)" }
+                      : {}),
+                  }}
                 >
-                  <span className={`font-mono text-sm leading-relaxed ${selectedOptionIndex === i ? "font-bold text-void" : ""}`}>
+                  <span className="font-mono text-[10px] text-zinc-700 mr-3 tracking-widest">
+                    [{String.fromCharCode(65 + i)}]
+                  </span>
+                  <span className="font-body text-sm leading-relaxed">
                     {option.label}
                   </span>
                 </button>
@@ -274,56 +308,73 @@ export default function QuizPage() {
           </div>
         )}
 
-        {/* LOADING PHASE — Terminal evaluation */}
+        {/* ── LOADING PHASE — Terminal evaluation ─────────────────────── */}
         {phase === "loading" && (
-          <div className="border-2 border-zinc-800 bg-zinc-950 rounded-none p-10 space-y-3">
-            <p className="font-mono text-[10px] text-zinc-600 uppercase tracking-widest mb-6 border-b border-zinc-800 pb-4">
-              // RUNNING ANALYSIS //
+          <div
+            className="p-10 space-y-3"
+            style={{ border: "1px solid rgba(208,255,0,0.1)", background: "#020200" }}
+          >
+            <p
+              className="font-mono text-[9px] uppercase tracking-widest mb-6 pb-4 border-b"
+              style={{ color: "var(--zinc-600)", borderColor: "rgba(255,255,255,0.06)" }}
+            >
+              // RUNNING KINETIC ANALYSIS //
             </p>
             {LOADING_LINES.map((line, i) => (
               <p
                 key={i}
                 className={`font-mono text-xs transition-colors duration-300 ${
                   i < loadingLine
-                    ? "text-zinc-700"
+                    ? "text-zinc-800"
                     : i === loadingLine
                     ? "text-zinc-300"
-                    : "text-zinc-800"
+                    : "text-zinc-900"
                 }`}
               >
                 &gt; {line}
-                {i === loadingLine && <span className="animate-pulse"> ▌</span>}
+                {i === loadingLine && (
+                  <span className="animate-pulse" style={{ color: "var(--volt)" }}> █</span>
+                )}
               </p>
             ))}
           </div>
         )}
 
-        {/* RESULT PHASE */}
+        {/* ── RESULT PHASE ─────────────────────────────────────────────── */}
         {phase === "result" && (
           <div className="space-y-0">
 
             {/* Verdict block */}
-            <div className="border-2 border-zinc-800 bg-zinc-950 p-8 rounded-none relative overflow-hidden">
+            <div
+              className="p-8 relative overflow-hidden"
+              style={{ border: "1px solid rgba(208,255,0,0.15)", background: "#020200" }}
+            >
               {!unlocked && (
-                <div className="absolute inset-0 bg-void/95 backdrop-blur-md z-10 flex flex-col items-center justify-center p-6 text-center">
-                  <p className="font-mono text-[10px] text-zinc-600 uppercase tracking-widest mb-4">
+                <div
+                  className="absolute inset-0 z-10 flex flex-col items-center justify-center p-6 text-center"
+                  style={{ background: "rgba(0,0,0,0.95)", backdropFilter: "blur(8px)" }}
+                >
+                  <p className="font-mono text-[9px] text-zinc-700 uppercase tracking-widest mb-4">
                     // ACCESS REQUIRED //
                   </p>
                   <p className="font-display font-black text-2xl text-ink uppercase mb-2">
                     Verdict Locked
                   </p>
-                  <p className="font-mono text-sm text-zinc-500 max-w-sm leading-relaxed">
+                  <p className="font-mono text-sm text-zinc-600 max-w-sm leading-relaxed">
                     Enter your email below to unlock your honest diagnosis, financial impact analysis, and tailored action plan.
                   </p>
                 </div>
               )}
-              <p className="font-mono text-[10px] text-zinc-600 uppercase tracking-widest mb-3">
+              <p className="font-mono text-[9px] text-zinc-700 uppercase tracking-widest mb-3">
                 DIAGNOSIS COMPLETE:
               </p>
-              <h2 className="font-display font-black text-4xl sm:text-6xl text-brand-lime uppercase tracking-tight leading-none mb-4">
+              <h2
+                className="font-display font-black uppercase tracking-tight leading-none mb-4"
+                style={{ fontSize: "clamp(2.5rem, 8vw, 5rem)", color: "var(--volt)" }}
+              >
                 {archetype.name}
               </h2>
-              <p className="font-mono text-sm text-zinc-400 leading-relaxed max-w-2xl">
+              <p className="font-mono text-sm text-zinc-500 leading-relaxed max-w-2xl">
                 {archetype.roast}
               </p>
             </div>
@@ -332,12 +383,20 @@ export default function QuizPage() {
             {!unlocked ? (
               <form
                 onSubmit={handleEmailSubmit}
-                className="border-t border-b border-dashed border-zinc-700 bg-zinc-900 p-6 rounded-none relative z-20"
+                className="relative z-20 p-6"
+                style={{
+                  borderTop: "1px dashed rgba(255,255,255,0.1)",
+                  borderBottom: "1px dashed rgba(255,255,255,0.1)",
+                  background: "#080800",
+                }}
               >
-                <label htmlFor="email" className="font-mono text-[10px] text-zinc-600 uppercase tracking-widest block mb-4">
+                <label htmlFor="email" className="font-mono text-[9px] text-zinc-600 uppercase tracking-widest block mb-4">
                   UNLOCK OFFICIAL VERDICT // SUBMIT IDENTIFICATION
                 </label>
-                <div className="flex flex-col sm:flex-row gap-0 border border-zinc-700 overflow-hidden bg-void">
+                <div
+                  className="flex flex-col sm:flex-row overflow-hidden"
+                  style={{ border: "1px solid rgba(208,255,0,0.2)" }}
+                >
                   <input
                     id="email"
                     type="email"
@@ -345,59 +404,65 @@ export default function QuizPage() {
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="YOU@EMAIL.COM"
                     required
-                    className="flex-1 bg-transparent px-5 py-4 font-mono text-sm text-ink outline-none focus:bg-zinc-950 placeholder:text-zinc-700"
+                    className="flex-1 bg-transparent px-5 py-4 font-mono text-sm text-ink outline-none placeholder:text-zinc-800"
+                    style={{ background: "transparent" }}
                   />
                   <button
                     type="submit"
-                    className="font-display font-black text-xs tracking-wider uppercase bg-brand-lime text-void px-8 py-4 hover:bg-white transition-colors whitespace-nowrap rounded-none"
+                    className="font-display font-black text-xs tracking-wider uppercase px-8 py-4 whitespace-nowrap rounded-none active:scale-95 transition-all"
+                    style={{ background: "var(--volt)", color: "#000" }}
                   >
                     REVEAL VERDICT
                   </button>
                 </div>
                 {emailError && (
-                  <p className="font-mono text-xs text-brand-red mt-3">{emailError}</p>
+                  <p className="font-mono text-xs mt-3" style={{ color: "var(--solar-red)" }}>{emailError}</p>
                 )}
-                <p className="font-mono text-[10px] text-zinc-700 mt-3">
+                <p className="font-mono text-[9px] text-zinc-800 mt-3">
                   * No spam. One honest verdict and maybe a friendly nudge.
                 </p>
               </form>
             ) : (
               <>
                 {/* Financial audit rows */}
-                <div className="border-t border-b border-dashed border-zinc-700 bg-zinc-900 rounded-none">
-                  <div className="border-b border-dashed border-zinc-700 px-6 py-3">
-                    <p className="font-mono text-[10px] text-zinc-500 tracking-widest uppercase">
+                <div style={{ borderTop: "1px dashed rgba(255,255,255,0.08)", borderBottom: "1px dashed rgba(255,255,255,0.08)", background: "#060600" }}>
+                  <div className="px-6 py-3" style={{ borderBottom: "1px dashed rgba(255,255,255,0.08)" }}>
+                    <p className="font-mono text-[9px] text-zinc-600 tracking-widest uppercase">
                       FINANCIAL DAMAGE REPORT // GYMORNOT SYSTEMS
                     </p>
                   </div>
-                  <div className="px-6 py-4 space-y-0 divide-y divide-zinc-800">
+                  <div className="px-6 py-4 divide-y" style={{ divideColor: "rgba(255,255,255,0.06)" }}>
                     <div className="flex justify-between items-baseline py-2.5">
-                      <span className="font-mono text-sm text-zinc-400">Dropoff Probability</span>
-                      <span className="font-mono text-sm font-bold text-brand-red tabular-nums">{dropoffProbability}%</span>
+                      <span className="font-mono text-sm text-zinc-500">Dropoff Probability</span>
+                      <span className="font-mono text-sm font-bold tabular-nums" style={{ color: "var(--solar-red)" }}>{dropoffProbability}%</span>
                     </div>
                     <div className="flex justify-between items-baseline py-2.5">
-                      <span className="font-mono text-sm text-zinc-400">Projected Annual Waste</span>
-                      <span className="font-mono text-sm font-bold text-brand-red tabular-nums">${projectedLoss}</span>
+                      <span className="font-mono text-sm text-zinc-500">Projected Annual Waste</span>
+                      <span className="font-mono text-sm font-bold tabular-nums" style={{ color: "var(--solar-red)" }}>${projectedLoss}</span>
                     </div>
                   </div>
                 </div>
 
-                {/* Recommended protocol row */}
-                <div className="border-b border-zinc-800 px-6 py-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-void">
-                  <p className="font-mono text-[10px] text-zinc-500 uppercase tracking-widest">
+                {/* Recommended protocol */}
+                <div
+                  className="px-6 py-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
+                  style={{ borderBottom: "1px solid rgba(255,255,255,0.06)", background: "#000" }}
+                >
+                  <p className="font-mono text-[9px] text-zinc-600 uppercase tracking-widest">
                     RECOMMENDED PROTOCOL: <span className="text-zinc-400">{archetype.cta.label}</span>
                   </p>
                   <a
                     href={archetype.cta.href}
-                    className="font-mono text-xs text-brand-lime hover:text-ink underline-offset-4 hover:underline transition-colors whitespace-nowrap shrink-0"
+                    className="font-mono text-xs underline-offset-4 hover:underline transition-colors whitespace-nowrap shrink-0"
+                    style={{ color: "var(--volt)" }}
                   >
                     View Recommendation →
                   </a>
                 </div>
 
                 {/* Share Card */}
-                <div className="border-b border-zinc-800 px-6 py-8 bg-void">
-                  <p className="font-mono text-[10px] text-zinc-600 uppercase tracking-widest mb-6">
+                <div className="px-6 py-8" style={{ borderBottom: "1px solid rgba(255,255,255,0.06)", background: "#000" }}>
+                  <p className="font-mono text-[9px] text-zinc-700 uppercase tracking-widest mb-6">
                     BROADCAST YOUR SENTENCE:
                   </p>
                   <ShareCard archetypeId={archetype.id} headline={archetype.shareHeadline} />
@@ -405,8 +470,8 @@ export default function QuizPage() {
 
                 {/* Dashboard redirect */}
                 {isRedirecting ? (
-                  <div className="border border-zinc-800 bg-zinc-950 p-4 rounded-none">
-                    <p className="font-mono text-xs text-brand-lime animate-pulse">
+                  <div className="p-4" style={{ border: "1px solid rgba(208,255,0,0.1)", background: "#020200" }}>
+                    <p className="font-mono text-xs animate-pulse" style={{ color: "var(--volt)" }}>
                       &gt; REDIRECTING TO FULL AUDIT DASHBOARD...
                     </p>
                   </div>
@@ -414,7 +479,8 @@ export default function QuizPage() {
                   <div className="pt-6 text-center">
                     <Link
                       href="/dashboard"
-                      className="inline-block font-display font-black text-sm tracking-wider uppercase bg-brand-lime text-void px-8 py-4 rounded-none hover:bg-white transition-colors"
+                      className="inline-block font-display font-black text-sm tracking-wider uppercase px-8 py-4 rounded-none hover:bg-white active:scale-95 transition-all soft-depth"
+                      style={{ background: "var(--volt)", color: "#000" }}
                     >
                       VIEW FULL DASHBOARD →
                     </Link>
@@ -425,6 +491,10 @@ export default function QuizPage() {
           </div>
         )}
       </div>
+
+      {/* Mobile spacer + bottom nav */}
+      <div className="h-[60px] md:hidden" />
+      <BottomNavbar />
     </main>
   );
 }

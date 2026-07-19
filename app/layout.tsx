@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import { Manrope, DM_Sans, IBM_Plex_Mono } from "next/font/google";
+import { Archivo_Narrow, DM_Sans, IBM_Plex_Mono } from "next/font/google";
 import AuthProvider from "../components/AuthProvider";
 import "./globals.css";
 
-const manrope = Manrope({
+const archivoNarrow = Archivo_Narrow({
   subsets: ["latin"],
-  weight: ["400", "500", "700", "800"],
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
   variable: "--font-display",
   display: "swap",
 });
@@ -36,8 +37,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${manrope.variable} ${dmSans.variable} ${plexMono.variable}`}>
-      <body className="font-body bg-[#0A0A0A] text-[#F5F5F0] antialiased">
+    <html lang="en" className={`${archivoNarrow.variable} ${dmSans.variable} ${plexMono.variable}`}>
+      <body className="font-body bg-void text-ink antialiased">
         <AuthProvider>{children}</AuthProvider>
       </body>
     </html>
