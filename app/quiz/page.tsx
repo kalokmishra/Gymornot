@@ -431,7 +431,7 @@ export default function QuizPage() {
                       FINANCIAL DAMAGE REPORT // GYMORNOT SYSTEMS
                     </p>
                   </div>
-                  <div className="px-6 py-4 divide-y" style={{ divideColor: "rgba(255,255,255,0.06)" }}>
+                  <div className="px-6 py-4 divide-y divide-[#ffffff0f]">
                     <div className="flex justify-between items-baseline py-2.5">
                       <span className="font-mono text-sm text-zinc-500">Dropoff Probability</span>
                       <span className="font-mono text-sm font-bold tabular-nums" style={{ color: "var(--solar-red)" }}>{dropoffProbability}%</span>
