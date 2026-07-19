@@ -4,6 +4,22 @@ This document explains the release process for GymOrNot, including versioning, r
 
 ## Release History
 
+### v0.6.0 — GymOrNot x NRC Kinetic Audit Redesign (2026-07-19)
+
+A comprehensive visual overhaul of the application, adopting a high-contrast, brutalist aesthetic inspired by the Nike Run Club app.
+
+**Features**
+- **Design Tokens**: Introduced Volt (`#d0ff00`), Solar Red (`#ff4d00`), OLED Black, and Dark Moss color tokens.
+- **Typography Swap**: Replaced Manrope with Archivo Narrow for a condensed, athletic, high-impact feel.
+- **Header Redesign**: Implemented a fixed glassmorphic navigation bar with an italic Volt logo and a high-contrast "ESCAPE NOW" CTA.
+- **Mobile Navigation**: Added a `BottomNavbar` (docked 4-tab bar) for Audit, Results, Hub, and Profile navigation on mobile viewports.
+- **Home Page**: Overhauled with a kinetic skew hero section, a brutalist bento grid, and dossier-style testimonials.
+- **Quiz Page**: Updated the progress bar to a Solar Red → Volt kinetic track, added diagnostic sequence labels, and implemented Volt ignite hover states for option cards.
+- **Dashboard Page**: Refactored to feature true OLED black surfaces, Volt habit grid cells, and Solar Red financial damage metrics.
+- **Global Styles**: Added new utility classes (`.kinetic-tilt`, `.volt-glow`, `.glass-surface`, `.option-card`) to `globals.css`.
+
+---
+
 ### v0.5.2 — Expanded 200-Question Multi-Theme Quiz Bank (2026-07-16)
 
 Expanded the quiz question bank from a small pool to 200 unique questions grouped across 50 distinct satirical themes.
